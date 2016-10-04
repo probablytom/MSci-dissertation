@@ -1,8 +1,7 @@
 \documentclass{mprop}
-\usepackage{graphicx}
 
 % alternative font if you prefer
-%\usepackage{times}
+\usepackage{palatino}
 
 % for alternative page numbering use the following package
 % and see documentation for commands
@@ -15,12 +14,16 @@
 %\usepackage{fancyvrb}
 %\usepackage[final]{pdfpages}
 
+% Packages for image layouts
+\usepackage{graphicx}
+\usepackage{float}
+
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Title of project proposal placed here}
-\author{Name of author placed here}
-\date{Date of submission placed here}
+\title{Proposing a model of computational repsonsibility}
+\author{William T. Wallis}
+\date{}
 \maketitle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -42,9 +45,28 @@ example references: \cite{BK08}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Statement of Problem}
 
-clearly state the problem to be addressed in your forthcoming project. Explain why it would be worthwhile to solve this problem.
+Computational responsibility is a complex area with lots of incidentally related work, but no specific relevant literature. Instead of focusing on the responsibilities of artificial agents, their responsibilities are implied by the construction of the agent itself. It might employ algorithms for driving without human guidance, or classify network traffic in an attempt to flag attempts at a system's security. In these instances, lots of somewhat-related work has been done on computational \emph{trust}: can one artificial agent trust another?\par
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+However, this approach is short-sighted. While trust and responsibility are intrinsically linked social concepts, no work has been done to migrate the models of trust to new models of responsibility. A concern arises: do artificially intelligent agents, which we put at the helm of concerns like network security and road safety, actually communicate its understanding of its assigned duty with other agents it collaborates with? Two examples present themselves.\par
+
+The first: a car might drive along a residential street and identify a squirrel running across the road in front of it. It calculates a high probability that, unless it swerves out of the way of the squirrel, it may kill it. It simultaneously identifies that, in the country it is driving in, the law states that it should swerve to avoid killing animals if possible. Computational responsibility introduces itself into the problem in that the car should also have a social understanding: will the swerve endanger humans? How strongly should it weight that probability into the action it chooses? Is it also responsible for, say, conserving fuel for environmental reasons? The key here is that the car has many goals to ascertain; while some are more immediate than others, it should have the capacity to weigh \emph{multiple, arbitrary responsibilities} up to surmise what its next action is. \par
+
+The second: an artificially intelligent agent watches the price of a collection of books in an online store. This is common practice on large sites where prices of unusual books can fluctuate wildly. 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[trim=0.7cm 0.7cm 0.7cm 0.7cm, scale=0.75]{images/amazon_price_hike_fly_genetics}
+\caption{Bots on Amazon artificially inflate a book price to around \emph{62850\%} its used price}
+\end{figure}
+
+Here one artificial agent is known to have artificially inflated the price of a book; another agent has \emph{also} inflated the price according to the seeming market trend. The first agent, seeing that the book is rising in value and now underpriced, inflates the price of its own copy, and the cycle continues until a human intervenes. \par
+
+Kevin Slavin discusses the idea that we have begun to design a world \emph{"for algorithms, with nothing but a big red button, labelled 'stop'"}. The precession of this design trend marches on, relentless --- but algorithms, rather than their interfaces, can be built with humans in mind. A mutual understanding of responsibility would allow one algorithm in this cycle to delegate the price inflation of its book to the other, breaking the cycle, so long as the concept of responsibility for a task is mutually understood. This is where the second, real-world example of computational responsibility lies. \par
+
+As can be seen in the model proposed by Castelfranchi and Falcone in their formulation of trust\cite{CastelfranchiSocialApproach} (usually referred to as \emph{C\&F Theory}), a formulation of trust surrounding one or more actors, subjectively assessing tasks and goals, which takes into account social and technical factors in its modelling, is already present. Fortunately, this model is very well accepted by the computational trust community! Therefore, some work presents itself: does an adaptation of C\&F theory suit a practical model and implementation of computational responsibility? Secondly, one is also led to wonder: how well would such a model solve the example applications of computational responsibility explained earlier?
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Background Survey}
 
 present an overview of relevant previous work including articles, books, and existing software products. Critically evaluate the strengths and weaknesses of the previous work.
@@ -57,10 +79,11 @@ state how you propose to solve the software development problem. Show that your 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Work Plan}
 
-show how you plan to organize your work, identifying intermediate deliverables and dates.
+Panic, write the report in a 36 hour caffeine-induced fever dream
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % it is fine to change the bibliography style if you want
 \bibliographystyle{plain}
+\bibliography{mendeley}
 \bibliography{mprop}
 \end{document}
