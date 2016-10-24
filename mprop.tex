@@ -164,16 +164,36 @@ Deutsch offers many different ideas as to why and how trust or trust-like behavi
 Deutsch's given model above specifically targets formalisation of trust as confidence.
 
 \subsubsection{Luhmann}
-Luhmann, a sociologist who also worked in Trust and related fields, had his own take on formalisms of Trust: that trust was a concept which 
+Luhmann, a sociologist who also worked in Trust and related fields, had his own take on formalisms of Trust: that trust was a social tool for reducing the complexity of a social system. Specifically, Lohmann sees trust as being a method whereby agents in a social system can reduce their exposure of \emph{risk} to each other. According to Luhmann, "Trust...pressuposes a situation of risk."\todo{CITE THIS}\par
+
+Luhmann's work is therefore difficult to form quantitative formalisms from, as his thesis stems from a risk analysis perspective, which can be particularly difficult in a sociotechnical system. However, Luhmann's work remains interesting; a formalism of a human factor like trust would be incomplete without considering the properties of individual human actors as well as these properties' emergent effects in the larger sociotechnical space. For small systems, these social-level properties may not present themselves very strongly; however, most human factors are present regardless of the scale of the system being modelled. Therefore, a formalism of a human factor which fails to consider both psychological and sociological aspects cannot be complete. \par
 
 
 % Modern trust (logics, Marsh and C&F)
 \subsection{Modern [Computational] Trust methods}
+\subsubsection{Marsh's formalism}
+The earliest quantifiable formalism of trust which provides computability, flexibility, and an inspiration from the sociological and psychological work above is that of Stephen Marsh in 1994\cite{Marsh1994FormalisingConcept}. Marsh's work breaks trust up into three core quantifications, where each variable takes some value in the range \([-1,1)\):
+\begin{enumerate}
+    \item Basic Trust \\
+    This is the general degree of "trustingness" about an agent, or that agent's ordinary inclination to trust.
+    \item General Trust \\
+    General trust is trust in the context of the agent being trusted. Marsh's original description begins\cite{Marsh1994FormalisingConcept}:
+    \begin{displayquote}
+        Given two agents, \(x, y \in \mathcal{A}\), to notate '\(x\) trusts \(y\)'  we use: \(T_{x}(y)\). ...The value represents the amount of trust \(x\) has in \(y\) here.
+    \end{displayquote}
+    So, General Trust can be seen to be the trust that an agent \(x\) has in \(y\).
+    \item Situational Trust \\
+    Trust doesn't exist in a vaccum, and the only variable isn't the subject of \(x\)'s trust; \(y\) may have varying degrees of competency in performing an action. Therefore, Situational Trust can be seen to be the trust \(x\) holds that \(y\) can actually perform some task, \safealpha. Marsh helpfully gives the example\cite{Marsh1994FormalisingConcept}:
+    \begin{displayquote}
+        ...whilst I may trust my brother to drive me to the airport, I certainly would not trust him to fly the plane!
+    \end{displayquote}
+\end{enumerate}
 
 
-% There's not much on responsibility, but like Marsh, we can start from a non-quantified place and try to quantify it
+% There's not much quantifiable on responsibility, but like Marsh, we can start from a non-quantified place and try to quantify it
 % Philosophy and moral responsibility
 \subsection{Philosophy of Moral Responsibility}
+\subsection{Ben Colburn}
 
 
 % Comparing early trust and early responsibility: psychology/sociology of trust and philosophy of responsibility
