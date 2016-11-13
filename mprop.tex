@@ -21,10 +21,13 @@
 
 \newcommand{\safealpha}{\(\alpha\)}
 
-% A command to create red TODO markings.
-\usepackage{color}
-\newcommand{\todo}[1]{}
-\renewcommand{\todo}[1]{{\color{red} TODO: {#1}}}
+%% CUSTOM for todos taken from http://tex.stackexchange.com/questions/9796/how-to-add-todo-notes#9797
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+%\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+%\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+%\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+%\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+%\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
 
 \usepackage{enumitem}
 
@@ -54,7 +57,7 @@ Computational Responsibility is a field with little to no existing literature. R
     
     \item Some responsibility modelling, from a logical formalisation\cite{Simpson2015FormalisingAnalysis} \emph{I'm still reading this, Tim!}
     
-    \item Some work on reputation \cite{Chandrasekaran2011ASystems}
+    \item Some work on reputation~\cite{Chandrasekaran2011ASystems}
     
 \end{itemize}
 
@@ -80,16 +83,16 @@ The second: an artificially intelligent agent watches the price of a collection 
 
 Here one artificial agent is known to have artificially inflated the price of a book; another agent has \emph{also} inflated the price according to the seeming market trend. The first agent, seeing that the book is rising in value and now underpriced, inflates the price of its own copy, and the cycle continues until a human intervenes. \par
 
-Kevin Slavin discusses the idea that we have begun to design a world \emph{"for algorithms\cite{SlavinHOWWORLD}, with nothing but a big red button, labelled 'stop'"}. The precession of this design trend marches on, relentless --- but algorithms, rather than their interfaces, can be built with humans in mind. A mutual understanding of responsibility would allow one algorithm in this cycle to delegate the price inflation of its book to the other, breaking the cycle, so long as the concept of responsibility for a task is mutually understood. This is where the second, real-world example of computational responsibility lies. \par
+Kevin Slavin discusses the idea that we have begun to design a world \emph{`for algorithms\cite{SlavinHOWWORLD}, with nothing but a big red button, labelled \'stop\''}. The precession of this design trend marches on, relentless --- but algorithms, rather than their interfaces, can be built with humans in mind. A mutual understanding of responsibility would allow one algorithm in this cycle to delegate the price inflation of its book to the other, breaking the cycle, so long as the concept of responsibility for a task is mutually understood. This is where the second, real-world example of computational responsibility lies. \par
 
 As can be seen in the model proposed by Castelfranchi \& Falcone in their formulation of cognitive trust\cite{CastelfranchiSocialApproach} (usually referred to as \emph{C\&F Theory}), a formulation of trust surrounding one or more actors, subjectively assessing tasks and goals, which takes into account social and technical factors in its modelling, is already present. Fortunately, this model is very well accepted by the computational trust community! Therefore, some work presents itself: does an adaptation of C\&F theory suit a practical model and implementation of computational responsibility? Secondly, one is also led to wonder: how well would such a model solve the example applications of computational responsibility explained earlier?
 
 
 \subsection{A need for a cognitive computational responsibility}
 
-As we move into a world increasingly dominated by algorithms and shaped by their decisions, there is a clear requirement for responsible systems. One problem arises: how can we be certain that an algorithm's internal conception of responsibility is "human-like"? Early work by Sloman describes the notion of a "space" of minds\cite{Sloman1984TheMinds}, and this concept is useful here. An artificial mind need not be human-like, or even biological-like; it can occupy an entirely different area of the space of minds altogether. \par
+As we move into a world increasingly dominated by algorithms and shaped by their decisions, there is a clear requirement for responsible systems. One problem arises: how can we be certain that an algorithm's internal conception of responsibility is `human-like'? Early work by Sloman describes the notion of a `space' of minds\cite{Sloman1984TheMinds}, and this concept is useful here. An artificial mind need not be human-like, or even biological-like; it can occupy an entirely different area of the space of minds altogether. \par
 
-This is problematic when imposing human-like concepts onto machines. The effort of imposing a social, human-like construct onto a "mind" that may not easily host the concept means that one runs the risk of imitating the trait in a useful way, but not in an accurate way. If the model of the human trait doesn't stem from the same basic concepts as the human model does, it cannot be relied on to behave in a human-like way all of the time. \par
+This is problematic when imposing human-like concepts onto machines. The effort of imposing a social, human-like construct onto a `mind' that may not easily host the concept means that one runs the risk of imitating the trait in a useful way, but not in an accurate way. If the model of the human trait doesn't stem from the same basic concepts as the human model does, it cannot be relied on to behave in a human-like way all of the time. \par
 
 Therefore, while we have already demonstrated a need for computational responsibility, there is another requirement that must be satisfied: \emph{cognitive} computational responsibility. \par
 
@@ -107,15 +110,15 @@ Thus, a cognitive model of responsibility is necessary; an ordinary model might 
 \section{Background Survey}
 
 % What work's been done already? 
-Unlike Responsibility, Trust is a topic which has a surprising degree of pre-existing literature. Marsh \cite{Marsh1994FormalisingConcet} draws inspiration from as early as David Birkhoff's 1930s work in creating an "Aesthetic Measure", where the famous mathematician created a quantification of Aesthetics. While some dispute that such subjective topics can be boiled down to a single number (or array thereof), much work to the contrary has now been completed. Like Marsh, we should start from the beginning. 
+Unlike Responsibility, Trust is a topic which has a surprising degree of pre-existing literature. Marsh~\cite{Marsh1994FormalisingConcet} draws inspiration from as early as David Birkhoff's 1930s work in creating an `Aesthetic Measure', where the famous mathematician created a quantification of Aesthetics. While some dispute that such subjective topics can be boiled down to a single number (or array thereof), much work to the contrary has now been completed. Like Marsh, we should start from the beginning. 
 
 % Maths, Psychology and Sociology a-la Marsh
 \subsection{Social Sciences and Mathematics}
 \subsubsection{Birkhoff's Aesthetic Measure}
-One of the earlier formalisms of a human factor\footnote{For the sake of clarification, we define a "human factor" as an element of a social or sociotechnical system which arises from human behaviour, such as Trust.}\footnote{Also for the sake of clarifying a sociotechnical system, a sociotechnical system is a system composed of human tendencies and behaviours, such as Trust, alongside technical activity, such as a computer or a steam engine. An example might be a coffee shop: \begin{itemize}
+One of the earlier formalisms of a human factor\footnote{For the sake of clarification, we define a ``human factor'' as an element of a social or sociotechnical system which arises from human behaviour, such as Trust.}\footnote{Also for the sake of clarifying a sociotechnical system, a sociotechnical system is a system composed of human tendencies and behaviours, such as Trust, alongside technical activity, such as a computer or a steam engine. An example might be a coffee shop: \begin{itemize}
     \item Humans take orders and manage the running of the shop
     \item Technology is responsible for complex activities such as taking payments and forcing steam through coffee at high pressure
-\end{itemize} so there are both social and technical actors and behaviours in the "system" of a day-to-day coffee shop.} was Birkhoff's definition of Aesthetic Measure\cite{BirkhoffAESTHETICMEASURE}. In it, Birkhoff defines the notion of Aesthetic Measure as a ratio of Order to Complexity:
+\end{itemize} so there are both social and technical actors and behaviours in the ``system'' of a day-to-day coffee shop.} was Birkhoff's definition of Aesthetic Measure\cite{BirkhoffAESTHETICMEASURE}. In it, Birkhoff defines the notion of Aesthetic Measure as a ratio of Order to Complexity:
 \[M = \frac{O}{C}\]
 Birkhoff's work inadvertently gave rise to the notion that human factors can be represented by mathematical equations and systems. Birkhoff's formalism of aesthetics became popular for a few reasons, but one of particular interest to later Trust modelling work was that Birkhoff put a great degree of effort into backing his work up with psychological theory. In this way, Birkhoff's formalism could be said to be a \emph{psychological} formalism. \par
 
@@ -131,7 +134,7 @@ The marriage of social studies with mathematical rigour will be a recurring them
 Following the quantifiable, mathematical work done by Birkhoff, logical and arithmetic formalisms of human factors followed. One of the earlier and more widely adopted models for Trust came from Deutsch in 1962. 
 Deutsch is a psychologist who did swathes of work in the topic of cooperation, touching on Trust during the 60s. \par
 
-Deutsch's formalism of trust wasn't immediately quantifiable, but presented one of the earliest well-defined definitions of trust. To paraphrase Deutsch's formalism in "Cooperation and Trust: Some Theoretical Notes", 1962\todo{CITE THIS}:
+Deutsch's formalism of trust wasn't immediately quantifiable, but presented one of the earliest well-defined definitions of trust. To paraphrase Deutsch's formalism in ``Cooperation and Trust: Some Theoretical Notes'', 1962\todo{CITE THIS}:
 \begin{itemize}
     \item An actor is presented with a choice between two paths.
     \begin{enumerate}[label=\emph{\Alph*}:]
@@ -143,7 +146,7 @@ Deutsch's formalism of trust wasn't immediately quantifiable, but presented one 
     \item The actor is said to be \emph{trusting} they take path \emph{B}.
 \end{itemize}
 
-This formalism introduces some interesting notions. For example, it is unclear as to whether the outcome of choice \emph{B} can rely on the same actor making the decision; can one trust oneself by Deutsch's definition? Another interesting analysis of the implications of Deutsch's model is that it does not rely on the \emph{accurate} measurement of risk and utility, but just its perception -- trust is subjective, and based on the trusting actor's perspective on the world.
+This formalism introduces some interesting notions. For example, it is unclear as to whether the outcome of choice \emph{B} can rely on the same actor making the decision; can one trust oneself by Deutsch's definition? Another interesting analysis of the implications of Deutsch's model is that it does not rely on the \emph{accurate} measurement of risk and utility, but just its perception --- trust is subjective, and based on the trusting actor's perspective on the world.
 
 Rather than characterising trust by the parties involved, Deutsch's formalism is characterised by \emph{risk and utility}. A simple quantification of Deutsch's formalism could be devised, therefore, where risk and utility are quantified by simple assessments using utility functions and a form of risk analysis. Even so, the outcome of this quantified system is a single bit: trusting or not trusting. This does quantify trust, but only technically speaking, and this quantification is weak in its expressiveness. It gives no remit to suggest that one might trust one person over another, for example, as there are no orderable degrees of trust.
 
@@ -164,7 +167,7 @@ Deutsch offers many different ideas as to why and how trust or trust-like behavi
 Deutsch's given model above specifically targets formalisation of trust as confidence.
 
 \subsubsection{Luhmann}
-Luhmann, a sociologist who also worked in Trust and related fields, had his own take on formalisms of Trust: that trust was a social tool for reducing the complexity of a social system. Specifically, Lohmann sees trust as being a method whereby agents in a social system can reduce their exposure of \emph{risk} to each other. According to Luhmann, "Trust...pressuposes a situation of risk."\todo{CITE THIS}\par
+Luhmann, a sociologist who also worked in Trust and related fields, had his own take on formalisms of Trust: that trust was a social tool for reducing the complexity of a social system. Specifically, Lohmann sees trust as being a method whereby agents in a social system can reduce their exposure of \emph{risk} to each other. According to Luhmann, ``Trust{\ldots} pressuposes a situation of risk.''\todo{CITE THIS}\par
 
 Luhmann's work is therefore difficult to form quantitative formalisms from, as his thesis stems from a risk analysis perspective, which can be particularly difficult in a sociotechnical system. However, Luhmann's work remains interesting; a formalism of a human factor like trust would be incomplete without considering the properties of individual human actors as well as these properties' emergent effects in the larger sociotechnical space. For small systems, these social-level properties may not present themselves very strongly; however, most human factors are present regardless of the scale of the system being modelled. Therefore, a formalism of a human factor which fails to consider both psychological and sociological aspects cannot be complete. \par
 
@@ -175,17 +178,17 @@ Luhmann's work is therefore difficult to form quantitative formalisms from, as h
 The earliest quantifiable formalism of trust which provides computability, flexibility, and an inspiration from the sociological and psychological work above is that of Stephen Marsh in 1994\cite{Marsh1994FormalisingConcept}. Marsh's work breaks trust up into three core quantifications, where each variable takes some value in the range \([-1,1)\):
 \begin{enumerate}
     \item Basic Trust \\
-    This is the general degree of "trustingness" about an agent, or that agent's ordinary inclination to trust.
+    This is the general degree of ``trustingness'' about an agent, or that agent's ordinary inclination to trust.
     \item General Trust \\
     General trust is trust in the context of the agent being trusted. Marsh's original description begins\cite{Marsh1994FormalisingConcept}:
     \begin{displayquote}
-        Given two agents, \(x, y \in \mathcal{A}\), to notate '\(x\) trusts \(y\)'  we use: \(T_{x}(y)\). ...The value represents the amount of trust \(x\) has in \(y\) here.
+        Given two agents, \(x, y \in \mathcal{A}\), to notate '\(x\) trusts \(y\)'  we use: \(T_{x}(y)\). {\ldots}The value represents the amount of trust \(x\) has in \(y\) here.
     \end{displayquote}
     So, General Trust can be seen to be the trust that an agent \(x\) has in \(y\).
     \item Situational Trust \\
     Trust doesn't exist in a vaccum, and the only variable isn't the subject of \(x\)'s trust; \(y\) may have varying degrees of competency in performing an action. Therefore, Situational Trust can be seen to be the trust \(x\) holds that \(y\) can actually perform some task, \safealpha. Marsh helpfully gives the example\cite{Marsh1994FormalisingConcept}:
     \begin{displayquote}
-        ...whilst I may trust my brother to drive me to the airport, I certainly would not trust him to fly the plane!
+        {\ldots}whilst I may trust my brother to drive me to the airport, I certainly would not trust him to fly the plane!
     \end{displayquote}
 \end{enumerate}
 
@@ -193,6 +196,9 @@ The earliest quantifiable formalism of trust which provides computability, flexi
 % There's not much quantifiable on responsibility, but like Marsh, we can start from a non-quantified place and try to quantify it
 % Philosophy and moral responsibility
 \subsection{Philosophy of Moral Responsibility}
+Philosophy regarding moral responsibility is an area whose literature is both wide and deep. That said, not all moral repsonsibility literature is relevant to a computational repsonsibility project; lots of it is designed from a social analysis perspective which would be difficult to implement in any useful way. Other areas, however, present more promise for studies regarding formalisms.\par
+
+One example of research with utility in a computational way is that of Peter F Strawson, particularly in his seminal essay, Freedom and Resentment~\cite{strawson}
 \subsection{Ben Colburn}
 
 
@@ -208,7 +214,7 @@ The earliest quantifiable formalism of trust which provides computability, flexi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Proposed Approach}
 
-\subsection{C\&F: Close, but no cigar}
+\subsection{C\&F\@ Close, but no cigar}
 As it turns out, cognitive computational trust models that already exist are almost but not quite appropriate for modelling responsibility, too. The C\&F trust model requires only four main ingredients to formulate a cognitive trust model:
 
 \begin{enumerate}
@@ -222,7 +228,7 @@ This model gets us close to where we need to be to model responsibility; like re
 
 It is evident that trust and responsibility models are, even in the human-like cognitive approach, very similar. However, crucial differences mean that we cannot directly apply C\&F theory to the idea of computational responsibility. \par
 
-Therefore, I propose that research must be carried out to ascertain whether C\&F can, as a model, be adapted simply to account for an agent's responsibility. In addition, research must be carried out to implement this model in a BDI logic agent, enabling the evaluation of the new model's success. \todo{WE SHOULD BE ABLE TO ADAPT \cite{HubnerFromTrust} TO IMPLEMENT OUR NEW COGNITIVE RESPONSIBILITY MODEL IN A BELIEF, DESIRE, INTENTION AGENT MODEL. THEY DO A DIRECT APPLICATION OF C\&F TO BDI, WE SHOULD TOO.}
+Therefore, I propose that research must be carried out to ascertain whether C\&F can, as a model, be adapted simply to account for an agent's responsibility. In addition, research must be carried out to implement this model in a BDI logic agent, enabling the evaluation of the new model's success. \todo{WE SHOULD BE ABLE TO ADAPT~\cite{HubnerFromTrust} TO IMPLEMENT OUR NEW COGNITIVE RESPONSIBILITY MODEL IN A BELIEF, DESIRE, INTENTION AGENT MODEL\@. THEY DO A DIRECT APPLICATION OF C\&F TO BDI, WE SHOULD TOO.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Work Plan}
@@ -231,6 +237,9 @@ Panic, write the report in a 36 hour caffeine-induced fever dream
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % it is fine to change the bibliography style if you want
+
+\listoftodos[Todo Notes]
+
 \bibliography{mendeley}
 \bibliographystyle{plain}
 \end{document}
