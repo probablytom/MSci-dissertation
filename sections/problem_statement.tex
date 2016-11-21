@@ -31,7 +31,7 @@ Therefore, when developing the proposed model of responsibility, one has to wond
 
 For example: C\&F define a ``cognitive'' agent as the lower limit of an agent's requirements for human traits for trust. C\&F define a cognitive agent as:
 \begin{displayquote}
-Only a cognitive agent can ``trust'' another agent; only an agent \emph{endowed with goals and beliefs}.
+    Only a cognitive agent can ``trust'' another agent; only an agent \emph{endowed with goals and beliefs}.
 \end{displayquote}\par
 
 This definition doesn't quite fit our purposes --- as will be seen, our definition also requires the concept of \emph{obligation}. However, it can be seen that this definition is deliberately high-level in order to simulate the important components of a human trusting agent. A cognitive agent can be seen as an agent which, for the task it is set out to do, is modelled in a \emph{high-level, human like way}. \par
@@ -47,11 +47,30 @@ This definition of a ``responsible agent'' as a ``reflective'' agent is importan
 \subsection{Interpretive Agents}
 Unfortunately, simply reflecting on one's responsibility is not the only high-level requirement we can forsee needing for a responsible computational agent. Humans do not simply reflect on their obligations and duties before deciding on what their next actions might be. Human agents also see those obligations and duties through their own lens; they interpret their responsibilities according to certain factors which may influence their ``feeling'' of obligation.\par
 
-One can see this, for example, in people's respect for law or social convention. Sime citizens of a community might feel that it is imperative not to ride a bicycle on the pavement in Britain, as it is technically illegal. Others may well avoid the road traffic by making use of pedestrian areas if there aren't many pedestrians allowed, regardless of the law. Another example might be crossing the road; if a small child is present, parents of the child may well be teaching it to cross the road safely. To cross at a ``red man'' then, regardless of the presence of cars, somewhat derails the parent's lesson. It may even give the child an example of why they should be allowed to cross the road when they want. To cross the road at a ``red man'' does not respect one's influence over the situation at hand; in other words, the \emph{responsible} thing to do is to wait for the lights to change.\par
+One can see this, for example, in people's respect for law or social convention. Sime citizens of a community might feel that it is imperative not to ride a bicycle on the pavement in Britain, as it is technically illegal. Others may well avoid the road traffic by making use of pedestrian areas if there aren't many pedestrians allowed, regardless of the law. Another example might be crossing the road; if a small child is present, parents of the child may well be teaching it to cross the road safely. To cross at a ``red man'' then, regardless of the presence of cars, somewhat derails the parent's lesson. It may even give the child an example of why they should be allowed to cross the road when they want. To cross the road at a ``red man'' does not respect one's influence over the situation at hand; in other words, the \emph{responsible} thing to do is to wait for the lights to change.\todo{Better examples? Examples of both subjective interpretation and comparing two subjective interpretations? (Some agents might perceive one responsibility with the same score as more important than another responsibility, another agent might get it the other way around)}\par
 
 However, it is clear that not everybody thinks this way; many cyclists ride on the pavements, and stopping at a red light to aid a parent in teaching their child might be considered extreme by some. The subjective nature of responsibility belies its interpretive nature: human actors interpret their obligations according to their beliefs, knowledge, and preferences, amongst other things. Therefore:
 \begin{displayquote}
     Involved in a ``reflective agent''\'s judgement of their responsibilities is a subjective component: an interpretive function which converts information about an obligation or duty into a subjective score of responsibility.
 \end{displayquote}\par
 
-This way, the human-like subjectivity of responsibility can be simulated. 
+This way, the human-like subjectivity of responsibility can be simulated.
+
+\subsection{Reactive Agents}
+There is one last definition important to our understanding of what a basic responsibility formalism might look like. If we want to represent a human-like sensation of trust, it's important that we acknowledge that human agents become more or less trustworthy over time. Children, for example, can be trusted much more once they mature and become adults. Moreover, that adult agent will probably be slightly less likely to trust than it was as a naive child. Therefore, to simulate human-like responsibility, agents' interpretation of responsibility should change over time.\par
+
+As we'll see, responsible agents whose sense of responsibility changes as a reaction to its environment is a notion which is backed not only by observation, but by the moral philosophy which underpins the proposed work at the end of this review. For now, we can define these ``reactive agents'' as agents whose sense of responsibility shifts as their environment is seen to change:
+\begin{displayquote}
+    Only a ``reactive agent'' has a changing subjective outlook on the world; it \emph{changes its reflection on its own and other agents' responsibilities depending on its environment}.\todo{Clunky? Re-word?}
+\end{displayquote}\par
+
+It is clear to see that for a reactive agent to change its reflection on responsibility, it must be an interpretive agent; in other words, the set of reactive agents is a subset of the set of interpretive agents. It should also be clear to see that a useful responsible agent should be both \emph{reactive} and \emph{reflective}: the set of reactive, reflective agents have a perception of the world which is subjective, can change according to its environment, and uses its sense of responsibility when making decisions.
+
+\subsection{Using the definitions}
+These definitions are useful in that they allow us to begin to see what might compose a responsible agent. We might begin to build a computational model of responsibility which embodies these traits by investigating the following research questions:
+\begin{enumerate}
+    \item How can a computational formalism of responsibility direct the decisions made by an intelligent agent?
+    \item How can an intelligent agent assume the consequences of actions it makes, the decisions other agents make, and its general environment, so as to direct its interpretation of responsibility?
+\end{enumerate}\par
+
+These are the research questions I seek to answer in the course of this project.
