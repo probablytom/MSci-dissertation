@@ -2,40 +2,56 @@
 
 Computational responsibility is a complex area with lots of incidentally related work, but no specific relevant literature. Instead of focusing on the responsibilities of artificial agents, their responsibilities are implied by the construction of the agent itself. It might employ algorithms for driving without human guidance, or classify network traffic in an attempt to flag attempts at a system's security. In these instances, lots of somewhat-related work has been done on computational \emph{trust}: can one artificial agent trust another?\par
 
-However, this approach is short-sighted. While trust and responsibility are intrinsically linked social concepts, no work has been done to migrate the models of trust to new models of responsibility. A concern arises: do artificially intelligent agents, which we put at the helm of concerns like network security and road safety, actually communicate its understanding of its assigned duty with other agents it collaborates with? Two examples present themselves.\par
+However, simply building ``responsibility'' into a system without any understanding of responsibly-made decisions, or ability to learn obligations and duties in a concrete way, means we lose a great opportunity. Moreover, while trust and responsibility are intrinsically linked social concepts, no work has been done to migrate the models of trust to new models of responsibility that consider topics like obligation and duty. A concern arises: do artificially intelligent agents, which we put at the helm of concerns like network security and road safety, miss out as a result of their failure to consider duty and obligation? Two examples present themselves.\par
 
-The first: a car might drive along a residential street and identify a squirrel running across the road in front of it. It calculates a high probability that, unless it swerves out of the way of the squirrel, it may kill it. It simultaneously identifies that, in the country it is driving in, the law states that it should swerve to avoid killing animals if possible. Computational responsibility introduces itself into the problem in that the car should also have a social understanding: will the swerve endanger humans? How strongly should it weight that probability into the action it chooses? Is it also responsible for, say, conserving fuel for environmental reasons? The key here is that the car has many goals to ascertain; while some are more immediate than others, it should have the capacity to weigh \emph{multiple, arbitrary responsibilities} up to surmise what its next action is. \par
+The first: a car might drive along a residential street and identify a squirrel running across the road in front of it. It calculates a high probability that, unless it swerves out of the way of the squirrel, it may kill it. It simultaneously identifies that, in the country it is driving in, the law states that it should swerve to avoid killing animals if possible. Computational responsibility introduces itself into the problem in that the car should also have a social understanding: will the swerve endanger humans? How strongly should it weight that probability into the action it chooses? Is it also responsible for, say, conserving fuel for environmental reasons? And if so, which responsibility is more important? \par
 
-The second: an artificially intelligent agent watches the price of a collection of books in an online store. This is common practice on large sites where prices of unusual books can fluctuate wildly. 
+The key here is that the car has many goals to ascertain; while some are more immediate than others, it should have the capacity to weigh \emph{multiple, arbitrary responsibilities} up to surmise what its next action is. Clearly, this is a problem for decision theory; but one where an understanding of responsibility may be of great help. Unfortunately, this example may be only expository as of yet: a practical model of a self-driving car with this degree of responsible awareness would be rather complex, and a model this advanced is beyond the scope of this project.\par
 
-\begin{figure}[ht]
+The second: two intelligent agents raise or lower the price of a book they manage according to percieved changes in the market. This is common practice on large sites where prices of unusual books can fluctuate according to sudden rises in demand, as seen in \cref{fig:amazon_price_hiking}.\todo{Confirm figure referencing style}
+
+\begin{figure}[h]
+\label{fig:amazon_price_hiking}
 \centering
 \includegraphics[trim=0.7cm 0.7cm 0.7cm 0.7cm, scale=0.75]{images/amazon_price_hike_fly_genetics}
 \caption{Bots on Amazon artificially inflate a book price to around \emph{62850\%} its used price}
 \end{figure}
 
-Here one artificial agent is known to have artificially inflated the price of a book; another agent has \emph{also} inflated the price according to the seeming market trend. The first agent, seeing that the book is rising in value and now underpriced, inflates the price of its own copy, and the cycle continues until a human intervenes. \par
+In \cref{fig:amazon_price_hiking}, one artificial agent is known to have artificially inflated the price of a book; another agent has \emph{also} inflated the price according to the seeming market trend. The first agent, seeing that the book is rising in value and now underpriced, inflates the price of its own copy, and the cycle continues until a human intervenes.\par
 
-Kevin Slavin discusses the idea that we have begun to design a world \emph{`for algorithms\cite{SlavinHOWWORLD}, with nothing but a big red button, labelled \'stop\''}. The precession of this design trend marches on, relentless --- but algorithms, rather than their interfaces, can be built with humans in mind. A mutual understanding of responsibility would allow one algorithm in this cycle to delegate the price inflation of its book to the other, breaking the cycle, so long as the concept of responsibility for a task is mutually understood. This is where the second, real-world example of computational responsibility lies. \par
+Kevin Slavin discusses the idea that we have begun to design a world \emph{``for algorithms, with nothing but a big red button, labelled ``stop''~''}\cite{SlavinHOWWORLD}. The precession of this design trend marches on, relentless --- but algorithms, rather than their interfaces, can be built with humans in mind. A mutual understanding of responsibility would allow one algorithm in this cycle to delegate the price inflation of its book to the other, breaking the cycle, so long as the concept of responsibility for a task is mutually understood. This is where the second, real-world example of computational responsibility lies. \par
 
-As can be seen in the model proposed by Castelfranchi \& Falcone in their formulation of cognitive trust\cite{CastelfranchiSocialApproach} (usually referred to as \emph{C\&F Theory}), a formulation of trust surrounding one or more actors, subjectively assessing tasks and goals, which takes into account social and technical factors in its modelling, is already present. Fortunately, this model is very well accepted by the computational trust community! Therefore, some work presents itself: does an adaptation of C\&F theory suit a practical model and implementation of computational responsibility? Secondly, one is also led to wonder: how well would such a model solve the example applications of computational responsibility explained earlier?
+As can be seen from the existence of models for concepts such as Trust which can solve similar HCI problems~\cite{designing_with_trust}, mimicking human traits computationally has its benefits. Moreover, we can be certain that, just as with trust modelling, useful and thorough responsibility models can produce work in machine ethics\cite{Moor2006}, sociology\cite{Macy2002}, and clearly, computing science. We can therefore expect that a computational model of responsibility will yeild similar results --- perhaps breaking new ground in other fields, which traits like Trust or Comfort have less relevance to.\par
 
-
-\subsection{A need for a cognitive computational responsibility}
+\subsection{Reflective Agents}
 
 As we move into a world increasingly dominated by algorithms and shaped by their decisions, there is a clear requirement for responsible systems. One problem arises: how can we be certain that an algorithm's internal conception of responsibility is `human-like'? Early work by Sloman describes the notion of a `space' of minds\cite{Sloman1984TheMinds}, and this concept is useful here. An artificial mind need not be human-like, or even biological-like; it can occupy an entirely different area of the space of minds altogether. \par
 
-This is problematic when imposing human-like concepts onto machines. The effort of imposing a social, human-like construct onto a `mind' that may not easily host the concept means that one runs the risk of imitating the trait in a useful way, but not in an accurate way. If the model of the human trait doesn't stem from the same basic concepts as the human model does, it cannot be relied on to behave in a human-like way all of the time. \par
+Therefore, when developing the proposed model of responsibility, one has to wonder what the components of the machine mind would be, such that it could house some useful definition of ``responsibility''. This useful definition need not be accurate; however, it will require the emulation of fundamental human attributes in order to successfully simulate.\par
 
-Therefore, while we have already demonstrated a need for computational responsibility, there is another requirement that must be satisfied: \emph{cognitive} computational responsibility. \par
-
-C\&F define a cognitive agent as:
+For example: C\&F define a ``cognitive'' agent as the lower limit of an agent's requirements for human traits for trust. C\&F define a cognitive agent as:
 \begin{displayquote}
-``Only a cognitive agent can ``trust'' another agent; only an agent \emph{endowed with goals and beliefs}''
+Only a cognitive agent can ``trust'' another agent; only an agent \emph{endowed with goals and beliefs}.
 \end{displayquote}\par
 
 This definition doesn't quite fit our purposes --- as will be seen, our definition also requires the concept of \emph{obligation}. However, it can be seen that this definition is deliberately high-level in order to simulate the important components of a human trusting agent. A cognitive agent can be seen as an agent which, for the task it is set out to do, is modelled in a \emph{high-level, human like way}. \par
 
-Thus, a cognitive model of responsibility is necessary; an ordinary model might suffice for theoretical or research purposes, and may be useful in analysing scenarios bound tighter by, say, law, than they are by the normal human's cognition.\par
+Therefore, we might define our own high-level requirement of responsible computational agents:
 
+\begin{displayquote}
+    Only a reflective agent can be ``responsible'' for its actions; only an agent which can \emph{reflect on its obligations when choosing an action}.
+\end{displayquote}\par
 
+This definition of a ``responsible agent'' as a ``reflective'' agent is important, because when considering its obligations, a responsible agent should be able to gauge whether to act in a certain way, weighted by their responsibility for a given obligation's fulfilment. As the model of responsibility developed begins to take shape, necessary components of those obligations --- the responsibility equivalent of trust's goals and beliefs --- will come to light.\par
+
+\subsection{Interpretive Agents}
+Unfortunately, simply reflecting on one's responsibility is not the only high-level requirement we can forsee needing for a responsible computational agent. Humans do not simply reflect on their obligations and duties before deciding on what their next actions might be. Human agents also see those obligations and duties through their own lens; they interpret their responsibilities according to certain factors which may influence their ``feeling'' of obligation.\par
+
+One can see this, for example, in people's respect for law or social convention. Sime citizens of a community might feel that it is imperative not to ride a bicycle on the pavement in Britain, as it is technically illegal. Others may well avoid the road traffic by making use of pedestrian areas if there aren't many pedestrians allowed, regardless of the law. Another example might be crossing the road; if a small child is present, parents of the child may well be teaching it to cross the road safely. To cross at a ``red man'' then, regardless of the presence of cars, somewhat derails the parent's lesson. It may even give the child an example of why they should be allowed to cross the road when they want. To cross the road at a ``red man'' does not respect one's influence over the situation at hand; in other words, the \emph{responsible} thing to do is to wait for the lights to change.\par
+
+However, it is clear that not everybody thinks this way; many cyclists ride on the pavements, and stopping at a red light to aid a parent in teaching their child might be considered extreme by some. The subjective nature of responsibility belies its interpretive nature: human actors interpret their obligations according to their beliefs, knowledge, and preferences, amongst other things. Therefore:
+\begin{displayquote}
+    Involved in a ``reflective agent''\'s judgement of their responsibilities is a subjective component: an interpretive function which converts information about an obligation or duty into a subjective score of responsibility.
+\end{displayquote}\par
+
+This way, the human-like subjectivity of responsibility can be simulated. 
