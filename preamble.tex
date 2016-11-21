@@ -32,7 +32,8 @@
 \usepackage{enumitem}
 
 \usepackage{cleveref}
-\crefformat{section}{§#2#1#3}
-\crefformat{chapter}{§#2#1#3}
+\crefname{chapter}{\S}{\S\S}
+\crefname{section}{\S}{\S\S}
+\setcounter{secnumdepth}{3}
 \crefformat{figure}{Figure #2#1#3}
 \crefname{appendix}{Appendix}{Appendices}
