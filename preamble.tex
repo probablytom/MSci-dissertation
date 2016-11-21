@@ -1,0 +1,33 @@
+\documentclass{mprop}
+
+% alternative font if you prefer
+\usepackage{palatino}
+
+% for alternative page numbering use the following package
+% and see documentation for commands
+%\usepackage{fancyheadings}
+\usepackage{csquotes}
+
+
+% other potentially useful packages
+%\uspackage{amssymb,amsmath}
+%\usepackage{url}
+%\usepackage{fancyvrb}
+%\usepackage[final]{pdfpages}
+
+% Packages for image layouts
+\usepackage{graphicx}
+\usepackage{float}
+
+\newcommand{\safealpha}{\(\alpha\)}
+
+%% CUSTOM for todos taken from http://tex.stackexchange.com/questions/9796/how-to-add-todo-notes#9797
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\newcommand{\unsure}[1]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red]{#1}}
+\newcommand{\change}[1]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue]{#1}}
+\newcommand{\info}[1]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen]{#1}}
+\newcommand{\improvement}[1]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum]{#1}}
+\newcommand{\thiswillnotshow}[1]{\todo[disable]{#1}}
+
+\usepackage{enumitem}
+

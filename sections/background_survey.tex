@@ -1,0 +1,104 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Background Survey}\label{sec:background_survey}
+
+% What work's been done already? 
+Unlike Responsibility, Trust is a topic which has a surprising degree of pre-existing literature. Marsh~\cite{Marsh1994FormalisingConcet} draws inspiration from as early as David Birkhoff's 1930s work in creating an `Aesthetic Measure', where the famous mathematician created a quantification of Aesthetics. While some dispute that such subjective topics can be boiled down to a single number (or array thereof), much work to the contrary has now been completed. Like Marsh, we should start from the beginning. 
+
+% Maths, Psychology and Sociology a-la Marsh
+\subsection{Social Sciences and Mathematics}
+\subsubsection{Birkhoff's Aesthetic Measure}
+One of the earlier formalisms of a human factor\footnote{For the sake of clarification, we define a ``human factor'' as an element of a social or sociotechnical system which arises from human behaviour, such as Trust.}\footnote{Also for the sake of clarifying a sociotechnical system, a sociotechnical system is a system composed of human tendencies and behaviours, such as Trust, alongside technical activity, such as a computer or a steam engine. An example might be a coffee shop: \begin{itemize}
+    \item Humans take orders and manage the running of the shop
+    \item Technology is responsible for complex activities such as taking payments and forcing steam through coffee at high pressure
+\end{itemize} so there are both social and technical actors and behaviours in the ``system'' of a day-to-day coffee shop.} was Birkhoff's definition of Aesthetic Measure\cite{BirkhoffAESTHETICMEASURE}. In it, Birkhoff defines the notion of Aesthetic Measure as a ratio of Order to Complexity:
+\[M = \frac{O}{C}\]
+Birkhoff's work inadvertently gave rise to the notion that human factors can be represented by mathematical equations and systems. Birkhoff's formalism of aesthetics became popular for a few reasons, but one of particular interest to later Trust modelling work was that Birkhoff put a great degree of effort into backing his work up with psychological theory. In this way, Birkhoff's formalism could be said to be a \emph{psychological} formalism. \par
+
+Later trust modelling work followed in Birkhoff's footsteps here. Indeed, Birkhoff gives a solid foundation for the model-creating method later employed by Marsh\cite{Marsh1994FormalisingConcept} and Castelfranchi \& Falcone, as it is:
+\begin{itemize}
+    \item Founded on mathematical or logical principles which are \emph{quantifiable}
+    \item Heavily inspired and directed by related work in psychology, sociology, and philosophy
+\end{itemize}\par
+
+The marriage of social studies with mathematical rigour will be a recurring theme of the work related to Computational Trust.\par
+
+\subsubsection{Deutsch}
+Following the quantifiable, mathematical work done by Birkhoff, logical and arithmetic formalisms of human factors followed. One of the earlier and more widely adopted models for Trust came from Deutsch in 1962. 
+Deutsch is a psychologist who did swathes of work in the topic of cooperation, touching on Trust during the 60s. \par
+
+Deutsch's formalism of trust wasn't immediately quantifiable, but presented one of the earliest well-defined definitions of trust. To paraphrase Deutsch's formalism in ``Cooperation and Trust: Some Theoretical Notes'', 1962\todo{CITE THIS}:
+\begin{itemize}
+    \item An actor is presented with a choice between two paths.
+    \begin{enumerate}[label=\emph{\Alph*}:]
+        \item No change
+        \item The actor takes some action, of ambiguous outcome. A possible gain is associated, \emph{P}, and some possible risk is associated, \emph{R}.
+    \end{enumerate}
+    \item The actor assesses that the outcome of choice \emph{B} relies on the behaviour of another actor.
+    \item The actor assesses the action they may take and resolves that the strength of \emph{R}, likelihood of \emph{R} as an outcome, or both are higher than the respective \emph{P} measurements.
+    \item The actor is said to be \emph{trusting} they take path \emph{B}.
+\end{itemize}
+
+This formalism introduces some interesting notions. For example, it is unclear as to whether the outcome of choice \emph{B} can rely on the same actor making the decision; can one trust oneself by Deutsch's definition? Another interesting analysis of the implications of Deutsch's model is that it does not rely on the \emph{accurate} measurement of risk and utility, but just its perception --- trust is subjective, and based on the trusting actor's perspective on the world.
+
+Rather than characterising trust by the parties involved, Deutsch's formalism is characterised by \emph{risk and utility}. A simple quantification of Deutsch's formalism could be devised, therefore, where risk and utility are quantified by simple assessments using utility functions and a form of risk analysis. Even so, the outcome of this quantified system is a single bit: trusting or not trusting. This does quantify trust, but only technically speaking, and this quantification is weak in its expressiveness. It gives no remit to suggest that one might trust one person over another, for example, as there are no orderable degrees of trust.
+
+Deutsch offers many different ideas as to why and how trust or trust-like behaviour can come about, however. This list is taken from Marsh 1994\cite{Marsh1994FormalisingConcept}, where explanations of all nine can be found:
+
+\begin{enumerate}
+    \item Trust as Despair
+    \item Trust as Social Confirmity
+    \item Trust as Innocence
+    \item Trust as Impulsiveness
+    \item Trust as Virtue
+    \item Trust as Masochism
+    \item Trust as Faith
+    \item Risk-taking or Gambling
+    \item Trust as Confidence
+\end{enumerate}
+
+Deutsch's given model above specifically targets formalisation of trust as confidence.
+
+\subsubsection{Luhmann}
+Luhmann, a sociologist who also worked in Trust and related fields, had his own take on formalisms of Trust: that trust was a social tool for reducing the complexity of a social system. Specifically, Lohmann sees trust as being a method whereby agents in a social system can reduce their exposure of \emph{risk} to each other. According to Luhmann, ``Trust{\ldots} pressuposes a situation of risk.''\todo{CITE THIS}\par
+
+Luhmann's work is therefore difficult to form quantitative formalisms from, as his thesis stems from a risk analysis perspective, which can be particularly difficult in a sociotechnical system. However, Luhmann's work remains interesting; a formalism of a human factor like trust would be incomplete without considering the properties of individual human actors as well as these properties' emergent effects in the larger sociotechnical space. For small systems, these social-level properties may not present themselves very strongly; however, most human factors are present regardless of the scale of the system being modelled. Therefore, a formalism of a human factor which fails to consider both psychological and sociological aspects cannot be complete. \par
+
+
+% Modern trust (logics, Marsh and C&F)
+\subsection{Modern [Computational] Trust methods}
+\subsubsection{Marsh's formalism}
+The earliest quantifiable formalism of trust which provides computability, flexibility, and an inspiration from the sociological and psychological work above is that of Stephen Marsh in 1994\cite{Marsh1994FormalisingConcept}. Marsh's work breaks trust up into three core quantifications, where each variable takes some value in the range \({[-1,1)}\):
+\begin{enumerate}
+    \item Basic Trust \\
+    This is the general degree of ``trustingness'' about an agent, or that agent's ordinary inclination to trust.
+    \item General Trust \\
+    General trust is trust in the context of the agent being trusted. Marsh's original description begins\cite{Marsh1994FormalisingConcept}:
+    \begin{displayquote}
+        Given two agents, \(x, y \in \mathcal{A}\), to notate '\(x\) trusts \(y\)'  we use: \(T_{x}(y)\). {\ldots}The value represents the amount of trust \(x\) has in \(y\) here.
+    \end{displayquote}
+    So, General Trust can be seen to be the trust that an agent \(x\) has in \(y\).
+    \item Situational Trust \\
+    Trust doesn't exist in a vaccum, and the only variable isn't the subject of \(x\)'s trust; \(y\) may have varying degrees of competency in performing an action. Therefore, Situational Trust can be seen to be the trust \(x\) holds that \(y\) can actually perform some task, \safealpha. Marsh helpfully gives the example\cite{Marsh1994FormalisingConcept}:
+    \begin{displayquote}
+        {\ldots}whilst I may trust my brother to drive me to the airport, I certainly would not trust him to fly the plane!
+    \end{displayquote}
+\end{enumerate}
+
+
+% There's not much quantifiable on responsibility, but like Marsh, we can start from a non-quantified place and try to quantify it
+% Philosophy and moral responsibility
+\subsection{Philosophy of Moral Responsibility}
+Philosophy regarding moral responsibility is an area whose literature is both wide and deep. That said, not all moral repsonsibility literature is relevant to a computational repsonsibility project; lots of it is designed from a social analysis perspective which would be difficult to implement in any useful way. Other areas, however, present more promise for studies regarding formalisms.\par
+
+One example of research with utility in a computational way is that of Peter F Strawson, particularly in his seminal essay, Freedom and Resentment~\cite{strawson}
+\subsection{Ben Colburn}
+
+
+% Comparing early trust and early responsibility: psychology/sociology of trust and philosophy of responsibility
+\subsection{Comparing Trust and Responsibility}
+
+
+% Follow up question: what work hasn't been done yet?
+% Responsibility work that we can do given the comparison between early trust and early responsibility
+\subsection{What work is missing?}
+
