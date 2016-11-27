@@ -88,14 +88,35 @@ The earliest quantifiable formalism of trust which provides computability, flexi
 
 \subsubsection{Gambetta}
 
-\subsubsection{Ian Sommerville and Responsibility Modelling}\todo{Finish discssing Sommerville's contribution to the state of the art.}
+\subsubsection{Ian Sommerville, Sociotechnical Systems, and Responsibility Modelling}\todo{Finish discssing Sommerville's contribution to the state of the art.}
 Sommerville's work focuses largely on sociotechnical systems and responsibility modelling --- in this way, Sommerville's work is not typically concerned with computational models of trust, as the above were. However, his work does begin to border on our own advancements, providing responsibility modelling formalisms.\par
 
 % Formalisms generally graphical
+It is important to note that Ian Sommerville has been a particularly prolific writer for a researcher in the sociotechnical systems scene. Sommerville's modelling systems are sometimes graphical\cite{sommerville_graphical_responsibility}. Unfortunately, graphical modelling systems do not lend themselves particularly well to computational formalism: they don't yield naturally to numerical analysis; they are generally designed for the purposes of human visual analysis, instead of logical reasoning; they are often difficult to represent non-graphically, which arguably makes input and manipulation too complex for the purposes of designing a complex intelligent agent around.\par
+
+Ultimately, though, graphical responsibility modelling systems are designed for representing the responsibilities of a single agent at a given point in time; a responsibility formalism, by contrast, should be a series of metrics and rules which can apply to arbitrary reasoning of an agent's responsibility through time, with that agent using the formalism to reason about its changing responsibilities. In other words, graphical responsibility modelling differs from a responsibility formalism in that a responsibility formalism needs to \emph{generalise} reasonsing about how responsibility, as a concept, ``behaves''.
 
 % Sociotechnical perspective on responsibility
-
 % Causal and Consequential responsibility --- just a brief outline, more when we discuss Scanlon in Philosophy section \cref{subsec:philosophy}
+Nevertheless, some sociotechnical work on responsibility prevents an invaluable addition to relevant literature for developing its computational formalism. In particular is Sommervile's work on ``Causal'' and ``Consequential'' responsibilities. In defining these terms, Sommerville writes\cite{sommerville_dependable_systems_chap_8}:
+
+\begin{displayquote}
+    Consequential responsibility can only be assigned to a person, a role or an organisation – automated components cannot be blamed. Causal responsibility reflects who or what is responsible for making something happen or avoiding some undesirable system state. It is often the case that these are separated.
+\end{displayquote}
+
+The seperation of concerns between consequential and causal responsibilities can help us to inform the structure and nature of a responsibility formalism. Particularly, one can simplify these definitions to be that:
+
+\begin{displayquote}
+    Consequential responsibilities are responsibilities which relate to a state arrived at in the past, and the relationship of actors and actions with said state.
+\end{displayquote}\par
+
+\begin{displayquote}
+    Causal responsibilities are responsibilities which relate to future states, and the actors and actions which are potentially assigned with the goal of arriving at said state.
+\end{displayquote}
+
+This seperation of past repsonsibilities and future responsibilities means that we can structure the concerns and operation of a responsible agent according to a given formalism. Particularly, for our purposes, the assessment of one's responsibility to arrive at future states --- one's assessment of its \emph{Causal Responsibilities} --- might be informed by information an agent's information about its previous responsibilities and its ability to act responsibly --- one's \emph{Consequential Responsibilities}. Therefore, we might decide to create a responsibility formalism which specifically models the change in causal responsibility, by assessing consequential responsibility.\par
+
+As we approach a review of philosophical literature in \cref{subsec:philosophy}, we will find that a formalism geared toward causal responsibility is not only a very attractive way to model from a philosophical perspective, but that the philosophical literature on responsibility has converged on similar definitions of responsibility. Therefore, there appears to be a strong case that causal-first models --- aside from their simple structure and readiness to be tied into an agent's decision functions --- are a sound way of approaching the problem of framing problems concerning responsibility,  because of the consensus across fields which rarely interact.
 
 % There's not much quantifiable on responsibility, but like Marsh, we can start from a non-quantified place and try to quantify it
 % Philosophy and moral responsibility
