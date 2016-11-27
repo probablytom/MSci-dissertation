@@ -82,12 +82,24 @@ The earliest quantifiable formalism of trust which provides computability, flexi
     \begin{displayquote}
         {\ldots}whilst I may trust my brother to drive me to the airport, I certainly would not trust him to fly the plane!
     \end{displayquote}
-\end{enumerate}
+\end{enumerate}\todo{Finish notes on modern computational trust models!}
 
+\subsubsection{Castelfranchi \& Falcone}
+
+\subsubsection{Gambetta}
+
+\subsubsection{Ian Sommerville and Responsibility Modelling}\todo{Finish discssing Sommerville's contribution to the state of the art.}
+Sommerville's work focuses largely on sociotechnical systems and responsibility modelling --- in this way, Sommerville's work is not typically concerned with computational models of trust, as the above were. However, his work does begin to border on our own advancements, providing responsibility modelling formalisms.\par
+
+% Formalisms generally graphical
+
+% Sociotechnical perspective on responsibility
+
+% Causal and Consequential responsibility --- just a brief outline, more when we discuss Scanlon in Philosophy section \cref{subsec:philosophy}
 
 % There's not much quantifiable on responsibility, but like Marsh, we can start from a non-quantified place and try to quantify it
 % Philosophy and moral responsibility
-\subsection{Philosophy of Moral Responsibility}
+\subsection{Philosophy of Moral Responsibility}\label{subsec:philosophy}
 Philosophy regarding moral responsibility is an area whose literature is both wide and deep. That said, not all moral repsonsibility literature is relevant to a computational repsonsibility project; lots of it is designed from a social analysis perspective which would be difficult to implement in any useful way. Other areas, however, present more promise for studies regarding formalisms.\par
 
 \subsubsection{Strawson}
@@ -101,13 +113,25 @@ Strawson's insights don't stop there, though. He also produces an interestingly 
     Indignation, disapprobation, like resentment, tend to inhibit or at least to limit our goodwill towards the object of these attitudes, tend to promote an at least partial and temporary withdrawal of goodwill; they do so in proportion as they are strong; and their strength is in general proportioned to what is felt to be the magnitude of the injury and to the degree to which the agent’s will is identified with, or indifferent to, it.
 \end{displayquote}\cite{strawson}\par
 
-Strawson captures an essential component of Marsh's computational trust model: an actor's actions influence the percieved trustworthiness of an agent in proportion of the magnitude of the ``trustworthiness'' of their actions. This concept, Strawson's elucidation shows, is one which can also extend to responsibility; it influences all of the human factors Strawson seeks to address in his essay (i.e. all human factors).\par
+Strawson captures an essential component of Marsh's computational trust model: an actor's actions influence the percieved trustworthiness of an agent in proportion of the magnitude of the ``trustworthiness'' of their actions. This concept, Strawson's elucidation shows, is one which can also extend to responsibility; it influences all of the human factors Strawson seeks to address in his essay (i.e.\ all human factors).\par
 
 This gives us an insight into how a realistic computational trust model might function: its perception of responsibility should alter depending on external factors. We are aware, however, that people's actions are not the only things which can affect our feeling of responsibility: all sociotechnical factors might. For example, the ``Bystander Effect''\cite{unresponsive_bystander} occurs when one feels less responsible for acting in an emergency situation because of the number of people present who could help; in the end, nobody does, because every person's sense of responsibility is weakened. However, it is not weakened by any person's actions: it's influenced by a set of sociotechnical factors, of which the feelings that Strawson discusses are a subset.\par
 
-A suitable conclusion one might draw, then, would be that a valid computational model of responsibility \emph{must} take into account an analysis of the sociotechnical environment of the responsible agent. It would also be valid to draw the conclusion --- as a result of the first of Strawson's points discussed --- that it makes sense to talk about ``trusting'' and ``responsible'' computational agents as if they were humans. Another important conclusion to draw from this part of Stawson's discussion is that this is one way in which agents' interaction is meaningful: therefore, there is a significant body of work to be undertaken in the combination of trust and responsibility formalisms to the field of HCI. Some of this work is already underway\cite{Marsh2011, Macy2002}. \par
+A suitable conclusion one might draw, then, would be that a valid computational model of responsibility \emph{must} take into account an analysis of the sociotechnical environment of the responsible agent. It would also be valid to draw the conclusion --- as a result of the first of Strawson's points discussed --- that it makes sense to talk about ``trusting'' and ``responsible'' computational agents as if they were humans. Another important conclusion to draw from this part of Stawson's discussion is that this is one way in which agents' interaction is meaningful: therefore, there is a significant body of work to be undertaken in the combination of trust and responsibility formalisms to the field of HCI\@. Some of this work is already underway\cite{Marsh2011, Macy2002}. \par
 
-%\subsubsection{Ben Colburn}
+\subsubsection{Substantive and Attributive Responsibility}
+In his essay, Justice, Responsibility, and the Demands of Equality\cite{scanlon2006justice}, Thomas Scanlon assesses responsibility as having two factors which bear striking resemblance to Sommerville's ``Causal'' and ``Consequential'' Responsibilities: ``Attributive'' and ``Substantive'' Responsibilities.\par
+
+Scanlon discusses ``Attributive'' responsibilities as a group of duties according to the definition:
+\begin{displayquote}
+    What a person sees as a reason for acting, thinking, or feeling a certain way.
+\end{displayquote}\par
+
+For the purposes of later discussion, utility, and slight simplification, I will generalise Scanlon's definition to be ``responsibilities for future actions''. He also discusses ``Substantive'' responsibilities, which are loosely defined as responsibilities for the choices an agent has made, taking into account the effects they have and obligations at the time. We can generalise these to be ``responsibilities for past actions''. While in doing so, I reduce Scanlon's definitions to a discussion of action as opposed to the wider gamut of human properties, this framing sufficiently limits the scope of the work to apply elegantly to decision theory. Therefore, we can begin to apply Scanlon's work to the actions taken by responsible computational agents.\par
+
+This limitation of scope also enables us to tie Sommerville's sociotechnical research to work done in the philosophical sphere. A complete responsible computational system, therefore, would be suitable for the same scrutiny that human agents currently undergo in the field of moral philosophy. It also, like Sommerville's work, presents us with a framework for thinking about the scope of responsibilities that an artificially intelligent agent might be subject to.\par
+
+Beyond philosophical waxing lyrical, we have reason to limit our formalism to a subset of responsibilities Sommerville and Scanlon describe. Specifically, we can use Sommerivlle's ``Consequential'' or Scanlon's ``Substantive'' responsibilities to tailor a responsible agent's judgement of its ``Causal'' or ``Attributive'' responsibilities. This structure will act as a scaffolding for the simplified proposed framework in \cref{sec:work_plan}.
 
 \subsubsection{Aside: Philosophy's impact on Computing Science}
 It's worth noting that Philosophy and Computing Science are unusual bedfellows. However, this need not be the case. As we've seen already, and will continue to observe, there is a definite need for computing science to make use of and contribute to research involving human factors --- whether those factors be sociological, psychological, ethnographic, or even philosophical. What's more, philosophical research may well have an impact on the ethics and cultural implications that certain advances in Computing Science might entail. When discussing matters of potentially existential levels of risk, it is important to have the foresight to construct solid, informed arguments about our role in the grander scope of things.\par
