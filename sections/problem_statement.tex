@@ -1,4 +1,4 @@
-\section{Statement of Problem}\label{sec:statement_of_problem}
+\chapter{Statement of Problem}\label{sec:statement_of_problem}
 
 Computational responsibility is a complex area with lots of incidentally related work, but no specific relevant literature. Instead of focusing on the responsibilities of artificial agents, their responsibilities are implied by the construction of the agent itself. It might employ algorithms for driving without human guidance, or classify network traffic in an attempt to flag attempts at a system's security. In these instances, lots of somewhat-related work has been done on computational \emph{trust}: can one artificial agent trust another?\par
 
@@ -23,7 +23,7 @@ Kevin Slavin discusses the idea that we have begun to design a world \emph{``for
 
 As can be seen from the existence of models for concepts such as Trust which can solve similar HCI problems~\cite{designing_with_trust}, mimicking human traits computationally has its benefits. Moreover, we can be certain that, just as with trust modelling, useful and thorough responsibility models can produce work in machine ethics\cite{Moor2006}, sociology\cite{Macy2002}, and clearly, computing science. We can therefore expect that a computational model of responsibility will yeild similar results --- perhaps breaking new ground in other fields, which traits like Trust or Comfort have less relevance to.\par
 
-\subsection{Reflective Agents}
+\section{Reflective Agents}
 
 As we move into a world increasingly dominated by algorithms and shaped by their decisions, there is a clear requirement for responsible systems. One problem arises: how can we be certain that an algorithm's internal conception of responsibility is `human-like'? Early work by Sloman describes the notion of a `space' of minds\cite{Sloman1984TheMinds}, and this concept is useful here. An artificial mind need not be human-like, or even biological-like; it can occupy an entirely different area of the space of minds altogether. \par
 
@@ -44,7 +44,7 @@ Therefore, we might define our own high-level requirement of responsible computa
 
 This definition of a ``responsible agent'' as a ``reflective'' agent is important, because when considering its obligations, a responsible agent should be able to gauge whether to act in a certain way, weighted by their responsibility for a given obligation's fulfilment. As the model of responsibility developed begins to take shape, necessary components of those obligations --- the responsibility equivalent of trust's goals and beliefs --- will come to light.\par
 
-\subsection{Interpretive Agents}
+\section{Interpretive Agents}
 Unfortunately, simply reflecting on one's responsibility is not the only high-level requirement we can forsee needing for a responsible computational agent. Humans do not simply reflect on their obligations and duties before deciding on what their next actions might be. Human agents also see those obligations and duties through their own lens; they interpret their responsibilities according to certain factors which may influence their ``feeling'' of obligation.\par
 
 One can see this, for example, in people's respect for law or social convention. Sime citizens of a community might feel that it is imperative not to ride a bicycle on the pavement in Britain, as it is technically illegal. Others may well avoid the road traffic by making use of pedestrian areas if there aren't many pedestrians allowed, regardless of the law. Another example might be crossing the road; if a small child is present, parents of the child may well be teaching it to cross the road safely. To cross at a ``red man'' then, regardless of the presence of cars, somewhat derails the parent's lesson. It may even give the child an example of why they should be allowed to cross the road when they want. To cross the road at a ``red man'' does not respect one's influence over the situation at hand; in other words, the \emph{responsible} thing to do is to wait for the lights to change.\todo{Better examples? Examples of both subjective interpretation and comparing two subjective interpretations? (Some agents might perceive one responsibility with the same score as more important than another responsibility, another agent might get it the other way around)}\par
@@ -56,7 +56,7 @@ However, it is clear that not everybody thinks this way; many cyclists ride on t
 
 This way, the human-like subjectivity of responsibility can be simulated.
 
-\subsection{Reactive Agents}
+\section{Reactive Agents}
 There is one last definition important to our understanding of what a basic responsibility formalism might look like. If we want to represent a human-like sensation of trust, it's important that we acknowledge that human agents become more or less trustworthy over time. Children, for example, can be trusted much more once they mature and become adults. Moreover, that adult agent will probably be slightly less likely to trust than it was as a naive child. Therefore, to simulate human-like responsibility, agents' interpretation of responsibility should change over time.\par
 
 As we'll see, responsible agents whose sense of responsibility changes as a reaction to its environment is a notion which is backed not only by observation, but by the moral philosophy which underpins the proposed work at the end of this review. For now, we can define these ``reactive agents'' as agents whose sense of responsibility shifts as their environment is seen to change:
@@ -66,7 +66,7 @@ As we'll see, responsible agents whose sense of responsibility changes as a reac
 
 It is clear to see that for a reactive agent to change its reflection on responsibility, it must be an interpretive agent; in other words, the set of reactive agents is a subset of the set of interpretive agents. It should also be clear to see that a useful responsible agent should be both \emph{reactive} and \emph{reflective}: the set of reactive, reflective agents have a perception of the world which is subjective, can change according to its environment, and uses its sense of responsibility when making decisions.
 
-\subsection{Using the definitions}
+\section{Using the definitions}
 These definitions are useful in that they allow us to begin to see what might compose a responsible agent. We might begin to build a computational model of responsibility which embodies these traits by investigating the following research questions:
 \begin{enumerate}
     \item How can a computational formalism of responsibility direct the decisions made by an intelligent agent?

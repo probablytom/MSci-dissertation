@@ -1,12 +1,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Background Survey}\label{sec:background_survey}
+\chapter{Background Survey}\label{sec:background_survey}
 
 % What work's been done already? 
 Unlike Computational Responsibility, Computational Trust is a topic which has a surprising degree of pre-existing literature. Marsh~\cite{Marsh1994FormalisingConcept} draws inspiration from as early as David Birkhoff's 1930s work in creating an `Aesthetic Measure', where the famous mathematician created a quantification of Aesthetics. While some dispute that such subjective topics can be boiled down to a single number (or array thereof), much work to the contrary has now been completed. Like Marsh, we should start from the beginning. 
 
 % Maths, Psychology and Sociology a-la Marsh
-\subsection{Social Sciences and Mathematics}
-\subsubsection{Birkhoff's Aesthetic Measure}
+\section{Social Sciences and Mathematics}
+\subsection{Birkhoff's Aesthetic Measure}
 One of the earlier formalisms of a human factor\footnote{For the sake of clarification, we define a ``human factor'' as an element of a social or sociotechnical system which arises from human behaviour, such as Trust.}\footnote{Also for the sake of clarifying a sociotechnical system, a sociotechnical system is a system composed of human tendencies and behaviours, such as Trust, alongside technical activity, such as a computer or a steam engine. An example might be a coffee shop: \begin{itemize}
     \item Humans take orders and manage the running of the shop
     \item Technology is responsible for complex activities such as taking payments and forcing steam through coffee at high pressure
@@ -22,7 +22,7 @@ Later trust modelling work followed in Birkhoff's footsteps here. Indeed, Birkho
 
 The marriage of social studies with mathematical rigour will be a recurring theme of the work related to Computational Trust.\par
 
-\subsubsection{Deutsch}
+\subsection{Deutsch}
 Following the quantifiable, mathematical work done by Birkhoff, logical and arithmetic formalisms of human factors followed. One of the earlier and more widely adopted models for Trust came from Deutsch in 1962. 
 Deutsch is a psychologist who did swathes of work in the topic of cooperation, touching on Trust during the 60s. \par
 
@@ -58,15 +58,15 @@ Deutsch offers many different ideas as to why and how trust or trust-like behavi
 
 Deutsch's given model above specifically targets formalisation of trust as confidence.
 
-\subsubsection{Luhmann}
+\subsection{Luhmann}
 Luhmann, a sociologist who also worked in Trust and related fields, had his own take on formalisms of Trust: that trust was a social tool for reducing the complexity of a social system. Specifically, Lohmann sees trust as being a method whereby agents in a social system can reduce their exposure of \emph{risk} to each other. According to Luhmann, ``Trust{\ldots} pressuposes a situation of risk.''\todo{CITE THIS}\par
 
 Luhmann's work is therefore difficult to form quantitative formalisms from, as his thesis stems from a risk analysis perspective, which can be particularly difficult in a sociotechnical system. However, Luhmann's work remains interesting; a formalism of a human factor like trust would be incomplete without considering the properties of individual human actors as well as these properties' emergent effects in the larger sociotechnical space. For small systems, these social-level properties may not present themselves very strongly; however, most human factors are present regardless of the scale of the system being modelled. Therefore, a formalism of a human factor which fails to consider both psychological and sociological aspects cannot be complete. \par
 
 
 % Modern trust (logics, Marsh and C&F)
-\subsection{Modern [Computational] Trust methods}
-\subsubsection{Marsh's formalism}
+\section{Modern [Computational] Trust methods}
+\subsection{Marsh's formalism}
 The earliest quantifiable formalism of trust which provides computability, flexibility, and an inspiration from the sociological and psychological work above is that of Stephen Marsh in 1994\cite{Marsh1994FormalisingConcept}. Marsh's work breaks trust up into three core quantifications, where each variable takes some value in the range \({[-1,1)}\):
 \begin{enumerate}
     \item Basic Trust \\
@@ -84,7 +84,7 @@ The earliest quantifiable formalism of trust which provides computability, flexi
     \end{displayquote}
 \end{enumerate}\todo{Finish notes on Marsh's computational trust model!}
 
-\subsubsection{Castelfranchi \& Falcone}
+\subsection{Castelfranchi \& Falcone}
 As it turns out, cognitive computational trust models that already exist are almost but not quite appropriate for modelling responsibility. The C\&F trust model requires only four main ingredients to formulate a cognitive trust model:
 
 \begin{enumerate}
@@ -100,9 +100,13 @@ It is evident that trust and responsibility models are, even in the human-like c
 
 Nevertheless, this presents an exciting insight into work to be done to produce a formalism of responsibility. Particularly, it is evident that there is at least some technical value in listing the individual components as C\&F do. Their simple, reduced approach implies that with the correct identification of elements of responsibility, our formalism can be similarly simple. It is also enouraging that connections between trust and responsibility modelling seem to readily present themselves. We can therefore expect our formalism to rightly exhibit a similar structure and features.\par
 
-\subsubsection{Gambetta}
+% --Omitted because I'm not yet read up enough on Gambetta.-- 
+%\subsection{Gambetta}
+%For the purposes of building a computatational formalism specifically, Gambetta's work is interesting mostly as a precursor to Marsh's. However, some concepts of Marsh's model are strikingly similar to Gambetta's.\par
 
-\subsubsection{Ian Sommerville, Sociotechnical Systems, and Responsibility Modelling}\todo{Finish discssing Sommerville's contribution to the state of the art.}
+%Gambetta's trade is ordinarily sociology. However, I include his work in this section because it is similar to Marsh's in its representation of values for its traits, which is important for Marsh's model's computational nature. 
+
+\subsection{Ian Sommerville, Sociotechnical Systems, and Responsibility Modelling}\todo{Finish discssing Sommerville's contribution to the state of the art.}
 Sommerville's work focuses largely on sociotechnical systems and responsibility modelling --- in this way, Sommerville's work is not typically concerned with computational models of trust, as the above were. However, his work does begin to border on our own advancements, providing responsibility modelling formalisms.\par
 
 % Formalisms generally graphical
@@ -134,10 +138,10 @@ As we approach a review of philosophical literature in \cref{subsec:philosophy},
 
 % There's not much quantifiable on responsibility, but like Marsh, we can start from a non-quantified place and try to quantify it
 % Philosophy and moral responsibility
-\subsection{Philosophy of Moral Responsibility}\label{subsec:philosophy}
+\section{Philosophy of Moral Responsibility}\label{subsec:philosophy}
 Philosophy regarding moral responsibility is an area whose literature is both wide and deep. That said, not all moral repsonsibility literature is relevant to a computational repsonsibility project; lots of it is designed from a social analysis perspective which would be difficult to implement in any useful way. Other areas, however, present more promise for studies regarding formalisms.\par
 
-\subsubsection{Peter F. Strawson}
+\subsection{Peter F. Strawson}
 One example of research with utility in a computational way is that of Peter F Strawson, particularly in his seminal essay, Freedom and Resentment~\cite{strawson}. Strawson's topic actually revolves around whether determinism has any impact on ``free will'' --- a discussion clearly outside the scope of this project --- but in forming his argument creates some key conepts that we can use to consider the applicability of a responsibility formalism to a computational system, as well as touching on what that formalism would look like.\par
 
 Strawson's fundamental argument can be construed as being that determinism doesn't affect what human factors --- like Responsibility and Trust --- mean, because these concepts are founded on the relationships between human actors, rather than being inherant to the human actors themselves. As computer scientists, we can extrapolate this argument out to a sociotechnical environment. That is: Strawson's argument applies to both socila \emph{and} technological agents within a sociotechnical world. Using Strawson's reasoning, then, we can firmly conclude that it \emph{does} make sense to create ``responsible'' computers, because responsibility makes sense as a trait for a computer to have in the same way it might a human actor.\par
@@ -154,7 +158,7 @@ This gives us an insight into how a realistic computational trust model might fu
 
 A suitable conclusion one might draw, then, would be that a valid computational model of responsibility \emph{must} take into account an analysis of the sociotechnical environment of the responsible agent. It would also be valid to draw the conclusion --- as a result of the first of Strawson's points discussed --- that it makes sense to talk about ``trusting'' and ``responsible'' computational agents as if they were humans. Another important conclusion to draw from this part of Stawson's discussion is that this is one way in which agents' interaction is meaningful: therefore, there is a significant body of work to be undertaken in the combination of trust and responsibility formalisms to the field of HCI\@. Some of this work is already underway\cite{Marsh2011, Macy2002}. \par
 
-\subsubsection{Thomas M. Scanlon}
+\subsection{Thomas M. Scanlon}
 In his essay, Justice, Responsibility, and the Demands of Equality\cite{scanlon2006justice}, Thomas Scanlon assesses responsibility as having two factors which bear striking resemblance to Sommerville's ``Causal'' and ``Consequential'' Responsibilities: ``Attributive'' and ``Substantive'' Responsibilities.\par
 
 Scanlon discusses ``Attributive'' responsibilities as a group of duties according to the definition:
@@ -168,17 +172,30 @@ This limitation of scope also enables us to tie Sommerville's sociotechnical res
 
 Beyond philosophical waxing lyrical, we have reason to limit our formalism to a subset of responsibilities Sommerville and Scanlon describe. Specifically, we can use Sommerivlle's ``Consequential'' or Scanlon's ``Substantive'' responsibilities to tailor a responsible agent's judgement of its ``Causal'' or ``Attributive'' responsibilities. This structure will act as a scaffolding for the simplified proposed framework in \cref{sec:work_plan}.
 
-\subsubsection{Aside: Philosophy's impact on Computing Science}
+\subsection{Aside: Philosophy's impact on Computing Science}
 It's worth noting that Philosophy and Computing Science are unusual bedfellows. However, this need not be the case. As we've seen already, and will continue to observe, there is a definite need for computing science to make use of and contribute to research involving human factors --- whether those factors be sociological, psychological, ethnographic, or even philosophical. What's more, philosophical research may well have an impact on the ethics and cultural implications that certain advances in Computing Science might entail. When discussing matters of potentially existential levels of risk, it is important to have the foresight to construct solid, informed arguments about our role in the grander scope of things.\par
 
 To this end, I believe collaboration between Philosophy and Computing Science should be a more routine affair. Some interdisciplinary work of this form is already underway: Nick Bostrom's Future of Humanity Institute at Oxford University and the Machine Intelligence Research Institute in the USA are two excellent examples of Computing Science and Philosophy coming together to produce vitally important work, which greatly influences the progression of the field of AI Safety.\par
 
 
 % Comparing early trust and early responsibility: psychology/sociology of trust and philosophy of responsibility
-\subsection{Comparing Trust and Responsibility}
+\section{Comparing Trust and Responsibility}
+Trust and responsibility are similar concepts. Seen through the lens of C\&F, this is particularly clear: 
+
+\begin{itemize}
+    \item They both concern themselves with actions and goals
+    \item They're both naturally framed in terms of task delegation
+    \item They both follow Strawson's note on how agents with human factors change their outlook with respect to these factors through interaction.
+\end{itemize}
+
+Trust and Responsibility's similarity regarding task delegation is particularly interesting: this might allow a responsibility formalism to operate in a similar way to trust, meaning that much of the existing literature on Trust could be reappropriated (with some research) for the purposes of computational responsibility. Indeed, one definition of responsibility for a task might be the obligation to act on a delegated task. A corollary of C\&F argue that task delegaton is inherantly trust; then, all one need do to extend a trust formalism to a responsibility formalism would be to augment C\&F's axioms to include an agent's obligation, and one's formalism would be complete!\par
+
+Unfortunately, C\&F's formalism, while technically calculable by a computer, uses logical expressions to evaluate trust. For the purposes of an application such as a decision function of an intelligent agent, unless that agent follows a structure such as a BDI model, this would not be terribly useful --- though it's worth noting that granular models of C\&F also exist\cite{}\todo{find citation for this}.
+
+% --Also worth mentioning that responsibility's not as useful for risk analysis as trust is.--
 
 
 % Follow up question: what work hasn't been done yet?
 % Responsibility work that we can do given the comparison between early trust and early responsibility
-\subsection{What work is missing?}
+\section{What work is missing?}
 
