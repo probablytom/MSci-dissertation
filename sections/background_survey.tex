@@ -6,7 +6,7 @@ Unlike Computational Responsibility, Computational Trust is a topic which has a 
 
 % Maths, Psychology and Sociology a-la Marsh
 \subsection{Social Sciences and Mathematics}
-\subsubsection{Birkhoff's Aesthetic Measure}
+\subsubsection{Birkhoff's Aesthetic Measure}\label{subsubsec:birkoff}
 One of the earlier formalisms of a human factor\footnote{For the sake of clarification, we define a ``human factor'' as an element of a social or sociotechnical system which arises from human behaviour, such as Trust.}\footnote{Also for the sake of clarifying a sociotechnical system, a sociotechnical system is a system composed of human tendencies and behaviours, such as Trust, alongside technical activity, such as a computer or a steam engine. An example might be a coffee shop: \begin{itemize}
     \item Humans take orders and manage the running of the shop
     \item Technology is responsible for complex activities such as taking payments and forcing steam through coffee at high pressure
@@ -82,7 +82,15 @@ The earliest quantifiable formalism of trust which provides computability, flexi
     \begin{displayquote}
         {\ldots}whilst I may trust my brother to drive me to the airport, I certainly would not trust him to fly the plane!
     \end{displayquote}
-\end{enumerate}\todo{Finish notes on Marsh's computational trust model!}
+\end{enumerate}\par
+
+Marsh's three types of trust are helpful in breaking down what matters when discussing trust --- notions like competency, for example --- as well as establishing a jargon for trust. Often, one might say that a person is ``\emph{trusting}'': Marsh's formalism accounts for concepts like this, but establishes it as a less detailled type of trust, and a type of trust which doesn't account for the action being trusted for, or whether the trusted agent is able to complete the action.\par
+
+Marsh also succeeds in introducing concrete examples of computational formalisms of ordinarily human traits --- here Trust. The key aspect of Marsh's advancement is that it goes one step further than a \emph{quantitative} model, and introduces reinforcement learning algorithms which model how trust \emph{changes}, and not just its current state. As seen when discussing Birkoff's work (\cref{subsubsec:birkoff}), quantitative formalisms of human traits like Aesthetics had been studied and achieved long before Marsh's work.\par
+
+Since Marsh's work, many trust models have been developed. A small subset of these are reviewed here; offshoots from this seminal work include REGRET\todo{Should we discuss this too?}, Eigentrust, FIRE, and others.\par
+
+\todo{Finish notes on Marsh's computational trust model!}
 
 \subsubsection{Castelfranchi \& Falcone}
 As it turns out, cognitive computational trust models that already exist are almost but not quite appropriate for modelling responsibility. The C\&F trust model requires only four main ingredients to formulate a cognitive trust model:
