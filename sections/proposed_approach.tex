@@ -37,6 +37,35 @@ Marsh's model is also constructed with other disciplines in mind --- psychology 
 
 % What are we going to borrow from the literature?
 \subsection{Literature influence on the formalism's elements}
+\subsubsection{Formalism designed like Marsh's}
+The model of responsibility being designed requires the ability to model gradations of trust; therefore, Marsh's Trust formalism will act as the template for the responsibility formalism's design. In particular, Marsh's model's segregation oftypes of trust are useful for establishing the basic principles behind the responsibility model:
+
+\begin{tabular}{c|c}
+    \emph{Marsh's Trust} & \emph{Responsibility Formalism}\\
+    Basic Trust & Basic Responsibility\\
+    General Trust & General Responsibility\\
+    Specific Trust & Specific Repsonsibility\\
+\end{tabular}
+
+Using Marsh's model and adopting the jargon he develops means we can keep lots of the notions he develops, such as variable domains and seperation of different ``levels'' of responsibility, such as how generally responsible an agent is, and how responsible an agent is for a very specific thing. Indeed, a layout of the variables we might use in a formalism of responsibility, compared to Marsh's, might look like this:
+
+\begin{tabular}{c c}
+    \emph{Marsh's Trust Model Variables} & \emph{Responsibility Formalism's Variables}\\
+    \begin{tabular}{c|c}
+        Knowledge (of x at time t) & True/False\\
+        Importance (of knowing fact x at time t) & \([0,+1]\)\\
+        Utility (of action \safealpha at time t to an agent) & \([-1,+1]\)\\
+        Basic Trust (of agent A at time t) & \([-1,+1)\)\\
+        General Trust (of agent A at time t in agent B) & \([-1,+1)\)\\
+        Situational Trust (of agent A at time t in agent B doing action \safealpha) & \([-1,+1)\)\\
+      \end{tabular} & 
+      \begin{tabular}{c|c}
+        Basic Responsibility (of agent A at time t) & \([-1,+1)\)\\
+        General Responsibility (of agent A at time t in agent B) & \([-1,+1)\)\\
+        Situational Responsibility (of agent A at time t in agent B doing action \safealpha) & \([-1,+1)\)\\
+      \end{tabular}\\
+\end{tabular}
+
 
 % What, exactly, would a suitable outline of the formalism be?
 \subsection{Outlining the proposed formalism}
