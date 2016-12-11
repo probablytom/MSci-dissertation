@@ -45,11 +45,11 @@ The model of responsibility being designed requires the ability to model gradati
     \emph{Marsh's Trust} & \emph{Responsibility Formalism}\\
     Basic Trust & Basic Responsibility\\
     General Trust & General Responsibility\\
-    Specific Trust & Specific Repsonsibility\\
+    Specific Trust & Specific Responsibility\\
 \end{tabular}
     }
 
-Using Marsh's model and adopting the jargon he develops means we can keep lots of the notions he develops, such as variable domains and seperation of different ``levels'' of responsibility, such as how generally responsible an agent is, and how responsible an agent is for a very specific thing. Indeed, a layout of the variables we might use in a formalism of responsibility, compared to Marsh's, might look like this:
+Using Marsh's model and adopting the jargon he develops means we can keep lots of the notions he develops, such as variable domains and separation of different ``levels'' of responsibility, such as how generally responsible an agent is, and how responsible an agent is for a very specific thing. Indeed, a layout of the variables we might use in a formalism of responsibility, compared to Marsh's, might look like this:
 
 \begin{tabular}{c c}
     \emph{Marsh's Trust Model Variables} & \emph{Responsibility Formalism's Variables}\\
@@ -67,6 +67,24 @@ Using Marsh's model and adopting the jargon he develops means we can keep lots o
         Situational Responsibility (of agent A at time t in agent B doing action \safealpha) & \([-1,+1)\)\\
       \end{tabular}\\
 \end{tabular}
+
+Marsh's formalism also makes use of other concepts, such as sets of agents and definitions of what trust might be composed of; similarly, responsibility modelling will require the development of more concrete definitions.\par
+
+An example breakdown of responsibility and what it is might be the following:\par
+
+\begin{tabular}{c l}
+    \emph{Responsibility Term} & \emph{Definition of Term} \\ \hline \hline
+    Agent / Actor & Combination of Constraints, Environment, and Beliefs. Acts on a decision function. \\ \hline
+    Obligation & Combination of Authority, Goal, Set of Appropriate Actions, Responsibility Score \\ \hline
+    Responsibility Score & Number in \((0,1]\) assigned by authority denoting degree of obligation \\ \hline
+    Action & Combination of Activity, Resource requirements, Possible Issues and Effect \\ \hline
+%     Agent / Actor & Intelligent agent acting on a decision function \\ \hline
+    Authority & Agent which assigns an obligation to another agent \\ \hline
+\end{tabular}
+
+Not all terms above are completely defined; however, the table is provided as an example of how a responsibility formalism might look. The formalism proposed here is by no means final, but it can be seen that it would produce gradations of responsibility, that authorities assign an obligation with a certain score, and that agents choose actions based on a decision function --- a decision function which takes into account assigned obligations when it produces a next action.\par
+
+One difference between the above table and a final formalism of responsibility is that the final formalism would also account for processes. For example, a number assigned by an Authority represents the degree to which the responsible agent is obliged to act toward a goal, but the agent itself needs to weigh this up against other factors. For example: might the goal be time sensitive? It's imperative that I pay my rent on time, but a responsibility to keep windows closed doesn't depend on any one point in time. In other words, regardless of the initial score assigned to paying rent, I (as an agent) must interpret that score while taking into account other features of the goal --- these features change from goal to goal, and theoretically from agent to agent, too. This \emph{interpretation function} is a necessary part of the formalism, too --- but it is defined by process, and not semantically.\par
 
 
 % What, exactly, would a suitable outline of the formalism be?
