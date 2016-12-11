@@ -68,11 +68,13 @@ Using Marsh's model and adopting the jargon he develops means we can keep lots o
       \end{tabular}\\
 \end{tabular}
 
-Marsh's formalism also makes use of other concepts, such as sets of agents and definitions of what trust might be composed of; similarly, responsibility modelling will require the development of more concrete definitions.\par
+Marsh's formalism also makes use of other concepts, such as sets of agents and definitions of what trust might be composed of; similarly, responsibility modelling will require the development of more concrete definitions, as we will see.\par
 
+% What, exactly, would a suitable outline of the formalism be?
+\subsubsection{Outlining the proposed formalism}
 An example breakdown of responsibility and what it is might be the following:\par
 
-\begin{tabular}{c p{7cm}}
+\begin{tabular}{c p{10cm}}
     \emph{Responsibility Term} & \emph{Definition of Term} \\ \hline \hline
     Agent / Actor & Combination of Constraints, Environment, and Beliefs. Acts on a decision function. \\ \hline
     Obligation & Combination of Authority, Goal, Set of Appropriate Actions, Responsibility Score \\ \hline
@@ -86,6 +88,11 @@ Not all terms above are completely defined; however, the table is provided as an
 
 One difference between the above table and a final formalism of responsibility is that the final formalism would also account for processes. For example, a number assigned by an Authority represents the degree to which the responsible agent is obliged to act toward a goal, but the agent itself needs to weigh this up against other factors. For example: might the goal be time sensitive? It's imperative that I pay my rent on time, but a responsibility to keep windows closed doesn't depend on any one point in time. In other words, regardless of the initial score assigned to paying rent, I (as an agent) must interpret that score while taking into account other features of the goal --- these features change from goal to goal, and theoretically from agent to agent, too. This \emph{interpretation function} is a necessary part of the formalism, too --- but it is defined by process, and not semantically.\par
 
+\subsection{In answering research questions}
+In stating the problem proposed, two research questions were devised:
+\input{research-questions}
+The first research question can be answered in part by the definition of the Agent / Actor's decision function making use of the responsibility formalism in choosing the agent's next actions. To show this, artificial agents will be constructed with decision functions which are guided by the agent's assigned responsibilities.\par
 
-% What, exactly, would a suitable outline of the formalism be?
-\subsection{Outlining the proposed formalism}
+The second research question can be answered with similar methods. To construct artificial agents with responsibility-guided decision functions, a full responsibility formalism will be devised and implemented in these artificial agents. In doing this, the formalism will work in tandem with the interpretation functions of the agents developed. In doing so, the interpretation function developed will show that a complete implementation of the responsibility formalism will answer the second research question.\par
+
+It is worth noting that the interpretation function which answers the second research question is a necessary component of the formalism, but no one interpretation function belongs in the responsibility formalism itself. This is because, while a function can be imagined which has certain properties, two different agents may require different interpretation functions. In other words, the interpretation is a separate concern from the formalism itself: the formalism might specify \emph{domains} for the interpretation function to map from and to, but cannot specify specific processes and parameters. Therefore, no canonical version of the interpretation function may be provided, though some properties of the function will be noted and incorporated into the formalism's definition.\par
