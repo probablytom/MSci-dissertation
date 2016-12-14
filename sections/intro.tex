@@ -1,6 +1,6 @@
 \section{Introduction}\label{sec:intro}
 
-Computational Responsibility is a field with little to no existing literature. Rather than a focus on \emph{responsibility}, researchers have so far tackled a variety of other social topics through computational formalisation:
+Computational formalisms of social constructs are an increasingly common research area. For example, researchers have so far tackled a variety of social notions through computational formalism:
 
 \begin{itemize}
     \item Marsh's seminal work on Trust\cite{Marsh1994FormalisingConcept}
@@ -15,16 +15,28 @@ Computational Responsibility is a field with little to no existing literature. R
     
 \end{itemize}
 
-%something something there's a gap here where nobody's applied machine learning to the problem for teaching artificial agents about the social concept of responsibility
-While there is no direct literature on responsibility formalisms, then, we can see that there exists a wealth of literature for a responsibility formalism to be inspired by.\par
+These models of social constructs are useful in a variety of ways: Marsh's model, for example, gave rise to new methods in solving problems in fields as diverse as HCI\cite{designing_with_trust} and systems modelling\cite{Huynh2006}. However, responsibility as a social construct has been neglected: no literature on responsibility formalism has been published to date. This is curious, as responsibility modelling is a field which has proven particularly useful --- therefore, a logical next step for responsibility as a subject of study within sociotechnical systems analysis would be the computational formalism of the trait. As will be demonstrated, responsibility as a computational concept may yield a great number of research opportunities in fields such as sociotechnical systems modelling, machine learning and decision theory, and even humanities such as the philosophy of mind.
 
-A responsibility formalism is useful in the same ways that formalisms of human traits such as reputation and trust might be; however, a responsibility formalism has the potential to have impacts in areas trust and reputation might not. For example, imbuing an intelligent agent with a sense of responsibility might provide it a greater degree of corrigibility\cite{corrigibility}. An agent overseeing network security which understands its responsibilities within a much larger security system might better prioritise its duties when confronted with an unusual situation. Computational responsibility frameworks might help better model the emergent phenomena in sociotechnical systems, combine with traits like trust and comfort to make a more anthropomorphic device for better HCI, or perhaps help predict human actions in large computational models of human actors. We will explore some of these practical applications in \cref{sec:proposed_approach}.\par
+A responsibility formalism is useful in the same ways that formalisms of human traits such as reputation and trust might be; however, a computational theory of responsibility has the potential to have impacts in areas trust and reputation might not. For example, imbuing an intelligent agent with a sense of responsibility might provide it a greater degree of corrigibility\cite{corrigibility}. An agent overseeing network security which understands its responsibilities within a much larger security system might better prioritise its duties when confronted with an unusual situation. Computational responsibility frameworks might help better model the emergent phenomena in sociotechnical systems, combine with traits like trust and comfort to make a more anthropomorphic device for better HCI, or perhaps help predict human actions in large computational models of human actors. We will explore some of these practical applications in \cref{sec:proposed_approach}.\par
 
 However, it is certain that a uses for these formalisms present themselves at every turn.\todo{Write something concrete here regarding fields it might be applicable in, like decision theory or AI safety or network security or sociotechnical modelling}\par
 
 \subsection{An early rebuttal of some common criticisms}
+One easy criticism made of these anthropomorphic formalisms is the argument that, say, a trust formalism doesn't represent ``true'' trust. To address this point early, a responsibility formalism such as the one proposed need not be an entirely human-like representation of responsibility for every definition. Rather, there is a utility in an agent giving the \emph{appearance} of responsibility. (If one follows the deterministic school of thought, there is also an argument that there is no difference\cite{determinism_in_brief}.) \par
 
-One easy criticism to make of these anthropomorphic formalisms is the argument that, say, a trust formalism doesn't represent ``true'' trust. To address this point early, a responsibility formalism such as the one proposed need not be an entirely human-like representation of responsibility for every definition. Rather, there is a utility in an agent giving the \emph{appearance} of responsibility. (If one follows the deterministic school of thought, there is also an argument that there is no difference\cite{determinism_in_brief}.) Whether one considers it ``true'' responsibility should arguably be secondary to whether responsibility-like traits are useful to have computational frameworks for; we will see that these traits are indeed useful, and so that the criticism is moot.\par
+Whether one considers it ``true'' responsibility should arguably be secondary to whether responsibility-like traits are useful to have computational frameworks for; we will see that these traits are indeed useful, and so that the criticism is moot. Computational trust formalisms are well documented as a valuable asset in solving HCI problems and designing aspects of intelligent agents, such as decision functions. We will see that computational responsibility follows in these footsteps, and has applications in AI and HCI just like trust. There are added benefits to responsibility formalisms, however, such as applications to a wider range of interdisciplinary study, and a very direct application in solving problems such as decision problems.\par
 
-\subsection{Terminology}\label{subsec:terminology}
-\todo{Fill with terminology, in a style similar to honours dissertation}
+\subsection{Proposal Overview}\label{subsec:overview}
+This proposal will be split into five main sections:\todo{Is the list of sections up to date?}\\
+\begin{enumerate}
+    \item This introduction (\cref{sec:intro}), which lays the foundation for the research to be done and gives context for the background survey in the following section
+    \item A brief problem statement (\cref{sec:statement_of_problem}), which explores in specific terms the research intended to be undertaken
+    \item A background survey (\cref{sec:background_survey}), which explores related literature to computational responsibility, including:\todo{Is the list of background topics up to date?}\\
+        \begin{itemize}
+            \item Mathematics and Social Sciences
+            \item Sociotechnical Systems research
+            \item Philosophical research
+        \end{itemize}
+    \item A proposed approach (\cref{sec:proposed_approach}) to undertake the research suggested, which will explore potential options for the formalism and show how the relevant literature informs specific possible formalisms
+    \item A brief work plan (\cref{sec:work_plan}), which proposes a timeline for the work outlined in earlier sections.
+\end{enumerate}
