@@ -26,6 +26,49 @@ One easy criticism made of these anthropomorphic formalisms is the argument that
 
 Whether one considers it ``true'' responsibility should arguably be secondary to whether responsibility-like traits are useful to have computational frameworks for; we will see that these traits are indeed useful, and so that the criticism is moot. Computational trust formalisms are well documented as a valuable asset in solving HCI problems and designing aspects of intelligent agents, such as decision functions. We will see that computational responsibility follows in these footsteps, and has applications in AI and HCI just like trust. There are added benefits to responsibility formalisms, however, such as applications to a wider range of interdisciplinary study, and a very direct application in solving problems such as decision problems.\par
 
+\subsection{The scope of the model}\label{subsec:types-of-agents}
+Useful context for considering what sort of agents might be ``responsible'' can be found in exploring the agents our formalism might apply to. As will be explored in \cref{sec:strawson}, there exist types of agents which we might not consider responsible in an ordinary setting, or for whom irresponsible behaviour might affect an assessment of responsibleness. A human agent who is mentally handicapped, compared to a human agent with ordinary brain function but is lazy, wouldn't be seen as irresponsible when failing to hand an assignment in on time. To account for this difference in how agents' actions are accounted for in the proposed formalism, we limit the scope of what the formalism might model to agents who are:\\
+\begin{itemize}
+    \item Reflective
+    \item Interpretive
+    \item Reactive
+\end{itemize}
+
+\subsubsection{Reflective Agents}
+Sloman's work in the ``space of minds'' \cite{Sloman1984TheMinds} shows that artificial ``minds'' need not be remotely human-like. In order to limit the space of agents the proposed formalism would apply to, then, one might limit the space of minds those agents might inhabit.\par
+
+There are several ways to limit the space of mind of the agents a formalism concerns: for example, C\&F define a ``cognitive'' agent as the lower limit of an agent's requirements for human traits for trust. C\&F define a cognitive agent as:
+\begin{displayquote}
+    Only a cognitive agent can ``trust'' another agent; only an agent \emph{endowed with goals and beliefs}.
+\end{displayquote}\par
+
+This definition doesn't quite fit our purposes --- as will be seen, our definition also requires the concept of \emph{obligation}. However, it can be seen that this definition is deliberately high-level in order to simulate the important components of a human trusting agent. A cognitive agent can be seen as an agent which, for the task it is set out to do, is modelled in a \emph{high-level, human like way}. \par
+
+Therefore, we might define our own high-level requirement of responsible computational agents:
+
+\begin{displayquote}
+    Only a reflective agent can be ``responsible'' for its actions; only an agent which can \emph{reflect on its obligations when choosing an action}.
+\end{displayquote}\par
+
+A simpler way to state this, for the purposes of implementation in an artificially intelligent agent, would be that an intelligent agent should parametrise its decision function by its obligations. In this way, obligation to a certain goal or outcome influences actions chosen by that agent; this considering of obligation is required for those actions to be ``responsible'', because an agent which does not parameterise by its obligations would have no way of accounting for what it ought to do when choosing an action by definition.\par
+
+\subsubsection{Interpretive, Reactive Agents}
+One can imagine other useful limitations of scope, too. For example, an agent should be able to interpret their own behaviours as responsible or irresponsible, such that they can assert the degree to which they should weight their obligations in their decision process:\par
+
+\begin{displayquote}
+    Involved in an ``interpretive agent''\'s judgement of their responsibilities is a subjective component: an interpretive function which converts information about an obligation or duty into a subjective score of responsibility.
+\end{displayquote}\par
+
+This way, human-like subjectivity of responsibility can be simulated. We might go one step futher, and more tightly constrain the subjective nature of an agent:\par
+
+\begin{displayquote}
+    Involved in a ``reflective agent''\'s judgement of their responsibilities is a subjective component: an interpretive function which converts information about an obligation or duty into a subjective score of responsibility.
+\end{displayquote}\par
+
+One can see that, when this limitation on the agents a formalism concerns comes into place, that formalism becomes useful regardless of its computational application. While the formalism might be algorithmic in nature, the concepts behind it can be applied to social sciences also as the agents it concerns becomes more anthropomorphic. The interdisciplinary nature of a formalism such as this is a great asset in many areas, and allows for a common jargon when, for example, HCI researchers work with ethnographers in understanding the responsibility of a user.\par
+
+The purpose of describing these terms is twofold. Partly, it is to introduce the notion that a proposed formalism of responsibility wold be sensible in the types of agents it would target; this is useful to bear in mind when considering a trait which is normally human-specific developed as an algorithm. These terms are also introduced to show that the interdisciplinary jargon a formalism creates is naturally and easily defined by the formalism's construction. This shows in a concrete way that the formalism, even in an early form, has clear utility.\par
+
 \subsection{Proposal Overview}\label{subsec:overview}
 This proposal will be split into five main sections:\todo{Is the list of sections up to date?}\\
 \begin{enumerate}
@@ -38,5 +81,5 @@ This proposal will be split into five main sections:\todo{Is the list of section
             \item Philosophical research
         \end{itemize}
     \item A proposed approach (\cref{sec:proposed_approach}) to undertake the research suggested, which will explore potential options for the formalism and show how the relevant literature informs specific possible formalisms
-    \item A brief work plan (\cref{sec:work_plan}), which proposes a timeline for the work outlined in earlier sections.
+    \item A brief work plan (\cref{sec:work_plan}), which proposes a timeline for the work outlined in earlier sections
 \end{enumerate}
