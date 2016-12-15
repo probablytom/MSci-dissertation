@@ -39,7 +39,7 @@ Deutsch's formalism of trust wasn't immediately quantifiable, but presented one 
     \end{enumerate}
     \item The actor assesses that the outcome of choice \emph{B} relies on the behaviour of another actor.
     \item The actor assesses the action they may take and resolves that the strength of \emph{R}, likelihood of \emph{R} as an outcome, or both are higher than the respective \emph{P} measurements.
-    \item The actor is said to be \emph{trusting} they take path \emph{B}.
+    \item The actor is said to be \emph{trusting} if they choose to take path \emph{B}.
 \end{itemize}
 
 This formalism introduces some interesting notions. For example, it is unclear as to whether the outcome of choice \emph{B} can rely on the same actor making the decision; can one trust oneself by Deutsch's definition? Another interesting analysis of the implications of Deutsch's model is that it does not rely on the \emph{accurate} measurement of risk and utility, but just its perception --- trust is subjective, and based on the trusting actor's perspective on the world.
@@ -197,7 +197,7 @@ This limitation of scope also enables us to tie Sommerville's sociotechnical res
 Beyond philosophical waxing lyrical, we have reason to limit our formalism to a subset of responsibilities Sommerville and Scanlon describe. Specifically, we can use Sommerville's ``Consequential'' or Scanlon's ``Substantive'' responsibilities to tailor a responsible agent's judgement of its ``Causal'' or ``Attributive'' responsibilities. This structure will act as a scaffolding for the simplified proposed framework in \cref{sec:work_plan}.
 
 \subsubsection{Deontic Logic}
-Deontic logic a mathematical and philosophical logic of obligation.\cite{deontic-logic} It therefore would appear to lend itself perfectly to the task at hand; it would appear upon first glance that a responsibility formalism is already constructed. Unfortunately, this is not the case.\par
+Deontic logic is a mathematical and philosophical logic of obligation.\cite{deontic-logic} It therefore would appear to lend itself perfectly to the task at hand; it would appear upon first glance that a responsibility formalism is already constructed. Unfortunately, this is not the case.\par
 
 For one, deontic logic does deal with obligation, but from the perspective of formalising philosophical notions of action. Indeed, one of the insights a reader can expect to take from the work is a rigid definition of action. Deontic logic therefore deals with obliging to act as it contrasts to forbidding to act. Moreover, deontic logic creates relationships between different actions. For example: \[drive \Rightarrow O(park safely)\] is a deontic logic statement asserting that if one drives, one is obliged to park safely. However, the responsibility formalism required should assert a degree of responsibility for actions an agent might take at a given point in time --- this is required to answer the first research question. As a result, deontic logic is a fundamentally inappropriate platform for the work at hand to be built upon.\par
 
@@ -206,17 +206,31 @@ Another issue is that deontic logic is a logical framework, rather than a mathem
 \subsubsection{Aside: Philosophy's impact on Computing Science}
 It's worth noting that Philosophy and Computing Science are unusual bedfellows. However, this need not be the case. As we've seen already, and will continue to observe, there is a definite need for computing science to make use of and contribute to research involving human factors --- whether those factors be sociological, psychological, ethnographic, or even philosophical. What's more, philosophical research may well have an impact on the ethics and cultural implications that certain advances in Computing Science might entail. When discussing matters of potentially existential levels of risk, it is important to have the foresight to construct solid, informed arguments about our role in the grander scope of things.\par
 
-To this end, I believe collaboration between Philosophy and Computing Science should be a more routine affair. Some interdisciplinary work of this form is already underway: Nick Bostrom's Future of Humanity Institute at Oxford University and the Machine Intelligence Research Institute in the USA are two excellent examples of Computing Science and Philosophy coming together to produce vitally important work, which greatly influences the progression of the field of AI Safety.\par
+To this end, I believe collaboration between Philosophy and Computing Science should be a more routine affair. Some interdisciplinary work of this form is already under way: Nick Bostrom's Future of Humanity Institute at Oxford University and the Machine Intelligence Research Institute in the USA are two excellent examples of Computing Science and Philosophy coming together to produce vitally important work, which greatly influences the progression of the field of AI Safety.\par
 
+\subsection{Discussion}
+Computational Responsibility is a topic with a significant body of related literature, yet no specific literature on the topic. However, useful ideas expressed in the related literature --- from both backgrounds of the humanities and the sciences --- help to shine light on a path toward a formalism which will help to answer the research questions posited in \cref{sec:statement_of_problem}.\par
+
+A formalism which does help to answer the research questions introduced will have to:\\
+
+\begin{itemize}
+    \item Provide gradations of responsibility measures, in a similar way to that which Marsh's formalism permits
+    \item Allow for the updating of the interpretation of responsibilities in a similar way to that which Strawson suggests
+    \item Primarily address Sommerville's ``Causal'' responsibilities, or (the given interpretation of) Scanlon's ``Attributive'' responsibilities
+    \item They both follow Strawson's note on how agents with human factors change their outlook with respect to these factors through interaction
+    \item Account for responsibility on the level of personal responsibility and societal responsibility\\
+        (This would be achieved by agents who act on individual responsibility but who as a collective use responsibility to lower negative exposure, as per Luhmann's notes on risk)
+\end{itemize}
+
+In the proposed approach in the following section, we will explore possible formalisms of responsibility which leverage ideas from all of these useful insights from related literature, in order to better answer the research questions laid out.\par
 
 % Comparing early trust and early responsibility: psychology/sociology of trust and philosophy of responsibility
-\subsection{Comparing Trust and Responsibility}
+\subsubsection{The Relationship Between Trust and Responsibility}
 Trust and responsibility are similar concepts. Seen through the lens of C\&F, this is particularly clear: 
 
 \begin{itemize}
     \item They both concern themselves with actions and goals
     \item They're both naturally framed in terms of task delegation
-    \item They both follow Strawson's note on how agents with human factors change their outlook with respect to these factors through interaction.
 \end{itemize}
 
 Trust and Responsibility's similarity regarding task delegation is particularly interesting: this might allow a responsibility formalism to operate in a similar way to trust, meaning that much of the existing literature on Trust could be re-appropriated (with some research) for the purposes of computational responsibility. Indeed, one definition of responsibility for a task might be the obligation to act on a delegated task. A corollary of C\&F argue that task delegation is inherently trust; then, all one need do to extend a trust formalism to a responsibility formalism would be to augment C\&F's axioms to include an agent's obligation, and one's formalism would be complete!\par
