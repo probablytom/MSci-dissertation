@@ -111,19 +111,37 @@ It is evident that trust and responsibility models are, even in the human-like c
 
 Nevertheless, this presents an exciting insight into work to be done to produce a formalism of responsibility. Particularly, it is evident that there is at least some technical value in listing the individual components as C\&F do. Their simple, reduced approach implies that with the correct identification of elements of responsibility, our formalism can be similarly simple. It is also encouraging that connections between trust and responsibility modelling seem to readily present themselves. We can therefore expect our formalism to rightly exhibit a similar structure and features.\par
 
+\subsubsection{Eigentrust}\label{subsec:eigentrust}
+Unlike the formalisms from Marsh and C\&F, Eigentrust\cite{eigentrust} is a trust formalism built without interdisciplinary work in mind. Instead, Eigentrust's main focus is that of software engineering: it is a formalism with the foremost principle of creating secure trust and reputation systems in a computer network. Indeed, the primary driving force of Eigentrust's mathematics is that of reputation, and it leverages linear algebra concepts together with a simple reputation system to create an effective trust formalism.\par
+
+An intriguing feature of Eigentrust is that it works on a global ledger of trust, shared in a peer-to-peer network. Having a shared knowledge of agents who are trustworthy or untrustworthy in a system acts as an interesting utility in exploring the value of a trust formalism. An example alluded to in the paper is that of downloads: if a download successfully completes from one peer to another, the receiving peer rates their server positively. Similarly, if the download fails, the receiving peer rates the server negatively. An agent seeking a certain download therefore attempts to interact with more trusted peers in the global ledger --- this is a satisfying example of the value of a trust formalism in practical engineering.\par
+
+In this way, Eigentrust creates a formalism that:
+
+\begin{enumerate}[label=\emph{\Alph*}:]
+    \item Represents gradations of trust
+    \item Allows for an effective distributed trust model
+\end{enumerate}
+
+However, it is unfortunately a bad fit for the model required for the proof-of-concept responsibility formalism. One reason for this is that Eigentrust explicitly does not attempt to interpret trust values; they are taken at face-value. As a result, the model wouldn't fit the space of minds of possible actors which was originally suggested as appropriate. The formalism constrains behaviour in other ways for appropriate trust modelling; however, some work may be required to produce a similar formalism for computational responsibility.\par
+
+Another effect of adopting a framework like Eigentrust for building a responsibility formalism would be that it would work significantly less well for modelling an agent's personal obligations, making it less suitable for parametrising the decision function of an intelligent agent. An argument to be made is that Eigentrust presents a way for an agent to assess its environment. This is true. However, consider that a public ledger where one agent was seen to be more responsible than another would lead all agents to assign tasks to that supremely responsible agent; tasks would not therefore be assigned to marginally less responsible agents without some significant work to make the global scores from an Eigentrust-based model suitable for a responsibility model. Using Eigentrust-based scoring systems would also limit one's ability to separate types of responsibility in a similar way to Marsh's separation of basic, general and situational trust: Eigentrust in its ordinary implementation adds 1 to a score for a positive interaction, and -1 for a negative interaction, leaving no insight into types of actions an agent is adept at.\par
+
+Eigentrust presents an interesting and unique approach to trust formalism which is practical and effective. However, its limitations pertaining to the more social form of responsibility desired, combined with its higher degree of mathematical complexity over alternatives, means that it is more suitable as a curiosity than a foundation for the purposes of this work.\par
+
 % --Omitted because I'm not yet read up enough on Gambetta.-- 
 %\subsubsection{Gambetta}
 %For the purposes of building a computatational formalism specifically, Gambetta's work is interesting mostly as a precursor to Marsh's. However, some concepts of Marsh's model are strikingly similar to Gambetta's.\par
 
 %Gambetta's trade is ordinarily sociology. However, I include his work in this section because it is similar to Marsh's in its representation of values for its traits, which is important for Marsh's model's computational nature. 
 
-\subsubsection{Ian Sommerville, Sociotechnical Systems, and Responsibility Modelling}\todo{Finish discussing Sommerville's contribution to the state of the art.}
+\subsection{Ian Sommerville, Sociotechnical Systems, and Responsibility Modelling}\todo{Finish discussing Sommerville's contribution to the state of the art.}
 Sommerville's work focuses largely on sociotechnical systems and responsibility modelling --- in this way, Sommerville's work is not typically concerned with computational models of trust, as the above were. However, his work does begin to border on our own advancements, providing responsibility modelling formalisms.\par
 
 % Formalisms generally graphical
 It is important to note that Ian Sommerville has been a particularly prolific writer for a researcher in the sociotechnical systems scene. Sommerville's modelling systems are sometimes graphical\cite{sommerville_graphical_responsibility}. Unfortunately, graphical modelling systems do not lend themselves particularly well to computational formalism: they don't yield naturally to numerical analysis; they are generally designed for the purposes of human visual analysis, instead of logical reasoning; they are often difficult to represent non-graphically, which arguably makes input and manipulation too complex for the purposes of designing a complex intelligent agent around.\par
 
-Ultimately, though, graphical responsibility modelling systems are designed for representing the responsibilities of a single agent at a given point in time; a responsibility formalism, by contrast, should be a series of metrics and rules which can apply to arbitrary reasoning of an agent's responsibility through time, with that agent using the formalism to reason about its changing responsibilities. In other words, graphical responsibility modelling differs from a responsibility formalism in that a responsibility formalism needs to \emph{generalise} reasoning about how responsibility, as a concept, ``behaves''.
+Ultimately, though, graphical responsibility modelling systems are designed for representing the responsibilities of a single agent at a given point in time; a responsibility formalism, by contrast, should be a series of metrics and rules which can apply to arbitrary reasoning of an agent's responsibility through time, with that agent using the formalism to reason about its changing responsibilities. In other words, graphical responsibility modelling differs from a responsibility formalism in that a responsibility formalism needs to \emph{generalise} reasoning about how responsibility, as a concept, ``behaves''.\par
 
 % Sociotechnical perspective on responsibility
 % Causal and Consequential responsibility --- just a brief outline, more when we discuss Scanlon in Philosophy section \cref{subsec:philosophy}
