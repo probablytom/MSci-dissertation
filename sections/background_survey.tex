@@ -30,7 +30,7 @@ The marriage of social studies with mathematical rigour will be a recurring them
 Following the quantifiable, mathematical work done by Birkhoff, logical and arithmetic formalisms of human factors followed. One of the earlier and more widely adopted models for Trust came from Deutsch in 1962. 
 Deutsch is a psychologist who did swathes of work in the topic of cooperation, touching on Trust during the 60s. \par
 
-Deutsch's formalism of trust wasn't immediately quantifiable, but presented one of the earliest well-defined definitions of trust. To paraphrase Deutsch's formalism in ``Cooperation and Trust: Some Theoretical Notes'', 1962\todo{CITE THIS}:
+Deutsch's formalism of trust wasn't immediately quantifiable, but presented one of the earliest well-defined definitions of trust. To paraphrase Deutsch's formalism in ``Cooperation and Trust: Some Theoretical Notes''\cite{deutsch1962cooperation}:
 \begin{itemize}
     \item An actor is presented with a choice between two paths.
     \begin{enumerate}[label=\emph{\Alph*}:]
@@ -63,7 +63,7 @@ Deutsch offers many different ideas as to why and how trust or trust-like behavi
 Deutsch's given model above specifically targets formalisation of trust as confidence.
 
 \subsubsection{Luhmann}
-Luhmann, a sociologist who also worked in Trust and related fields, had his own take on formalisms of Trust: that trust was a social tool for reducing the complexity of a social system. Specifically, Luhmann sees trust as being a method whereby agents in a social system can reduce their exposure of \emph{risk} to each other. According to Luhmann, ``Trust{\ldots} presupposes a situation of risk.''\todo{CITE THIS}\par
+Luhmann, a sociologist who also worked in Trust and related fields, had his own take on formalisms of Trust: that trust was a social tool for reducing the complexity of a social system. Specifically, Luhmann sees trust as being a method whereby agents in a social system can reduce their exposure of \emph{risk} to each other. According to Luhmann, ``Trust{\ldots} presupposes a situation of risk.''\cite{luhmann2000familiarity}\par
 
 Luhmann's work is therefore difficult to form quantitative formalisms from, as his thesis stems from a risk analysis perspective, which can be particularly difficult in a sociotechnical system. However, Luhmann's work remains interesting; a formalism of a human factor like trust would be incomplete without considering the properties of individual human actors as well as these properties' emergent effects in the larger sociotechnical space. For small systems, these social-level properties may not present themselves very strongly; however, most human factors are present regardless of the scale of the system being modelled. Therefore, a formalism of a human factor which fails to consider both psychological and sociological aspects cannot be complete. \par
 
@@ -91,9 +91,7 @@ Marsh's three types of trust are helpful in breaking down what matters when disc
 
 Marsh also succeeds in introducing concrete examples of computational formalisms of ordinarily human traits --- here Trust. The key aspect of Marsh's advancement is that it goes one step further than a \emph{quantitative} model, and introduces reinforcement learning algorithms which model how trust \emph{changes}, and not just its current state. As seen when discussing Birkhoff's work (\cref{subsubsec:birkhoff}), quantitative formalisms of human traits like Aesthetics had been studied and achieved long before Marsh's work.\par
 
-Since Marsh's work, many trust models have been developed. A small subset of these are reviewed here; offshoots from this seminal work include REGRET\todo{Should we discuss this too?}, Eigentrust, FIRE, and others.\par
-
-\todo{Finish notes on Marsh's computational trust model!}
+Since Marsh's work, many trust models have been developed. A small subset of these are reviewed here; offshoots from this seminal work include REGRET, FIRE, and others.\par
 
 \subsubsection{Castelfranchi \& Falcone}
 As it turns out, cognitive computational trust models that already exist are almost but not quite appropriate for modelling responsibility. The C\&F trust model requires only four main ingredients to formulate a cognitive trust model:
@@ -135,7 +133,7 @@ Eigentrust presents an interesting and unique approach to trust formalism which 
 
 %Gambetta's trade is ordinarily sociology. However, I include his work in this section because it is similar to Marsh's in its representation of values for its traits, which is important for Marsh's model's computational nature. 
 
-\subsection{Ian Sommerville, Sociotechnical Systems, and Responsibility Modelling}\todo{Finish discussing Sommerville's contribution to the state of the art.}
+\subsection{Ian Sommerville, Sociotechnical Systems, and Responsibility Modelling}
 Sommerville's work focuses largely on sociotechnical systems and responsibility modelling --- in this way, Sommerville's work is not typically concerned with computational models of trust, as the above were. However, his work does begin to border on our own advancements, providing responsibility modelling formalisms.\par
 
 % Formalisms generally graphical
@@ -242,6 +240,8 @@ A formalism which does help to answer the research questions introduced will hav
 
 In the proposed approach in the following section, we will explore possible formalisms of responsibility which leverage ideas from all of these useful insights from related literature, in order to better answer the research questions laid out.\par
 
+% --Also worth mentioning that responsibility's not as useful for risk analysis as trust is.--
+
 % Comparing early trust and early responsibility: psychology/sociology of trust and philosophy of responsibility
 \subsubsection{The Relationship Between Trust and Responsibility}
 Trust and responsibility are similar concepts. Seen through the lens of C\&F, this is particularly clear: 
@@ -253,9 +253,7 @@ Trust and responsibility are similar concepts. Seen through the lens of C\&F, th
 
 Trust and Responsibility's similarity regarding task delegation is particularly interesting: this might allow a responsibility formalism to operate in a similar way to trust, meaning that much of the existing literature on Trust could be re-appropriated (with some research) for the purposes of computational responsibility. Indeed, one definition of responsibility for a task might be the obligation to act on a delegated task. A corollary of C\&F argue that task delegation is inherently trust; then, all one need do to extend a trust formalism to a responsibility formalism would be to augment C\&F's axioms to include an agent's obligation, and one's formalism would be complete!\par
 
-Unfortunately, C\&F's formalism, while technically calculable by a computer, uses logical expressions to evaluate trust. For the purposes of an application such as a decision function of an intelligent agent, unless that agent follows a structure such as a BDI model, this would not be terribly useful --- though it's worth noting that granular models of C\&F also exist\cite{}\todo{find citation for this}.
-
-% --Also worth mentioning that responsibility's not as useful for risk analysis as trust is.--
+Unfortunately, C\&F's formalism, while technically calculable by a computer, uses logical expressions to evaluate trust. For the purposes of an application such as a decision function of an intelligent agent, unless that agent follows a structure such as a BDI model, this would not be terribly useful --- though it's worth noting that granular models of C\&F also exist\cite{lorini2008binary}.
 
 
 % Follow up question: what work hasn't been done yet?

@@ -10,7 +10,7 @@ We can see that the literature available, while not on computational responsibil
             \item How can a computational formalism of responsibility direct the decisions made by an intelligent agent?
             \item How can an intelligent agent assume the consequences of actions it makes, the decisions other agents make, and its general environment, so as to direct its interpretation of responsibility?
         \end{enumerate}
-    \item The formalism should suitably limit the scope of the actors it models to be reactive, reflective agents\cref{sec:agent_types}.\\
+    \item The formalism should suitably limit the scope of the actors it models to be reactive, reflective agents\cref{sec:types-of-agents}.\\
         The formalism doesn't apply to all agents; we can imagine some agents which are *not* responsible, such as those shown by Strawson\cref{sec:strawson}, and agents which aren't reactive or reflective.
     \item The formalism should interpret the obligation an agent is assigned when another agent trusts it with a causal responsibility.
     \item Ideally, the formalism would utilise as much relevant psychology and sociology literature as possible so as to maximise the formalism's interdisciplinary potential.
@@ -39,19 +39,18 @@ Marsh's model is also constructed with other disciplines in mind --- psychology 
 \subsubsection{Formalism designed like Marsh's}
 The model of responsibility being designed requires the ability to model gradations of trust; therefore, Marsh's Trust formalism will act as the template for the responsibility formalism's design. In particular, Marsh's model's segregation of types of trust are useful for establishing the basic principles behind the responsibility model:
 
-{\centering
+\begin{center}
 \begin{tabular}{c|c}
     \emph{Marsh's Trust} & \emph{Responsibility Formalism}\\
     Basic Trust & Basic Responsibility\\
     General Trust & General Responsibility\\
     Specific Trust & Specific Responsibility\\
 \end{tabular}
-    }
+\end{center}
 
 Using Marsh's model and adopting the jargon he develops means we can keep lots of the notions he develops, such as variable domains and separation of different ``levels'' of responsibility, such as how generally responsible an agent is, and how responsible an agent is for a very specific thing. Indeed, a layout of the variables we might use in a formalism of responsibility, compared to Marsh's, might look like this:
 
-\begin{tabular}{c c}
-    \emph{Marsh's Trust Model Variables} & \emph{Responsibility Formalism's Variables}\\
+\begin{center}
     \begin{tabular}{c|c}
         Knowledge (of x at time t) & True/False\\
         Importance (of knowing fact x at time t) & \([0,+1]\)\\
@@ -59,13 +58,13 @@ Using Marsh's model and adopting the jargon he develops means we can keep lots o
         Basic Trust (of agent A at time t) & \([-1,+1)\)\\
         General Trust (of agent A at time t in agent B) & \([-1,+1)\)\\
         Situational Trust (of agent A at time t in agent B doing action \safealpha) & \([-1,+1)\)\\
-      \end{tabular} & 
+      \end{tabular}\\
       \begin{tabular}{c|c}
         Basic Responsibility (of agent A at time t) & \([-1,+1)\)\\
         General Responsibility (of agent A at time t in agent B) & \([-1,+1)\)\\
         Situational Responsibility (of agent A at time t in agent B doing action \safealpha) & \([-1,+1)\)\\
-      \end{tabular}\\
-\end{tabular}
+    \end{tabular}
+\end{center}
 
 Marsh's formalism also makes use of other concepts, such as sets of agents and definitions of what trust might be composed of; similarly, responsibility modelling will require the development of more concrete definitions, as we will see.\par
 
@@ -79,7 +78,6 @@ An example breakdown of responsibility and what it is might be the following:\pa
     Obligation & Combination of Authority, Goal, Set of Appropriate Actions, Responsibility Score \\ \hline
     Responsibility Score & Number in \((0,1]\) assigned by authority denoting degree of obligation \\ \hline
     Action & Combination of Activity, Resource requirements, Possible Issues and Effect \\ \hline
-%     Agent / Actor & Intelligent agent acting on a decision function \\ \hline
     Authority & Agent which assigns an obligation to another agent \\ \hline
 \end{tabular}
 
