@@ -35,6 +35,7 @@ Marsh's model is also constructed with other disciplines in mind --- psychology 
 \subsubsection{Formalism designed like Marsh's}
 The model of responsibility being designed requires the ability to model gradations of trust; therefore, Marsh's Trust formalism will act as the template for the responsibility formalism's design. In particular, Marsh's model's segregation of types of trust are useful for establishing the basic principles behind the responsibility model:
 
+\begin{table}
 \begin{center}
 \begin{tabular}{c|c}
     \emph{Marsh's Trust} & \emph{Responsibility Formalism}\\
@@ -42,26 +43,39 @@ The model of responsibility being designed requires the ability to model gradati
     General Trust & General Responsibility\\
     Specific Trust & Specific Responsibility\\
 \end{tabular}
+    \caption{The analogy between trust and responsibility through Marsh's definitions}
 \end{center}
+\end{table}
 
 Using Marsh's model and adopting the jargon he develops means we can keep lots of the notions he develops, such as variable domains and separation of different ``levels'' of responsibility, such as how generally responsible an agent is, and how responsible an agent is for a very specific thing. Indeed, a layout of the variables we might use in a formalism of responsibility, compared to Marsh's, might look like this:
 
 \begin{center}
-    \begin{tabular}{p{10cm}|c}
-        \emph{Marsh's trust variables} & \emph{Variable Range} \\ \hline \hline
-        Knowledge (of x at time t) & True/False\\
-        Importance (of knowing fact x at time t) & \([0,+1]\)\\
-        Utility (of action \safealpha at time t to an agent) & \([-1,+1]\)\\
-        Basic Trust (of agent A at time t) & \([-1,+1)\)\\
-        General Trust (of agent A at time t in agent B) & \([-1,+1)\)\\
-        Situational Trust (of agent A at time t in agent B doing action \safealpha) & \([-1,+1)\)\\
-      \end{tabular}\\ \bigskip
-      \begin{tabular}{p{10cm}|c}
-        \emph{Proposed similar responsibility variables} & \emph{Proposed Variable Domains} \\ \hline \hline
-        Basic Responsibility (of agent A at time t) & \([-1,+1)\)\\
-        General Responsibility (of agent A at time t in agent B) & \([-1,+1)\)\\
-        Situational Responsibility (of agent A at time t in agent B doing action \safealpha) & \([-1,+1)\)\\
-    \end{tabular}
+\begin{table}
+\begin{tabular}{p{10cm}|c}
+    \emph{Marsh's trust variables} & \emph{Variable Range} \\ \hline \hline
+    Knowledge (of x at time t) & True/False\\
+    Importance (of knowing fact x at time t) & \([0,+1]\)\\
+    Utility (of action \safealpha at time t to an agent) & \([-1,+1]\)\\
+    Basic Trust (of agent A at time t) & \([-1,+1)\)\\
+    General Trust (of agent A at time t in agent B) & \([-1,+1)\)\\
+    Situational Trust (of agent A at time t in agent B doing action \safealpha) & \([-1,+1)\)\\
+\end{tabular}
+    \caption{Overview of Marsh's model components}
+\end{table}
+\end{center}
+
+\bigskip
+    
+\begin{center}
+\begin{table}
+\begin{tabular}{p{10cm}|c}
+    \emph{Proposed similar responsibility variables} & \emph{Proposed Variable Domains} \\ \hline \hline
+    Basic Responsibility (of agent A at time t) & \([-1,+1)\)\\
+    General Responsibility (of agent A at time t in agent B) & \([-1,+1)\)\\
+    Situational Responsibility (of agent A at time t in agent B doing action \safealpha) & \([-1,+1)\)\\
+\end{tabular}
+    \caption{Similar components a responsibility model can adopt in analogy to trust}
+\end{table}
 \end{center}
 
 Marsh's formalism also makes use of other concepts, such as sets of agents and definitions of what trust might be composed of; similarly, responsibility modelling will require the development of more concrete definitions, as we will see.\par
@@ -79,6 +93,7 @@ An example breakdown of responsibility and what it is might be the following:\pa
     Action & Combination of Activity, Resource requirements, Possible Issues and Effect \\ \hline
     Authority & Agent which assigns an obligation to another agent \\ \hline
 \end{tabular}
+    \caption{Definitions of possible terms}
 \end{center}
 \end{table}
 
