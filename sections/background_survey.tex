@@ -4,7 +4,7 @@
 % What work's been done already? 
 Computational trust is a topic with a wealth of literature to draw inspiration from in an attempt to produce similar formalisms of responsibility. Marsh~\cite{Marsh1994FormalisingConcept} draws his own inspiration from literature as early as David Birkhoff's 1930s work on creating an ``Aesthetic Measure'', which was in effect a quantification of aesthetics. Much work on developing similar formalisms has been undertaken by a range of fields since.\par
 
-The success of recent formalisms, such as Marsh's, rest as all scientific work does on the research it serves to advance. As successful work as resulted from the study of social traits in social sciences and mathematics, a sensible approach to the construction of a new formalism would be to start from the same foundational concepts.\par
+The success of recent formalisms, such as Marsh's, rest as all scientific work does on the research it serves to advance. As successful work has resulted from the study of social traits in social sciences and mathematics, a sensible approach to the construction of a new formalism would be to start from the same foundational concepts.\par
 
 Unfortunately, not all of this related work will ultimately be of use in developing a formalism of responsibility --- responsibility as a concept differs in important ways from trust. For example, trust is a concept often discussed in terms of an agent's trust toward another: ``Anne didn't trust the contractor'' describes Anne's trusting relationship \emph{toward} another actor. ``The contractor performed their work responsibly'', however, is a description of the contractor's responsibility as a trait --- not as a relationship with Anne. Of course, this is one of a number of examples of the different natures of trust and responsibility. Fields which are not explored by trust might therefore be useful in elucidating some aspects of responsibility which trust-relevant literature may not cover. We find that these aspects are well covered by the field of Moral Responsibility, and similar philosophical work.
 
@@ -18,7 +18,7 @@ One of the earlier formalisms of a human factor\footnote{For the sake of clarifi
 \[M = \frac{O}{C}\]
 Birkhoff's work inadvertently gave rise to the notion that human factors can be represented by mathematical equations and systems. Birkhoff's formalism of aesthetics became popular for a few reasons, but one of particular interest to later Trust modelling work was that Birkhoff put a great degree of effort into backing his work up with psychological theory. In this way, Birkhoff's formalism could be said to be a \emph{psychological} formalism. \par
 
-Later trust modelling work followed in Birkhoff's footsteps here. Indeed, Birkhoff gives a solid foundation for the model-creating method later employed by Marsh\cite{Marsh1994FormalisingConcept} and Castelfranchi \& Falcone, as it is:
+Later trust modelling work followed in Birkhoff's footsteps here. Indeed, Birkhoff gives a solid foundation for the model-creating method later employed by Marsh\cite{Marsh1994FormalisingConcept} and Castelfranchi \& Falcone (commonly ``C\&F''), as it is:
 \begin{itemize}
     \item Founded on mathematical or logical principles which are \emph{quantifiable}
     \item Heavily inspired and directed by related work in psychology, sociology, and philosophy
@@ -32,7 +32,7 @@ Deutsch is a psychologist who did swathes of work in the topic of cooperation, t
 
 Deutsch's formalism of trust wasn't immediately quantifiable, but presented one of the earliest well-defined definitions of trust. To paraphrase Deutsch's formalism in ``Cooperation and Trust: Some Theoretical Notes''\cite{deutsch1962cooperation}:
 \begin{itemize}
-    \item An actor is presented with a choice between two paths.
+    \item An actor is presented with a choice between two paths:
     \begin{enumerate}[label=\emph{\Alph*}:]
         \item No change
         \item The actor takes some action, of ambiguous outcome. A possible gain is associated, \emph{P}, and some possible risk is associated, \emph{R}.
@@ -46,21 +46,21 @@ This formalism introduces some interesting notions. For example, it is unclear a
 
 Rather than characterising trust by the parties involved, Deutsch's formalism is characterised by \emph{risk and utility}. A simple quantification of Deutsch's formalism could be devised, therefore, where risk and utility are quantified by simple assessments using utility functions and a form of risk analysis. Even so, the outcome of this quantified system is a single bit: trusting or not trusting. This does quantify trust, but only technically speaking, and this quantification is weak in its expressiveness. It gives no remit to suggest that one might trust one person over another, for example, as there are no order-able degrees of trust.
 
-Deutsch offers many different ideas as to why and how trust or trust-like behaviour can come about, however. This list is taken from Marsh 1994\cite{Marsh1994FormalisingConcept}, where explanations of all nine can be found:
+Deutsch offers many different ideas as to why and how trust or trust-like behaviour can come about, however. This list is taken from Marsh 1994\cite{Marsh1994FormalisingConcept}, where explanations of all nine can be found. Some examples are ``Trust as Despair'', ``Trust as Virtue'', ``Trust as Masochism'', and ``Risk-taking or Gambling''. Deutsch's given model above specifically targets formalisation of trust as confidence.
 
-\begin{enumerate}
-    \item Trust as Despair
-    \item Trust as Social Conformity
-    \item Trust as Innocence
-    \item Trust as Impulsiveness
-    \item Trust as Virtue
-    \item Trust as Masochism
-    \item Trust as Faith
-    \item Risk-taking or Gambling
-    \item Trust as Confidence
-\end{enumerate}
-
-Deutsch's given model above specifically targets formalisation of trust as confidence.
+% \begin{enumerate}
+%     \item Trust as Despair
+%     \item Trust as Social Conformity
+%     \item Trust as Innocence
+%     \item Trust as Impulsiveness
+%     \item Trust as Virtue
+%     \item Trust as Masochism
+%     \item Trust as Faith
+%     \item Risk-taking or Gambling
+%     \item Trust as Confidence
+% \end{enumerate}
+% 
+% Deutsch's given model above specifically targets formalisation of trust as confidence.
 
 \subsubsection{Luhmann}
 Luhmann, a sociologist who also worked in Trust and related fields, had his own take on formalisms of Trust: that trust was a social tool for reducing the complexity of a social system. Specifically, Luhmann sees trust as being a method whereby agents in a social system can reduce their exposure of \emph{risk} to each other. According to Luhmann, ``Trust{\ldots} presupposes a situation of risk.''\cite{luhmann2000familiarity}\par
@@ -94,7 +94,7 @@ Marsh also succeeds in introducing concrete examples of computational formalisms
 Since Marsh's work, many trust models have been developed. A small subset of these are reviewed here; offshoots from this seminal work include REGRET, FIRE, and others.\par
 
 \subsubsection{Castelfranchi \& Falcone}
-As it turns out, cognitive computational trust models that already exist are almost but not quite appropriate for modelling responsibility. The C\&F trust model requires only four main ingredients to formulate a cognitive trust model:
+As it turns out, cognitive computational trust models that already exist are almost but not quite appropriate for modelling responsibility. The C\&F trust model requires only four main components to formulate a cognitive trust model:
 
 \begin{enumerate}
     \item \emph{x}, a truster
@@ -103,7 +103,7 @@ As it turns out, cognitive computational trust models that already exist are alm
     \item \emph{\safealpha}, an action of \emph{y}
 \end{enumerate}\par
 
-This model gets us close to where we need to be to model responsibility; like responsibility modelling often does, it assumes two agents. There also exists some goal which can be met, which --- to use C\&F terminology --- is \emph{delegated} by \emph{x} to \emph{y}. \emph{Y} can achieve this goal through some action, \emph{\safealpha}. So far, all of this forms the beginning of a foundation for cognitive responsibility; what turns delegation of a task into the consignment of responsibility is that of obligation, and the understanding of obligation. \par
+This model gets us close to where we need to be to model responsibility; like responsibility modelling often does, it assumes two agents. There also exists some goal which can be met, which --- to use C\&F terminology --- is \emph{delegated} by \emph{x} to \emph{y}. \emph{Y} can achieve this goal through some action, \emph{\safealpha}. So far, all of this forms the beginning of a foundation for cognitive responsibility; what turns delegation of a task into the consignment of responsibility is obligation, and the understanding of obligation. \par
 
 It is evident that trust and responsibility models are, even in the human-like cognitive approach, very similar. However, there are drawbacks which mean that we cannot directly apply C\&F theory to the idea of computational responsibility: it does not represent any degree of obligation or address the specific problem of judging responsibility at all.\par
 
@@ -121,11 +121,13 @@ In this way, Eigentrust creates a formalism that:
     \item Allows for an effective distributed trust model
 \end{enumerate}
 
-However, it is unfortunately a bad fit for the model required for the proof-of-concept responsibility formalism. One reason for this is that Eigentrust explicitly does not attempt to interpret trust values; they are taken at face-value. As a result, the model wouldn't fit the space of minds of possible actors which was originally suggested as appropriate. The formalism constrains behaviour in other ways for appropriate trust modelling; however, some work may be required to produce a similar formalism for computational responsibility.\par
+At first glance, Eigentrust appears to present a novel, elegant solution to trust formalism which might suit the responsibility formalism perfectly. However, nuances regarding its definition differ from that proposed, and significant work would be required to overhaul this model.
+
+One reason for this is that Eigentrust explicitly does not attempt to interpret trust values; they are taken at face-value. As a result, the model wouldn't fit the space of minds of possible actors which was originally suggested as appropriate. The formalism constrains behaviour in other ways for appropriate trust modelling; however, some work may be required to produce a similar formalism for computational responsibility.\par
 
 Another effect of adopting a framework like Eigentrust for building a responsibility formalism would be that it would work significantly less well for modelling an agent's personal obligations, making it less suitable for parametrising the decision function of an intelligent agent. An argument to be made is that Eigentrust presents a way for an agent to assess its environment. This is true. However, consider that a public ledger where one agent was seen to be more responsible than another would lead all agents to assign tasks to that supremely responsible agent; tasks would not therefore be assigned to marginally less responsible agents without some significant work to make the global scores from an Eigentrust-based model suitable for a responsibility model. Using Eigentrust-based scoring systems would also limit one's ability to separate types of responsibility in a similar way to Marsh's separation of basic, general and situational trust: Eigentrust's very simple \(+/-1\) reputation system permits little insight into types of actions an agent is adept at.\par
 
-Eigentrust presents an interesting and unique approach to trust formalism which is practical and effective. However, its limitations pertaining to the more social form of responsibility desired, combined with its higher degree of mathematical complexity over alternatives, means that it is more suitable as a curiosity than a foundation for the purposes of this work.\par
+Eigentrust presents an interesting and unique approach to trust formalism which is practical and effective. Were the requirements of the responsibility formalism proposed any different, Eigentrust would posit a very enticing foundation on which the responsibility model could be based. Unfortunately however, its limitations pertaining to the more social form of responsibility desired, combined with its higher degree of mathematical complexity over alternatives, means that it is more suitable as a curiosity than a foundation for the purposes of this work.\par
 
 % --Omitted because I'm not yet read up enough on Gambetta.-- 
 %\subsubsection{Gambetta}
@@ -159,7 +161,7 @@ The separation of concerns between consequential and causal responsibilities can
     Causal responsibilities are responsibilities which relate to future states, and the actors and actions which are potentially assigned with the goal of arriving at said state.
 \end{displayquote}
 
-This separation of past responsibilities and future responsibilities means that we can structure the concerns and operation of a responsible agent according to a given formalism. Particularly, for our purposes, the assessment of one's responsibility to arrive at future states --- one's assessment of its \emph{Causal Responsibilities} --- might be informed by information an agent's information about its previous responsibilities and its ability to act responsibly --- one's \emph{Consequential Responsibilities}. Therefore, we might decide to create a responsibility formalism which specifically models the change in causal responsibility, by assessing consequential responsibility.\par
+This separation of past responsibilities and future responsibilities means that we can structure the concerns and operation of a responsible agent according to a given formalism. Particularly, for our purposes, the assessment of one's responsibility to arrive at future states --- one's assessment of its \emph{Causal Responsibilities} --- might be informed by an agent's information about its previous responsibilities and its ability to act responsibly --- one's \emph{Consequential Responsibilities}. Therefore, we might decide to create a responsibility formalism which specifically models the change in causal responsibility, by assessing consequential responsibility.\par
 
 As we approach a review of philosophical literature in \cref{subsec:philosophy}, we will find that a formalism geared toward causal responsibility is not only a very attractive way to model from a philosophical perspective, but that the philosophical literature on responsibility has converged on similar definitions of responsibility. Therefore, there appears to be a strong case that causal-first models --- aside from their simple structure and readiness to be tied into an agent's decision functions --- are a sound way of approaching the problem of framing problems concerning responsibility,  because of the consensus across fields which rarely interact.
 
@@ -185,7 +187,7 @@ This gives us an insight into how a realistic computational trust model might fu
 
 A suitable conclusion one might draw, then, would be that a valid computational model of responsibility \emph{must} take into account an analysis of the sociotechnical environment of the responsible agent. It would also be valid to draw the conclusion --- as a result of the first of Strawson's points discussed --- that it makes sense to talk about ``trusting'' and ``responsible'' computational agents as if they were humans. Another important conclusion to draw from this part of Strawson's discussion is that this is one way in which agents' interaction is meaningful: therefore, there is a significant body of work to be undertaken in the combination of trust and responsibility formalisms to the field of HCI\@. Some of this work is already underway\cite{Marsh2011, Macy2002}. \par
 
-Strawson also notes what sort of agent one rightly considers responsible. His argument relates to which agents one judges responsibility \emph{in}, rather than judging which actions an agent might consider itself responsible for. However, it is pertinent to this research in that it highlights what assumptions the formalism might make about an agent it models the responsibility of. In other words, Strawson helps us to limit the scope of the formalism in terms of the agents it targets.\par
+Strawson also notes what sort of agent one rightly considers responsible. His argument relates to which agents one judges responsibility \emph{in}, rather than judging the actions for which an agent might consider itself responsible. However, it is pertinent to this research in that it highlights what assumptions the formalism might make about an agent it models the responsibility of. In other words, Strawson helps us to limit the scope of the formalism in terms of the agents it targets.\par
 
 \begin{displayquote}
     Let us consider, then, occasions for resentment \ldots{}To the first group belong [agents of whom we can say] ``He didn't mean to'', ``He hadn't realised'', ``He didn't know'' \ldots{}``He couldn't help it'' \ldots{}None of them invites us to suspend towards the agent, either at the time of his action or in general, our ordinary reactive attitudes.\\
@@ -196,7 +198,7 @@ Strawson here demonstrates a useful separation of two groups of agents: those wh
 
 In other words, one feels resentment toward an agent which \emph{fails to fulfil a responsibility}. Using this definition, we can use Strawson's separation of resentment-inducing agents to limit the responsibility formalism's scope: an agent can be considered responsible for their actions when they can reasonably be assigned some goal (and possibly some actions to achieve this goal). Another way of saying this would be that an agent can be considered responsible for an action if we can \emph{trust} the agent with a goal; if a goal is assigned, then the act of assignment makes the agent responsible.\par
 
-Using Strawson's reasoning regarding resentment, then, we can reasonably assert the implication: a responsible agent is an agent actively trusted with a task: a ``causal responsibility'', to borrow Sommerville's terminology. Along with the earlier notes on types of agents\cref{sec:agent_types}, we can even further limit the scope of agents the formalism should be targeted toward. We also neatly tie into our formalism the assignment of responsibility to an agent; more detail, along with what the assigned responsibility should represent, is discussed in the proposed approach\cref{sec:proposed_approach}.\par
+Using Strawson's reasoning regarding resentment, then, we can reasonably assert the implication: a responsible agent is an agent actively trusted with a task ---  a ``causal responsibility'', to borrow Sommerville's terminology. Along with the earlier notes on types of agents\cref{subsec:types-of-agents}, we can even further limit the scope of agents the formalism should be targeted toward. We also neatly tie into our formalism the assignment of responsibility to an agent; more detail, along with what the assigned responsibility should represent, is discussed in the proposed approach\cref{sec:proposed_approach}.\par
 
 \subsubsection{Thomas M. Scanlon}
 In his essay, Justice, Responsibility, and the Demands of Equality\cite{scanlon2006justice}, Thomas Scanlon assesses responsibility as having two factors which bear striking resemblance to Sommerville's ``Causal'' and ``Consequential'' Responsibilities: ``Attributive'' and ``Substantive'' Responsibilities.\par
@@ -220,7 +222,7 @@ For one, deontic logic does deal with obligation, but from the perspective of fo
 Another issue is that deontic logic is a logical framework, rather than a mathematical formalism. As a result, it is difficult to model gradations of levels of responsibility from the perspective of deontic logic without making significant changes to it. Were the theory of computational responsibility proposed more similar to Castelfranchi \& Falcone's model than Marsh's in its inspiration from computational trust formalisms, this would be less of an issue; however, Marsh's approach to his formalism suits our philosophy regarding computational responsibility much better.\par
 
 \subsubsection{Sloman}\label{subsec:space-of-minds}
-While this is already explored somewhat in the introduction to give context to this proposal, Sloman's work on the space of possible minds\cref{Sloman1984TheMinds} is an interesting example of how intelligent agents might be addressed as increasingly anthropomorphic ``minds''. Whether an intelligent agent can have what is termed a mind is a philosophical question beyond the scope of this proposal. Sloman's work, however, does lend itself some useful concepts with which one might consider anthropomorphic agents.\par 
+While this is already explored somewhat in the introduction to give context to this proposal, Sloman's work on the space of possible minds\cite{Sloman1984TheMinds} is an interesting example of how intelligent agents might be addressed as increasingly anthropomorphic ``minds''. Whether an intelligent agent can have what is termed a mind is a philosophical question beyond the scope of this proposal. Sloman's work, however, does lend itself some useful concepts with which one might consider anthropomorphic agents.\par 
 
 Sloman's concept of the space of possible minds presents a notion that a mind, parametrised, can be represented by a series of spectra. These spectra combine as a mathematical Cartesian space, where a coordinate in that space represents a specific mind. There is, therefore, a subspace of this space which represents all possible human minds --- a larger subspace which represents all possible biological minds --- and possibly a broader still space which represents all possible minds, regardless of detail. Somewhere in this space, anthropomorphic algorithms reside.\par
 
@@ -237,7 +239,7 @@ A formalism which does help to answer the research questions introduced will hav
     \item Provide gradations of responsibility measures, in a similar way to that which Marsh's formalism permits
     \item Allow for the updating of the interpretation of responsibilities in a similar way to that which Strawson suggests
     \item Primarily address Sommerville's ``Causal'' responsibilities, or (the given interpretation of) Scanlon's ``Attributive'' responsibilities
-    \item They both follow Strawson's note on how agents with human factors change their outlook with respect to these factors through interaction
+    \item Follow Strawson's note on how agents with human factors change their outlook with respect to these factors through interaction
     \item Account for responsibility on the level of personal responsibility and societal responsibility\\
         (This would be achieved by agents who act on individual responsibility but who as a collective use responsibility to lower negative exposure, as per Luhmann's notes on risk)
 \end{itemize}
@@ -257,6 +259,6 @@ Trust and responsibility are similar concepts. Seen through the lens of C\&F, th
     \item They're both naturally framed in terms of task delegation
 \end{itemize}
 
-Trust and Responsibility's similarity regarding task delegation is particularly interesting: this might allow a responsibility formalism to operate in a similar way to trust, meaning that much of the existing literature on Trust could be re-appropriated (with some research) for the purposes of computational responsibility. Indeed, one definition of responsibility for a task might be the obligation to act on a delegated task. A corollary of C\&F argue that task delegation is inherently trust; then, all one need do to extend a trust formalism to a responsibility formalism would be to augment C\&F's axioms to include an agent's obligation, and one's formalism would be complete!\par
+Trust and Responsibility's similarity regarding task delegation is particularly interesting: this might allow a responsibility formalism to operate in a similar way to trust, meaning that much of the existing literature on Trust could be re-appropriated (with some research) for the purposes of computational responsibility. Indeed, one definition of responsibility for a task might be the obligation to act on a delegated task. A corollary of C\&F is the argument that task delegation is inherently trust; then, all one needs to do to extend a trust formalism to a responsibility formalism would be to augment C\&F's axioms to include an agent's obligation, and one's formalism would be complete!\par
 
-Unfortunately, C\&F's formalism, while technically calculable by a computer, uses logical expressions to evaluate trust. For the purposes of an application such as a decision function of an intelligent agent, unless that agent follows a structure such as a BDI model, this would not be terribly useful --- though it's worth noting that granular models of C\&F also exist\cite{lorini2008binary}.
+Unfortunately, C\&F's formalism, while technically calculable by a computer, uses logical expressions to evaluate trust. For the purposes of an application such as a decision function of an intelligent agent, unless that agent follows a structure such as a BDI model, this would not be terribly useful --- though it's worth noting that granular models of C\&F do also exist\cite{lorini2008binary}.
