@@ -2,15 +2,11 @@
 \todo{Identify risks in this approach}
 \section{Proposed Approach}\label{sec:proposed_approach}
 
-We can see that the literature available, while not on computational responsibility formalisms, are all fairly related to constructing the formalism proposed. In light of this, we can begin to identify some of the components of a suitable formalism:\par
+We can see that the literature available, while not on computational responsibility formalisms, is all fairly related to constructing the formalism proposed. In light of this, we can begin to identify some of the components of a suitable formalism:\par
 
 \begin{itemize}
-    \item The formalism should answer the research questions laid out in the problem statement\cref{sec:statement_of_problem}:
-        \begin{enumerate}
-            \item How can a computational formalism of responsibility direct the decisions made by an intelligent agent?
-            \item How can an intelligent agent assume the consequences of actions it makes, the decisions other agents make, and its general environment, so as to direct its interpretation of responsibility?
-        \end{enumerate}
-    \item The formalism should suitably limit the scope of the actors it models to be reactive, reflective agents\cref{sec:agent_types}.\\
+    \item The formalism should answer the research questions laid out in the problem statement\cref{sec:statement_of_problem}.
+    \item The formalism should suitably limit the scope of the actors it models to be reactive, reflective agents\cref{subsec:types-of-agents}.\\
         The formalism doesn't apply to all agents; we can imagine some agents which are *not* responsible, such as those shown by Strawson\cref{sec:strawson}, and agents which aren't reactive or reflective.
     \item The formalism should interpret the obligation an agent is assigned when another agent trusts it with a causal responsibility.
     \item Ideally, the formalism would utilise as much relevant psychology and sociology literature as possible so as to maximise the formalism's interdisciplinary potential.
@@ -19,14 +15,14 @@ We can see that the literature available, while not on computational responsibil
 % The formalism we're looking to build
 % - Things the formalism is made of
 % - Where those things come from
-\subsection{A responsibility formalism's constituent elements}
-\subsubsection{A trust formalism}
+\subsection{A Responsibility Formalism's Constituent Elements}
+\subsubsection{A Trust Formalism}
 A useful exercise is to discern what a responsibility formalism would consist of. Worth noting is that this formalism is a proof-of-concept and a starting point for further research to refine. Therefore, a simple model which is easy to implement correctly and reason about should be paramount.\par
 
 With this in mind, one important constituent part is that of the trust model the formalism works in tandem with. While this could in theory be any model, three notions are worth bearing in mind when selecting one.
 \begin{enumerate}
     \item The trust formalism selected should act as a starting point for the responsibility formalism's design, because of the similarities between trust and responsibility.
-    \item The trust formalism should express gradations of trust, rather than a boolean logical approach. This is important as the trust an agent has in another agent will allow the former to assess how responsible the latter is; these agents may be required to make judgements of \emph{how} responsible other agents may be, so they might choose one agent to be responsible for a goal over another.
+    \item The trust formalism should express gradations of trust, rather than a boolean logical approach. 
     \item The trust formalism should be simple, to act as a basis for the design of a simple responsibility formalism.
 \end{enumerate}
 
@@ -35,59 +31,77 @@ To satisfy all of these aims, Marsh's seminal trust formalism seems most appropr
 Marsh's model is also constructed with other disciplines in mind --- psychology and sociology feature prominently in its cited literature. However, Marsh cites no philosophical advancements in his model; therefore, the application of moral responsibility to the formalism being designed cannot be based on similar work used with this formalism.\par
 
 % What are we going to borrow from the literature?
-\subsection{Literature influence on the formalism's elements}
-\subsubsection{Formalism designed like Marsh's}
+\subsection{Literature Influence on the Formalism's Elements}
+\subsubsection{Formalism Designed Like Marsh's}
 The model of responsibility being designed requires the ability to model gradations of trust; therefore, Marsh's Trust formalism will act as the template for the responsibility formalism's design. In particular, Marsh's model's segregation of types of trust are useful for establishing the basic principles behind the responsibility model:
 
-{\centering
+\begin{table}[H]
+\begin{center}
 \begin{tabular}{c|c}
     \emph{Marsh's Trust} & \emph{Responsibility Formalism}\\
     Basic Trust & Basic Responsibility\\
     General Trust & General Responsibility\\
     Specific Trust & Specific Responsibility\\
 \end{tabular}
-    }
+    \caption{The analogy between trust and responsibility through Marsh's definitions}
+\end{center}
+\end{table}
 
 Using Marsh's model and adopting the jargon he develops means we can keep lots of the notions he develops, such as variable domains and separation of different ``levels'' of responsibility, such as how generally responsible an agent is, and how responsible an agent is for a very specific thing. Indeed, a layout of the variables we might use in a formalism of responsibility, compared to Marsh's, might look like this:
 
-\begin{tabular}{c c}
-    \emph{Marsh's Trust Model Variables} & \emph{Responsibility Formalism's Variables}\\
-    \begin{tabular}{c|c}
-        Knowledge (of x at time t) & True/False\\
-        Importance (of knowing fact x at time t) & \([0,+1]\)\\
-        Utility (of action \safealpha at time t to an agent) & \([-1,+1]\)\\
-        Basic Trust (of agent A at time t) & \([-1,+1)\)\\
-        General Trust (of agent A at time t in agent B) & \([-1,+1)\)\\
-        Situational Trust (of agent A at time t in agent B doing action \safealpha) & \([-1,+1)\)\\
-      \end{tabular} & 
-      \begin{tabular}{c|c}
-        Basic Responsibility (of agent A at time t) & \([-1,+1)\)\\
-        General Responsibility (of agent A at time t in agent B) & \([-1,+1)\)\\
-        Situational Responsibility (of agent A at time t in agent B doing action \safealpha) & \([-1,+1)\)\\
-      \end{tabular}\\
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{p{10cm}|c}
+    \emph{Marsh's trust variables} & \emph{Variable Range} \\ \hline \hline
+    Knowledge (of x at time t) & True/False\\
+    Importance (of knowing fact x at time t) & \([0,+1]\)\\
+    Utility (of action \safealpha at time t to an agent) & \([-1,+1]\)\\
+    Basic Trust (of agent A at time t) & \([-1,+1)\)\\
+    General Trust (of agent A at time t in agent B) & \([-1,+1)\)\\
+    Situational Trust (of agent A at time t in agent B doing action \safealpha) & \([-1,+1)\)\\
 \end{tabular}
+    \caption{Overview of Marsh's model components}
+\end{center}
+\end{table}
+
+\bigskip
+    
+\begin{center}
+    \begin{table}[H]
+\begin{tabular}{p{10cm}|c}
+    \emph{Proposed similar responsibility variables} & \emph{Proposed Variable Domains} \\ \hline \hline
+    Basic Responsibility (of agent A at time t) & \([-1,+1)\)\\
+    General Responsibility (of agent A at time t in agent B) & \([-1,+1)\)\\
+    Situational Responsibility (of agent A at time t in agent B doing action \safealpha) & \([-1,+1)\)\\
+\end{tabular}
+    \caption{Similar components a responsibility model can adopt in analogy to trust}
+\end{table}
+\end{center}
 
 Marsh's formalism also makes use of other concepts, such as sets of agents and definitions of what trust might be composed of; similarly, responsibility modelling will require the development of more concrete definitions, as we will see.\par
 
 % What, exactly, would a suitable outline of the formalism be?
-\subsubsection{Outlining the proposed formalism}
+\subsubsection{Outlining the Proposed Formalism}
 An example breakdown of responsibility and what it is might be the following:\par
-
+\begin{table}[H]
+\begin{center}
 \begin{tabular}{c p{10cm}}
     \emph{Responsibility Term} & \emph{Definition of Term} \\ \hline \hline
     Agent / Actor & Combination of Constraints, Environment, and Beliefs. Acts on a decision function. \\ \hline
     Obligation & Combination of Authority, Goal, Set of Appropriate Actions, Responsibility Score \\ \hline
     Responsibility Score & Number in \((0,1]\) assigned by authority denoting degree of obligation \\ \hline
     Action & Combination of Activity, Resource requirements, Possible Issues and Effect \\ \hline
-%     Agent / Actor & Intelligent agent acting on a decision function \\ \hline
     Authority & Agent which assigns an obligation to another agent \\ \hline
 \end{tabular}
+    \caption{Definitions of possible terms}
+\end{center}
+\end{table}
 
 Not all terms above are completely defined; however, the table is provided as an example of how a responsibility formalism might look. The formalism proposed here is by no means final, but it can be seen that it would produce gradations of responsibility, that authorities assign an obligation with a certain score, and that agents choose actions based on a decision function --- a decision function which takes into account assigned obligations when it produces a next action.\par
 
-One difference between the above table and a final formalism of responsibility is that the final formalism would also account for processes. For example, a number assigned by an Authority represents the degree to which the responsible agent is obliged to act toward a goal, but the agent itself needs to weigh this up against other factors. For example: might the goal be time sensitive? It's imperative that I pay my rent on time, but a responsibility to keep windows closed doesn't depend on any one point in time. In other words, regardless of the initial score assigned to paying rent, I (as an agent) must interpret that score while taking into account other features of the goal --- these features change from goal to goal, and theoretically from agent to agent, too. This \emph{interpretation function} is a necessary part of the formalism, too --- but it is defined by process, and not semantically.\par
+One difference between the above table and a final formalism of responsibility is that the final formalism would also account for processes. For example, a number assigned by an Authority represents the degree to which the responsible agent is obliged to act toward a goal, but the agent itself needs to weigh this up against other factors. For example: might the goal be time sensitive? It's imperative that I pay my rent on time, but a responsibility to keep windows closed doesn't depend on any one point in time. In other words, regardless of the initial score assigned to paying rent, I (as an agent) must interpret that score while taking into account other features of the goal of an obligation --- these features change from goal to goal, and theoretically from agent to agent also. This \emph{interpretation function} is a necessary part of the formalism, too --- but it is defined by process, and not semantically.\par
 
-\subsection{In answering research questions}
+\subsection{In Answering Research Questions}
 In stating the problem proposed, two research questions were devised:
 \input{research-questions}
 The first research question can be answered in part by the definition of the Agent / Actor's decision function making use of the responsibility formalism in choosing the agent's next actions. To show this, artificial agents will be constructed with decision functions which are guided by the agent's assigned responsibilities.\par

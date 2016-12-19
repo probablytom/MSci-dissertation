@@ -16,47 +16,30 @@ My strategy for completing the formalism outlined is composed of four milestones
 \subsection{Completing the Formalism}
 While some detail regarding the formalism and its structure has already been surmised, the full extent of the formalism is incomplete.\par
 
-One aspect of the formalism which has not been developed is the mathematical reasoning which turns the semantic descriptions of the formalism into one which is fully algorithmic. The mathematical expressions to be devised, while being vital for the completion of the formalism, allow the artificial agents to assess the impact of their actions and reason about the obligations they have been given, weighing them up and having their assessment of their obligation change over time. This is necessary for answering both the first and second research questions.\par
+One aspect of the formalism which has not been developed is the mathematical reasoning which turns the semantic descriptions of the formalism into one which is fully algorithmic. This will require some deep mathematical reasoning. It will also need to draw heavily on philosophical literature, so as to create a formalism which is socially and philosophically consistent. Other work yet to be completed involves the final definition of some components, which are a necessary part of the formalism but are unlikely to have a structural impact in the way that philosophical work might.\par
 
-Another aspect of the formalism yet to be completed is that some definitions of components of the formalism are yet incomplete. Some of these definitions are somewhat trivial, such as what precisely a goal is composed of --- these definitions are a necessary component of the formalism, but are unlikely to have a major impact on its structure. Other components, such as the domains the interpretation function maps to and from, may require a greater degree of insight to finalise.\par
-
-Some of the formalism still to be defined, such as the interaction between an agent and an obliging authority, may require philosophical reasoning and the creation of arguments of moral responsibility to fully develop. Philosophical work has already impacted the development of this formalism, and the Philosophy department at Glasgow University has kindly helped in pointing these components of the formalism in the correct direction. Further collaboration and ethical reasoning will continue in order to finish this part of the formalism. \par
-
-As a result of the multi-faceted and sometimes interdisciplinary nature of the work yet to be completed with regards finishing the formalism's finer details, a large portion of time has been allocated to ensuring that the details are correct. While testing the formalism may alter some of the definitions produced in minor ways, the intention is to create as complete and well-reasoned a formalism at these early stages as possible, so as to ensure the development of an appropriate test case. A risk in the research planned is that the test case developed does not properly test the responsibility formalism; to counter this concern, the formalism will be engineered to be as complete as possible in as early a stage of the work as possible.\par
-
-It is intended that this be completed by mid-January.\par
+The formalism should be as close to the final product of the research as possible, so extra time is allotted to complete the formalism properly. This involves finalisation of the details, and checking against literature of other disciplines. It is intended that this be completed by mid-January.\par
 
 \subsection{Designing the Use Case}
-The use case required to test the formalism is particularly important, as the somewhat semantic nature of the research may make data collection and analysis difficult. With prior work developing similar formalisms for fields such as trust formalisms, however, this component of the research is not expected to become a time-consuming aspect of the work. Unlike the development of the formalism itself, there are examples which can fairly heavily inspire the experimental design of the project. However, this does not mean that there is no work to be done!\par
+The use case required to test the formalism is particularly important, as the somewhat semantic nature of the research may make data collection and analysis difficult. It is believed though that a test case will arise naturally from both the related trust formalisms and their experimental technique, combined with the final formalism lending itself nicely to certain problems.\par
 
-An example of the work to be completed here is that a scenario must be chosen to be modelled. For example, were one performing research on workflow modelling, one would select a suitable real-world situation which can be broken down into a workflow and modelled appropriately --- an example might be the workflow a developer goes through in producing a new commit for a programming project in a VCS\@. For this responsibility formalism, a real-world scenario where responsibility affects one's decision making is required; this scenario should also act as an example of how an agent's feeling of responsibility regarding an obligation they have been assigned changes over time, so that this too might be modelled so as to test Research Question 2 (\cref{RQ}). The scenario chosen should also be tailored to exhibit definitions and other aspects of the formalism which were determined in the previous segment of work.\par
+The test case should exhibit properties of the models specifically which answer the research questions proposed (\cref{RQ}). An AI strategy should also be devised during this stage. A nuance of this segment of work is that the experiment being developed must ultimately produce some data to analyse. Therefore, metrics which are appropriate for the analysis of an artificial agent's behaviour --- and how responsibly that agent is behaving --- should be produced.\par
 
-An AI strategy should also be devised during this stage. While this work is not strictly artificial intelligence-specific, testing it will require artificial agents to be developed. In keeping with the research performed by Marsh\cite{Marsh1994FormalisingConcept}, these agents will likely be reinforcement learning agents, as this permits learning behaviour in the artificial agents without a particularly complex implementation., these agents will likely be reinforcement learning agents, as these can prove to be simple to implement while still exhibiting suitable learning behaviour. Decisions as to algorithms to implement for testing purposes will be determined in this stage.\par
-
-Along similar lines to the design of the intelligent agents' learning algorithms, the agents themselves will need to be designed to appropriately simulate responsibility using the formalism. This will require design of the agents in tandem with the example scenario, as well as determining the nature of the interpretation function used by the agents in assessing their obligations.\par
-
-A nuance of this segment of work is that the experiment being developed must ultimately produce some data to analyse. Therefore, metrics which are appropriate for the analysis of an artificial agent's behaviour --- and how responsibly that agent is behaving --- should be produced. This will be used to assess the formalism's efficacy in the next part of the work plan.\par
-
-This section of work, being smaller than the previous segment and building on the advancements made in the finalising of the definitions, should not be as time consuming as previous segment. Therefore, this is expected to be completed around the beginning of February.\par
+As this segment of the work draws heavily on definitions from the formalism and previous formalisms of human traits, it is not expected to be a significant amount of work relative to others. It is expected to be completed around the beginning of February.\par
 
 \subsection{Testing the Formalism}
-Once the test case has been identified and necessary aspects of the experiment are established, the example scenario will be developed using agent modelling tools appropriate for the task at hand. The agents developed must be designed to make use of the responsibility formalism, and should exhibit some characteristics:
-\begin{itemize}
-    \item Agents should be able to effectively discard actions they no longer assess themselves as ``responsible'' for. A real-world example of this behaviour might be if a person asks for coffee to be ordered for them, but then immediately order their own coffee: the sociotechnical environment is such that a human agent in this scenario, while aware that they have still been asked to order coffee, can see that the goal of ordering coffee has been fulfilled by the authority of the obligation already.
-    \item Agents should be able to act in increasingly more responsible ways as they learn their effects on the environment and the world around them. This is necessary for answering Research Question 2 (\cref{RQ}).
-\end{itemize}
+Once the test case has been identified and necessary aspects of the experiment are established, the example scenario will be developed using agent modelling tools appropriate for the task at hand. The agents developed must be designed to make use of the responsibility formalism. This can be shown, for example, by observing that agents disregard completely actions they are not responsible for. They also should identify and ignore other irresponsible agents. They should become more adept at this over time, in accordance with the research questions.\par
 
-Experimental data will be produced by assessing the actions chosen by the agents according to metrics specified in the previous segment of work. This data will then be analysed, so as to ascertain whether the formalism must be tweaked at all: any changes to the formalism which become apparent upon implementation will be made here, and the experiments will be carried out a second time should this be required. Another noteworthy component of this segment of work is that the analysis done on the data may take some time, given that the research does not lend itself as easily to experimental analysis as some other fields (such as algorithmic complexity analysis) might.\par
-
-Due to the need to write code and assess that the model produced is as bug-free as can be ensured, this segment is expected to take a significant amount of time. Should the previous block of planned work be completed around the beginning of February, this implementation is expected to be completed toward the end of February. If so, the analysis of the data produced should end this block of work around the middle of March.\par
+A concern in identifying time required for this block of work is that the formalism may prove infeasible computationally once implementation is attempted, requiring further refinement. To account for this, the analysis of the data produced should end this block of work around the middle of March.\par
 
 \subsection{Write-up}
-Once experimental data has been collected, verified, and analysed, the final block of work is to finish the write-up of the project. While this report will be developed in small parts as the work goes on, the bulk of the writing --- as well as insight and introspection as to the conclusions of the work, and the next steps which it offers --- will be developed and produced. It is expected that, should the rest of the work be properly completed at this point, that the report be finished around the beginning of April.
+Once experimental data has been collected, verified, and analysed, the final block of work is to finish the write-up of the project. This segment will include writeup of analysis and production of visualisations, as well as incorporating any writing produced as the project progresses. It is expected that, should the rest of the work be properly completed at this point, that the report be finished around the beginning of April.\par
 
+\subsection{Review of Time Allocation}
+The time allocated to the various components of the proposed work is therefore:%  given in \cref{table:time-allocation}.
 
-\subsection{Review of time allocation}
-\todo{Make a Gantt Chart!}
-The time allocated to the various components of the proposed work is as follows:\\
+\begin{table}[H]\label{table:time-allocation}
+\begin{center}
 \begin{tabular}{r|l}
     \emph{Section} & \emph{Intended completion time}\\
     Finalise Formalism & Mid-January\\
@@ -64,5 +47,8 @@ The time allocated to the various components of the proposed work is as follows:
     Run Tests and Collect Data & Early/Mid-March\\
     Write-up Completed & End March\\
 \end{tabular}\par
+    \caption{Time allocated to various parts of the work}
+\end{center}
+\end{table}
 
-Note that the completion of the work ends three weeks before the project is due. To avoid complications and rushed research, the work has been planned with a three-week margin of time should any part overrun. This is particularly handy in the case that testing the formalism introduces minor changes, or other unexpected delays. It is hoped that this margin results in the entirety of the research having the amount of time available to complete the work \emph{properly}, rather than rushing later stages such as experimentation as a result of some unintended issue.\par
+Note that the completion of the work ends three weeks before the project is due. To avoid complications and rushed research, the work has been planned with a three-week margin of time should any part overrun. This is due to the change that revisions of the formalism may be required, and iterating the work may be time consuming and difficult to account for. In addition, providing a small margin of time ensures minimal rushing of the project and appropriate time management indicates more quality overall work.\par

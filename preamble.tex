@@ -23,11 +23,7 @@
 
 %% CUSTOM for todos taken from http://tex.stackexchange.com/questions/9796/how-to-add-todo-notes#9797
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
-\newcommand{\unsure}[1]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red]{#1}}
-\newcommand{\change}[1]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue]{#1}}
-\newcommand{\info}[1]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen]{#1}}
-\newcommand{\improvement}[1]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum]{#1}}
-\newcommand{\thiswillnotshow}[1]{\todo[disable]{#1}}
+\newcommand{\timnote}[1]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue]{#1}}
 
 \usepackage{enumitem}
 
@@ -35,7 +31,11 @@
 \crefname{chapter}{\S}{\S\S}
 \crefname{section}{\S}{\S\S}
 \setcounter{secnumdepth}{3}
-%\crefformat{figure}{Figure #2#1#3}
-\crefname{appendix}{Appendix}{Appendices}
+\crefname{table}{table}{tables}
+\Crefname{table}{Table}{Tables}
+\crefname{figure}{figure}{figures}
+\Crefname{figure}{Figure}{Figures}
+\crefname{appendix}{appendix}{appendices}
+\Crefname{appendix}{Appendix}{Appendices}
 
 \usepackage{float}
