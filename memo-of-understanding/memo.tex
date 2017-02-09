@@ -18,20 +18,29 @@ A list of the work we've done so far, so as not to lost track of it all.
 We have some basic definitions and terminology to keep track of:
 
 \begin{enumerate}
-   \item An \emph{obligation} is a set of satisfaction constraints which describe something which needs to be done.\newline
-         For example: tidying a room might be constrained by the satisfaction criteria: \begin{verbatim}{'room-tidiness': '>= 0.9', 'mess-created-elsewhere': '<0.3'}\end{verbatim}
-         \item A \emph{responsibility} is an assigned and accepted obligation. 
-         \item An actor which assigns an obligations is an \emph{authority}.
-         \item An actor which receives responsibilities is a \emph{delegee}.
-         \item When an obligation is assigned, information relative to the assignment is bundled with the obligation to turn it into a responsibility. This includes:
+\item An \emph{obligation} is a set of satisfaction constraints which describe something which needs to be done.\newline
+  For example: tidying a room might be constrained by the satisfaction criteria: \begin{verbatim}{'room-tidiness': '>=
+      0.9', 'mess-created-elsewhere': '<0.3'}\end{verbatim}
+
+\item A \emph{responsibility} is an assigned and accepted obligation. Information relative to the assignment is bundled
+  with the obligation to turn it into a responsibility. This includes:
          \begin{itemize}
              \item The assigning authority
              \item A score of importance from the authority's perspective.
          \end{itemize}
-         Note that the score of importance is only determined when the responsibility is assigned: it might be imperative for one actor to fulfil an obligation, but not another. An example of this might be writing an essay. It might be imperative that one student write the essay, but optional for another.
-         \item When a delegee is assigned a responsibility, they may accept or reject that responsibility. A boolean indicating acceptance is returned to the authority.
-         \item When a delegee accepts an obligation, the resulting responsibility's score is interpreted into a delegee-specific score via an interpretation function (for subjectivity).\newline
-         This interpretation function can be a learning algorithm such as reinforcement learning, and the agent directs its interpretation of responsibility this way.
+
+         Note that the score of importance is only determined when the responsibility is assigned: it might be
+         imperative for one actor to fulfil an obligation, but not another. An example of this might be writing an
+         essay. It might be imperative that one student write the essay, but optional for another.
+
+         \item An actor which assigns an obligations is an \emph{authority}.
+         \item An actor which receives responsibilities is a \emph{delegee}.
+         \item When a delegee is assigned a responsibility, they may accept or reject that responsibility. A boolean
+           indicating acceptance is returned to the authority.
+         \item When a delegee accepts an obligation, the resulting responsibility's score is interpreted into a
+           delegee-specific score via an interpretation function (for subjectivity).\newline This interpretation
+           function can be a learning algorithm such as reinforcement learning, and the agent directs its interpretation
+           of responsibility this way.
 \end{enumerate}
 
 \bigskip
@@ -40,24 +49,47 @@ We have some basic definitions and terminology to keep track of:
 
 \subsection{Calculating other agents' responsibility}
 
-Calculating how responsible another agent is can be done by, for every constraint which affects a resource, sum the authority-perspective importance score multiplied by the binary form of the result of the satisfaction constraint. Divide by the number of constraints analysed.\par
+Calculating how responsible another agent is can be done by, for every constraint which affects a resource, sum the
+authority-perspective importance score multiplied by the binary form of the result of the satisfaction
+constraint. Divide by the number of constraints analysed.\par
 
-Form a vector of this calculation for each resource analysed; we end up with a vector of the responsibility of an actor from all specific perspectives.\par
+Form a vector of this calculation for each resource analysed; we end up with a vector of the responsibility of an actor
+from all specific perspectives.\par
 
-\subsubsection{Calculating an agent's own responsibility}
+\subsubsection{Calculating an agent's own responsibility performance}
+
+Calculating how responsible you were in past actions.
 
 Perform this calculation by analysing your own consequential responsibilities.\par
 
 \subsection{Calculating which agent to delegate to}
 
-We don't necessarily want to just maximise the responsibility of the delegee, because a very generally responsible agent may be very irresponsible for specific resources. \par
+We don't necessarily want to just maximise the responsibility of the delegee, because a very generally responsible agent
+may be very irresponsible for specific resources. \par
 
-We make a matrix, where one dimension is resources, and the other actions that an agent can take. We make this matrix for each agent. Each cell of the matrix is a representation of the affect of the action on the resource indicated by that cell's position.\par
+We make a matrix, where one dimension is resources, and the other actions that an agent can take. We make this matrix
+for each agent. Each cell of the matrix is a representation of the affect of the action on the resource indicated by
+that cell's position.\par
 
-Then, for each agent's matrix, we analyse what actions the agent can take which discharge the given obligation appropriately. For all agents which can discharge the obligation successfully, their specific responsibilities relative to the resources the obligation concerns are combined\todo{How are these combined? Just summed?}. We select the delegee by selecting the maximum specific responsibility from this pool.\par
+Then, for each agent's matrix, we analyse what actions the agent can take which discharge the given obligation
+appropriately. For all agents which can discharge the obligation successfully, their specific responsibilities relative
+to the resources the obligation concerns are combined\todo{How are these combined? Just summed?}. We select the delegee
+by selecting the maximum specific responsibility from this pool.\par
 
 \subsection{Influencing an interpretation of responsibility}
 
 \ldots{}at the moment, I think the only way of doing this that's been considered is an interpretation function; nothing concrete.\par
 
+\begin{itemize}
+\item Capabilities (what is the match between the constraints of the obligation and the things I can influence in
+  the environment)
+  \begin{itemize}
+  \item This could be calculated from each constraint, but then an extension could be proximate influence (knowing that
+    doing something has an indirect effect).
+  \end{itemize}
+\item Some sort of global responsibility variable for each agent (so generally pre-disposed is the agent to acting responsibly?).
+
+\item What is the match between your responsibility norms and the specifics of the responsibility (and give each norm an importance).
+
+\end{itemize}
 \end{document}
