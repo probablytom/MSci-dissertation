@@ -6,10 +6,10 @@
 
 \section{Memorandum of Understanding}
 
-A list of the work we've done so far, so as not to lost track of it all.
+A list of the work we've done so far, so as not to lose track of it all.
 
 \subsection{Research Questions}
-\input{../research-questions}
+\input{research-questions}
 
 \bigskip
 
@@ -92,4 +92,22 @@ by selecting the maximum specific responsibility from this pool.\par
 \item What is the match between your responsibility norms and the specifics of the responsibility (and give each norm an importance).
 
 \end{itemize}
+
+\section{Implementation Details}
+For discussing specifics with the model being built.
+
+\subsection{Constraint evaluation}
+Currently, a constraint can be one of two classes:
+
+\begin{itemize}
+    \item A Deadline
+    \item A ResourceDelta
+\end{itemize}
+
+A Deadline is an object which specifies the time a responsibility should be completed by. They're quite simple. They get initialised with an integer duration and a clock object.\par
+
+A ResourceDelta is more useful: it gets initialised with a dictionary of:\\
+\texttt{\{resource\_to\_change: integer\_delta\_of\_that\_resource\_upon\_successful\_delegation\}}\\
+A responsibility which contains ResourceDelta constraints can calculate the culminative effect of all of its required resource changes by assessing these ResourceDeltas. The resource named in the dictionaries must be an attribute of the agent who is discharging the responsibility.
+
 \end{document}
