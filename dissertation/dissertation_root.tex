@@ -9,12 +9,34 @@
 \maketitle
 
 \section{Introduction}
+A growing area of research lies in the formalism of human traits into computational representations. These algorithms make computers more human-like; for that reason, they are referred to here as ``Anthropomorphic Algorithms''. A similar term, ``human-like computing'', has also risen in popularity lately. Human-like computing does not strictly focus on the implementation of formalisms of human traits, however, which is the area of interest for this report.\par
 
+This implementation interest, realised in the study of anthropomorphic algorithms, presents an interesting sociotechnical problem. They present an opportunity to alter the behaviour of actors in a sociotechnical system, and to do so in a way that is easy to reason about. This alternation of behaviour is done by the algorithmic implementation of a \emph{formalism}. Formalisms present a concrete definition --- by process, mathematical definition or semantic description --- which can be used to construct an anthropomorphic algorithm. These formalisms tend to attempt to model in one of two ways:
+
+\begin{enumerate}
+    \item Modelling the trait as a useful metaphor\\
+    These models tend to be inaccurate with regards the social science surrounding the trait that they model. However, they make a trade-off between this accuracy and the model's utility. For example, the notion of trust as a metaphor for a type of behaviour might be useful in information security research, but what matters in the formalisms implemented for this research is the formalism's utility in information security --- \emph{not} whether the formalism accurately represents human trust.
+    \item Modelling social science directly\\
+    These models attempt to accurately model the traits they concern. This can be useful for fields such as sociotechnical modelling, as well as social sciences research. There are also interesting applications for these models in interaction study: making interfaces interact with users in a human-like way, and representing the states of these traits to the users, are valuable research areas which are more applicable to these type-2 formalisms than to type-1 formalisms.
+\end{enumerate}
+
+In reality, most formalisms and their implementations lie somewhere on the spectrum that these two types define.
 
 \section{Statement of Problem}
+Computational formalisms of human traits are a growing field of research, with applications in lots of different areas. A problem with these anthropomorphic algorithms is that there is limited breadth to the scope of existing research in the field (as is demonstrated during the background survey in \cref{sec:related_work}). The metaphor of the human trait in these algorithms remains largely unexplored.\par
+
+Breadth in the application of the metaphor is important, however. The importance stems from the utility in the human metaphor when designing systems:
+
+\begin{itemize}
+  \item Human-Computer Interaction can make use of behavioural metaphors to relay complicated internal states to a user. Storer et al. \cite{storer_mobile_behaviour_poster} demonstrated methods by which a mobile device might dissuade certain user actions by expressing its ``discomfort'' or lack of ``trust'' in its interaction design.
+  \item Information Security can make use of behavioural metaphors in order to increase difficulty of access when negative system states are encountered. A system might allow access on a graded scale, dependant on internal states of trust, comfort, and confidence.
+  \item Theoretical advancements in smart city technology\cite{wallis_talk_about_x_talk} might increase a city's resilience by integrating notions of responsibility into public services and the environment on a community scale.\par
+\end{itemize}
+
+While similar results can often be achieved using regular techniques, the human metaphor allows for a better communication between a human user and complicated system states. All of the above examples enter around this notion; however, the applications extend beyond Human-Computer Interaction research.\par
 
 
-\section{Related Work}
+\section{Related Work}\label{sec:related_work}
 
 
 \section{A Formalism of Responsibility}
@@ -28,7 +50,6 @@
 
 \section{Discussion}
 
-This is a test\cite{testcite}
 
 \bibliographystyle{abbrv}
 \bibliography{biblio}
