@@ -8,8 +8,12 @@
 
 \maketitle
 
+\begin{abstract}
+    Currently, models are produced for responsibility modelling which have their roots in logic. These models, while sophisticated, suffer from a lack of pragmatism: for guiding agent behaviour in sociotechnical simulations, logical models are not always ideal. In the similar field of trust modelling, algorithmic models which emulate social behaviour produce useful results while being easier to understand, implement, and reason about. In this paper\todo{paper? report? project?}, a proof-of-concept responsibility modelling platform adopting the algorithmic formalism style employed by trust modelling is produced, and its utility evaluated.
+\end{abstract}
+
 \section{Introduction}
-A growing area of research lies in the formalism of human traits into computational representations. These algorithms make computers more human-like; for that reason, they are referred to here as ``Anthropomorphic Algorithms''. A similar term, ``human-like computing'', has also risen in popularity lately. Human-like computing does not strictly focus on the implementation of formalisms of human traits, however, which is the area of interest for this report.\par
+A growing area of research lies in the formalism of human traits into computational representations. These algorithms make computers more human-like; for that reason, they are referred to here as ``Anthropomorphic Algorithms''\todo{improve the introduction of the Anthropomorphic Algorithms term}. A similar term, ``human-like computing'', has also risen in popularity lately. Human-like computing does not strictly focus on the implementation of formalisms of human traits, however, which is the area of interest for this report.\par
 
 This implementation interest, realised in the study of anthropomorphic algorithms, presents an interesting sociotechnical problem. They present an opportunity to alter the behaviour of actors in a sociotechnical system, and to do so in a way that is easy to reason about. This alternation of behaviour is done by the algorithmic implementation of a \emph{formalism}. Formalisms present a concrete definition --- by process, mathematical definition or semantic description --- which can be used to construct an anthropomorphic algorithm. These formalisms tend to attempt to model in one of two ways:
 
@@ -28,24 +32,57 @@ Computational formalisms of human traits are a growing field of research, with a
 Breadth in the application of the metaphor is important, however. The importance stems from the utility in the human metaphor when designing systems:
 
 \begin{itemize}
-  \item Human-Computer Interaction can make use of behavioural metaphors to relay complicated internal states to a user. Storer et al. \cite{storer_mobile_behaviour_poster} demonstrated methods by which a mobile device might dissuade certain user actions by expressing its ``discomfort'' or lack of ``trust'' in its interaction design.
+  \item Human-Computer Interaction can make use of behavioural metaphors to relay complicated internal states to a user. Storer et al.~\cite{storer_mobile_behaviour_poster} demonstrated methods by which a mobile device might dissuade certain user actions by expressing its ``discomfort'' or lack of ``trust'' in its interaction design.
   \item Information Security can make use of behavioural metaphors in order to increase difficulty of access when negative system states are encountered. A system might allow access on a graded scale, dependant on internal states of trust, comfort, and confidence.
   \item Theoretical advancements in smart city technology\cite{wallis_talk_about_x_talk} might increase a city's resilience by integrating notions of responsibility into public services and the environment on a community scale.\par
 \end{itemize}
 
-While similar results can often be achieved using regular techniques, the human metaphor allows for a better communication between a human user and complicated system states. All of the above examples enter around this notion; however, the applications extend beyond Human-Computer Interaction research.\par
-
+While similar results can often be achieved using regular techniques, the human metaphor allows for a better communication between a human user and complicated system states. All of the above examples center around this notion; however, the applications extend beyond Human-Computer Interaction research.\par
 
 \section{Related Work}\label{sec:related_work}
 
 
+\subsection{Trust Modelling}
+
+\subsubsection{Castelfranchi \& Falcone}
+
+\subsubsection{Marsh}
+
+\subsubsection{Eigentrust}
+
+
+\subsection{Sociotechnical Systems}
+
+\subsubsection{FIRE}
+
+\subsubsection{Ian Sommerville}
+
+
+\subsection{Philosophical Literature}  % The nature of responsibility, and the validity of modelling anthropic traits in a machine.
+
+\subsubsection{P.F. Strawson}  % The nature of responsibility
+
+\subsubsection{Thomas Scanlon}  % A philosophical perspective which converges on Sommerville's ideas in Dependable Systems
+
+\subsubsection{Sloman}  % The space of artificial minds, and a brief note on the philosophical value of this formalism (optional!)
+
+
+
 \section{A Formalism of Responsibility}
+
+\subsection{Design Decisions and Philosophy}
+
+\subsection{Feature 1: Acting on Responsibilities}
+
+\subsection{Feature 2: Judgement of Responsibility}
 
 
 \section{Evaluating the Formalism}
 
 
 \section{Future Work}
+
+\subsection{Advancing the formalism}
 
 
 \section{Discussion}
