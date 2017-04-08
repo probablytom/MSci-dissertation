@@ -47,7 +47,17 @@ Recently, some interest has been shown in research pertaining to modelling and f
 
 A model of responsibility might be more than simple task allocation, however. In particular, a model of responsibility might allow a responsible sociotechnical agent to choose responsibilities to discharge, rather than blindly executing tasks they are provided with.\par
 
-This has a number of potential applications. One such possibility would be to implement agent awareness of remote task execution via RPC. Should an agent on a network be given a procedure to execute which is percieved through a responsibility formalism to be unusual, the procedure may not be executed, or may be rejected upon reciept by the responsible agent. Similar applications have proven effective in trust literature, particuarly the Eigentrust algorithm as laid out in \cite{}, where information security by inferring agent trustworthiness is evaluated.
+This has a number of potential applications. One such possibility would be to implement agent awareness of remote task execution via RPC. Should an agent on a network be given a procedure to execute which is percieved through a responsibility formalism to be unusual, the procedure may not be executed, or may be rejected upon reciept by the responsible agent. Similar applications have proven effective in trust literature, particuarly the Eigentrust algorithm as laid out in \cite{eigentrust}, where information security by inferring agent trustworthiness is evaluated.\par
+
+In a realistic sociotechnical system, an agent's behaviour is often informed via a feedback loop. It is important, therefore, to allow an agent to learn better ``responsible'' behaviour over time, through an analysis of its sociotechnical environment and other factors.\par
+
+To achieve these goals, two research questions were formulated:
+
+\label{RQ}\begin{enumerate}
+    \item How can a computational formalism of responsibility direct the decisions made by an intelligent agent?
+    \item How can an intelligent agent assume the consequences of actions it makes, the decisions other agents make, and its general environment, so as to direct its interpretation of responsibility?
+\end{enumerate}\par
+
 
 \section{Related Work}\label{sec:related_work}
 
