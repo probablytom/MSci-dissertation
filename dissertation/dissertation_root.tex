@@ -86,10 +86,27 @@ In contrast to Marsh's formalism, C\&F is graded only in more complex forms. At 
 
 Curiously, the C\&F model of trust contains all of the same parameters as Marsh's, plus a fourth: the goal to be achieved by an action. One may take the position that a goal is also important in modelling responsibility --- but it is not immediately apparent that it is necessary to include it. Therefore, C\&F uncovers the need when building a formalism of a trait to make choices as to the formalism's philosophy regarding the trait.\par
 
-In particular, two philosophical differences between Marsh's model and that of C\&F are immediately apparent: where Marsh separates his calculation of trust into a basic/general/specific granularity, C\&F separate trust's different constituent parts, each of which must be satisfied for trust to be present. Another philosophical difference between the two is the assertion as to whether the goal of an action factors into one's trust. These philosophical decisions can make concrete, important differences to a formalism's constitution --- which is plain to see when considering that even the parameters of the model differ, something fundamental to the formalism's definition of trust. Therefore, these choices as to the approach to responsibility are important to note in the formalism produced during this report\todo{report? paper? Dissertation?}\par
+In particular, two philosophical differences between Marsh's model and that of C\&F are immediately apparent: where Marsh separates his calculation of trust into a basic/general/specific granularity, C\&F separate trust's different constituent parts, each of which must be satisfied for trust to be present. Another philosophical difference between the two is the assertion as to whether the goal of an action factors into one's trust. These philosophical decisions can make concrete, important differences to a formalism's constitution --- which is plain to see when considering that even the parameters of the model differ, something fundamental to the formalism's definition of trust. Therefore, these choices as to the approach to responsibility are important to note in the formalism produced during this report\todo{report? paper? Dissertation?}.\par
 
 \subsubsection{Eigentrust}
+Eigentrust\cite{eigentrust} is a formalism which takes a notably different approach to Marsh and C\&F's formalisms: rather than attempting to model human trust accurately, it models trust as a metaphor for the truly desired behaviour.\par
 
+Calculations of trust in Eigentrust have their foundations in eBay's model for reputation: star ratings based on a summation of satisfaction scores. In particular: \[s(i,j) = sat(i,j) - unsat(i,j)\], where \(sat\) is the number of satisfactory interactions between two agents and \(unsat\) the unsatisfactory ones, represents a ``local trust value'' that an agent \(i\) has in another agent \(j\). Through some linear algebra, these local trust values are accumulated and gradually turned into a global score of responsibility, accounting for all agents' opinions of each other. This global score could also be considered to be an agent's \emph{reputation} --- in this way, Eigentrust generalises trust as a certain application of a reputation formalism, and bootstraps its own formalism on another trait.\par
+
+While Eigentrust has proven particularly effective in its intended domain, it is a formalism designed expressly for the purposes of network and information security. Eigentrust achieves this by a number of philosophical differences to Marsh and C\&F's respective formalisms:
+
+\begin{itemize}
+    \item Eigentrust operates in a distributed way. Unlike the local scoring system employed by Marsh and C\&F's formalisms, Eigentrust has all agents report their local trust scores, so as to create a distributed ledger of more general trust scores.
+    \item Eigentrust does not model trust directly, nor does it claim to model it accurately --- unlike C\&F's formalism, which is strictly intended as a model of human behaviour, and Marsh's, which simulates it, Eigentrust uses ``trust'' as a description of an agent's behaviour.
+    \item Eigentrust is not concerned with the cause of satisfactory or unsatisfactory interactions; it focuses entirely on accumulated positive/negative scores. In this way, Eigentrust somewhat models Marsh's ``general trust'', but makes no assertions as to trust's composition or how to reason about it.
+\end{itemize}
+
+In these respects, Eigentrust represents an interesting alternative end of the spectrum between anthropomorphic algorithms which treat their trait as a metaphor, or as a social behaviour to accurately simulate. While Eigentrust does not represent a very useful foundation for our responsibility formalism, it does highlight two things:
+
+\begin{enumerate}
+    \item The responsibility formalism required to test the research questions should be more similar to Marsh and C\&F's formalisms than Eigentrust: there is no specific use case to design for, so designing with a trait as a metaphor would not be appropriate.
+    \item Should it be necessary, a trait's formalism could be bootstrapped using a pre-existing formalism of another trait. Whether this is a suitable way to answer the research questions above is harder to address; the possibility should therefore be considered.
+\end{enumerate}
 
 \subsection{Sociotechnical Systems}
 
