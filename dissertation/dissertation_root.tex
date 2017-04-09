@@ -120,6 +120,7 @@ This philosophical decision makes FIRE an unlikely candidate as a foundation of 
 While these anthropomorphic algorithms are useful to consider in isolation, their application within the realm of sociotechnical systems is important to their design. Moreover, the nature of responsibilities is touched within the broader sociotechnical systems area of responsibility modelling --- research on the delegation and discharge of responsibilities, and how to reason about them.\par
 
 \subsubsection{Ian Sommerville}
+\todo{What more can we say about Sommerville's contributions? At the moment we only cover consequential and causal responsibilities.}
 Ian Sommerville was a prolific writer in the field of sociotechnical systems, who was responsible for much of the current literature on responsibility modelling\cite{sommerville_graphical_responsibility,sommerville_dependable_systems_chap_8,sommerville_dependable_systems_chapter_9}.\todo{What other references can go here?} Sommerville's responsibility modelling systems often happened to be graphical\cite{sommerville_graphical_responsibility}, a paradigm for computational responsibility which may prove hard to convert to an anthropomorphic algorithm. This is because graphical representations of system states do not naturally present themselves as a numerically analysable format for information --- rather, graphical presentations are useful for exposing sociotechnical system state. This feature of sociotechnical modelling, and particularly responsibility modelling, is useful for risk and impact analysis\cite{ObashiMethodology}.\par
 
 Sommerville's writing, however, presents a wealth of interesting insights which may be useful in understanding the context of the anthropomorphic algorithm, and understanding some possible choices as to the formalism's philosophy.\par
@@ -160,10 +161,24 @@ Another useful definition from Storer and Lock's report presents itself when dis
 This composibility is an interesting property, which may also imply that some responsibilities can be broken down into a form of sub-responsibility. This property would be useful to remember when modelling responsibilities in the desired formalism. It also implies that there may be a sort of ``atomic'' responsibility, that more complicated responsibilities are composed of.
 
 \subsection{Philosophical Literature}  % The nature of responsibility, and the validity of modelling anthropic traits in a machine.
-
-\subsubsection{P.F. Strawson}  % The nature of responsibility
+As responsibility is a social trait, and previous literature has indicated that it may be most appropriate to model it as such, input from literature in the humanities may shed light on how to consider and approach responsibility as a trait accurately. As time allowed for this report was somewhat limited, a more complicated sociologically/psychologically accurate model was not attempted. The decision was made to instead create a proof-of-concept model which encapsulated much of the existing sociotechnical systems literature, and verifying it using philosophical literature on the subject.
 
 \subsubsection{Thomas Scanlon}  % A philosophical perspective which converges on Sommerville's ideas in Dependable Systems
+
+\subsubsection{P.F. Strawson}  % The nature of responsibility
+P.F. Strawson is a philosopher with work on philosophy of language and of mind --- one particular essay, ``On Freedom and Resentment''\cite{strawson}, presents an argument that determinism shouldn't affect how we percieve human factors such as responsibility or trust.\par
+
+Strawson argues that these concepts are fundamentally relational, rather than having any inherant definition. The conclusion of this is that trust, responsibility, and other human traits have subjective properties and cannot be calculated outside of the perspective of an agent. This hints at a choice as to the desired formalism's philosophy: unlike a formalism such as Eigentrust, where components of trust scores are calculated independently of any one agent's perspective, the required responsibility scoring system must utilise a subjective perspective for \emph{all} calculations. Strawson's argument applies to sociotechnical systems, as it does not apply to any specific trait or type of person; therefore, both social and technological actors in a sociotechnical system might be the targets of a trait designed with Strawson's work in mind.\par
+
+Strawson also produces a fairly rigorous analysis of how ordinarily variable human traits can be formalised:
+
+\begin{quotation}
+    Indignation, disapprobation, like resentment, tend to inhibit or at least to limit our goodwill towards the object of these attitudes, tend to promote an at least partial and temporary withdrawal of goodwill; they do so in proportion as they are strong; and their strength is in general proportioned to what is felt to be the magnitude of the injury and to the degree to which the agents will be identified with, or indifferent to, it.\cite{strawson}
+\end{quotation}
+
+Strawson here identifies a similar property of human traits to Marsh: when an agent acts, the magnitude of the judgement of a trait with respect to the act is proportional to the magnitude of its effect on an overall judgement of the trait. That is to say, if an action has a given importance, the magnitude of that importance should carry through to judgements that the action impacts. This, combined with the subjectivity implied by the earlier point made by Strawson, implies that importance might be interpreted subjectively.\par
+
+The introduction of a parameter of importance associated with a responsibility score allows the magnitude of importance of an act to be quantified and tracked in consequential or substantive responsibilities, adhering to Strawson's second point. Should some mechanism for interpretation be provided by the formalism, a subjective factor is introduced, satisfying Strawson's first point. This also hints at how an agent might judge the degree of responsibleness of itself or another agent, helping to answer the second research question; Strawson's argument here is therefore useful in the construction of the desired computational responsibility formalism.\par
 
 \subsubsection{Sloman}  % The space of artificial minds, and a brief note on the philosophical value of this formalism (optional!)
 
@@ -198,6 +213,8 @@ This composibility is an interesting property, which may also imply that some re
 
 \subsubsection{Agents}  % Briefly describe Theatre model for agents and their workflows. Define authorities and delegees.
 
+\subsubsection{The Interpretation Function}  % Explain the interpretation function, and how it is used to make the entire formalism subject as per Strawson's writings.
+
 \subsubsection{Responsibility judgement}  % Judging an agent's repsonsibleness based on their consequential responsibilities. Differences between basic, general, and specific responsibilities.
 
 
@@ -221,3 +238,4 @@ This composibility is an interesting property, which may also imply that some re
 \bibliography{biblio}
 
 \end{document}
+:W
