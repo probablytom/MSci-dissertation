@@ -120,7 +120,41 @@ This philosophical decision makes FIRE an unlikely candidate as a foundation of 
 While these anthropomorphic algorithms are useful to consider in isolation, their application within the realm of sociotechnical systems is important to their design. Moreover, the nature of responsibilities is touched within the broader sociotechnical systems area of responsibility modelling --- research on the delegation and discharge of responsibilities, and how to reason about them.\par
 
 \subsubsection{Ian Sommerville}
+Ian Sommerville was a prolific writer in the field of sociotechnical systems, who was responsible for much of the current literature on responsibility modelling\cite{sommerville_graphical_responsibility,sommerville_dependable_systems_chap_8,sommerville_dependable_systems_chapter_9}.\todo{What other references can go here?} Sommerville's responsibility modelling systems often happened to be graphical\cite{sommerville_graphical_responsibility}, a paradigm for computational responsibility which may prove hard to convert to an anthropomorphic algorithm. This is because graphical representations of system states do not naturally present themselves as a numerically analysable format for information --- rather, graphical presentations are useful for exposing sociotechnical system state. This feature of sociotechnical modelling, and particularly responsibility modelling, is useful for risk and impact analysis\cite{ObashiMethodology}
 
+Sommerville's writing, however, presents a wealth of interesting insights which may be useful in understanding the context of the anthropomorphic algorithm, and understanding some possible choices as to the formalism's philosophy.\par
+
+
+\subsubsection{Tim Storer and Russell Lock}
+While describing a graphical responsibility modelling format for the InDeED project --- notably lead by Ian Sommerville --- Storer and Lock provide some useful foundations for other models of responsibility in a technological report on modelling responsibility\cite{storer2008modelling}.\par
+
+Most interestingly, Storer and Lock provide a useful definition of a responsibility:
+
+\begin{quotation}
+    A duty, held by some agent, to achieve, maintain or avoid some given state, subject to conformance with organisational, social and cultural norms.\cite{storer2008modelling}\par
+    
+    \ldots{}\par
+    
+    Responsibilities are the duties to be discharged by agents as described\ldots{}
+\end{quotation}
+
+Numerous things in this definition are useful. Similarly to the work done by Mash and C\&F, the definition provides an insight into some possible fundamental parameters of a responsibility:
+
+\begin{description}[align=right,labelwidth=3cm]
+    \item [A duty: ] responsibilities can be considered as some action an agent is \emph{obliged} to conduct.
+    \item [achieve\ldots{}some given state: ] the obligation which a duty is defined by can be described as a change of \emph{state}. Storer and Lock note that this state change can have different modes: it can be achieved, but also maintained or avoided. It is worth noting that this very general description of responsibility indicates that the graphical formalism designed for the InDeED project was somewhat socially accurate.
+    \item [comformance with\ldots{}norms: ] agents can be delegated responsibilities in most useful formalisms of responsibility --- Storer and Lock note that these responsibilities must not conflict with norms that an agent holds.
+\end{description}
+
+Unlike Marsh or C\&F's more mathematical definitions of trust, this semantic definition lends itself nicely to conversion to some responsibility model; partly because it already summarises the responsibility trait, but also because it describes an intuitive social definition of responsibility while remaining very simple. Therefore, a responsibility formalism which somehow extended this model, while retaining the power of the anthropomorphic algorithms described earlier would provide a very useful starting point for the desired responsibility formalism.\par
+
+Another useful definition from Storer and Lock's report presents itself when discussing the structure of a responsibility in their model:
+
+\begin{quotation}
+    Responsibilities may be composed of other responsibilities.
+\end{quotation}
+
+This composibility is an interesting property, which may also imply that some responsibilities can be broken down into a form of sub-responsibility. This property would be useful to remember when modelling responsibilities in the desired formalism. It also implies that there may be a sort of ``atomic'' responsibility, that more complicated responsibilities are composed of.
 
 \subsection{Philosophical Literature}  % The nature of responsibility, and the validity of modelling anthropic traits in a machine.
 
@@ -139,7 +173,7 @@ While these anthropomorphic algorithms are useful to consider in isolation, thei
 % Decision to be socially accurate
 %  - There's no specific application area, so we should focus on modelling responsibility as a general trait, rather than solving a specific problem. 
 %  - The research questions are best answered by a non-application-oriented formalism, because they're describing aspects of a responsibility formalism, not a responsibility formalism in a certain setting!
-%  - We're not trying to solve any issue percieved in other anthropomorphic algorithms, like FIRE does.
+%  - We're not trying to solve any issue perceived in other anthropomorphic algorithms, like FIRE does.
 
 % Decision to be decentralised --- no need to communicate judgement scores, agents calculate all on their own.
 
@@ -153,13 +187,21 @@ While these anthropomorphic algorithms are useful to consider in isolation, thei
 %  - Different agents in the real world have different ``opinions'' about responsibility
 %  - If the model is to be socially accurate to a degree, we should include a mechanism for different agents to see different responsibilities differently.
 
+\subsubsection{Constraints}  % Constraints are the "atomic responsibilities" defined earlier. It's the fudamental unit of state change that Storer describes earlier.
 
-\subsection{Feature 1: Acting on Responsibilities}
+\subsubsection{Obligations}  % Sets of constraints. An obligation is a description of a responsibility's effect, but doesn't concern itself with metadata like the discharging agent.
 
-\subsection{Feature 2: Judgement of Responsibility}
+\subsubsection{Responsibilities}  % An assigned obligation, with an authority and a delegee. Explain that importances are also introduced here, as the same obligation may be important to different delegees in different ways. Properly define the term "discharge"
+
+\subsubsection{Agents}  % Briefly describe Theatre model for agents and their workflows. Define authorities and delegees.
 
 
 \section{Evaluating the Formalism}
+
+\subsection{RQ 1: Acting on Responsibilities}
+
+\subsection{RQ 2: Judgement of Responsibility}
+
 
 
 \section{Future Work}
