@@ -2,6 +2,12 @@
 \usepackage{cleveref}
 \usepackage[obeyDraft,textsize=tiny]{todonotes}
 \usepackage{enumitem}
+\usepackage{caption}
+
+
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
 
 \let\regulartodo\todo
 \renewcommand{\todo}[1]{\regulartodo[inline]{#1}}

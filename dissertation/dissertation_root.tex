@@ -242,19 +242,101 @@ The required formalism ought to allow for subjective, agent-based ``opinions'' r
 \subsection{Specific Formalism Details}
 \todo{Is there a better title for this subsection? Supposed to be details of the actual formalism which was designed with these design philosophies in mind.}
 
+Related research has helped to inform many design choices surrounding the formalism required to fulfil the research questions which this project\todo{project? paper? report? dissertation?} answers. As the necessary design decisions are now properly understood, a computational responsibility model which conforms to these design choices can be constructed.\par
+
+The components of the formalism defined by this paper are Constraints, Obligations, Responsibilities, Importances, Agents, an Interpretation Function, and a mechanism for judging the responsibleness of any given agent.\par
+
 \subsubsection{Constraints}  % Constraints are the "atomic responsibilities" defined earlier. It's the fudamental unit of state change that Storer describes earlier.
+A responsibility, for the purposes of this model, will be considered a state change in a sociotechnical environment. This definition is insufficient for modelling a responsibility, however, as metadata such as delegee, authority, and importance should also be defined. In addition, it should be possible to compose these sociotechnical state changes.\par
+
+To achieve this goal, Constraints are introduced. Constraints are descriptions of a sociotechnical state change. Storer \& Lock's idea of a composable responsibility form implies an atomic responsibility which cannot be \emph{decomposed} --- Constraints satisfy this atomic property.\par
+
+The model also defines two types of constraints:
+
+\begin{description}
+    \item [ResourceDelta: ] a constraint which describes a set of changes to a number of variables (referred to here as a ``resource'') in the sociotechnical environment. The delta associated with the variable is described as a floating point number.
+    \item [Deadline: ] the expected duration of the task. This constraint is special, because it is also provided with a clock for reference so as to calculate time relative to the constraint's reference frame --- clocks are provided by the Theatre modelling library\cite{theatre_code}. They are otherwise similar to a ResourceDelta.\todo{check that this citation has worked properly --- it's a reference to a Github repo...}
+\end{description}
+
+Using these two constraint types, changes to the sociotechnical environment are recorded as specifications for a responsibility discharge. It is imperative to note that the constraint creation does not include an importance, even though the design philosophy of the formalism is to give each responsibility a formalism. A Constraint is the atomic definition of a responsibility's effect; therefore, all constraints must eventually receive importance scores. An importance score cannot be provided upon the creation of a constraint, however, as the constraint simply describes a sociotechnical state change --- an importance score is a detail which only becomes necessary upon responsibility delegation, as different delegees may be required to meet the same state change specification with different importances. Constraints are therefore initialised without importance scores.\par
 
 \subsubsection{Obligations}  % Sets of constraints. An obligation is a description of a responsibility's effect, but doesn't concern itself with metadata like the discharging agent.
+Obligations are sets of Constraints --- they therefore allow Constraints to be composed together. Obligations may only concern themselves with a single Constraint, but defining a specific type which contains all Constraints a Responsibility is concerned with allows for a complete specification of that Responsibility's effect on the sociotechnical environment.\par
+
+An Obligation therefore defines the complete sociotechnical effect which is defined by Storer \& Lock as a responsibility --- however, it concerns itself with no metadata as to the specific responsibility it serves as a specification of. Obligations might rather be considered a Responsibility which has not been delegated: details such as authority and delegee are not specified, but the sociotechnical definition of the responsibility is fulfilled. Additional information is supplied only when this Obligation is delegated.
 
 \subsubsection{Responsibilities}  % An assigned obligation, with an authority and a delegee. Explain that importances are also introduced here, as the same obligation may be important to different delegees in different ways. Properly define the term "discharge"
+The act of delegating necessarily defines certain details pertinent to a complete Responsibility. These details include the authority and delegee associated with the Responsibility --- this relational information is defined by the act of delegation.\par
+
+Importance scores can also be introduced at this point, as the delegee is defined; therefore, information scores can also be assigned, as the only factor preventing information score allocation upon the initialisation of a Constraint is that the discharging agent --- the delegee --- was not defined. The importance scores are provided as floating points in the range \([0,1]\), and are provided as a list in the same order as the constraints provided to the Obligation.\par
+
+A Responsibility is used by an agent in the sociotechnical system for selecting a next task --- to aid this, Responsibilities provide some convenience methods. In particular, Responsibilities allow for calculating specific details regarding the Obligation it is initialised with, such as the cumulative effect of the various Constraints it is defined by. In the implementation for testing this formalism, the effect of a Responsibility was contained in a ResponsibilityEffect object --- this allowed for providing further convenience methods, allowing one to get the total effect on one particular resource (from all contained ResourceDelta Constraints), or to disregard any particular resources which were effected when reasoning about the effect of a Responsibility.\par
 
 \subsubsection{Agents}  % Briefly describe Theatre model for agents and their workflows. Define authorities and delegees.
+An Agent consists of two important pieces of functionality:
+
+\begin{itemize}
+    \item Interaction with a sociotechnical modelling framework.
+    \item Task selection and responsibleness judgement using the responsibility formalism.
+\end{itemize}
+
+Useful sociotechnical modelling frameworks for utilising the formalism are workflow modelling frameworks which maintain a consistent reference frame across all actors. Should the framework allow for online workflow modelling --- workflows where the next item in the workflow is not predetermined --- then a workflow can be constructed during the model. This permits a non-deterministic model execution, which is vital, as task selection according to the formalism is subjective.\par
+
+Agents also contain their own sociotechnical state. This should contain all of the variables that a Obligation describes as being altered in some way.\par
+
+To achieve subjectivity, agents are expected to contain interpretation coefficients; details regarding the interpretation coefficients are given in the Interpretation Function section\cref{subsec:interpretation_function}.
+
+Agents are complicated entities which implement the entire anthropomorphic algorithm described in this report\todo{report? paper? dissertation? project?} --- two particular elements of the Agent's implementation are Acts and the Interpretation Function, which are detailed below, in their own sections.
+
+\subsubsection{Acts}
+A workflow model is particularly useful for the construction of Acts.\par
+
+An Act is supplied as a Higher Order function, paired with a ResponsibilityEffect, and are registered via a method on an agent. This is done so that the expected effect of the function on the sociotechnical model can be compared against responsibilities that an agent has. When discharging a responsibility, all Acts an agent has registered are compared by their effects against the expected effect of the responsibility discharge. If they match, the responsibility is discharged by executing the function associated with the Act.\par
+
+Using a workflow modelling framework such as Theatre\cite{theatre_code}, the functions associated with the act can be registered by using the functions contained within the workflow as the higher-order functions.\par
+
+\subsubsection{Interpretation Function}\label{subsec:interpretation_function}
+Subjectivity within the formalism is achieved via an agent's interpretation function. The interpretation function makes use of an agent's interpretation coefficients: these are defined as a map of sociotechnical variables to floating point coefficients, which are used to weight the importance of each constraint in a newly delegated responsibility. Interpretation coefficients can be considered an agent's opinions or preferenecs regarding the importances of certain sociotechnical variables. Example Python code for this interpretation procedure, as a method of an actor, would look as follows:
+
+\begin{lstlisting}[label=interpretation-python,caption=Example Python code for Interpretation Function, language=Python]
+
+def interpret(self,
+              resp: Responsibility):
+    resp = copy(resp)
+    for factor, coefficient in self.interpreting_coefficients.items():
+        for constraint_index in range(len(resp.constraints)):
+            old_constraint = resp.constraints[constraint_index]
+            constraint = copy(old_constraint)
+            importance = constraint.importance
+
+            # Work out the new importance value, if there is one.
+            if factor in constraint.factors.keys() or factor == constraint.__class__:
+                # constraint.interpreted = False
+                importance = importance * coefficient
+                importance = max(min(1, importance), 0)  # Normalise!
+
+            constraint.assign_importance(importance)
+            resp.constraints[constraint_index] = constraint
+
+    # Return the responsibility with a new set of constraints
+    return resp
+\end{lstlisting}
+
+Some notable things present themselves in this block of code. For one, the method returns a new responsibility object. This means that a completely new responsibility, with altered importance information weighted by the interpreting agent's coefficients, is produced. This satisfies the subjectivity of an agent's interpretation. Old importance scores are retained by the Constraint.assign_importance() method, however, meaning that a responsibility's original state can be restored for re-interpretation by another agent.\par
+
+Another important note is the normalisation step after multiplying an importance by its coefficient. For some importances and coefficients, an agent may set an importance score outside of the defined range of \([0,1]\). Therefore, a normalisation step is required to maintain the range.\par
+
 
 \subsubsection{Directing agent decisions}  % Explain the interpretation function, and how it is used to make the entire formalism subject as per Strawson's writings.
 % Note here that, given that the agent can use the responsibility formalism's interpretation function to guide its behaviour in a responsible way (and in a potentially better way than simple task scheduling), the responsibility formalism guides their behaviour pretty effectively and according to the social trait.
 
 \subsubsection{Judging agent responsibility}  % Judging an agent's repsonsibleness based on their consequential responsibilities. Differences between basic, general, and specific responsibilities.
 % Also, note here that judging agent responsibilities allows an agent to decide whether they need to change their behaviour, as they can sample the judgements over time and find whether they're more/less responsibly judged when they make certain decisions -- satisfying RQ2.
+
+\subsubsection{Updating the sociotechnical opinion over time}
+
+
+\subsection{An Overview of the Formalism's Definition}
 
 
 \section{Evaluating the Formalism}
@@ -266,6 +348,8 @@ The required formalism ought to allow for subjective, agent-based ``opinions'' r
 
 
 \section{Future Work}
+
+\subsection{Repeated Acts to Discharge a Responsibility}
 
 \subsection{Advancing the formalism}
 
