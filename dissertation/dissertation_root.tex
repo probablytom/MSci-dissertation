@@ -201,22 +201,45 @@ The introduction of a parameter of importance associated with a responsibility s
 
 \subsection{Design Decisions and Philosophy}
 
+As was discussed through the background survey, many different philosophical decisions are made explicitly or implicitly during the creation of an anthropic formalism. In order to be certain of the finer details of the model created, then, it is important to clarify some of the choices made.\par
+
 % Decision to be socially accurate
 %  - There's no specific application area, so we should focus on modelling responsibility as a general trait, rather than solving a specific problem. 
 %  - The research questions are best answered by a non-application-oriented formalism, because they're describing aspects of a responsibility formalism, not a responsibility formalism in a certain setting!
 %  - We're not trying to solve any issue perceived in other anthropomorphic algorithms, like FIRE does.
+\subsubsection{Social Accuracy}
+Firstly, the formalism created should be socially accurate. No specific application area presents itself for this formalism; rather, the work presented is intended as a proof-of-concept for anthropomorphic algorithms pertaining to responsibility. A formalism which used responsibility as a metaphor would be inappropriate, as no purpose for the metaphor readily presents itself. In addition, no specific issues with existing formalisms are intended to be solved by the formalism --- this is at odds with the background of a formalism such as FIRE, which was created specifically to solve the issues with existing anthropomorphic algorithms for trust. As current efforts in computational responsibility have their roots in logic, no anthropomorphic algorithm for responsibility exists to provide issues to solve. Therefore, the algorithm created should be a proof-of-concept with a focus on social accuracy.\par
 
 % Decision to be decentralised --- no need to communicate judgement scores, agents calculate all on their own.
+\subsubsection{Decentralised Information Exchange}
+The formalism created should also allow for decentralised calculations of responsibility importances and judgements of responsibleness. Centralised calculations of these properties might be useful for specific application areas --- such as Eigentrust's focus on information security, where all agents communicate their states to all other agents so as to have all peers on the network as well-informed as possible. The desired responsibility formalism, however, should allow agents to operate individually, so as to create more socially accurate models (as not all information is guaranteed to be passed around a group of peers. One possible way to create a responsibility formalism with particularly well-informed peers would be to make use of recent work on computational gossip\cite{Boyd2006,Lavaei2012}: this would allow peers to communicate responsibility metrics in a socially accurate way. However, this is beyond the scope of this proof-of-concept project.\par
 
 % Decision to judge responsibility based on the success/failure of an action to meet an action's requirements (in answer to the question FIRE raises, on what sort of information the formalism considers)
 %  - Based on the literature describing consequential/causal responsibility.
 %  - We calculate causal responsibilities based on the known consequential responsibilities.
+\subsubsection{Information the Formalism Regards}
+The FIRE algorithm raises a second question as to the desired formalism's philosophy: FIRE is designed to solve the issue of judging information differently depending on its origin. A decision as to the information sources the designed formalism should consider should be considered. As the formalism created is intended to be a relatively uncomplicated proof-of-concept, the fewest information sources required to allocate, accept, discharge and judge responsibility should be modelled in this first formalism.\par
+
+Work by both Sommerville and Scanlon indicate that a suitable degree of information for the judgement of responsibileness for causal responsibilities would be the previously discharged consequential responsibilities. Therefore, the formalism's responsibility judgement should focus primarily on the information recorded regarding these past responsibility discharges, their associated changes to sociotechnical state, and the successes of those state changes.\par
+
+Strawson's writing provides some more useful insights regarding information needed when selecting responsibilities to discharge, as well as judgement of past responsibilities: each responsibility should have associated with it an importance, so as to consider Strawson's ``magnitude of the injury'' (or, here, sociotechnical state change). Therefore, information which this formalism should consider consists of consequential responsibilities of an agent, and those responsibilities' relative importances.\par
 
 % Decision not to care about act, but to describe outcome (effectively the goal)
+\subsubsection{Responsibility Composition}
+The content of a responsibility can be somewhat clarified at this point. In particular, C\&F's formalism of responsibility made clear that, in trust, the fundamental parameters they considered were a delegating agent and an agent subject to delegation, a desired action, and the goal the action ought to fulfil. Marsh, however, considered the action, but left his fundamental formalism devoid of a notion of goal.\par
+
+In the desired responsibility formalism, nuances in the nature of a responsibility must be considered. Particularly, sociotechnical literature on a responsibility points to considering responsibilities as descriptions of state change, which ideally are composable. This state change could be considered the intended or required outcome of successfully discharging the responsibility --- however, it does not imply any information regarding the action which brings about this state change.\par
+
+Therefore, a responsibility formalism's fundamental parameters would appear to be an authority agent and a delegee, subject to responsibility delegation from the authority agent, plus a composable model of state change describing the responsibility itself. In addition, the desired formalism for this project\todo{project? paper? report?} should include importance information as a fourth parameter, allowing for responsibility selection and responsibleness judgement as previously discussed.\par
 
 % Decision to make the formalism subjective
 %  - Different agents in the real world have different ``opinions'' about responsibility
 %  - If the model is to be socially accurate to a degree, we should include a mechanism for different agents to see different responsibilities differently.
+\subsubsection{Subjectivity}
+The required formalism ought to allow for subjective, agent-based ``opinions'' regarding the importances of modelled responsibilities. As importance is to be directly measured in this formalism, a mechanism by which an agent might interpret the importance scores of responsibilities would allow for a subjective measurement of responsibility importance, allowing an agent to percieve its own model of the trait according to its ``opinions'' about responsibility. These might be considered its preferences for responsibility selection, which weight the importances in its accepted responsibilities. A specific example of an interpretation function is given in the specifics of the formalism designed below.
+
+\subsection{Specific Formalism Details}
+\todo{Is there a better title for this subsection? Supposed to be details of the actual formalism which was designed with these design philosophies in mind.}
 
 \subsubsection{Constraints}  % Constraints are the "atomic responsibilities" defined earlier. It's the fudamental unit of state change that Storer describes earlier.
 
