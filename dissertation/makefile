@@ -22,3 +22,6 @@ wordcount:
 	pdftotext dissertation.pdf
 	wc -w dissertation.txt
 	rm dissertation.txt
+
+wc:
+	make wordcount

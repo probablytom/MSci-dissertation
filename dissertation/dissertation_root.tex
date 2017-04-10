@@ -298,8 +298,7 @@ Using a workflow modelling framework such as Theatre\cite{theatre_code}, the fun
 \subsubsection{Interpretation Function}\label{subsec:interpretation_function}
 Subjectivity within the formalism is achieved via an agent's interpretation function. The interpretation function makes use of an agent's interpretation coefficients: these are defined as a map of sociotechnical variables to floating point coefficients, which are used to weight the importance of each constraint in a newly delegated responsibility. Interpretation coefficients can be considered an agent's opinions or preferenecs regarding the importances of certain sociotechnical variables. Example Python code for this interpretation procedure, as a method of an actor, would look as follows:
 
-\begin{lstlisting}[label=interpretation-python,caption=Example Python code for Interpretation Function, language=Python]
-
+\begin{lstlisting}
 def interpret(self,
               resp: Responsibility):
     resp = copy(resp)
@@ -311,7 +310,6 @@ def interpret(self,
 
             # Work out the new importance value, if there is one.
             if factor in constraint.factors.keys() or factor == constraint.__class__:
-                # constraint.interpreted = False
                 importance = importance * coefficient
                 importance = max(min(1, importance), 0)  # Normalise!
 
