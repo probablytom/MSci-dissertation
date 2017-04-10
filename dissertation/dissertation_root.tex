@@ -282,21 +282,27 @@ An Agent consists of two important pieces of functionality:
 
 Useful sociotechnical modelling frameworks for utilising the formalism are workflow modelling frameworks which maintain a consistent reference frame across all actors. Should the framework allow for online workflow modelling --- workflows where the next item in the workflow is not predetermined --- then a workflow can be constructed during the model. This permits a non-deterministic model execution, which is vital, as task selection according to the formalism is subjective.\par
 
-Agents also contain their own sociotechnical state. This should contain all of the variables that a Obligation describes as being altered in some way.\par
+Agents also contain their own sociotechnical state. This should contain all of the variables that a Obligation describes as being altered in some way. In addition, they are given a ``basic responsibility score'' --- this number, in the range \([0,1]\), represents a ``benefit of the doubt'' responsibility judgement for basic responsibility calculations. It is used in judgement of responsibility, which is described below.\par
 
-To achieve subjectivity, agents are expected to contain interpretation coefficients; details regarding the interpretation coefficients are given in the Interpretation Function section\cref{subsec:interpretation_function}.
+To achieve subjectivity, agents are expected to contain interpretation coefficients; details regarding the interpretation coefficients are given in the Interpretation Function section\cref{subsec:interpretation_function}.\par
+
+Agents should be defined with a set of responsibilities upon initialisation, which are referred to as notions. Notions represent responsibilities an agent may always discharge, such as an agent's option to idle away a clock tick without doing anything. Notions, unlike delegated responsibilities, are not removed from an agent's list of available responsibilities upon discharge. Notions are equivalent to the ``norms'' defined by Storer \& Lock\cite{storer2008modelling}.\par
 
 Agents are complicated entities which implement the entire anthropomorphic algorithm described in this report\todo{report? paper? dissertation? project?} --- two particular elements of the Agent's implementation are Acts and the Interpretation Function, which are detailed below, in their own sections.
 
 \subsubsection{Acts}
 A workflow model is particularly useful for the construction of Acts.\par
 
-An Act is supplied as a Higher Order function, paired with a ResponsibilityEffect, and are registered via a method on an agent. This is done so that the expected effect of the function on the sociotechnical model can be compared against responsibilities that an agent has. When discharging a responsibility, all Acts an agent has registered are compared by their effects against the expected effect of the responsibility discharge. If they match, the responsibility is discharged by executing the function associated with the Act.\par
+An Act is supplied as a Higher Order function, paired with a ResponsibilityEffect, and are registered via a method on an agent. This is done so that the expected effect of the function on the sociotechnical model can be compared against responsibilities that an agent has. When discharging a responsibility, all Acts an agent has registered are compared by their effects against the expected effect of the responsibility discharge. If they match, the responsibility is discharged by executing the function associated with the Act. Upon act completion, if the responsibility is not one of the agent's assigned notions, \par
 
 Using a workflow modelling framework such as Theatre\cite{theatre_code}, the functions associated with the act can be registered by using the functions contained within the workflow as the higher-order functions.\par
 
+An act should set an ``outcome'' attribute of each constraint of the responsibility an agent has currently selected, indicating whether the act successfully altered sociotechnical state during execution. This is used when calculating degrees of responsibleness of an agent.\par
+
+After the act has successfully completed its execution, a copy of the discharged responsibility is saved into a list of consequential responsibilities, which is an attribute of the agent. This allows later inspection of successful and unsuccessful constraint satisfaction for each consequential responsibility, which is used in later judgement of an agent's degree of responsibleness.\par
+
 \subsubsection{Interpretation Function}\label{subsec:interpretation_function}
-Subjectivity within the formalism is achieved via an agent's interpretation function. The interpretation function makes use of an agent's interpretation coefficients: these are defined as a map of sociotechnical variables to floating point coefficients, which are used to weight the importance of each constraint in a newly delegated responsibility. Interpretation coefficients can be considered an agent's opinions or preferenecs regarding the importances of certain sociotechnical variables. Example Python code for this interpretation procedure, as a method of an actor, would look as follows:
+Subjectivity within the formalism is achieved via an agent's interpretation function. The interpretation function makes use of an agent's interpretation coefficients: these are defined as a map of sociotechnical variables to floating point coefficients, which are used to weight the importance of each constraint in a newly delegated responsibility. Interpretation coefficients can be considered an agent's opinions or preferences regarding the importances of certain sociotechnical variables. Example Python code for this interpretation procedure, as a method of an actor, would look as follows:
 
 \begin{lstlisting}
 def interpret(self,
@@ -324,18 +330,91 @@ Some notable things present themselves in this block of code. For one, the metho
 
 Another important note is the normalisation step after multiplying an importance by its coefficient. For some importances and coefficients, an agent may set an importance score outside of the defined range of \([0,1]\). Therefore, a normalisation step is required to maintain the range.\par
 
+All responsibilities processed by an agent are interpreted upon delegation; therefore, subjectivity of the formalism is maintained.\par
 
 \subsubsection{Directing agent decisions}  % Explain the interpretation function, and how it is used to make the entire formalism subject as per Strawson's writings.
 % Note here that, given that the agent can use the responsibility formalism's interpretation function to guide its behaviour in a responsible way (and in a potentially better way than simple task scheduling), the responsibility formalism guides their behaviour pretty effectively and according to the social trait.
+As a result of Responsibilities being interpreted after delegation, an agent can select a responsibility to discharge using the new interpretation scores. Mathematically speaking, responsibility selection is performed as follows: \[new\_responsibility = argmax_{p \in resps} {\sum_{i=p.i[1]}^{p.i[length(p.i)]}(i)}\]
+
+If, for a Responsibility denoted \(p\), \(p.i\) was the list of importances associated with the responsibility, with indexing beginning at 1.\par
+
+Using this, and accounting for all interpretation scores being interpreted already, \(new_responsibility\) becomes the responsibility with the highest cumulative importance. This responsibility is selected for discharge; the appropriate act to discharge the responsibility is found by a simple comparison between the responsibility's expected effect and the expected effect of each of the registered acts for the agent concerned. Example Python code to perform this lookup might be:
+
+\begin{lstlisting}
+def choose_responsibility(self):
+    if self.responsibilities == []:
+        return None
+    else:
+        resp = sorted(self.responsibilities,
+                      key=lambda x: sum(x.importances))[::-1][0]
+        return resp
+\end{lstlisting}
+
+The simplicity of responsibility selection belies the simplicity of the formalism as a result of its strong data model. It is worth noting that, as responsibilities can be selected for discharge according to a subjective interpretation and discharged via the agent's registered acts, the formalism should answer research question 1 in theory. The evaluation section of this report, found below, confirms this.\par
 
 \subsubsection{Judging agent responsibility}  % Judging an agent's repsonsibleness based on their consequential responsibilities. Differences between basic, general, and specific responsibilities.
 % Also, note here that judging agent responsibilities allows an agent to decide whether they need to change their behaviour, as they can sample the judgements over time and find whether they're more/less responsibly judged when they make certain decisions -- satisfying RQ2.
+An agent's degree of responsibleness can be calculated by a simple formula,rithm, which uses the outcomes of the consequential responsibilities of the agent to produce a basic, general, and specific responsibility score, in a fashion similar to Marsh's for trust\cite{Marsh1994FormalisingConcept}. The specific responsibility generation might be represented in the following way in pseudocode:
+
+\begin{lstlisting}[language=pseudocode]
+def __judge_degree_responsible(subject agent):
+    specific_scores = dictionary()
+    for each responsibility in subject agent's consequential responsibilities:
+        reinterpret(responsibility)
+        for each constraint in that responsibility:
+            for each factor, delta in constraint:
+                if factor not in specific_scores.keys():
+                    specific_scores[factor] = (0, 0)
+                specific_scores[factor][0] += 1
+                if constraint.outcome is True:
+                    specific_scores[factor][1] += constraint.importance
+                    
+    for each factor, score_tuple in specific_scores.items():
+        count_for_factor = score_tuple[0]
+        total_importances_discharged = score_tuple[1]
+        specific_scores[factor] = total_importances_discharged / count_for_factor
+        
+    return specific_scores
+\end{lstlisting} 
+
+This calculates the cumulative importance of all successfully discharged constraints of each factor, where a factor is a sociotechnical variable. This is weighted against the number of all constraints of that factor --- the result of which being that improperly discharged responsibilities do not count toward the degree of responsibility calculated. At the end of the algorithm, the dictionary specific\_scores contains all \emph{specific responsibility scores} calculable for the subject agent.\par
+
+To calculate specific, general, and basic responsibility scores, the following Python code might suffice, where the above algorithm is implemented in the instance method ``\_\_judge\_degree\_responsible'':
+
+\begin{lstlisting}
+def basic_responsibility_judgement(self):
+    return self.basic_judgement_responsible
+
+def general_responsibility_judgement(self, other_agent):
+    judgement = self.__judge_degree_responsible(other_agent)
+    return mean(judgement.values())
+
+def specific_responsibility_judgement(self, other_agent, resource_type):
+    return self.__judge_degree_responsible(other_agent).get(resource_type,
+                                                            self.basic_judgement_responsible)
+\end{lstlisting}
+
+A basic judgement of responsibility is here defined as the degree to which an agent believes other agents tend to be responsible. It does not relate to any other agent specifically; therefore, the agent simply returns its basic judgement of responsibility, which is a simple object property.\par
+
+A general judgement of responsibility is here defined as the degree to which another agent is responsible in all respects --- it is therefore parameterised with the agent being judged. To calculate this, a mean is taken of all specific responsibilities which the agent calculates regarding the other agent. The \par
+
+Finally, a specific judgement of responsibility is here defined as the degree to which an agent is responsible for a particular thing, and is therefore parameterised by both the other agent involved and the factor the calculation relates to. Specific responsibilities are calculated by ``\_\_judge\_degree\_responsible'' --- therefore, a simple lookup of the dictionary returned by ``\_\_judge\_degree\_responsible'' for the factor required is returned.
 
 \subsubsection{Updating the sociotechnical opinion over time}
+As an agent can judge any other agent's responsibilities by performing this algorithm upon the other's consequential responsibilities, an agent may perform this calculation on \emph{itself}. Should an agent perform this calculation every time a responsibility is discharged, the agent may calculate the rate of change of its responsibility over time.\par
 
+Improving its performance can be done in two ways. Should its interpreting coefficients ever change, the agent can reflect on its past performance and identify ways to improve; the agent would then readjust its interpreting coefficients to account for this introspection. While this behaviour is interesting, as it permits more socially accurate modelling, the agent's interpreting coefficients should be changed primarily through an \emph{advice} mechanism.\par
+
+Each agent is given a method, ``advise'', and another, ``take\_advice''. An agent may advise another agent by offering that it take advice --- advice is represented as a dictionary of changes to the subject agent's interpreting coefficients. After judging the degree to which another agent is responsible, if an agent is seen to be lacking in responsibility in a specific area, or in all areas generally (using the appropriate calculations), advice regarding concerning factors is provided via this dictionary representation. The subject agent may choose to accept the advice depending on any implementation-appropriate factors: advising agent class, reputation formalism calculation, or other method.\par
+
+This, combined with the judgement of responsibility provided in the earlier section, enables an agent to measure consequences of its actions via changes to its judgement of responsibility, and an analysis of its consequential responsibilities. The agent may also direct its interpretation of responsibility directly by offering itself advice, or taking the advice of others, changing the agent's interpreting coefficients --- thereby theoretically fulfilling the second research question.\par
 
 \subsection{An Overview of the Formalism's Definition}
+A formalism has now been presented which, in theory, fulfils both research questions posed earlier in this report\todo{report? paper? dissertation?}. This formalism also adheres to the design principles laid out after analysis of the background research.\par
 
+Constraints, grouped into an Obligation, are delegated by an Authority to a Delegee. The act of delegation implies enough information to permit the allocation of interpretation scores, completing the requirements for the creation of a Responsibility. These interpretation scores are then interpreted subjectively by the delegee, who uses their present responsibilities to select future Acts. Upon Act completion, the associated responsibility is copied into a list of consequential responsibilities, and --- should it not be listed as in the agent's Notions --- discarded from future consideration. These consequential responsibilities are then used to calculate basic, general, and specific responsibility scores, mirroring Marsh's seminal work on computational trust. Task selection and alteration to interpretation coefficient together answer the two research questions laid out during the problem specification.\par
+
+At this point, the formalism's design is complete. Now, empirical data is required so as to verify that the formalism operates as intended, representing responsibility in a social manner, directing agent behaviour, and allowing for improved behaviour through introspection as to an agent's ``beliefs'' about the trait of responsibility.\par
 
 \section{Evaluating the Formalism}
 
