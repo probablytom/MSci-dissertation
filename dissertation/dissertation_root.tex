@@ -322,7 +322,7 @@ def interpret(self,
     return resp
 \end{lstlisting}
 
-Some notable things present themselves in this block of code. For one, the method returns a new responsibility object. This means that a completely new responsibility, with altered importance information weighted by the interpreting agent's coefficients, is produced. This satisfies the subjectivity of an agent's interpretation. Old importance scores are retained by the Constraint.assign_importance() method, however, meaning that a responsibility's original state can be restored for re-interpretation by another agent.\par
+Some notable things present themselves in this block of code. For one, the method returns a new responsibility object. This means that a completely new responsibility, with altered importance information weighted by the interpreting agent's coefficients, is produced. This satisfies the subjectivity of an agent's interpretation. Old importance scores are retained by the Constraint.assign\_importance() method, however, meaning that a responsibility's original state can be restored for re-interpretation by another agent.\par
 
 Another important note is the normalisation step after multiplying an importance by its coefficient. For some importances and coefficients, an agent may set an importance score outside of the defined range of \([0,1]\). Therefore, a normalisation step is required to maintain the range.\par
 
@@ -361,4 +361,3 @@ Another important note is the normalisation step after multiplying an importance
 \bibliography{biblio}
 
 \end{document}
-:W
