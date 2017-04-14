@@ -1,4 +1,4 @@
-\documentclass[draft]{mpaper}
+\documentclass[]{mpaper}
 \usepackage{cleveref}
 \usepackage[obeyDraft,textsize=tiny]{todonotes}
 \usepackage{enumitem}
@@ -15,3 +15,5 @@
 \newcommand{\comment}[1]{\regulartodo[disable]{#1}}
 
 \newcommand{\argmax}{\operatornamewithlimits{argmax}}
+
+\lstnewenvironment{pseudocodelisting}{\lstset{basicstyle=\scriptsize\ttfamily}}{}

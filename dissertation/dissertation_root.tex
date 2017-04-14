@@ -239,6 +239,11 @@ Therefore, a responsibility formalism's fundamental parameters would appear to b
 \subsubsection{Subjectivity}
 The required formalism ought to allow for subjective, agent-based ``opinions'' regarding the importances of modelled responsibilities. As importance is to be directly measured in this formalism, a mechanism by which an agent might interpret the importance scores of responsibilities would allow for a subjective measurement of responsibility importance, allowing an agent to percieve its own model of the trait according to its ``opinions'' about responsibility. These might be considered its preferences for responsibility selection, which weight the importances in its accepted responsibilities. A specific example of an interpretation function is given in the specifics of the formalism designed below.
 
+\subsubsection{Graded Responsibility Calculation}
+A degree of responsibility should be calculable in a \emph{graded} form, rather than binary. In Trust models such as Eigentrust, or Marsh's formalism, degrees of trust are represented numerically so as to better delineate between different trust measurements. By constrast, other models --- particularly logical trust models --- represent degrees of trust in a binary format, such as C\&F's basic form does.\par
+
+The feature of graded measurement is useful for a few reasons. The feature is principally useful for comparison between many different agents when judging lots of responsibilities --- task delegation amongst a pool of potential candidates being one scenario where this is useful. The feature therefore makes the formalism more pragmatic. Another benefit of a graded formalism is that it allows for a higher degree of social accuracy: human judgement of responsibility is much more nuanced than a simple boolean judgement. Finally, a graded formalism allows for a deeper exploration of its efficacy. In order to evaluate the formalism properly, comparisons between agents with a responsibility formalism directing their behaviour and others with no such direction should be modelled.\par
+
 \subsection{Specific Formalism Details}
 \todo{Is there a better title for this subsection? Supposed to be details of the actual formalism which was designed with these design philosophies in mind.}
 
@@ -356,7 +361,7 @@ The simplicity of responsibility selection belies the simplicity of the formalis
 % Also, note here that judging agent responsibilities allows an agent to decide whether they need to change their behaviour, as they can sample the judgements over time and find whether they're more/less responsibly judged when they make certain decisions -- satisfying RQ2.
 An agent's degree of responsibleness can be calculated by a simple formula,rithm, which uses the outcomes of the consequential responsibilities of the agent to produce a basic, general, and specific responsibility score, in a fashion similar to Marsh's for trust\cite{Marsh1994FormalisingConcept}. The specific responsibility generation might be represented in the following way in pseudocode:
 
-\begin{lstlisting}[language=pseudocode]
+\begin{pseudocodelisting}
 def __judge_degree_responsible(subject agent):
     specific_scores = dictionary()
     for each responsibility in subject agent's consequential responsibilities:
@@ -375,7 +380,7 @@ def __judge_degree_responsible(subject agent):
         specific_scores[factor] = total_importances_discharged / count_for_factor
         
     return specific_scores
-\end{lstlisting} 
+\end{pseudocodelisting} 
 
 This calculates the cumulative importance of all successfully discharged constraints of each factor, where a factor is a sociotechnical variable. This is weighted against the number of all constraints of that factor --- the result of which being that improperly discharged responsibilities do not count toward the degree of responsibility calculated. At the end of the algorithm, the dictionary specific\_scores contains all \emph{specific responsibility scores} calculable for the subject agent.\par
 
@@ -417,6 +422,7 @@ Constraints, grouped into an Obligation, are delegated by an Authority to a Dele
 At this point, the formalism's design is complete. Now, empirical data is required so as to verify that the formalism operates as intended, representing responsibility in a social manner, directing agent behaviour, and allowing for improved behaviour through introspection as to an agent's ``beliefs'' about the trait of responsibility.\par
 
 \section{Evaluating the Formalism}
+The formalism is designed according to research-informed design philosophies, which should help to ensure that answers the research questions positively. Investigating these research questions empirically requires producing data on responsible behaviour --- as this 
 
 \subsection{RQ 1: Acting on Responsibilities}
 
