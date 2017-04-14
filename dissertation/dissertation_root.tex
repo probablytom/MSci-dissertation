@@ -422,9 +422,54 @@ Constraints, grouped into an Obligation, are delegated by an Authority to a Dele
 At this point, the formalism's design is complete. Now, empirical data is required so as to verify that the formalism operates as intended, representing responsibility in a social manner, directing agent behaviour, and allowing for improved behaviour through introspection as to an agent's ``beliefs'' about the trait of responsibility.\par
 
 \section{Evaluating the Formalism}
-The formalism is designed according to research-informed design philosophies, which should help to ensure that answers the research questions positively. Investigating these research questions empirically requires producing data on responsible behaviour --- as this 
+The formalism is designed according to research-informed design philosophies, which should help to ensure that answers the research questions positively. Investigating these research questions empirically requires producing data on responsible behaviour --- however, quantifying responsible behaviour isn't something which is explicitly defined. The definition particularly depends on what type of responsibility one refers to: in this report, for example, three ways to quantify responsibility have been determined, in the three judgements of responsibility outlined earlier.\par
+
+In order to explore the efficacy of this formalism, one ought to judge responsibility using these judgements of responsibility. Simulations of sociotechnical systems must then be constructed so as to demonstrate responsible behaviour; these models ought not to have additional features or complications which could interfere with the data produced on responsible behaviour.\par
+
+\subsection{Experimental Design}
+In evaluating this formalism, a sociotechnical system was constructed to simulate the behaviour of students discharging responsibilities of coursework. A central authority, a Lecturer, was constructed to delegate tasks to students, and to judge all students equally (by applying their metrics for responsibility to all students). Importantly, Lecturers have no interpreting coefficients in this model: their judgement of responsibility is therefore untainted by the subjective nature of responsibility judgement, as re-interpretation by a Lecturer agent effectively resets a responsibility's importance scores to its original value. The result of this is that there is no inherant bias in the judgement toward any type of student.\par
+
+Three types of agents are constructed to explore different aspects of Responsibility. 
+
+\begin{description}
+    \item [StudiousAgents ] have interpreting coefficients which favour the resource ``essay\_writing'' and ``working\_programs''.
+    \item [HedonisticAgents ] have interpreting coefficients which favour the resource ``personal\_enjoyment''.
+    \item [ResponsibilityBlindAgents ] have no responsibility formalism implemented: rather than choosing responsibilities which maximise importance, they choose a responsibility to discharge at random. This would be an example of a sociotechnical agent with no computational responsibility formalism to draw on.
+\end{description}
+
+The Null Hypothesis can be tested by comparison of either responsible agent class to the ResponsibilityBlindAgents: should there be no correlation between the formalism and agent behaviour, these agents should all perform identically with an agent with no formalism of responsibility whatsoever.\par
+
+Importantly, all agents in this experiment are initialised with one Notion: the notion of Idling. This has the constraints of a Deadline of 1 tick, and a small amount of personal enjoyment. Its importances are given as 0.25 for all constraints. This notion is an important one, for two reasons:
+
+\begin{itemize}
+    \item It effectively allows an agent to ``waste'' a turn, and relax a little (represented by the personal enjoyment constraint)
+    \item As a result of the ``personal\_enjoyment'' responsibility, HedonisticAgents will favour idling more than StudiousAgents will.
+\end{itemize}
+
+Agents are then given thirty responsibilities, evenly distributed among three types:
+
+\begin{itemize}
+    \item Writing essays, constructed with a Deadline of 10 ticks and a ResourceDelta of ``essays\_written'': 1
+    \item Writing programs, constructed with a Deadline of 10 ticks and a ResourceDelta of ``working\_programs'': 1
+    \item Attending concerts, constructed with a Deadline of 10 ticks and a ResourceDelta of ``personal\_enjoyment'': 1
+\end{itemize}
+
+For each class of responsibility, each constraint was created with an importance of 0.075 * the number of constraints created. Therefore, every constraint created had an importance between 0.075 and 0.75, in steps of 0.075.\par
+
+Agents were registered with Acts which were capable of discharging these responsibilities, so as to conform with the formalism. In this way, agents are able to select from their pool of available Responsibilities to select a Responsibility to discharge, and also select an Act capable of discharging that responsibility according to the formalism's structure.\par
+
+The entire simulation was implemented in Theatre\_AG\cite{theatre_code}, a sociotechnical modelling framework with a focus on workflow modelling and monitoring reference frames across actors with respect to time. Theatre\_AG is currently in active development; conversion of the tool to Python 3, and the introduction of new design philosophies (such as dropping the requirement for all agents' workflows to be predetermined before execution) was implemented so as to properly conduct this experiment.\par
+
+\subsubsection{Anticipated Outcomes}
+
+The experiment was designed this way so as to show that a HedonisticAgent's behaviour would differ from that of a StudiousAgent. Should the agents perform similarly, this would imply that the responsibility formalism would not properly direct agent behaviour; thereby testing the first research question. Should the agents' behaviours differ, the general degree responsible (judged by the lecturer) would lessen for HedonisticAgents as the agents began to Idle, leaving many responsibilities undischarged. Meanwhile, StudiousAgents would continue to write programs and essays, increasing their general responsibility measurement; the two measurements would therefore eventually deviate as the simulation progressed.\par
+
+The second research question can then be tested, assuming the first research question is answered positively, by introducing advice to the HedonisticAgents which altered their interpreting coefficients to more closely resemble those of the StudiousAgents. As HedonisticAgents would eventually stop writing essays, taking advice past this point would cause their behaviour to more closely resemble StudiousAgents; however, there would be a delay in the increase of the specific judgement of responsibility with respect to ``essays\_written'' constraints.\par
+
+This should also be evident in measurements of general responsibility in advised agents, compared to unadvised HedonisticAgents or StudiousAgents, as an advised HedonisticAgent should cease to constantly Idle and would instead begin discharging ``essays\_written'' and ``working\_programs'' constraints.\par
 
 \subsection{RQ 1: Acting on Responsibilities}
+To answer the first research question, the experiment was conducted as described over the course of 150 simulated ticks in a Theatre\_AG model. The graph produced
 
 \subsection{RQ 2: Judgement of Responsibility}
 
