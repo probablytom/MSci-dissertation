@@ -486,7 +486,7 @@ The predicted plateau of the HedonisticAgents' behaviour is also seen after roug
 
 Research question 1 is answered positively, as a result of the divergent behaviour of all three agent types. Research question 2 should now by explored, as agent behaviour is affirmatively directed by the formalism, but improvements in performance as intepreting coefficients change is yet to be seen.\par
 
-\subsection{RQ 2: Judgement of Responsibility}
+\subsection{RQ 2: Judgement of Responsibility}\label{subsec:RQ2}
 A requirement of exploring the second research question is that the advice mechanism outlined in the formalism's design should be utilised. An experiment was therefore devised where HedonisticAgents were advised by a lecturer to adjust interpreting coefficients to resemble those of a StudiousAgent. Advice was given after 100 ticks had elapsed. The resulting simulation can be seen as graphed in \cref{fig:2} with specific responsibility judgement for all agents regarding the resource ``essays\_written'', and in \cref{fig:3} with general responsibility judgement.
 
 \begin{figure}[h]
@@ -511,17 +511,32 @@ It is important to note, however, that agents were not providing their own advic
     \item Agents must be able to identify their own poor behaviour.\\
         As poor behaviour is identified with interpreted importance scores, an agent will always ``believe'' that it selected optimal responsibilities for discharge. Soliciting advice from respected other agents, or reinterpreting importance scores with the coefficients of respected other agents, is necessary for the proper assessment of poor performance.
     \item Agents must be able to identify corrective measures themselves.\\
-        Identifying improper behaviour is a seperate task to identifying how to make that behviour better. Unfortunately, the numbers produced by reponsibility judgement do not provide adequate information for identifying corrective behaviour; therefore, additional mechanisms for judgement must be constructed.
+        Identifying improper behaviour is a separate task to identifying how to make that behaviour better. Unfortunately, the numbers produced by responsibility judgement do not provide adequate information for identifying corrective behaviour; therefore, additional mechanisms for judgement must be constructed.
 \end{enumerate}
 
 The second research question was therefore answered affirmatively, but solving these two additional problems is required for agents to correct their own behaviour independently. While the first problem can be solved with relatively trivial alterations to the presented formalism, the second problem stands as a research question in its own right.\par
 
 \section{Future Work}
 
+\subsection{Independent Behaviour Direction}
+The two problems outlined as a requirement to full behaviour direction at the end of \cref{subsec:RQ2} must be solved for the complete independent direction of an agent's behaviour. The first outlined problem is technically solved with a minor modification to the existing formalism; however, the second stands as its own separate research question.\par
+
+In order to solve the second question, an agent may be required to adopt subsets of another agent's interpreting coefficients, or to judge responsibleness in a more nuanced and informative way. One way to assess alternative decisions, and to update interpreting coefficients, would be to build an alternative stack trace of choices another agent would have made, given the same consequential responsibilities. Two potential issues arise with this method, however:
+
+\begin{itemize}
+    \item If the other agent had accepted advice in the past, this would need to be taken into account when building a stack trace. Currently, no history of advice taken is kept, making the stack of alternative decisions impossible to properly produce.\par
+    \item A history of other responsibilities present when an agent chose to discharge each item in that agent's consequential responsibilities is not kept. This history would be vital to keep, in case delegation revoking were included in a later version of the formalism, or more in-depth analysis on the choice made was required.\par
+\end{itemize}
+
 \subsection{Repeated Acts to Discharge a Responsibility}
+Currently, an action cannot be repeated multiple times to discharge a Responsibility; instead, a responsibility is discharged only if an act is available with a perfectly matching expected effect.\par
 
-\subsection{Advancing the formalism}
+Similarly, some acts may discharge a responsibility with additional side-effects. These do technically fulfil a responsibility's requirements, and should be included also in an ideal formalism.\par
 
+\subsection{Applying The Formalism}
+The formalism has been shown to have potential in task scheduling applications. Further work on the formalism, developing enhanced versions with design philosophies more appropriate for specific applications, would prove the real-world and industrial applicability of this research.\par
+
+The formalism at present may be suitable for real-world application for task scheduling. Empirical evidence of this, and any modifications to improve the formalism's performance in more constrained scenarios, will require further research, posing new research questions.\par
 
 \section{Discussion}
 
