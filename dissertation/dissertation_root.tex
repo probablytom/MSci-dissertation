@@ -469,11 +469,52 @@ The second research question can then be tested, assuming the first research que
 This should also be evident in measurements of general responsibility in advised agents, compared to unadvised HedonisticAgents or StudiousAgents, as an advised HedonisticAgent should cease to constantly Idle and would instead begin discharging ``essays\_written'' and ``working\_programs'' constraints.\par
 
 \subsection{RQ 1: Acting on Responsibilities}
-To answer the first research question, the experiment was conducted as described over the course of 150 simulated ticks in a Theatre\_AG model. The graph produced
+To answer the first research question, the experiment was conducted as described over the course of 150 simulated ticks in a Theatre\_AG model. The graph produced is given in \cref{fig:1}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{test_responsibility_directs_behaviour}
+    \caption{Agent behaviour over 150 ticks}
+    \label{fig:1}
+\end{figure}
+
+Responsible agents' behaviours deviate from the ResponsibilityBlindAgents, successfully refuting the null hypothesis. Therefore, the responsibility formalism as outlined \emph{does} direct agent behaviour. The agent behaviour is also directed subjectively, as can be seen in the disparity between StudiousAgents and HedonisticAgents.\par
+
+Notably, while StudiousAgents perform better than ResponsibilityBlindAgents in terms of general measure of responsibility, HedonisticAgents do not. This is an important result: using a responsibility formalism, an agent can perform better than random task selection, making a responsibility a viable task scheduling mechanism which deviates from traditional methods. If improperly calibrated, however, the formalism can perform \emph{worse} than random task selection. This shows that an agent's ability to improve on its performance by directing it's interpretation of responsibility is crucial to real-world applications of the formalism.\par
+
+The predicted plateau of the HedonisticAgents' behaviour is also seen after roughly 30 ticks elapse. This indicates that the interpreting coefficients caused these agents to idle, no longer completing additional tasks, as expected.\par
+
+Research question 1 is answered positively, as a result of the divergent behaviour of all three agent types. Research question 2 should now by explored, as agent behaviour is affirmatively directed by the formalism, but improvements in performance as intepreting coefficients change is yet to be seen.\par
 
 \subsection{RQ 2: Judgement of Responsibility}
+A requirement of exploring the second research question is that the advice mechanism outlined in the formalism's design should be utilised. An experiment was therefore devised where HedonisticAgents were advised by a lecturer to adjust interpreting coefficients to resemble those of a StudiousAgent. Advice was given after 100 ticks had elapsed. The resulting simulation can be seen as graphed in \cref{fig:2} with specific responsibility judgement for all agents regarding the resource ``essays\_written'', and in \cref{fig:3} with general responsibility judgement.
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{test_advised_hedonistic_vs_regular_studious251_specific}
+    \caption{Specific judgement of ``essays\_written'' responsibility comparing HedonisticAgents with and without advice}
+    \label{fig:2}
+\end{figure}
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{test_advised_hedonistic_vs_regular_studious251_general}
+    \caption{General judgement of responsibility comparing HedonisticAgents with and without advice}
+    \label{fig:3}
+\end{figure}
+
+As can be seen, immediately after accepting advice, HedonisticAgents deviated from their ordinary behaviour and behaved as StudiousAgents were roughly 100 ticks prior. This pattern is seen in both \cref{fig:2} and \cref{fig:3}, meaning that the advice successfully affected both general and specific responsibility measurements. The outcome of the experiment therefore answers the second research question affirmatively: via the advice functionality, a responsible agent's behaviour can be updated.\par
+
+It is important to note, however, that agents were not providing their own advice. Agents were being identified as performing poorly (as they were HedonisticAgents), asserting that their performance was flawed in some way, and then providing a solution to this flaw in the form of advice. Two problems must yet be solved for agents to supply their own advice:
+
+\begin{enumerate}
+    \item Agents must be able to identify their own poor behaviour.\\
+        As poor behaviour is identified with interpreted importance scores, an agent will always ``believe'' that it selected optimal responsibilities for discharge. Soliciting advice from respected other agents, or reinterpreting importance scores with the coefficients of respected other agents, is necessary for the proper assessment of poor performance.
+    \item Agents must be able to identify corrective measures themselves.\\
+        Identifying improper behaviour is a seperate task to identifying how to make that behviour better. Unfortunately, the numbers produced by reponsibility judgement do not provide adequate information for identifying corrective behaviour; therefore, additional mechanisms for judgement must be constructed.
+\end{enumerate}
+
+The second research question was therefore answered affirmatively, but solving these two additional problems is required for agents to correct their own behaviour independently. While the first problem can be solved with relatively trivial alterations to the presented formalism, the second problem stands as a research question in its own right.\par
 
 \section{Future Work}
 
