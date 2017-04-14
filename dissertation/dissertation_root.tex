@@ -538,9 +538,19 @@ The formalism has been shown to have potential in task scheduling applications. 
 
 The formalism at present may be suitable for real-world application for task scheduling. Empirical evidence of this, and any modifications to improve the formalism's performance in more constrained scenarios, will require further research, posing new research questions.\par
 
+\subsection{Integration With Trust}
+Similarities between trust and responsibility as social traits were laid out in the background research section of this report. A wealth of insights from trust formalism, including the basic parameters required to construct the formalism presented, were incorporated into the final product.\par
+
+Due to these similarities, and the employment of similar design philosophies between the formalism presented and existing trust formalisms, such as C\&F and Marsh's respective formalisms, development of a model which incorporates the two appears feasible. Each trait's measurements might be used to inform the other in a dual-trait anthropomorphic algorithm, creating a feedback mechanism which allowed each trait to be calculated by a better-informed agent. Dual-trait formalisms usually exist in a format similar to Eigentrust's employment of reputation as a bootstrapping trait for trust; this proposed dual-trait model would instead present two separate traits, measured in parallel, but informing each other.\par
+
 \section{Discussion}
+In this report,\todo{paper? dissertation? project?} a new formalism of computational responsibility was presented which is able to direct agent behaviour in a subjective way toward discharging the most important responsibilities earliest.\par
 
+This formalism employs a wealth of insights from sociotechnical literature, as well as literature on trust modelling, the trait with the largest body of anthropomorphic algorithms to date. In this report, the distinction of anthropomorphic algorithms from the rest of sociotechnical literature is defined, as well as its distinction from  human-like computing --- research areas which both affect this smaller field.\par
 
+The presented formalism, applied to a simple sociotechnical modelling scenario, effectively shows that responsibility as it is presented can direct agent behaviour, and is sufficient for significant behavioural changes. It is also shown to perform better than random task selection, where responsible behaviour is required. Improvements to agent behaviour are also demonstrated, ensuring that under-performing agents can become more performant over time by employing the formalism's advice functionality.\par
+
+The formalism successfully answers the research questions --- and answers both affirmatively --- however, it demonstrates the need for further research focus on the trait of responsibility. Presented is a proof-of-concept that responsibility is a valuable trait in anthropomorphic algorithms research; its ultimate application and broader utility can be uncovered only by further work.
 
 \bibliographystyle{abbrv}
 \bibliography{biblio}
