@@ -136,21 +136,21 @@ This design decision makes FIRE an unlikely candidate as a foundation of a respo
 
 % TODO: should this be 'sociotechnical systems', 'Ian Sommerville', or 'Responsibility Modelling'? What's a good title? Is there anything other than Sommerville to go in here?
 \subsection{Sociotechnical Systems}
-While these anthropomorphic algorithms are useful to consider in isolation, their application within the realm of sociotechnical systems is important to their design. Moreover, the nature of responsibilities is touched within the broader sociotechnical systems area of responsibility modelling --- research on the delegation and discharge of responsibilities, and how to reason about them.\par
+While these formalisms are useful to consider in isolation, their application within the realm of sociotechnical systems is important to their design. Moreover, the nature of responsibilities is touched within the broader sociotechnical systems area of responsibility modelling: research on the delegation and discharge of responsibilities, and how to reason about them.\par
 
 \subsubsection{Ian Sommerville}
 \todo{What more can we say about Sommerville's contributions? At the moment we only cover consequential and causal responsibilities.}
-Ian Sommerville was a prolific writer in the field of sociotechnical systems, who was responsible for much of the current literature on responsibility modelling\cite{sommerville_graphical_responsibility,sommerville_dependable_systems_chap_8,sommerville_dependable_systems_chapter_9}.\todo{What other references can go here?} Sommerville's responsibility modelling systems often happened to be graphical\cite{sommerville_graphical_responsibility}, a paradigm for computational responsibility which may prove hard to convert to an anthropomorphic algorithm. This is because graphical representations of system states do not naturally present themselves as a numerically analysable format for information --- rather, graphical presentations are useful for exposing sociotechnical system state. This feature of sociotechnical modelling, and particularly responsibility modelling, is useful for risk and impact analysis\cite{ObashiMethodology}.\par
+Ian Sommerville was a prolific writer in the field of sociotechnical systems, who was responsible for much of the current literature on responsibility modelling\cite{sommerville_graphical_responsibility,sommerville_dependable_systems_chap_8,sommerville_dependable_systems_chapter_9}.\todo{What other references can go here?} Sommerville's responsibility modelling systems often happened to be graphical\cite{sommerville_graphical_responsibility}, a paradigm for computational responsibility which may prove hard to convert to an anthropomorphic algorithm. This is because graphical representations of system states do not naturally present themselves as a numerically analysable format; rather, graphical presentations are useful for exposing sociotechnical system state. This feature of sociotechnical modelling, and particularly responsibility modelling, is useful for risk and impact analysis\cite{ObashiMethodology}.\par
 
-Sommerville's writing, however, presents a wealth of interesting insights which may be useful in understanding the context of the anthropomorphic algorithm, and understanding some possible choices as to the formalism's philosophy.\par
+Sommerville's writing, however, presents a wealth of interesting insights which may be useful in understanding the context of an anthropomorphic algorithm, and understanding some possible choices as to the formalism's philosophy.\par
 
 In particular, Sommerville notes an interesting distinction as to two different sorts of responsibilities: ``consequential'' and ``causal'' responsibilities. They can be thought of as the difference between a responsibility for a current state --- the result of a previously discharged responsibility --- and responsibility for producing a future state --- a change to a current state that an agent is responsible for bringing about in the future.\par
 
-Sommerville's separation clarifies a potential avenue by which one might create a computational responsibility formalism. Namely, an agent's degree of responsibility might be associated with the state changes they have brought about in the past, and perhaps a prediction of the chance that an agent would discharge a causal responsibility successfully at some future time. This approach, verified by its appearance in existing sociotechnical systems literature, may be appropriate for creating a computational responsibility formalism, though its foundations exist in a less useful graphical representation approach.\par
+Sommerville's separation clarifies a potential avenue by which one might create a computational responsibility formalism. Namely, an agent's degree of responsibility might be associated with the state changes they have brought about in the past, and perhaps a prediction of the chance that an agent would discharge a causal responsibility successfully at some future time. This approach, verified by its appearance in existing sociotechnical systems literature, may be appropriate for creating a computational responsibility formalism, though its foundations exist in a less useful graphical representation.\par
 
 \subsubsection{Timothy Storer \& Russell Lock}
 \todo{tim or timothy?}
-While describing a graphical responsibility modelling format for the InDeED project --- notably lead by Ian Sommerville --- Storer and Lock provide some useful foundations for other models of responsibility in a technological report on modelling responsibility\cite{storer2008modelling}.\par
+While describing a graphical responsibility modelling format for the InDeED project --- notably lead by Ian Sommerville --- Storer and Lock provide some useful foundations for other models of responsibility in a technological report\cite{storer2008modelling}~.\par
 
 Most interestingly, Storer and Lock provide a useful definition of a responsibility:
 
@@ -167,10 +167,10 @@ Numerous things in this definition are useful. Similarly to the work done by Mas
 \begin{description}
     \item [A duty: ] responsibilities can be considered as some action an agent is \emph{obliged} to conduct.
     \item [achieve\ldots{}some given state: ] the obligation which a duty is defined by can be described as a change of \emph{state}. Storer and Lock note that this state change can have different modes: it can be achieved, but also maintained or avoided. It is worth noting that this very general description of responsibility indicates that the graphical formalism designed for the InDeED project was somewhat socially accurate.
-    \item [comformance with\ldots{}norms: ] agents can be delegated responsibilities in most useful formalisms of responsibility --- Storer and Lock note that these responsibilities must not conflict with norms that an agent holds.
+    \item [comformance with\ldots{}norms: ] agents can be delegated responsibilities in most useful formalisms of responsibility --- Storer and Lock note that these responsibilities must not conflict with pre-existing beliefs about the responsibilities that an agent holds.
 \end{description}
 
-Unlike Marsh or C\&F's more mathematical definitions of trust, this semantic definition lends itself nicely to conversion to some responsibility model; partly because it already summarises the responsibility trait, but also because it describes an intuitive social definition of responsibility while remaining very simple. Therefore, a responsibility formalism which somehow extended this model, while retaining the power of the anthropomorphic algorithms described earlier would provide a very useful starting point for the desired responsibility formalism.\par
+Unlike Marsh or C\&F's more mathematical definitions of trust, this semantic definition lends itself nicely to conversion to some responsibility model; partly because it already summarises the responsibility trait, but also because it describes an intuitive social definition of responsibility while remaining very simple. Therefore, a responsibility formalism which somehow extended this model, while retaining the power of the anthropomorphic algorithms described earlier may prove useful in answering our research question.\par
 
 Another useful definition from Storer and Lock's report presents itself when discussing the structure of a responsibility in their model:
 
@@ -178,13 +178,13 @@ Another useful definition from Storer and Lock's report presents itself when dis
     Responsibilities may be composed of other responsibilities.
 \end{quotation}
 
-This composibility is an interesting property, which may also imply that some responsibilities can be broken down into a form of sub-responsibility. This property would be useful to remember when modelling responsibilities in the desired formalism. It also implies that there may be a sort of ``atomic'' responsibility, that more complicated responsibilities are composed of.
+This composibility is an interesting property, which may also imply that some responsibilities can be broken down into a form of sub-responsibility. This property would be useful to remember when modelling responsibilities in the desired formalism. It also implies that there may be a sort of ``atomic'' responsibility, that more complicated responsibilities are composed of, if decomposition is permitted as well as composition.\par
 
 \subsection{Philosophical Literature}  % The nature of responsibility, and the validity of modelling anthropic traits in a machine.
 As responsibility is a social trait, and previous literature has indicated that it may be most appropriate to model it as such, input from literature in the humanities may shed light on how to consider and approach responsibility as a trait accurately. As time allowed for this report was somewhat limited, a more complicated sociologically/psychologically accurate model was not attempted. The decision was made to instead create a proof-of-concept model which encapsulated much of the existing sociotechnical systems literature, and verifying it using philosophical literature on the subject.
 
 \subsubsection{Thomas Scanlon}  % A philosophical perspective which converges on Sommerville's ideas in Dependable Systems
-Thomas Scanlon --- a philosopher who specialises in Analytic Philosophy --- writes on responsibility in the essay ``Justice, Responsibility, and the Demands of Equality'', defining terms which bear striking resemblance to Sommerville's ``Consequential'' and ``Causal'' responsibilities.\par
+Thomas Scanlon --- a philosopher who specialises in Analytic Philosophy --- writes on responsibility in the essay ``Justice, Responsibility, and the Demands of Equality'', defining terms which bear striking resemblance to Sommerville's ``consequential'' and ``causal'' responsibilities.\par
 
 One term --- ``attributive'' responsibility --- is defined by Scanlon as being:
 
@@ -196,12 +196,12 @@ This might be generalised as being the responsibility for future and current act
 
 Scanlon goes on to define a second term, ``substantive'' responsibility, which can be described loosely as a responsibility for an action fixed in the past. Given the sociotechnical perspective of responsibility being a change of sociotechnical state, Scanlon's ``substantive'' responsibilities also seem to mirror a term of Sommerville's, namely his ``consequential'' responsibilities.\par
 
-Given the convergence of this perspective on responsibility --- that is, the separation of past state change and anticipated future state change --- Scanlon's writing seems to affirm Sommerville's own construction of types of responsibility --- though clarity on how this distinction is useful is found in work from another philosopher, P.F. Strawson.\todo{I feel like this segue is pretty poor! How can I improve this?}
+Given the convergence of this perspective on responsibility --- that is, the separation of past state change and anticipated future state change --- Scanlon's writing seems to affirm Sommerville's own construction of types of responsibility. Clarity on how this distinction is useful is found in work from another philosopher, P.F. Strawson.\todo{I feel like this segue is pretty poor! How can I improve this?}
 
 \subsubsection{P.F. Strawson}  % The nature of responsibility
 P.F. Strawson is a philosopher with work on philosophy of language and of mind --- one particular essay, ``On Freedom and Resentment''\cite{strawson}, presents an argument that determinism shouldn't affect how we perceive human factors such as responsibility or trust.\par
 
-Strawson argues that these concepts are fundamentally relational, rather than having any inherent definition. The conclusion of this is that trust, responsibility, and other human traits have subjective properties and cannot be calculated outside of the perspective of an agent. This hints at a choice as to the desired formalism's philosophy: unlike a formalism such as Eigentrust, where components of trust scores are calculated independently of any one agent's perspective, the required responsibility scoring system must utilise a subjective perspective for \emph{all} calculations. Strawson's argument applies to sociotechnical systems, as it does not apply to any specific trait or type of person; therefore, both social and technological actors in a sociotechnical system might be the targets of a trait designed with Strawson's work in mind.\par
+Strawson argues that these concepts are fundamentally relational, rather than having any inherent definition. The conclusion of this is that trust, responsibility, and other human traits have subjective properties and cannot be calculated outside of the perspective of an agent. This hints at a choice as to the desired formalism's design: unlike a formalism such as Eigentrust, where components of trust scores are calculated independently of any one agent's perspective, the required responsibility scoring system must utilise a subjective perspective for \emph{all} calculations. Strawson's argument applies to sociotechnical systems generally, as it does not apply to any specific trait or type of person; therefore, both social and technological actors in a sociotechnical system might be the targets of a trait designed with Strawson's work in mind.\par
 
 Strawson also produces a fairly rigorous analysis of how ordinarily variable human traits can be formalised:
 
@@ -209,12 +209,11 @@ Strawson also produces a fairly rigorous analysis of how ordinarily variable hum
     Indignation, disapprobation, like resentment, tend to inhibit or at least to limit our goodwill towards the object of these attitudes, tend to promote an at least partial and temporary withdrawal of goodwill; they do so in proportion as they are strong; and their strength is in general proportioned to what is felt to be the magnitude of the injury and to the degree to which the agents will be identified with, or indifferent to, it.\cite{strawson}
 \end{quotation}
 
-Strawson here identifies a similar property of human traits to Marsh: when an agent acts, the magnitude of the judgement of a trait with respect to the act is proportional to the magnitude of its effect on an overall judgement of the trait. That is to say, if an action has a given importance, the magnitude of that importance should carry through to judgements that the action impacts. This, combined with the subjectivity implied by the earlier point made by Strawson, implies that importance might be interpreted subjectively.\par
+Strawson here identifies a similar property of human traits to Marsh: when an agent acts, the magnitude of the judgement of a trait with respect to the act is proportional to the magnitude of its importance. That is to say, if an action has a given importance, the magnitude of that importance should carry through to calculations of the judgements that the action impacts. This, combined with the subjectivity implied by the earlier point made by Strawson, implies that importance might be interpreted subjectively.\par
 
 The introduction of a parameter of importance associated with a responsibility score allows the magnitude of importance of an act to be quantified and tracked in consequential or substantive responsibilities, adhering to Strawson's second point. Should some mechanism for interpretation be provided by the formalism, a subjective factor is introduced, satisfying Strawson's first point. This also hints at how an agent might judge the degree of responsibleness of itself or another agent, helping to answer the second research question; Strawson's argument here is therefore useful in the construction of the desired computational responsibility formalism.\par
 
-\subsubsection{Sloman}  % The space of artificial minds, and a brief note on the philosophical value of this formalism (optional!)
-
+% \subsubsection{Sloman}  % The space of artificial minds, and a brief note on the philosophical value of this formalism (optional!)
 
 
 \section{A Formalism of Responsibility}
@@ -266,9 +265,9 @@ The feature of graded measurement is useful for a few reasons. The feature is pr
 \subsection{Specific Formalism Details}
 \todo{Is there a better title for this subsection? Supposed to be details of the actual formalism which was designed with these design philosophies in mind.}
 
-Related research has helped to inform many design choices surrounding the formalism required to fulfil the research questions which this project\todo{project? paper? report? dissertation?} answers. As the necessary design decisions are now properly understood, a computational responsibility model which conforms to these design choices can be constructed.\par
+Related research has helped to inform many design choices surrounding the formalism required to fulfil the research questions which this report answers. As the necessary design decisions are now properly understood, a computational responsibility model which conforms to these design choices can be constructed.\par
 
-The components of the formalism defined by this paper are Constraints, Obligations, Responsibilities, Importances, Agents, an Interpretation Function, and a mechanism for judging the responsibleness of any given agent.\par
+The components of the formalism defined by this paper are Constraints, Obligations, Responsibilities, Importances, Agents, an Interpretation Function, and a mechanism for judging the responsibleness of any given agent, and another for giving agents advice to improve their performance.\par
 
 \subsubsection{Constraints}  % Constraints are the "atomic responsibilities" defined earlier. It's the fudamental unit of state change that Storer describes earlier.
 A responsibility, for the purposes of this model, will be considered a state change in a sociotechnical environment. This definition is insufficient for modelling a responsibility, however, as metadata such as delegee, authority, and importance should also be defined. In addition, it should be possible to compose these sociotechnical state changes.\par
@@ -287,14 +286,14 @@ Using these two constraint types, changes to the sociotechnical environment are 
 \subsubsection{Obligations}  % Sets of constraints. An obligation is a description of a responsibility's effect, but doesn't concern itself with metadata like the discharging agent.
 Obligations are sets of Constraints --- they therefore allow Constraints to be composed together. Obligations may only concern themselves with a single Constraint, but defining a specific type which contains all Constraints a Responsibility is concerned with allows for a complete specification of that Responsibility's effect on the sociotechnical environment.\par
 
-An Obligation therefore defines the complete sociotechnical effect which is defined by Storer \& Lock as a responsibility --- however, it concerns itself with no metadata as to the specific responsibility it serves as a specification of. Obligations might rather be considered a Responsibility which has not been delegated: details such as authority and delegee are not specified, but the sociotechnical definition of the responsibility is fulfilled. Additional information is supplied only when this Obligation is delegated.
+An Obligation therefore defines the complete sociotechnical effect which is defined by Storer \& Lock as a responsibility --- however, it concerns itself with no metadata as to the specific responsibility it serves as a specification of. Obligations might rather be considered a Responsibility which has not been delegated: details such as authority and delegee are not specified, but the sociotechnical definition of the responsibility is fulfilled.\par
 
 \subsubsection{Responsibilities}  % An assigned obligation, with an authority and a delegee. Explain that importances are also introduced here, as the same obligation may be important to different delegees in different ways. Properly define the term "discharge"
 The act of delegating necessarily defines certain details pertinent to a complete Responsibility. These details include the authority and delegee associated with the Responsibility --- this relational information is defined by the act of delegation.\par
 
-Importance scores can also be introduced at this point, as the delegee is defined; therefore, information scores can also be assigned, as the only factor preventing information score allocation upon the initialisation of a Constraint is that the discharging agent --- the delegee --- was not defined. The importance scores are provided as floating points in the range \([0,1]\), and are provided as a list in the same order as the constraints provided to the Obligation.\par
+Importance scores can also be introduced at this point, as the delegee is defined; therefore, information scores can also be assigned, as the only factor preventing information score allocation upon the initialisation of a Constraint is that the discharging agent --- the delegee --- was not defined, meaning that the importance of this specific agent achieving a goal or discharging a responsibility was indeterminable. The importance scores are provided as floating points in the range \([0,1]\), and are provided as a list in the same order as the constraints provided to the Obligation.\par
 
-A Responsibility is used by an agent in the sociotechnical system for selecting a next task --- to aid this, Responsibilities provide some convenience methods. In particular, Responsibilities allow for calculating specific details regarding the Obligation it is initialised with, such as the cumulative effect of the various Constraints it is defined by. In the implementation for testing this formalism, the effect of a Responsibility was contained in a ResponsibilityEffect object --- this allowed for providing further convenience methods, allowing one to get the total effect on one particular resource (from all contained ResourceDelta Constraints), or to disregard any particular resources which were effected when reasoning about the effect of a Responsibility.\par
+A Responsibility is used by an agent in the sociotechnical system for selecting a next task --- to aid this, Responsibilities provide some convenience methods. In particular, Responsibilities allow for calculating specific details regarding the Obligation it is initialised with, such as the cumulative effect of the various Constraints it is defined by. In the implementation for testing this formalism, the effect of a Responsibility was contained in a ResponsibilityEffect object --- this allowed for providing further convenience methods, allowing one to get the total effect on one particular resource (from all contained ResourceDelta Constraints), or to disregard any particular resources which were affected when reasoning about the effect of a Responsibility.\par
 
 \subsubsection{Agents}  % Briefly describe Theatre model for agents and their workflows. Define authorities and delegees.
 An Agent consists of two important pieces of functionality:
@@ -304,11 +303,11 @@ An Agent consists of two important pieces of functionality:
     \item Task selection and responsibleness judgement using the responsibility formalism.
 \end{itemize}
 
-Useful sociotechnical modelling frameworks for utilising the formalism are workflow modelling frameworks which maintain a consistent reference frame across all actors. Should the framework allow for online workflow modelling --- workflows where the next item in the workflow is not predetermined --- then a workflow can be constructed during the model. This permits a non-deterministic model execution, which is vital, as task selection according to the formalism is subjective.\par
+Useful sociotechnical modelling frameworks for utilising the formalism are workflow modelling frameworks which maintain a consistent reference frame across all actors. Should the framework allow for online workflow modelling --- workflows where the next item in the workflow is not predetermined --- then a workflow can be constructed during the model's execution. This permits a non-deterministic model execution, which is vital, as task selection according to the formalism is subjective.\par
 
 Agents also contain their own sociotechnical state. This should contain all of the variables that a Obligation describes as being altered in some way. In addition, they are given a ``basic responsibility score'' --- this number, in the range \([0,1]\), represents a ``benefit of the doubt'' responsibility judgement for basic responsibility calculations. It is used in judgement of responsibility, which is described below.\par
 
-To achieve subjectivity, agents are expected to contain interpretation coefficients; details regarding the interpretation coefficients are given in the Interpretation Function section\cref{subsec:interpretation_function}.\par
+To achieve subjectivity, agents are expected to contain interpretation coefficients; details regarding the interpretation coefficients are given in the Interpretation Function (\cref{subsec:interpretation_function}).\par
 
 Agents should be defined with a set of responsibilities upon initialisation, which are referred to as notions. Notions represent responsibilities an agent may always discharge, such as an agent's option to idle away a clock tick without doing anything. Notions, unlike delegated responsibilities, are not removed from an agent's list of available responsibilities upon discharge. Notions are equivalent to the ``norms'' defined by Storer \& Lock\cite{storer2008modelling}.\par
 
@@ -317,13 +316,13 @@ Agents are complicated entities which implement the entire anthropomorphic algor
 \subsubsection{Acts}
 A workflow model is particularly useful for the construction of Acts.\par
 
-An Act is supplied as a Higher Order function, paired with a ResponsibilityEffect, and are registered via a method on an agent. This is done so that the expected effect of the function on the sociotechnical model can be compared against responsibilities that an agent has. When discharging a responsibility, all Acts an agent has registered are compared by their effects against the expected effect of the responsibility discharge. If they match, the responsibility is discharged by executing the function associated with the Act. Upon act completion, if the responsibility is not one of the agent's assigned notions, \par
+An Act is supplied as a higher order function, paired with a ResponsibilityEffect, and are registered via a method on an agent. This is done so that the expected effect of the function on the sociotechnical model can be compared against responsibilities that an agent has. When discharging a responsibility, all Acts an agent has registered are compared by their effects against the expected effect of the responsibility discharge. If they match, the responsibility is discharged by executing the function associated with the Act. Upon act completion, if the responsibility is not one of the agent's assigned notions, it should be removed from the list of available actions.\par
 
 Using a workflow modelling framework such as Theatre\cite{theatre_code}, the functions associated with the act can be registered by using the functions contained within the workflow as the higher-order functions.\par
 
 An act should set an ``outcome'' attribute of each constraint of the responsibility an agent has currently selected, indicating whether the act successfully altered sociotechnical state during execution. This is used when calculating degrees of responsibleness of an agent.\par
 
-After the act has successfully completed its execution, a copy of the discharged responsibility is saved into a list of consequential responsibilities, which is an attribute of the agent. This allows later inspection of successful and unsuccessful constraint satisfaction for each consequential responsibility, which is used in later judgement of an agent's degree of responsibleness.\par
+After the act has successfully completed its execution, a copy of the discharged responsibility is saved into a list of consequential responsibilities, which is an attribute of the agent. This allows later inspection of successful and unsuccessful constraint satisfaction for each consequential responsibility, which is used in judgement of an agent's degree of responsibleness.\par
 
 \subsubsection{Interpretation Function}\label{subsec:interpretation_function}
 Subjectivity within the formalism is achieved via an agent's interpretation function. The interpretation function makes use of an agent's interpretation coefficients: these are defined as a map of sociotechnical variables to floating point coefficients, which are used to weight the importance of each constraint in a newly delegated responsibility. Interpretation coefficients can be considered an agent's opinions or preferences regarding the importances of certain sociotechnical variables. Example Python code for this interpretation procedure, as a method of an actor, would look as follows:
@@ -360,9 +359,9 @@ All responsibilities processed by an agent are interpreted upon delegation; ther
 % Note here that, given that the agent can use the responsibility formalism's interpretation function to guide its behaviour in a responsible way (and in a potentially better way than simple task scheduling), the responsibility formalism guides their behaviour pretty effectively and according to the social trait.
 As a result of Responsibilities being interpreted after delegation, an agent can select a responsibility to discharge using the new interpretation scores. Mathematically speaking, responsibility selection is performed as follows: \[new\_responsibility = argmax_{p \in resps} {\sum_{i=p.i[1]}^{p.i[length(p.i)]}(i)}\]
 
-If, for a Responsibility denoted \(p\), \(p.i\) was the list of importances associated with the responsibility, with indexing beginning at 1.\par
+\ldots{}if, for a Responsibility denoted \(p\), \(p.i\) was the list of importances associated with the responsibility, with indexing beginning at 1.\par
 
-Using this, and accounting for all interpretation scores being interpreted already, \(new_responsibility\) becomes the responsibility with the highest cumulative importance. This responsibility is selected for discharge; the appropriate act to discharge the responsibility is found by a simple comparison between the responsibility's expected effect and the expected effect of each of the registered acts for the agent concerned. Example Python code to perform this lookup might be:
+Using this, and accounting for all interpretation scores being interpreted already, \(new\_responsibility\) becomes the responsibility with the highest cumulative importance. This responsibility is selected for discharge; the appropriate act to discharge the responsibility is found by a simple comparison between the responsibility's expected effect and the expected effect of each of the registered acts for the agent concerned. Example Python code to perform this lookup might be:
 
 \begin{lstlisting}
 def choose_responsibility(self):
@@ -370,7 +369,7 @@ def choose_responsibility(self):
         return None
     else:
         resp = sorted(self.responsibilities,
-                      key=lambda x: sum(x.importances))[::-1][0]
+                      key=lambda x: sum(x.importances))[-1]
         return resp
 \end{lstlisting}
 
@@ -403,7 +402,7 @@ def __judge_degree_responsible(subject agent):
 
 This calculates the cumulative importance of all successfully discharged constraints of each factor, where a factor is a sociotechnical variable. This is weighted against the number of all constraints of that factor --- the result of which being that improperly discharged responsibilities do not count toward the degree of responsibility calculated. At the end of the algorithm, the dictionary specific\_scores contains all \emph{specific responsibility scores} calculable for the subject agent.\par
 
-To calculate specific, general, and basic responsibility scores, the following Python code might suffice, where the above algorithm is implemented in the instance method ``\_\_judge\_degree\_responsible'':
+To calculate specific, general, and basic responsibility scores, the following Python code might suffice, where the above algorithm is implemented in the instance method\\``\_\_judge\_degree\_responsible'':
 
 \begin{lstlisting}
 def basic_responsibility_judgement(self):
@@ -414,36 +413,35 @@ def general_responsibility_judgement(self, other_agent):
     return mean(judgement.values())
 
 def specific_responsibility_judgement(self, other_agent, resource_type):
-    return self.__judge_degree_responsible(other_agent).get(resource_type,
-                                                            self.basic_judgement_responsible)
+    return self.__judge_degree_responsible(other_agent).get(resource_type, self.basic_judgement_responsible)
 \end{lstlisting}
 
-A basic judgement of responsibility is here defined as the degree to which an agent believes other agents tend to be responsible. It does not relate to any other agent specifically; therefore, the agent simply returns its basic judgement of responsibility, which is a simple object property.\par
+A basic judgement of responsibility is here defined as the degree to which an agent believes other agents tend to be responsible. It does not relate to any other agent specifically; therefore, the agent simply returns its basic judgement of responsibility.\par
 
-A general judgement of responsibility is here defined as the degree to which another agent is responsible in all respects --- it is therefore parameterised with the agent being judged. To calculate this, a mean is taken of all specific responsibilities which the agent calculates regarding the other agent. The \par
+A general judgement of responsibility is here defined as the degree to which another agent is responsible in all respects --- it is therefore parameterised with the agent being judged. To calculate this, a mean is taken of all specific responsibilities which the agent calculates regarding the other agent.\par
 
-Finally, a specific judgement of responsibility is here defined as the degree to which an agent is responsible for a particular thing, and is therefore parameterised by both the other agent involved and the factor the calculation relates to. Specific responsibilities are calculated by ``\_\_judge\_degree\_responsible'' --- therefore, a simple lookup of the dictionary returned by ``\_\_judge\_degree\_responsible'' for the factor required is returned.
+Finally, a specific judgement of responsibility is here defined as the degree to which an agent is responsible for a particular thing, and is therefore parameterised by both the other agent involved and the factor the calculation relates to. Specific responsibilities are calculated by\\``\_\_judge\_degree\_responsible'' --- therefore, a simple lookup of the dictionary returned by ``\_\_judge\_degree\_responsible'' for the factor required is returned.
 
 \subsubsection{Updating the sociotechnical opinion over time}
 As an agent can judge any other agent's responsibilities by performing this algorithm upon the other's consequential responsibilities, an agent may perform this calculation on \emph{itself}. Should an agent perform this calculation every time a responsibility is discharged, the agent may calculate the rate of change of its responsibility over time.\par
 
 Improving its performance can be done in two ways. Should its interpreting coefficients ever change, the agent can reflect on its past performance and identify ways to improve; the agent would then readjust its interpreting coefficients to account for this introspection. While this behaviour is interesting, as it permits more socially accurate modelling, the agent's interpreting coefficients should be changed primarily through an \emph{advice} mechanism.\par
 
-Each agent is given a method, ``advise'', and another, ``take\_advice''. An agent may advise another agent by offering that it take advice --- advice is represented as a dictionary of changes to the subject agent's interpreting coefficients. After judging the degree to which another agent is responsible, if an agent is seen to be lacking in responsibility in a specific area, or in all areas generally (using the appropriate calculations), advice regarding concerning factors is provided via this dictionary representation. The subject agent may choose to accept the advice depending on any implementation-appropriate factors: advising agent class, reputation formalism calculation, or other method.\par
+An agent may advise another agent by offering that it take advice via an ``advice'' method on the agent --- advice is represented as a dictionary of changes to the subject agent's interpreting coefficients. After judging the degree to which another agent is responsible, if an agent is seen to be lacking in responsibility in a specific area, or in all areas generally (using the appropriate calculations), advice regarding concerning factors is provided via this dictionary representation. The subject agent may choose to accept the advice depending on any implementation-appropriate factors: advising agent class, reputation formalism calculation, or other method.\par
 
 This, combined with the judgement of responsibility provided in the earlier section, enables an agent to measure consequences of its actions via changes to its judgement of responsibility, and an analysis of its consequential responsibilities. The agent may also direct its interpretation of responsibility directly by offering itself advice, or taking the advice of others, changing the agent's interpreting coefficients --- thereby theoretically fulfilling the second research question.\par
 
 \subsection{An Overview of the Formalism's Definition}
-A formalism has now been presented which, in theory, fulfils both research questions posed earlier in this report\todo{report? paper? dissertation?}. This formalism also adheres to the design principles laid out after analysis of the background research.\par
+A formalism has now been presented which, in theory, fulfils both research questions posed earlier in this report. This formalism also adheres to the design principles laid out after analysis of the background research.\par
 
-Constraints, grouped into an Obligation, are delegated by an Authority to a Delegee. The act of delegation implies enough information to permit the allocation of interpretation scores, completing the requirements for the creation of a Responsibility. These interpretation scores are then interpreted subjectively by the delegee, who uses their present responsibilities to select future Acts. Upon Act completion, the associated responsibility is copied into a list of consequential responsibilities, and --- should it not be listed as in the agent's Notions --- discarded from future consideration. These consequential responsibilities are then used to calculate basic, general, and specific responsibility scores, mirroring Marsh's seminal work on computational trust. Task selection and alteration to interpretation coefficient together answer the two research questions laid out during the problem specification.\par
+Constraints, grouped into an Obligation, are delegated by an Authority to a Delegee. The act of delegation implies enough information to permit the allocation of interpretation scores, completing the requirements for the creation of a Responsibility. These interpretation scores are then interpreted subjectively by the delegee, who uses their present responsibilities to select future Acts. Upon Act completion, the associated responsibility is copied into a list of consequential responsibilities, and --- should it not be listed as in the agent's Notions --- discarded from future consideration. These consequential responsibilities are then used to calculate basic, general, and specific responsibility scores, mirroring Marsh's seminal work on computational trust. Task selection, and alteration to interpretation coefficient, together answer the two research questions laid out during the problem specification.\par
 
-At this point, the formalism's design is complete. Now, empirical data is required so as to verify that the formalism operates as intended, representing responsibility in a social manner, directing agent behaviour, and allowing for improved behaviour through introspection as to an agent's ``beliefs'' about the trait of responsibility.\par
+At this point, the formalism's design is complete. Now, empirical data is required so as to verify that the formalism operates as intended, directing agent behaviour, and allowing for improved behaviour through introspection as to an agent's ``beliefs'' about the trait of responsibility.\par
 
 \section{Evaluating the Formalism}
-The formalism is designed according to research-informed design philosophies, which should help to ensure that answers the research questions positively. Investigating these research questions empirically requires producing data on responsible behaviour --- however, quantifying responsible behaviour isn't something which is explicitly defined. The definition particularly depends on what type of responsibility one refers to: in this report, for example, three ways to quantify responsibility have been determined, in the three judgements of responsibility outlined earlier.\par
+The formalism is designed according to research-informed design philosophies, which should help to ensure that it answers the research questions positively. Investigating these research questions empirically requires producing data on responsible behaviour --- however, quantifying responsible behaviour isn't something which is explicitly defined. The definition particularly depends on what type of responsibility one refers to: in this report, for example, three ways to quantify responsibility have been determined, in the three judgements of responsibility outlined earlier.\par
 
-In order to explore the efficacy of this formalism, one ought to judge responsibility using these judgements of responsibility. Simulations of sociotechnical systems must then be constructed so as to demonstrate responsible behaviour; these models ought not to have additional features or complications which could interfere with the data produced on responsible behaviour.\par
+In order to explore the efficacy of this formalism, one ought to take measurements using these judgements of responsibility. Simulations of sociotechnical systems must then be constructed so as to demonstrate responsible behaviour; these models ought not to have additional features or complications which could interfere with the data produced on responsible behaviour.\par
 
 \subsection{Experimental Design}
 In evaluating this formalism, a sociotechnical system was constructed to simulate the behaviour of students discharging responsibilities of coursework. A central authority, a Lecturer, was constructed to delegate tasks to students, and to judge all students equally (by applying their metrics for responsibility to all students). Importantly, Lecturers have no interpreting coefficients in this model: their judgement of responsibility is therefore untainted by the subjective nature of responsibility judgement, as re-interpretation by a Lecturer agent effectively resets a responsibility's importance scores to its original value. The result of this is that there is no inherent bias in the judgement toward any type of student.\par
@@ -456,7 +454,7 @@ Three types of agents are constructed to explore different aspects of Responsibi
     \item [ResponsibilityBlindAgents ] have no responsibility formalism implemented: rather than choosing responsibilities which maximise importance, they choose a responsibility to discharge at random. This would be an example of a sociotechnical agent with no computational responsibility formalism to draw on.
 \end{description}
 
-The Null Hypothesis can be tested by comparison of either responsible agent class to the ResponsibilityBlindAgents: should there be no correlation between the formalism and agent behaviour, these agents should all perform identically with an agent with no formalism of responsibility whatsoever.\par
+The null hypothesis can be tested by comparison of either responsible agent class to the ResponsibilityBlindAgents: should there be no correlation between the formalism and agent behaviour, these agents should all perform identically with an agent with no formalism of responsibility whatsoever.\par
 
 Importantly, all agents in this experiment are initialised with one Notion: the notion of Idling. This has the constraints of a Deadline of 1 tick, and a small amount of personal enjoyment. Its importances are given as 0.25 for all constraints. This notion is an important one, for two reasons:
 
@@ -475,15 +473,15 @@ Agents are then given thirty responsibilities, evenly distributed among three ty
 
 For each class of responsibility, each constraint was created with an importance of 0.075 * the number of constraints created. Therefore, every constraint created had an importance between 0.075 and 0.75, in steps of 0.075.\par
 
-Agents were registered with Acts which were capable of discharging these responsibilities, so as to conform with the formalism. In this way, agents are able to select from their pool of available Responsibilities to select a Responsibility to discharge, and also select an Act capable of discharging that responsibility according to the formalism's structure.\par
+Agents were registered with Acts which were capable of discharging these responsibilities, so as to conform with the formalism. In this way, agents were able to select from their pool of available responsibilities a single responsibility to discharge, and also select an Act capable of discharging that responsibility according to the formalism's structure.\par
 
 The entire simulation was implemented in Theatre\_AG\cite{theatre_code}, a sociotechnical modelling framework with a focus on workflow modelling and monitoring reference frames across actors with respect to time. Theatre\_AG is currently in active development; conversion of the tool to Python 3, and the introduction of new design philosophies (such as dropping the requirement for all agents' workflows to be predetermined before execution) was implemented so as to properly conduct this experiment.\par
 
 \subsubsection{Anticipated Outcomes}
 
-The experiment was designed this way so as to show that a HedonisticAgent's behaviour would differ from that of a StudiousAgent. Should the agents perform similarly, this would imply that the responsibility formalism would not properly direct agent behaviour; thereby testing the first research question. Should the agents' behaviours differ, the general degree responsible (judged by the lecturer) would lessen for HedonisticAgents as the agents began to Idle, leaving many responsibilities undischarged. Meanwhile, StudiousAgents would continue to write programs and essays, increasing their general responsibility measurement; the two measurements would therefore eventually deviate as the simulation progressed.\par
+The experiment was designed this way so as to show that a HedonisticAgent's behaviour would differ from that of a StudiousAgent. Should the agents perform similarly, this would imply that the responsibility formalism would not properly direct agent behaviour; thereby testing the first research question. Should the agents' behaviours differ, the general degree responsible (judged by the lecturer) would lessen for HedonisticAgents as the agents began to Idle, leaving many responsibilities undischarged. Meanwhile, StudiousAgents would continue to write programs and essays, increasing their general responsibility measurement; the two measurements would therefore deviate as the simulation progressed.\par
 
-The second research question can then be tested, assuming the first research question is answered positively, by introducing advice to the HedonisticAgents which altered their interpreting coefficients to more closely resemble those of the StudiousAgents. As HedonisticAgents would eventually stop writing essays, taking advice past this point would cause their behaviour to more closely resemble StudiousAgents; however, there would be a delay in the increase of the specific judgement of responsibility with respect to ``essays\_written'' constraints.\par
+The second research question can then be tested, assuming the first research question is answered positively, by giving advice to the HedonisticAgents which altered their interpreting coefficients to more closely resemble those of the StudiousAgents. As HedonisticAgents would eventually stop writing essays, taking advice past this point would cause their behaviour to more closely resemble StudiousAgents; however, there would be a delay in the increase of the specific judgement of responsibility with respect to ``essays\_written'' constraints, as the measure would increase only after advice was taken.\par
 
 This should also be evident in measurements of general responsibility in advised agents, compared to unadvised HedonisticAgents or StudiousAgents, as an advised HedonisticAgent should cease to constantly Idle and would instead begin discharging ``essays\_written'' and ``working\_programs'' constraints.\par
 
@@ -497,7 +495,7 @@ To answer the first research question, the experiment was conducted as described
     \label{fig:1}
 \end{figure}
 
-Responsible agents' behaviours deviate from the ResponsibilityBlindAgents, successfully refuting the null hypothesis. Therefore, the responsibility formalism as outlined \emph{does} direct agent behaviour. The agent behaviour is also directed subjectively, as can be seen in the disparity between StudiousAgents and HedonisticAgents.\par
+Responsible agents' behaviours deviate from the ResponsibilityBlindAgents', successfully refuting the null hypothesis. Therefore, the responsibility formalism as outlined \emph{does} direct agent behaviour. The agent behaviour is also directed subjectively, as can be seen in the disparity between StudiousAgents and HedonisticAgents.\par
 
 Notably, while StudiousAgents perform better than ResponsibilityBlindAgents in terms of general measure of responsibility, HedonisticAgents do not. This is an important result: using a responsibility formalism, an agent can perform better than random task selection, making a responsibility a viable task scheduling mechanism which deviates from traditional methods. If improperly calibrated, however, the formalism can perform \emph{worse} than random task selection. This shows that an agent's ability to improve on its performance by directing it's interpretation of responsibility is crucial to real-world applications of the formalism.\par
 
@@ -522,18 +520,18 @@ A requirement of exploring the second research question is that the advice mecha
     \label{fig:3}
 \end{figure}
 
-As can be seen, immediately after accepting advice, HedonisticAgents deviated from their ordinary behaviour and behaved as StudiousAgents were roughly 100 ticks prior. This pattern is seen in both \cref{fig:2} and \cref{fig:3}, meaning that the advice successfully affected both general and specific responsibility measurements. The outcome of the experiment therefore answers the second research question affirmatively: via the advice functionality, a responsible agent's behaviour can be updated.\par
+As can be seen, immediately after accepting advice, HedonisticAgents deviated from their ordinary behaviour and behaved as StudiousAgents had done roughly 100 ticks prior. This pattern is seen in both \cref{fig:2} and \cref{fig:3}, meaning that the advice successfully affected both general and specific responsibility measurements. The outcome of the experiment therefore answers the second research question affirmatively: via the advice functionality, a responsible agent's behaviour can be updated.\par
 
-It is important to note, however, that agents were not providing their own advice. Agents were being identified as performing poorly (as they were HedonisticAgents), asserting that their performance was flawed in some way, and then providing a solution to this flaw in the form of advice. Two problems must yet be solved for agents to supply their own advice:
+It is important to note, however, that agents were not providing their own advice. Agents were being identified by a Lecturer agent as performing poorly (as they were HedonisticAgents), asserting that their performance was flawed in some way, and then providing a solution to this flaw in the form of advice. Two problems must yet be solved for agents to supply their own advice:
 
 \begin{enumerate}
-    \item Agents must be able to identify their own poor behaviour.\\
-        As poor behaviour is identified with interpreted importance scores, an agent will always ``believe'' that it selected optimal responsibilities for discharge. Soliciting advice from respected other agents, or reinterpreting importance scores with the coefficients of respected other agents, is necessary for the proper assessment of poor performance.
+    \item Agents must be able to identify their own poor performance.\\
+        As poor performance is identified with interpreted importance scores, an agent will always ``believe'' that it selected optimal responsibilities for discharge. Soliciting advice from other respected agents, or reinterpreting importance scores with the coefficients of other respected agents, is necessary for the proper assessment of poor performance.
     \item Agents must be able to identify corrective measures themselves.\\
         Identifying improper behaviour is a separate task to identifying how to make that behaviour better. Unfortunately, the numbers produced by responsibility judgement do not provide adequate information for identifying corrective behaviour; therefore, additional mechanisms for judgement must be constructed.
 \end{enumerate}
 
-The second research question was therefore answered affirmatively, but solving these two additional problems is required for agents to correct their own behaviour independently. While the first problem can be solved with relatively trivial alterations to the presented formalism, the second problem stands as a research question in its own right.\par
+The second research question was therefore answered affirmatively, but solving these two additional problems is required for agents to correct their own behaviour independently. While the first problem can be solved with relatively trivial alterations to the presented formalism, the second problem stands as a new research question in its own right.\par
 
 \section{Future Work}
 
@@ -542,30 +540,30 @@ The two problems outlined as a requirement to full behaviour direction at the en
 
 In order to solve the second question, an agent may be required to adopt subsets of another agent's interpreting coefficients, or to judge responsibleness in a more nuanced and informative way. One way to assess alternative decisions, and to update interpreting coefficients, would be to build an alternative stack trace of choices another agent would have made, given the same consequential responsibilities. Two potential issues arise with this method, however:
 
-\begin{itemize}
+\begin{enumerate}
     \item If the other agent had accepted advice in the past, this would need to be taken into account when building a stack trace. Currently, no history of advice taken is kept, making the stack of alternative decisions impossible to properly produce.\par
-    \item A history of other responsibilities present when an agent chose to discharge each item in that agent's consequential responsibilities is not kept. This history would be vital to keep, in case delegation revoking were included in a later version of the formalism, or more in-depth analysis on the choice made was required.\par
-\end{itemize}
+    \item No history is kept of the other responsibilities available when each choice to discharge a responsibility is made. This history would be vital to keep, in case delegation revoking were included in a later version of the formalism, or more in-depth analysis on the choice made was required.\par
+\end{enumerate}
 
 \subsection{Repeated Acts to Discharge a Responsibility}
-Currently, an action cannot be repeated multiple times to discharge a Responsibility; instead, a responsibility is discharged only if an act is available with a perfectly matching expected effect.\par
+Currently, an action cannot be repeated multiple times to discharge a responsibility; instead, a responsibility is discharged only if an act is available with a perfectly matching expected effect.\par
 
-Similarly, some acts may discharge a responsibility with additional side-effects. These do technically fulfil a responsibility's requirements, and should be included also in an ideal formalism.\par
+Similarly, some acts may discharge a responsibility with additional side-effects. These do technically fulfil a responsibility's requirements, and should also be included in an ideal formalism.\par
 
 \subsection{Applying The Formalism}
 The formalism has been shown to have potential in task scheduling applications. Further work on the formalism, developing enhanced versions with design philosophies more appropriate for specific applications, would prove the real-world and industrial applicability of this research.\par
 
-The formalism at present may be suitable for real-world application for task scheduling. Empirical evidence of this, and any modifications to improve the formalism's performance in more constrained scenarios, will require further research, posing new research questions.\par
+The formalism at present may already be suitable for real-world application for task scheduling. Empirical evidence of this, and any modifications to improve the formalism's performance in more constrained scenarios, will require further research, posing new research questions.\par
 
 \subsection{Integration With Trust}
-Similarities between trust and responsibility as social traits were laid out in the background research section of this report. A wealth of insights from trust formalism, including the basic parameters required to construct the formalism presented, were incorporated into the final product.\par
+Similarities between trust and responsibility as social traits were laid out in earlier sections of this report. A wealth of insights from trust formalism, including the basic parameters required to construct the formalism presented, were incorporated into the final product.\par
 
-Due to these similarities, and the employment of similar design philosophies between the formalism presented and existing trust formalisms, such as C\&F and Marsh's respective formalisms, development of a model which incorporates the two appears feasible. Each trait's measurements might be used to inform the other in a dual-trait anthropomorphic algorithm, creating a feedback mechanism which allowed each trait to be calculated by a better-informed agent. Dual-trait formalisms usually exist in a format similar to Eigentrust's employment of reputation as a bootstrapping trait for trust; this proposed dual-trait model would instead present two separate traits, measured in parallel, but informing each other.\par
+Due to these similarities, and the employment of similar design philosophies between the formalism presented and existing trust formalisms, such as C\&F and Marsh's respective formalisms, development of a model which incorporates the two traits appears feasible. Each trait's measurements might be used to inform the other in a multi-trait anthropomorphic algorithm, creating a feedback mechanism which allowed each trait to be calculated by a better-informed agent. Multi-trait formalisms usually exist in a format similar to Eigentrust's employment of reputation as a bootstrapping trait for trust; this proposed multi-trait model would instead present two separate traits, computed in parallel, but informing each other.\par
 
 \section{Discussion}
 In this report,\todo{paper? dissertation? project?} a new formalism of computational responsibility was presented which is able to direct agent behaviour in a subjective way toward discharging the most important responsibilities earliest.\par
 
-This formalism employs a wealth of insights from sociotechnical literature, as well as literature on trust modelling, the trait with the largest body of anthropomorphic algorithms to date. In this report, the distinction of anthropomorphic algorithms from the rest of sociotechnical literature is defined, as well as its distinction from  human-like computing --- research areas which both affect this smaller field.\par
+This formalism employs a wealth of insights from sociotechnical literature, as well as literature on trust modelling, the trait with the largest body of anthropomorphic algorithm development to date. In this report, the distinction of anthropomorphic algorithms from the rest of sociotechnical literature is defined, as well as its distinction from  human-like computing.\par
 
 The presented formalism, applied to a simple sociotechnical modelling scenario, effectively shows that responsibility as it is presented can direct agent behaviour, and is sufficient for significant behavioural changes. It is also shown to perform better than random task selection, where responsible behaviour is required. Improvements to agent behaviour are also demonstrated, ensuring that under-performing agents can become more performant over time by employing the formalism's advice functionality.\par
 
