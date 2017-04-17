@@ -4,10 +4,10 @@ completely:
 	make wordcount
 
 dissertation:
-	pdflatex dissertation_root.tex
-	bibtex   dissertation_root.aux
-	pdflatex dissertation_root.tex
-	pdflatex dissertation_root.tex
+	pdflatex --shell-escape dissertation_root.tex 
+	bibtex   dissertation_root.aux 
+	pdflatex --shell-escape dissertation_root.tex 
+	pdflatex --shell-escape dissertation_root.tex 
 	mv dissertation_root.pdf dissertation.pdf
 
 available:
@@ -22,3 +22,6 @@ wordcount:
 	pdftotext dissertation.pdf
 	wc -w dissertation.txt
 	rm dissertation.txt
+
+wc:
+	make wordcount

@@ -1,1 +1,22 @@
-\documentclass{mpaper}
+\documentclass[]{mpaper}
+\usepackage{cleveref}
+\usepackage[obeyDraft,textsize=tiny]{todonotes}
+\usepackage{enumitem}
+\usepackage[T1]{fontenc}
+\usepackage[variablett]{lmodern}
+\usepackage{svg}
+
+\lstset{
+%     language=python,
+    basicstyle=\scriptsize\ttfamily,
+}
+
+\let\regulartodo\todo
+\renewcommand{\todo}[1]{\regulartodo[inline]{#1}}
+\newcommand{\comment}[1]{\regulartodo[disable]{#1}}
+
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+
+\lstnewenvironment{pseudocodelisting}{\lstset{basicstyle=\scriptsize\ttfamily}}{}
+
+\graphicspath{ {images/} }
