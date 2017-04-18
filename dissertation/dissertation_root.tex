@@ -9,13 +9,46 @@
 \maketitle
 
 \begin{abstract}
-    Currently, models are produced for modelling responsibility which have their roots in logic. These models, while sophisticated, suffer from a lack of pragmatism: for guiding agent behaviour in simulations of complicated social and technological behaviour --- sociotechnical systems --- logical models are not always ideal. They also frequently neglect a useful aspect of responsibility as a social trait: the delegation and execution of tasks, as well as the calculation of an agent's degree of responsibility. In the similar field of trust modelling, algorithmic models which emulate social behaviour produce useful results while being easier to understand, implement, and reason about as a human onlooker. In this paper\todo{paper? report? project?}, a proof-of-concept model of responsibility adopting the algorithmic formalism style employed by trust modelling is produced, and is evaluated as an anthropomorphic algorithm and task scheduling mechanism.
+
+A growing area of research lies in the formalism of human traits into computational representations....
+
+\todo{Complete by giving examples of alternative formalisms, e.g. comfort/trust  (1 sentences).  State that there is growing interest in the social construct responsibility and its implications for system engineering.  However, representations of responsibility are to date not computational, so... this work presents a computational responsibility formalism.
+
+    Currently, models are produced for modelling responsibility which have their roots in logic. These models, while sophisticated, suffer from a lack of pragmatism: for guiding agent behaviour in simulations of complicated social and technological behaviour --- sociotechnical systems --- logical models are not always ideal. They also frequently neglect a useful aspect of responsibility as a social trait: the delegation and execution of tasks, as well as the calculation of an agent's degree of responsibility. In the similar field of trust modelling, algorithmic models which emulate social behaviour produce useful results while being easier to understand, implement, and reason about as a human onlooker. In this paper\todo{paper? report? project?}, a proof-of-concept model of responsibility adopting the algorithmic formalism style employed by trust modelling is produced, and is evaluated as an anthropomorphic algorithm and task scheduling mechanism.}
 \end{abstract}
 
-\section{Introduction}
-A growing area of research lies in the formalism of human traits into computational representations. These algorithms make computers more human-like; for that reason, they are referred to here as ``anthropomorphic algorithms''\footnote{A similar term, ``human-like computing'', has also risen in popularity lately. Human-like computing does not strictly focus on the implementation of formalisms of human traits, however, which is the area of interest for this report.}.\par
 
-This implementation interest presents an opportunity to alter the behaviour of actors in a sociotechnical system, a model of complex social and technical behaviours. This alteration of behaviour is done by the implementation of a \emph{formalism}. Formalisms present a concrete definition --- by process, mathematical definition or semantic description --- which can be used to construct an anthropomorphic algorithm. These formalisms must make a trade-off between its utility in a specific setting, and the accuracy with which it models a trait:
+
+\section{Introduction}
+
+%% Anthropomorphic algorithms are a growing area of research with a number of applications.
+
+\subsection{Background}
+
+Computational formalisms of human traits are a growing field of research, with applications in a number of different areas.  These algorithms make computers more human-like; for that reason, they are referred to here as ``anthropomorphic algorithms''\footnote{A similar term, ``human-like computing'', has also risen in popularity lately. Human-like computing does not strictly focus on the implementation of formalisms of human traits, however, which is the area of interest for this report.}.    These algorithms have a diverse range of applications:
+
+\begin{itemize}
+  \item Human-Computer Interaction can make use of behavioural metaphors to relay complicated internal states to a user. Storer et al.~\cite{storer_mobile_behaviour_poster} demonstrated methods by which a mobile device might dissuade certain user actions by expressing its ``discomfort'' or lack of ``trust'' in its interaction with the user.
+  \item Information Security can make use of behavioural metaphors in order to increase difficulty of access when negative interactions are encountered. A system might allow access on a graded scale, dependant on internal states of trust, comfort, and/or confidence.
+  \item Theoretical advancements in smart city technology might increase a city's resilience by integrating notions of responsibility into public services and the environment on a community scale, as well as in pervasive computing\cite{wallis_talk_about_x_talk}.\par
+  \item \todo{Enhancing simulations of socio-technical systems.}
+\end{itemize}
+
+\todo{
+Work these passage into last bullet point above?
+
+This implementation interest presents an opportunity to alter the behaviour of actors in a model of a sociotechnical system, a model of complex social and technical behaviours. This alteration of behaviour is done by the implementation of a \emph{formalism}. Formalisms present a concrete definition --- by process, mathematical definition or semantic description --- which can be used to construct an anthropomorphic algorithm.
+
+The latter has a number of potential applications. One such possibility would be to implement agent awareness of remote task execution via RPC\@. Should an agent on a network be given a procedure to execute which is perceived through a responsibility formalism to be unusual, the procedure may not be executed, or may be rejected upon receipt by the responsible agent. Similar applications have proven effective in trust literature, where information security is enhanced by inferring agent trustworthiness\cite{eigentrust}.\par
+
+ While similar results can often be achieved using regular techniques, the human metaphor allows for a better communication between a human user and complicated system states, as well as having unique utility in sociotechnical modelling applications
+}.
+
+\subsection{Motivation}?
+
+%% However, the full range of possible traits that could be modelled are largely unexplored.  Why?
+
+Despite the activity in this area, there is considerable opportunity to explore the formalisation of alternative social constructs as anthropomorphic algorithms (as is demonstrated during the background survey in \cref{sec:related_work}). The lack of development of anthropomorphic algorithm is a complicated mosaic of related factors. For example, existing approaches to anthropomorphic algorithms make a trade-off between utility in a specific problem context or setting; and fidelity to the underlying social construct.  This results in two philisophical approaches to anthropomorphic algorithm design:
 
 \begin{description}
     \item [Type 1: ] Trait as a useful metaphor\\
@@ -24,45 +57,28 @@ This implementation interest presents an opportunity to alter the behaviour of a
     These models attempt to accurately model the traits they concern. This can be useful for fields such as sociotechnical modelling, as well as social sciences research. There are also interesting applications for these models in interaction study: making interfaces interact with users in a human-like way, and representing the states of these traits to the users, are valuable research areas which are more applicable to these type-2 formalisms than to type-1 formalisms.
 \end{description}
 
-In reality, most formalisms and their implementations lie somewhere on the spectrum that these two types define.\par
+In reality, most formalisms and their implementations lie somewhere on the spectrum that these two types define.  In either case, the research into anthropomorphic algorithms is strongly interdisciplinary in nature: it requires a research team to understand the nuances of sciences as well as social sciences, and sometimes even humanities. This often causes divergence in the philosophies of research agendas in different disciplines. Different formalisms are useful to different researchers, for different modelling applications, with different philosophies.  This also results in a lack of consistent representations of anthropic traits.
 
-Current research focus has shifted slightly to consider the possibility of ``computational responsibility'', leading to logical models of responsibility. These models frequently regard responsibility as an ethical issue to model. Responsibility might be formalised, however, for the purpose of directing sociotechnical agent behaviour: this would allow the discharge of more important tasks earlier in the agent's timeline. A suitable definition of responsibility for these purposes might be that responsibility is a property of an agent which directs it behaviour toward prioritising a task's importance. Such a model of responsibility does not exist in in algorithmic format. This report will present a first algorithmic formalism of responsibility, which is used to direct agent behaviour, as well as to improve agent behaviour over time by means of improving the agent's perception of responsibility.\par
+The lack of broad application is therefore unsurprising. These factors compound to ensure that the breadth of traits formalised and researched is very small. The largest degree of research is easily conducted in the field of trust; other traits, such as comfort, have recently been attempted also~\cite{marsh2011defining}.\par
 
-\subsection{Report Outline}
-Following this introduction, the second section of this report focuses on exploring the problem domain, and making concrete the research questions which this report will address.\par
+\subsection{Contribution and Research Questions}
 
-The third section follows this with a review of important literature from areas in anthropomorphic algorithms and sociotechnical systems research which might inform this proof-of-concept formalism.\par
+Recently, some interest has been shown in research pertaining to modelling and formalising \emph{responsibility}\cite{berreby2015modelling,sommerville_dependable_systems_chap_8,Simpson2011}.  \todo{Finish this paragraph by explaining why we could take the insights from existing representations of responsibilty to create a computational responsibility model}
 
-A fourth section then explores design philosophies which can be adopted from lessons learned in the background survey, and this is then followed by a specification of the formalism's constituent parts.\par
-
-An evaluation of the formalism outlined follows in the fifth section, and work building on the formalism presented --- and the results of the evaluation --- are presented in the sixth section.\par
-
-The report concludes with a discussion on what has been presented, and the work which this exploration into a new anthropic trait represented algorithmically makes possible.\par
-
-\section{Statement of Problem}
-Computational formalisms of human traits are a growing field of research, with applications in lots of different areas. A problem with these anthropomorphic algorithms is that there is limited breadth to the existing research in the field (as is demonstrated during the background survey in \cref{sec:related_work}).\par
-
-Breadth in the application of the metaphor is important, however. The importance stems from the utility of the human metaphor when designing systems:
-
-\begin{itemize}
-  \item Human-Computer Interaction can make use of behavioural metaphors to relay complicated internal states to a user. Storer et al.~\cite{storer_mobile_behaviour_poster} demonstrated methods by which a mobile device might dissuade certain user actions by expressing its ``discomfort'' or lack of ``trust'' in its interaction with the user.
-  \item Information Security can make use of behavioural metaphors in order to increase difficulty of access when negative interactions are encountered. A system might allow access on a graded scale, dependant on internal states of trust, comfort, and/or confidence.
-  \item Theoretical advancements in smart city technology might increase a city's resilience by integrating notions of responsibility into public services and the environment on a community scale, as well as in pervasive computing\cite{wallis_talk_about_x_talk}.\par
-\end{itemize}
-
-While similar results can often be achieved using regular techniques, the human metaphor allows for a better communication between a human user and complicated system states, as well as having unique utility in sociotechnical modelling applications.\par
-
-The lack of application of the human metaphor is a complicated mosaic of related factors. For example, research into anthropomorphic algorithms holds particular challenges, as a result of its strongly interdisciplinary nature: it requires a research team to understand the nuances of sciences as well as social sciences, and sometimes even humanities. Not only does the research team require this understanding, but they must also take into account their different natures. This often causes divergence in the philosophies of sociotechnical research. Some researchers view sociotechnical systems from the perspective of largely human-based systems with abstract, social behaviour. Others see sociotechnical systems as a combination of dynamic, mathematical processes which produce more technical emergent phenomena. This hints at a third complicating factor (the second being a lack of convergence in research focus): a lack of a consistent modelling paradigm. Some research focuses largely on actor interaction-style modelling techniques~\cite{baxter2011socio}, while others rely on purely graphical modelling~\cite{ObashiMethodology}, or on mathematical modelling techniques~\cite{vespignani2012modelling}. \par
-
-These issues together pose an issue for research in anthropomorphic algorithms: different formalisms are useful to different researchers, for different modelling applications, with different sociotechnical philosophies. Their lack of broad application is therefore unsurprising; these factors compound to ensure that the breadth of traits formalised and researched is very small. The largest degree of research is easily conducted in the field of trust; other traits, such as comfort, have recently been attempted also~\cite{marsh2011defining}.\par
-
-Recently, some interest has been shown in research pertaining to modelling and formalising \emph{responsibility}\cite{berreby2015modelling,sommerville_dependable_systems_chap_8,Simpson2011}. Logical models of social trust exist which could be turned into a proof-of-concept formalism of responsibility, delegating responsibilities to agents who are deemed ``responsible'' if they can be trusted. Indeed, similar methods are employed to infer trustworthiness from scores of reputation\cite{eigentrust}.\par
+%% HOW Can we create a Compu Resp Model
 
 A model of responsibility might be more than simple task allocation, however. Some logical models of responsibility attempt to model ethically responsible decisions~\cite{berreby2015modelling}. Deontic logic's obliging term was in itself an attempt to create a logic which was suitable for the calculation of whether an agent was obliged to ensure certain goals were met, or perform certain tasks, from a philosophical standpoint. Another angle might be to perceive a model of responsibility as something which might allow a responsible sociotechnical agent to \emph{choose} responsibilities to discharge, rather than blindly executing tasks they are provided with in a model which simply delegates tasks.\par
 
-The latter has a number of potential applications. One such possibility would be to implement agent awareness of remote task execution via RPC\@. Should an agent on a network be given a procedure to execute which is perceived through a responsibility formalism to be unusual, the procedure may not be executed, or may be rejected upon receipt by the responsible agent. Similar applications have proven effective in trust literature, where information security is enhanced by inferring agent trustworthiness\cite{eigentrust}.\par
+ Logical models of social trust exist which could be turned into a proof-of-concept formalism of responsibility, delegating responsibilities to agents who are deemed ``responsible'' if they can be trusted. Indeed, similar methods are employed to infer trustworthiness from scores of reputation\cite{eigentrust}.\par
 
-The focus of the work presented is to create a formalism of responsibility suitable for the delegation and selective discharge of responsibilities, as well as the calculation of how responsible an agent is ``perceived'' to be. This task scheduling-oriented approach permits future study, such as eventual specific applications in areas such as RPC, as work which builds on this solid foundation. As such a formalism does not currently exist, in a format suitable for directing agent behaviour, the presented work will be a proof-of-concept formalism suitable for this particular purpose.\par
+
+\todo{Make sure this passage flows neatly}
+
+Current research focus has shifted to consider the possibility of ``computational responsibility'', leading to logical models of responsibility. These models frequently regard responsibility as an ethical issue to model. Responsibility might be formalised, however, for the purpose of directing sociotechnical agent behaviour: this would allow the discharge of more important tasks earlier in the agent's timeline. A suitable definition of responsibility for these purposes might be that responsibility is a property of an agent which directs it behaviour toward prioritising a task's importance. Such a model of responsibility does not exist in in algorithmic format. This report will present a first algorithmic formalism of responsibility, which is used to direct agent behaviour, as well as to improve agent behaviour over time by means of improving the agent's perception of responsibility.\par
+
+%%% TOM'S CONTRIBUTION
+
+The contribution of the work presented here is to create a formalism of responsibility suitable for the delegation and selective discharge of responsibilities, as well as the calculation of how responsible an agent is ``perceived'' to be. This task scheduling-oriented approach permits future study, such as eventual specific applications in areas such as RPC, as work which builds on this solid foundation. As such a formalism does not currently exist, in a format suitable for directing agent behaviour, the presented work will be a proof-of-concept formalism suitable for this particular purpose.\par
 
 In a realistic sociotechnical system, an agent's behaviour is often informed via a feedback loop. It is important, therefore, to allow an agent to learn better ``responsible'' behaviour over time, through an analysis of its sociotechnical environment and other factors. Anthropic traits are most useful when they account for both introspection --- so as to direct an agent's own behaviour based on the formalised trait --- and extrospection --- so as to judge and learn from that trait in other agents.\par
 
@@ -72,6 +88,19 @@ To achieve these goals, two research questions were formulated:
     \item How can a computational formalism of responsibility direct the decisions made by an intelligent agent?
     \item How can an intelligent agent assume the consequences of actions it makes, the decisions other agents make, and its general environment, so as to direct its interpretation of responsibility?
 \end{enumerate}\par
+
+\subsection{Report Outline}
+
+This paper is structured as follows.  Section \ref{sec:related_work} explores the problem domain, and contextualises the research questions which this report will address. Section \ref{sec:???} ...
+
+The third section follows this with a review of important literature from areas in anthropomorphic algorithms and sociotechnical systems research which might inform this proof-of-concept formalism.\par
+
+A fourth section then explores design philosophies which can be adopted from lessons learned in the background survey, and this is then followed by a specification of the formalism's constituent parts.\par
+
+An evaluation of the formalism outlined follows in the fifth section, and work building on the formalism presented --- and the results of the evaluation --- are presented in the sixth section.\par
+
+The report concludes with a discussion on what has been presented, and the work which this exploration into a new anthropic trait represented algorithmically makes possible.\par
+
 
 \section{Related Work}\label{sec:related_work}
 A broad range of literature must be reviewed to properly understand the research at hand, due to the problem's unusual nature. Particularly, this background literature survey will focus on three areas: popular algorithmic trust models, broader sociotechnical systems research, and relevant philosophical literature.\par
