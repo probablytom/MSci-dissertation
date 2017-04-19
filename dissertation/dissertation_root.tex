@@ -91,7 +91,7 @@ A broad range of literature must be reviewed to properly understand the research
 \subsection{Trust Modelling}
 Ordinarily, when constructing a new anthropomorphic algorithm, one would draw on literature regarding other anthropomorphic algorithms which formalise the same trait with the same intended purpose. However, no such formalism exists for responsibility modelling; therefore, insights from early trust modelling may provide useful information on how to proceed, given that responsibility formalism now is in a similar stage to early trust formalism. Trust is particularly appropriate as a comparative trait to responsibility, as the two traits have many similarities. Trust and responsibility both concern tasks, and their execution, within certain formalisms, yet require different perspectives on this execution. These similarities will be explored further as they appear in the explored trust literature.\par
 
-\subsubsection{Marsh}
+\subsubsection{Marsh\cite{Marsh1994FormalisingConcept}}
 The seminal anthropomorphic algorithm for trust is found in Marsh's 1994 formalism\cite{Marsh1994FormalisingConcept}. In this paper, a formalism is described which has a number of useful qualities: it is modelled on a per-agent basis as opposed to calculating trust across a group of agents, has foundations in social sciences, and is largely algebraic, staying clear of modelling via logic.
 
 Of particular interest is Marsh's separation of three different degrees of detail in trust judgement. Marsh identifies that human agents have:
@@ -110,36 +110,36 @@ A final important property of Marsh's formalism is its graded nature. This model
 
 \todo{Write more of this? Maybe less on the separations, and more on its social science background or lack of logical foundation?}
 
-\subsubsection{Castelfranchi \& Falcone}
-Another useful formalism of trust to consider comes from Castelfranchi \& Falcone~\cite{CastelfranchiSocialApproach} (often referred to as ``C\&F''). While this formalism has logical foundations, its popularity makes it an interesting comparison to Marsh's formalism.\par
+\subsubsection{Castelfranchi \& Falcone\cite{CastelfranchiSocialApproach}}
+Another useful formalism of trust to consider comes from Castelfranchi \& Falcone\cite{CastelfranchiSocialApproach}~. While this formalism has logical foundations, its popularity makes it an interesting comparison to Marsh's formalism.\par
 
-In contrast to Marsh's formalism, C\&F is graded only in more complex forms. At its root, C\&F is a logical formalism built on boolean calculations of goal and belief satisfaction. However, C\&F also segregate different aspects of trust in their formalism: different elements of the basic formalism represent competence, disposition, and dependence. They define competence as one agent's belief and will that another agent can successfully achieve a goal by a certain action, disposition as the belief and will that the other agent is willing to perform an action to achieve a goal, and dependence as the effective delegation of a task for the purpose of achieving a goal (expressed via logical statements).\par
+In contrast to Marsh's formalism, Castelfranchi \& Falcone's model is graded only in more complex forms. At its root, Castelfranchi \& Falcone's model is a logical formalism built on boolean calculations of goal and belief satisfaction. However, Castelfranchi \& Falcone also segregate different aspects of trust in their formalism: different elements of the basic formalism represent competence, disposition, and dependence. They define competence as one agent's belief and will that another agent can successfully achieve a goal by a certain action, disposition as the belief and will that the other agent is willing to perform an action to achieve a goal, and dependence as the effective delegation of a task for the purpose of achieving a goal (expressed via logical statements).\par
 
-Curiously, the C\&F model of trust contains all of the same parameters as Marsh's, plus a fourth: the goal to be achieved by an action. One may take the position that a goal is also important in modelling responsibility --- but it is not immediately apparent that it is necessary to include both. Therefore, C\&F uncovers the need when building a formalism of a trait to make choices as to the formalism's philosophy.\par
+Curiously, the Castelfranchi \& Falcone model of trust contains all of the same parameters as Marsh's, plus a fourth: the goal to be achieved by an action. One may take the position that a goal is also important in modelling responsibility --- but it is not immediately apparent that it is necessary to include both. Therefore, Castelfranchi \& Falcone uncovers the need when building a formalism of a trait to make choices as to the formalism's philosophy.\par
 
-In particular, two design differences between Marsh's model and that of C\&F are immediately apparent: where Marsh separates his calculation of trust into a basic/general/specific granularity, C\&F separate trust's different constituent parts, each of which must be satisfied for trust to be present. Another philosophical difference between the two is the assertion as to whether the goal of an action factors into one's trust. These philosophical decisions can make concrete, important differences to a formalism's constitution --- which is plain to see when considering that even the parameters of the model differ, something fundamental to the formalism's definition of trust. Therefore, these choices as to the approach to responsibility are important to note in the formalism produced during this report\todo{report? paper? Dissertation?}.\par
+In particular, two design differences between Marsh's model and that of Castelfranchi \& Falcone are immediately apparent: where Marsh separates his calculation of trust into a basic/general/specific granularity, Castelfranchi \& Falcone separate trust's different constituent parts, each of which must be satisfied for trust to be present. Another philosophical difference between the two is the assertion as to whether the goal of an action factors into one's trust. These philosophical decisions can make concrete, important differences to a formalism's constitution --- which is plain to see when considering that even the parameters of the model differ, something fundamental to the formalism's definition of trust. Therefore, these choices as to the approach to responsibility are important to note in the formalism produced during this report\todo{report? paper? Dissertation?}.\par
 
-\subsubsection{Eigentrust}
-Eigentrust\cite{eigentrust} is a formalism which takes a notably different approach to Marsh and C\&F's formalisms: rather than attempting to model human trust accurately, it models trust as a metaphor for the truly desired behaviour.\par
+\subsubsection{Eigentrust\cite{eigentrust}}
+Eigentrust\cite{eigentrust} is a formalism which takes a notably different approach to Marsh and Castelfranchi \& Falcone's formalisms: rather than attempting to model human trust accurately, it models trust as a metaphor for the truly desired behaviour.\par
 
 Calculations of trust in Eigentrust have their foundations in eBay's model for reputation: star ratings based on a summation of satisfaction scores. In particular: \[s(i,j) = sat(i,j) - unsat(i,j)\]~\ldots{}where \(sat\) is the number of satisfactory interactions between two agents and \(unsat\) the unsatisfactory ones, represents a ``local trust value'' that an agent \(i\) has in another agent \(j\). Through some linear algebra, these local trust values are accumulated and gradually turned into a global score of responsibility, accounting for all agents' opinions of each other. This global score could also be considered to be an agent's \emph{reputation} --- in this way, Eigentrust generalises trust as a certain application of a reputation formalism, and bootstraps its own formalism on another trait.\par
 
-While Eigentrust has proven particularly effective in its intended domain, it is a formalism designed expressly for the purposes of network and information security. Eigentrust achieves this by a number of philosophical differences to Marsh and C\&F's respective formalisms:
+While Eigentrust has proven particularly effective in its intended domain, it is a formalism designed expressly for the purposes of network and information security. Eigentrust achieves this by a number of philosophical differences to Marsh and Castelfranchi \& Falcone's respective formalisms:
 
 \begin{itemize}
-    \item Eigentrust operates in a distributed way. Unlike the local scoring system employed by Marsh and C\&F's formalisms, Eigentrust has all agents report their local trust scores, so as to create a distributed ledger of collectively agreed-upon trust scores.
-    \item Eigentrust does not model trust directly, nor does it claim to model it accurately --- unlike C\&F's formalism, which is strictly intended as a model of human behaviour, and Marsh's, which simulates it, Eigentrust uses ``trust'' as a loose description of an agent's behaviour.
+    \item Eigentrust operates in a distributed way. Unlike the local scoring system employed by Marsh and Castelfranchi \& Falcone's formalisms, Eigentrust has all agents report their local trust scores, so as to create a distributed ledger of collectively agreed-upon trust scores.
+    \item Eigentrust does not model trust directly, nor does it claim to model it accurately --- unlike Castelfranchi \& Falcone's formalism, which is strictly intended as a model of human behaviour, and Marsh's, which simulates it, Eigentrust uses ``trust'' as a loose description of an agent's behaviour.
     \item Eigentrust is not concerned with the cause of satisfactory or unsatisfactory interactions; it focuses entirely on accumulated positive/negative scores. In this way, Eigentrust somewhat models Marsh's ``general trust'', but makes no assertions as to trust's composition or how to reason about it.
 \end{itemize}
 
 In these respects, Eigentrust represents an interesting alternative end of the spectrum between anthropomorphic algorithms which treat their trait as a metaphor, or as a social behaviour to accurately simulate. While Eigentrust does not represent a very useful foundation for our responsibility formalism, it does highlight two things:
 
 \begin{enumerate}
-    \item The responsibility formalism required to test the research questions should be more similar to Marsh and C\&F's formalisms than Eigentrust: there is no specific use case to design for, so designing with a trait as a metaphor would not be appropriate.
+    \item The responsibility formalism required to test the research questions should be more similar to Marsh and Castelfranchi \& Falcone's formalisms than Eigentrust: there is no specific use case to design for, so designing with a trait as a metaphor would not be appropriate.
     \item Should it be necessary, a trait's formalism could be bootstrapped using a pre-existing formalism of another trait. Whether this is a suitable way to answer the research questions above is harder to address; the possibility should therefore be considered.
 \end{enumerate}
 
-\subsubsection{FIRE}
+\subsubsection{FIRE\cite{huynh2004fire}}
 FIRE\cite{huynh2004fire} is another trust modelling system which provides a focus on being able to judge trust using information from many different sources. For example, it treats direct experience  information in a different way to information collected by third parties, unlike other trust formalisms, which concern themselves with only a single source or type of information to calculate using. It is also a model which considers multiple different traits: it incorporates reputation information into its judgement of trust. In part, FIRE is able to do this because it segregates different information sources into different measurements, which are tabulated into a score after their measurement.\par
 
 FIRE's inclusion of information from multiple sources paints other trust formalisms in a slightly different light. However, this feature is not necessary for all trust scenarios: the decision to trust (or not trust) is made with different amounts of information for agents in different simulations. One can imagine a two-agent simulation, where information about each agent's interactions would be assessed by exactly one source --- the other agent, which judges the former's reliability. It is plain to see that FIRE is designed to be a formalism treating traits as a metaphor, similarly to Eigentrust.\par
@@ -150,7 +150,7 @@ This design decision makes FIRE an unlikely candidate as a foundation of a respo
 \subsection{Sociotechnical Systems}
 While these formalisms are useful to consider in isolation, their application within the realm of sociotechnical systems is important to their design. Moreover, the nature of responsibilities is touched within the broader sociotechnical systems area of responsibility modelling: research on the delegation and discharge of responsibilities, and how to reason about them.\par
 
-\subsubsection{Ian Sommerville}
+\subsubsection{Sommerville\cite{sommerville_graphical_responsibility,sommerville_dependable_systems_chap_8,sommerville_dependable_systems_chapter_9}}
 \todo{What more can we say about Sommerville's contributions? At the moment we only cover consequential and causal responsibilities.}
 Ian Sommerville was a prolific writer in the field of sociotechnical systems, who was responsible for much of the current literature on responsibility modelling\cite{sommerville_graphical_responsibility,sommerville_dependable_systems_chap_8,sommerville_dependable_systems_chapter_9}.\todo{What other references can go here?} Sommerville's responsibility modelling systems often happened to be graphical\cite{sommerville_graphical_responsibility}, a paradigm for computational responsibility which may prove hard to convert to an anthropomorphic algorithm. This is because graphical representations of system states do not naturally present themselves as a numerically analysable format; rather, graphical presentations are useful for exposing sociotechnical system state. This feature of sociotechnical modelling, and particularly responsibility modelling, is useful for risk and impact analysis\cite{ObashiMethodology}.\par
 
@@ -160,11 +160,10 @@ In particular, Sommerville notes an interesting distinction as to two different 
 
 Sommerville's separation clarifies a potential avenue by which one might create a computational responsibility formalism. Namely, an agent's degree of responsibility might be associated with the state changes they have brought about in the past, and perhaps a prediction of the chance that an agent would discharge a causal responsibility successfully at some future time. This approach, verified by its appearance in existing sociotechnical systems literature, may be appropriate for creating a computational responsibility formalism, though its foundations exist in a less useful graphical representation.\par
 
-\subsubsection{Timothy Storer \& Russell Lock}
-\todo{tim or timothy?}
-While describing a graphical responsibility modelling format for the InDeED project --- notably lead by Ian Sommerville --- Storer and Lock provide some useful foundations for other models of responsibility in a technological report\cite{storer2008modelling}~.\par
+\subsubsection{Lock \& Storer\cite{storer2008modelling}}
+While describing a graphical responsibility modelling format for the InDeED project, Lock \& Storer provide some useful foundations for other models of responsibility in a technological report\cite{storer2008modelling}~.\par
 
-Most interestingly, Storer and Lock provide a useful definition of a responsibility:
+Most interestingly, Lock \& Storer provide a useful definition of a responsibility:
 
 \begin{quotation}
     A duty, held by some agent, to achieve, maintain or avoid some given state, subject to conformance with organisational, social and cultural norms.\cite{storer2008modelling}\par
@@ -174,17 +173,17 @@ Most interestingly, Storer and Lock provide a useful definition of a responsibil
     Responsibilities are the duties to be discharged by agents as described\ldots{}
 \end{quotation}
 
-Numerous things in this definition are useful. Similarly to the work done by Mash and C\&F, the definition provides an insight into some possible fundamental parameters of a responsibility:
+Numerous things in this definition are useful. Similarly to the work done by Marsh and Castelfranchi \& Falcone, the definition provides an insight into some possible fundamental parameters of a responsibility:
 
 \begin{description}
     \item [A duty: ] responsibilities can be considered as some action an agent is \emph{obliged} to conduct.
-    \item [achieve\ldots{}some given state: ] the obligation which a duty is defined by can be described as a change of \emph{state}. Storer and Lock note that this state change can have different modes: it can be achieved, but also maintained or avoided. It is worth noting that this very general description of responsibility indicates that the graphical formalism designed for the InDeED project was somewhat socially accurate.
-    \item [comformance with\ldots{}norms: ] agents can be delegated responsibilities in most useful formalisms of responsibility --- Storer and Lock note that these responsibilities must not conflict with pre-existing beliefs about the responsibilities that an agent holds.
+    \item [achieve\ldots{}some given state: ] the obligation which a duty is defined by can be described as a change of \emph{state}. Lock \& Storer note that this state change can have different modes: it can be achieved, but also maintained or avoided. It is worth noting that this very general description of responsibility indicates that the graphical formalism designed for the InDeED project was somewhat socially accurate.
+    \item [comformance with\ldots{}norms: ] agents can be delegated responsibilities in most useful formalisms of responsibility --- Lock \& Storer note that these responsibilities must not conflict with pre-existing beliefs about the responsibilities that an agent holds.
 \end{description}
 
-Unlike Marsh or C\&F's more mathematical definitions of trust, this semantic definition lends itself nicely to conversion to some responsibility model; partly because it already summarises the responsibility trait, but also because it describes an intuitive social definition of responsibility while remaining very simple. Therefore, a responsibility formalism which somehow extended this model, while retaining the power of the anthropomorphic algorithms described earlier may prove useful in answering our research question.\par
+Unlike Marsh or Castelfranchi \& Falcone's more mathematical definitions of trust, this semantic definition lends itself nicely to conversion to some responsibility model; partly because it already summarises the responsibility trait, but also because it describes an intuitive social definition of responsibility while remaining very simple. Therefore, a responsibility formalism which somehow extended this model, while retaining the power of the anthropomorphic algorithms described earlier may prove useful in answering our research question.\par
 
-Another useful definition from Storer and Lock's report presents itself when discussing the structure of a responsibility in their model:
+Another useful definition from Lock \& Storer's report presents itself when discussing the structure of a responsibility in their model:
 
 \begin{quotation}
     Responsibilities may be composed of other responsibilities.
@@ -195,7 +194,7 @@ This composibility is an interesting property, which may also imply that some re
 \subsection{Philosophical Literature}  % The nature of responsibility, and the validity of modelling anthropic traits in a machine.
 As responsibility is a social trait, and previous literature has indicated that it may be most appropriate to model it as such, input from literature in the humanities may shed light on how to consider and approach responsibility as a trait accurately. As time allowed for this report was somewhat limited, a more complicated sociologically/psychologically accurate model was not attempted. The decision was made to instead create a proof-of-concept model which encapsulated much of the existing sociotechnical systems literature, and verifying it using philosophical literature on the subject.
 
-\subsubsection{Thomas Scanlon}  % A philosophical perspective which converges on Sommerville's ideas in Dependable Systems
+\subsubsection{Thomas Scanlon\cite{scanlon2006justice}}  % A philosophical perspective which converges on Sommerville's ideas in Dependable Systems
 Thomas Scanlon --- a philosopher who specialises in Analytic Philosophy --- writes on responsibility in the essay ``Justice, Responsibility, and the Demands of Equality'', defining terms which bear striking resemblance to Sommerville's ``consequential'' and ``causal'' responsibilities.\par
 
 One term --- ``attributive'' responsibility --- is defined by Scanlon as being:
@@ -210,7 +209,7 @@ Scanlon goes on to define a second term, ``substantive'' responsibility, which c
 
 Given the convergence of this perspective on responsibility --- that is, the separation of past state change and anticipated future state change --- Scanlon's writing seems to affirm Sommerville's own construction of types of responsibility. Clarity on how this distinction is useful is found in work from another philosopher, P.F. Strawson.\todo{I feel like this segue is pretty poor! How can I improve this?}
 
-\subsubsection{P.F. Strawson}  % The nature of responsibility
+\subsubsection{P.F. Strawson\cite{strawson}}  % The nature of responsibility
 P.F. Strawson is a philosopher with work on philosophy of language and of mind --- one particular essay, ``On Freedom and Resentment''\cite{strawson}, presents an argument that determinism shouldn't affect how we perceive human factors such as responsibility or trust.\par
 
 Strawson argues that these concepts are fundamentally relational, rather than having any inherent definition. The conclusion of this is that trust, responsibility, and other human traits have subjective properties and cannot be calculated outside of the perspective of an agent. This hints at a choice as to the desired formalism's design: unlike a formalism such as Eigentrust, where components of trust scores are calculated independently of any one agent's perspective, the required responsibility scoring system must utilise a subjective perspective for \emph{all} calculations. Strawson's argument applies to sociotechnical systems generally, as it does not apply to any specific trait or type of person; therefore, both social and technological actors in a sociotechnical system might be the targets of a trait designed with Strawson's work in mind.\par
@@ -260,7 +259,7 @@ Strawson's writing provides some more useful insights regarding information need
 
 % Decision not to care about act, but to describe outcome (effectively the goal)
 \subsubsection{Responsibility Composition}
-The content of a responsibility can be somewhat clarified at this point. In particular, C\&F's formalism of responsibility made clear that, in trust, the fundamental parameters they considered were a delegating agent and an agent subject to delegation, a desired action, and the goal the action ought to fulfil. Marsh, however, considered the action, but left his fundamental formalism devoid of a notion of goal.\par
+The content of a responsibility can be somewhat clarified at this point. In particular, Castelfranchi \& Falcone's formalism of responsibility made clear that, in trust, the fundamental parameters they considered were a delegating agent and an agent subject to delegation, a desired action, and the goal the action ought to fulfil. Marsh, however, considered the action, but left his fundamental formalism devoid of a notion of goal.\par
 
 In the desired responsibility formalism, nuances in the nature of a responsibility must be considered. Particularly, sociotechnical literature on a responsibility points to considering responsibilities as descriptions of state change, which ideally are composable. This state change could be considered the intended or required outcome of successfully discharging the responsibility --- however, it does not imply any information regarding the action which brings about this state change.\par
 
@@ -273,7 +272,7 @@ Therefore, a responsibility formalism's fundamental parameters would appear to b
 The required formalism ought to allow for subjective, agent-based ``opinions'' regarding the importances of modelled responsibilities. As importance is to be directly measured in this formalism, a mechanism by which an agent might interpret the importance scores of responsibilities would allow for a subjective measurement of responsibility importance, allowing an agent to perceive its own model of the trait according to its ``opinions'' about responsibility. These might be considered its preferences for responsibility selection, which weight the importances in its accepted responsibilities. A specific example of an interpretation function is given in the specifics of the formalism designed below.
 
 \subsubsection{Graded Responsibility Calculation}
-A degree of responsibility should be calculable in a \emph{graded} form, rather than binary. In Trust models such as Eigentrust, or Marsh's formalism, degrees of trust are represented numerically so as to better delineate between different trust measurements. By contrast, other models --- particularly logical trust models --- represent degrees of trust in a binary format, such as C\&F's basic form does.\par
+A degree of responsibility should be calculable in a \emph{graded} form, rather than binary. In Trust models such as Eigentrust, or Marsh's formalism, degrees of trust are represented numerically so as to better delineate between different trust measurements. By contrast, other models --- particularly logical trust models --- represent degrees of trust in a binary format, such as Castelfranchi \& Falcone's basic form does.\par
 
 The feature of graded measurement is useful for a few reasons. The feature is principally useful for comparison between many different agents when judging lots of responsibilities --- task delegation amongst a pool of potential candidates being one scenario where this is useful. The feature therefore makes the formalism more pragmatic. Another benefit of a graded formalism is that it allows for a higher degree of social accuracy: human judgement of responsibility is much more nuanced than a simple boolean judgement. Finally, a graded formalism allows for a deeper exploration of its efficacy. In order to evaluate the formalism properly, comparisons between agents with a responsibility formalism directing their behaviour and others with no such direction should be modelled.\par
 
@@ -287,7 +286,7 @@ The components of the formalism defined by this paper are Constraints, Obligatio
 \subsubsection{Constraints}  % Constraints are the "atomic responsibilities" defined earlier. It's the fudamental unit of state change that Storer describes earlier.
 A responsibility, for the purposes of this model, will be considered a state change in a sociotechnical environment. This definition is insufficient for modelling a responsibility, however, as metadata such as delegee, authority, and importance should also be defined. In addition, it should be possible to compose these sociotechnical state changes.\par
 
-To achieve this goal, Constraints are introduced. Constraints are descriptions of a sociotechnical state change. Storer \& Lock's idea of a composable responsibility form implies an atomic responsibility which cannot be \emph{decomposed} --- Constraints satisfy this atomic property.\par
+To achieve this goal, Constraints are introduced. Constraints are descriptions of a sociotechnical state change. Lock \& Storer's idea of a composable responsibility form implies an atomic responsibility which cannot be \emph{decomposed} --- Constraints satisfy this atomic property.\par
 
 The model also defines two types of constraints:
 
@@ -301,7 +300,7 @@ Using these two constraint types, changes to the sociotechnical environment are 
 \subsubsection{Obligations}  % Sets of constraints. An obligation is a description of a responsibility's effect, but doesn't concern itself with metadata like the discharging agent.
 Obligations are sets of Constraints --- they therefore allow Constraints to be composed together. Obligations may only concern themselves with a single Constraint, but defining a specific type which contains all Constraints a Responsibility is concerned with allows for a complete specification of that Responsibility's effect on the sociotechnical environment.\par
 
-An Obligation therefore defines the complete sociotechnical effect which is defined by Storer \& Lock as a responsibility --- however, it concerns itself with no metadata as to the specific responsibility it serves as a specification of. Obligations might rather be considered a Responsibility which has not been delegated: details such as authority and delegee are not specified, but the sociotechnical definition of the responsibility is fulfilled.\par
+An Obligation therefore defines the complete sociotechnical effect which is defined by Lock \& Storer as a responsibility --- however, it concerns itself with no metadata as to the specific responsibility it serves as a specification of. Obligations might rather be considered a Responsibility which has not been delegated: details such as authority and delegee are not specified, but the sociotechnical definition of the responsibility is fulfilled.\par
 
 \subsubsection{Responsibilities}  % An assigned obligation, with an authority and a delegee. Explain that importances are also introduced here, as the same obligation may be important to different delegees in different ways. Properly define the term "discharge"
 The act of delegating necessarily defines certain details pertinent to a complete Responsibility. These details include the authority and delegee associated with the Responsibility --- this relational information is defined by the act of delegation.\par
@@ -324,7 +323,7 @@ Agents also contain their own sociotechnical state. This should contain all of t
 
 To achieve subjectivity, agents are expected to contain interpretation coefficients; details regarding the interpretation coefficients are given in the Interpretation Function (\cref{subsec:interpretation_function}).\par
 
-Agents should be defined with a set of responsibilities upon initialisation, which are referred to as notions. Notions represent responsibilities an agent may always discharge, such as an agent's option to idle away a clock tick without doing anything. Notions, unlike delegated responsibilities, are not removed from an agent's list of available responsibilities upon discharge. Notions are equivalent to the ``norms'' defined by Storer \& Lock\cite{storer2008modelling}.\par
+Agents should be defined with a set of responsibilities upon initialisation, which are referred to as notions. Notions represent responsibilities an agent may always discharge, such as an agent's option to idle away a clock tick without doing anything. Notions, unlike delegated responsibilities, are not removed from an agent's list of available responsibilities upon discharge. Notions are equivalent to the ``norms'' defined by Lock \& Storer\cite{storer2008modelling}.\par
 
 Agents are complicated entities which implement the entire anthropomorphic algorithm described in this report\todo{report? paper? dissertation? project?} --- two particular elements of the Agent's implementation are Acts and the Interpretation Function, which are detailed below, in their own sections.
 
@@ -563,7 +562,7 @@ The formalism at present may already be suitable for real-world application for 
 \subsection{Integration With Trust}\label{subsec:multi-trait}
 Similarities between trust and responsibility as social traits were laid out in earlier sections of this report. A wealth of insights from trust formalism, including the basic parameters required to construct the formalism presented, were incorporated into the final product.\par
 
-Due to these similarities, and the employment of similar design philosophies between the formalism presented and existing trust formalisms, such as C\&F and Marsh's respective formalisms, development of a model which incorporates the two traits appears feasible. Each trait's measurements might be used to inform the other in a multi-trait anthropomorphic algorithm, creating a feedback mechanism which allowed each trait to be calculated by a better-informed agent. Multi-trait formalisms usually exist in a format similar to Eigentrust's employment of reputation as a bootstrapping trait for trust; this proposed multi-trait model would instead present two separate traits, computed in parallel, but informing each other.\par
+Due to these similarities, and the employment of similar design philosophies between the formalism presented and existing trust formalisms, such as Castelfranchi \& Falcone and Marsh's respective formalisms, development of a model which incorporates the two traits appears feasible. Each trait's measurements might be used to inform the other in a multi-trait anthropomorphic algorithm, creating a feedback mechanism which allowed each trait to be calculated by a better-informed agent. Multi-trait formalisms usually exist in a format similar to Eigentrust's employment of reputation as a bootstrapping trait for trust; this proposed multi-trait model would instead present two separate traits, computed in parallel, but informing each other.\par
 
 \subsection{Focused Anthropomorphic Algorithms Research}
 \subsubsection{Motivation for a New Field}
@@ -592,7 +591,7 @@ This formalism employs a wealth of insights from sociotechnical literature, as w
 
 The presented formalism, applied to a simple sociotechnical modelling scenario, effectively shows that responsibility as it is presented can direct agent behaviour, and is sufficient for significant behavioural changes. It is also shown to perform better than random task selection, where responsible behaviour is required. Improvements to agent behaviour are also demonstrated, ensuring that under-performing agents can become more performant over time by employing the formalism's advice functionality.\par
 
-One novel contribution of the work was the introduction of importance scores, and their subjective interpretation. Using this method, divergent behaviour of agents was achieved from the same initial conditions. The definition of responsibility as a sociotechnical state change, delegated from one agent to another with a specific importance for each individual change it describes, was also an important contribution --- similarities between responsibility and trust are evident in this definition, while responsibility's nuances are also respected. The definition kept to its design philosophies while permitting functionality seen in other formalisms, such as Marsh's three granularities of judgement and the simplicity of formalisms such as C\&F.\par
+One novel contribution of the work was the introduction of importance scores, and their subjective interpretation. Using this method, divergent behaviour of agents was achieved from the same initial conditions. The definition of responsibility as a sociotechnical state change, delegated from one agent to another with a specific importance for each individual change it describes, was also an important contribution --- similarities between responsibility and trust are evident in this definition, while responsibility's nuances are also respected. The definition kept to its design philosophies while permitting functionality seen in other formalisms, such as Marsh's three granularities of judgement and the simplicity of formalisms such as Castelfranchi \& Falcone.\par
 
 The formalism successfully answers the research questions --- and answers both affirmatively --- however, it demonstrates the need for further research focus on the trait of responsibility. Presented is a proof-of-concept that responsibility is a valuable trait in anthropomorphic algorithms research; its ultimate application and broader utility can be uncovered only by further work.
 
