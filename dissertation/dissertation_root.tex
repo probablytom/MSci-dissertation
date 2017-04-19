@@ -229,9 +229,12 @@ The introduction of a parameter of importance associated with a responsibility s
 
 
 \section{A Formalism of Responsibility}\label{sec:formalism_details}
+A formalism is presented which, in theory, fulfils both research questions posed earlier in this report. This formalism also adheres to the design principles laid out after analysis of the background research as described in section \ref{subsec:design}.\par
 
-\subsection{Design Decisions and Philosophy}
+\subsection{An Overview of the Formalism's Definition}
+Constraints, grouped into an Obligation, are delegated by an Authority to a Delegee. The act of delegation implies enough information to permit the allocation of interpretation scores, completing the requirements for the creation of a Responsibility. These interpretation scores are then interpreted subjectively by the delegee, who uses their present responsibilities to select future Acts. Upon Act completion, the associated responsibility is copied into a list of consequential responsibilities, and --- should it not be listed as in the agent's Notions --- discarded from future consideration. These consequential responsibilities are then used to calculate basic, general, and specific responsibility scores, mirroring Marsh's seminal work on computational trust. Task selection, and alteration to interpretation coefficient, together answer the two research questions laid out during the problem specification.\par
 
+\subsection{Design Decisions and Philosophy}\label{subsec:design}
 As was discussed through the background survey, many different philosophical decisions are made explicitly or implicitly during the creation of an anthropic formalism. In order to be certain of the finer details of the model created, then, it is important to clarify some of the choices made.\par
 
 % Decision to be socially accurate
@@ -337,29 +340,23 @@ An act should set an ``outcome'' attribute of each constraint of the responsibil
 After the act has successfully completed its execution, a copy of the discharged responsibility is saved into a list of consequential responsibilities, which is an attribute of the agent. This allows later inspection of successful and unsuccessful constraint satisfaction for each consequential responsibility, which is used in judgement of an agent's degree of responsibleness.\par
 
 \subsubsection{Interpretation Function}\label{subsec:interpretation_function}
-Subjectivity within the formalism is achieved via an agent's interpretation function. The interpretation function makes use of an agent's interpretation coefficients: these are defined as a map of sociotechnical variables to floating point coefficients, which are used to weight the importance of each constraint in a newly delegated responsibility. Interpretation coefficients can be considered an agent's opinions or preferences regarding the importances of certain sociotechnical variables. Example Python code for this interpretation procedure, as a method of an actor, would look as follows:
+Subjectivity within the formalism is achieved via an agent's interpretation function. The interpretation function makes use of an agent's interpretation coefficients: these are defined as a map of sociotechnical variables to floating point coefficients, which are used to weight the importance of each constraint in a newly delegated responsibility. Interpretation coefficients can be considered an agent's opinions or preferences regarding the importances of certain sociotechnical variables. Example pseudocode for this interpretation procedure, as a method of an actor, would look as follows:
 
-\begin{lstlisting}
-def interpret(self,
-              resp: Responsibility):
-    resp = copy(resp)
-    for factor, coefficient in self.interpreting_coefficients.items():
-        for constraint_index in range(len(resp.constraints)):
-            old_constraint = resp.constraints[constraint_index]
-            constraint = copy(old_constraint)
-            importance = constraint.importance
+\begin{pseudocodelisting}
+function interpret(resp):
+    for factor, coefficient in self.interpreting_coefficients:
+        for constraint_index in range(length(resp.constraints)):
+            constraint = resp.constraints[constraint_index]
 
-            # Work out the new importance value, if there is one.
-            if factor in constraint.factors.keys() or factor == constraint.__class__:
-                importance = importance * coefficient
-                importance = max(min(1, importance), 0)  # Normalise!
+            if factor in constraint.factors.keys:
+                importance = constraint.importance * coefficient
+                constraint.importance = max(min(1, importance), 0)  # Normalise!
 
             constraint.assign_importance(importance)
             resp.constraints[constraint_index] = constraint
 
-    # Return the responsibility with a new set of constraints
     return resp
-\end{lstlisting}
+\end{pseudocodelisting}
 
 Some notable things present themselves in this block of code. For one, the method returns a new responsibility object. This means that a completely new responsibility, with altered importance information weighted by the interpreting agent's coefficients, is produced. This satisfies the subjectivity of an agent's interpretation. Old importance scores are retained by the Constraint.assign\_importance() method, however, meaning that a responsibility's original state can be restored for re-interpretation by another agent.\par
 
@@ -373,26 +370,26 @@ As a result of Responsibilities being interpreted after delegation, an agent can
 
 \ldots{}if, for a Responsibility denoted \(p\), \(p.i\) was the list of importances associated with the responsibility, with indexing beginning at 1.\par
 
-Using this, and accounting for all interpretation scores being interpreted already, \(new\_responsibility\) becomes the responsibility with the highest cumulative importance. This responsibility is selected for discharge; the appropriate act to discharge the responsibility is found by a simple comparison between the responsibility's expected effect and the expected effect of each of the registered acts for the agent concerned. Example Python code to perform this lookup might be:
+Using this, and accounting for all interpretation scores being interpreted already, \(new\_responsibility\) becomes the responsibility with the highest cumulative importance. This responsibility is selected for discharge; the appropriate act to discharge the responsibility is found by a simple comparison between the responsibility's expected effect and the expected effect of each of the registered acts for the agent concerned. Example pseudocode to perform this lookup might be:
 
-\begin{lstlisting}
-def choose_responsibility(self):
+\begin{pseudocodelisting}
+function choose_responsibility():
     if self.responsibilities == []:
         return None
     else:
         resp = sorted(self.responsibilities,
                       key=lambda x: sum(x.importances))[-1]
         return resp
-\end{lstlisting}
+\end{pseudocodelisting}
 
-The simplicity of responsibility selection belies the simplicity of the formalism as a result of its strong data model. It is worth noting that, as responsibilities can be selected for discharge according to a subjective interpretation and discharged via the agent's registered acts, the formalism should answer research question 1 in theory. The evaluation section of this report, found below, confirms this.\par
+Note that, for ease of notation, Python's sorted function and list slices are used here, to indicate sorting by a given key and cleanly retrieving the last element in a list. is used hereThe simplicity of responsibility selection belies the simplicity of the formalism as a result of its strong data model. It is worth noting that, as responsibilities can be selected for discharge according to a subjective interpretation and discharged via the agent's registered acts, the formalism should answer research question 1 in theory. The evaluation section of this report, found below, confirms this.\par
 
 \subsubsection{Judging agent responsibility}  % Judging an agent's repsonsibleness based on their consequential responsibilities. Differences between basic, general, and specific responsibilities.
 % Also, note here that judging agent responsibilities allows an agent to decide whether they need to change their behaviour, as they can sample the judgements over time and find whether they're more/less responsibly judged when they make certain decisions -- satisfying RQ2.
 An agent's degree of responsibleness can be calculated by a simple formula, which uses the outcomes of the consequential responsibilities of the agent to produce a basic, general, and specific responsibility score, in a fashion similar to Marsh's for trust\cite{Marsh1994FormalisingConcept}. The specific responsibility generation might be represented in the following way in pseudocode:
 
 \begin{pseudocodelisting}
-def __judge_degree_responsible(subject agent):
+function __judge_degree_responsible(subject agent):
     specific_scores = dictionary()
     for each responsibility in subject agent's consequential responsibilities:
         reinterpret(responsibility)
@@ -416,17 +413,17 @@ This calculates the cumulative importance of all successfully discharged constra
 
 To calculate specific, general, and basic responsibility scores, the following Python code might suffice, where the above algorithm is implemented in the instance method\\``\_\_judge\_degree\_responsible'':
 
-\begin{lstlisting}
-def basic_responsibility_judgement(self):
+\begin{pseudocodelisting}
+function basic_responsibility_judgement():
     return self.basic_judgement_responsible
 
-def general_responsibility_judgement(self, other_agent):
+function general_responsibility_judgement(other_agent):
     judgement = self.__judge_degree_responsible(other_agent)
     return mean(judgement.values())
 
-def specific_responsibility_judgement(self, other_agent, resource_type):
-    return self.__judge_degree_responsible(other_agent).get(resource_type, self.basic_judgement_responsible)
-\end{lstlisting}
+function specific_responsibility_judgement(other_agent, resource_type):
+    return self.__judge_degree_responsible(other_agent).get(resource_type, default=self.basic_judgement_responsible)
+\end{pseudocodelisting}
 
 A basic judgement of responsibility is here defined as the degree to which an agent believes other agents tend to be responsible. It does not relate to any other agent specifically; therefore, the agent simply returns its basic judgement of responsibility.\par
 
@@ -443,14 +440,10 @@ An agent may advise another agent by offering that it take advice via an ``advic
 
 This, combined with the judgement of responsibility provided in the earlier section, enables an agent to measure consequences of its actions via changes to its judgement of responsibility, and an analysis of its consequential responsibilities. The agent may also direct its interpretation of responsibility directly by offering itself advice, or taking the advice of others, changing the agent's interpreting coefficients --- thereby theoretically fulfilling the second research question.\par
 
-\subsection{An Overview of the Formalism's Definition}
-A formalism has now been presented which, in theory, fulfils both research questions posed earlier in this report. This formalism also adheres to the design principles laid out after analysis of the background research.\par
-
-Constraints, grouped into an Obligation, are delegated by an Authority to a Delegee. The act of delegation implies enough information to permit the allocation of interpretation scores, completing the requirements for the creation of a Responsibility. These interpretation scores are then interpreted subjectively by the delegee, who uses their present responsibilities to select future Acts. Upon Act completion, the associated responsibility is copied into a list of consequential responsibilities, and --- should it not be listed as in the agent's Notions --- discarded from future consideration. These consequential responsibilities are then used to calculate basic, general, and specific responsibility scores, mirroring Marsh's seminal work on computational trust. Task selection, and alteration to interpretation coefficient, together answer the two research questions laid out during the problem specification.\par
-
-At this point, the formalism's design is complete. Now, empirical data is required so as to verify that the formalism operates as intended, directing agent behaviour, and allowing for improved behaviour through introspection as to an agent's ``beliefs'' about the trait of responsibility.\par
 
 \section{Evaluating the Formalism}\label{sec:evaluation}
+At this point, the formalism's design is complete. Now, empirical data is required so as to verify that the formalism operates as intended, directing agent behaviour, and allowing for improved behaviour through introspection as to an agent's ``beliefs'' about the trait of responsibility.\par
+
 The formalism is designed according to research-informed design philosophies, which should help to ensure that it answers the research questions positively. Investigating these research questions empirically requires producing data on responsible behaviour --- however, quantifying responsible behaviour isn't something which is explicitly defined. The definition particularly depends on what type of responsibility one refers to: in this report, for example, three ways to quantify responsibility have been determined, in the three judgements of responsibility outlined earlier.\par
 
 In order to explore the efficacy of this formalism, one ought to take measurements using these judgements of responsibility. Simulations of sociotechnical systems must then be constructed so as to demonstrate responsible behaviour; these models ought not to have additional features or complications which could interfere with the data produced on responsible behaviour.\par
@@ -567,10 +560,30 @@ The formalism has been shown to have potential in task scheduling applications. 
 
 The formalism at present may already be suitable for real-world application for task scheduling. Empirical evidence of this, and any modifications to improve the formalism's performance in more constrained scenarios, will require further research, posing new research questions.\par
 
-\subsection{Integration With Trust}
+\subsection{Integration With Trust}\label{subsec:multi-trait}
 Similarities between trust and responsibility as social traits were laid out in earlier sections of this report. A wealth of insights from trust formalism, including the basic parameters required to construct the formalism presented, were incorporated into the final product.\par
 
 Due to these similarities, and the employment of similar design philosophies between the formalism presented and existing trust formalisms, such as C\&F and Marsh's respective formalisms, development of a model which incorporates the two traits appears feasible. Each trait's measurements might be used to inform the other in a multi-trait anthropomorphic algorithm, creating a feedback mechanism which allowed each trait to be calculated by a better-informed agent. Multi-trait formalisms usually exist in a format similar to Eigentrust's employment of reputation as a bootstrapping trait for trust; this proposed multi-trait model would instead present two separate traits, computed in parallel, but informing each other.\par
+
+\subsection{Focused Anthropomorphic Algorithms Research}
+\subsubsection{Motivation for a New Field}
+The term ``Anthropomorphic algorithm'' is introduced in this paper as a way of separating computational formalisms of human behaviour from other research in sociotechnical systems and human-like computing. The term is introduced here because this separation of concerns matters: a research focus on these computational formalisms allows for study of the behaviour being formalised.\par
+
+Current research methods often attempt to study these behaviours as emergent phenomena, but an anthropomorphic algorithms focus creates a level of abstraction between the behaviour modelled and the underlying social and technical factors which create them in the real world. This abstraction is useful: modelling the fundamental cognitive processes which lead to social behaviours in humans is a notoriously intractable problem in psychophysics. To formalise these fundamental traits, create an understanding of their complex neural origins, and construct simulations of this behaviour for other research purposes presents a mammoth interdisciplinary research effort, which would be impossible with current state-of-the-art research in both social sciences and computer science.\par
+
+A more appropriate angle of approach would be to model the trait directly, arriving at the same phenomenon which grows naturally from more complicated principles than those formalised. In this way, the \emph{behaviour} can be studied without the need to solve currently intractable problems across several disciplines, and without the need to communicate highly complex ideas across disciplines. Indeed, this approach is taken implicitly in current research in trust, comfort and other traits. An explicit research focus in anthropomorphic algorithms would create a community of researchers across disciplines working toward the common goal of trait formalisation.\par
+
+\subsubsection{Anthropomorphic Algorithms-Focused Modelling}
+Not only would this interdisciplinary knowledge gap become easier to overcome (due to the additional degree of abstraction), but more sophisticated modelling techniques can be composed to cater to the specific needs of anthropomorphic algorithms. In particular, no modelling platform for research on and evaluation of anthropomorphic algorithms currently exists. Evaluation of the responsibility formalism presented relied on the Theatre\_AG library for its temporal model; a suitable anthropomorphic algorithm model might also contain components such as:
+
+\begin{itemize}
+    \item A sociotechnical environment model, so as to allow agents to interact with a well-specified environment
+    \item An agent model, allowing for different agent modelling techniques. For example, within the field of responsibility, the formalism presented models agents as individuals who act independently; other traditional modelling technques, such as Sommerville et al.'s methods, model the roles that arbitrary actors might inhabit.
+    \item A tempoal model, such as a ticking model as provided by Theatre\_AG or popular sociotechnical models such as timebands\cite{Burns2006}. Other temporal models are also popular within the formal methods community.
+    \item Agent behaviour modelling --- agent behaviours within anthropomorphic algorithms are provided by the formalisms the algorithms implement; multi-trait formalisms currently tightly couple different traits together, such as Eigentrust's melding of trust and reputation. Multi-trait formalisms such as those described in section \ref{subsec:multi-trait} couple be easier to research with behaviour modelling which enables formalism design with looser trait coupling.
+\end{itemize}
+
+Standardising these factors, as well as others, which are necessary for a complete specification of an anthropomorphic algorithm would allow a modelling framework to be constructed specific to the field. This would provide a common jargon across experts in social sciences, mathematics, and computer science, easing interdisciplinary research. It would also encourage improved engineering when designing multi-trait formalisms, producing looser-coupled multi-trait models, as well as enabling consistent evaluation metrics and modelling techniques across the research community. Defining these necessary components and exploring possible modelling platforms for anthropomorphic algorithms is therefore an important first step in cementing anthropomorphic algorithms as an independent area of research.\par
 
 \section{Discussion}\label{sec:discussion}
 In this report, a new formalism of computational responsibility was presented which is able to direct agent behaviour in a subjective way toward discharging the most important responsibilities earliest.\par
