@@ -230,7 +230,7 @@ The introduction of a parameter of importance associated with a responsibility s
 \section{A Formalism of Responsibility}\label{sec:formalism_details}
 A formalism is presented which, in theory, fulfils both research questions posed earlier in this paper. This formalism also adheres to the design principles laid out after analysis of the background research as described in section \ref{subsec:design}.\par
 
-\subsection{An Overview of the Formalism's Definition}
+\subsection{Formalism Overview}
 Constraints, grouped into an obligation, are delegated by an Authority to a Delegee. The act of delegation implies enough information to permit the allocation of interpretation scores, completing the requirements for the creation of a responsibility. These interpretation scores are then interpreted subjectively by the delegee, who uses their present responsibilities to select future acts. Upon act completion, the associated responsibility is copied into a list of consequential responsibilities, and --- should it not be listed as in the agent's Notions --- discarded from future consideration. These consequential responsibilities are then used to calculate basic, general, and specific responsibility scores, mirroring Marsh's seminal work on computational trust. Task selection, and alteration to interpretation coefficient, together answer the two research questions laid out during the problem specification.\par
 
 \subsection{Design Decisions and Philosophy}\label{subsec:design}
@@ -337,23 +337,28 @@ An act should set an ``outcome'' attribute of each constraint of the responsibil
 After the act has successfully completed its execution, a copy of the discharged responsibility is saved into a list of consequential responsibilities, which is an attribute of the agent. This allows later inspection of successful and unsuccessful constraint satisfaction for each consequential responsibility, which is used in judgement of an agent's degree of responsibleness.\par
 
 \subsubsection{Interpretation Function}\label{subsec:interpretation_function}
-Subjectivity within the formalism is achieved via an agent's interpretation function. The interpretation function makes use of an agent's interpretation coefficients: these are defined as a map of sociotechnical variables to floating point coefficients, which are used to weight the importance of each constraint in a newly delegated responsibility. Interpretation coefficients can be considered an agent's opinions or preferences regarding the importances of certain sociotechnical variables. Example pseudocode for this interpretation procedure, as a method of an actor, would look as follows:
+Subjectivity within the formalism is achieved via an agent's interpretation function. The interpretation function makes use of an agent's interpretation coefficients: these are defined as a map of sociotechnical variables to floating point coefficients, which are used to weight the importance of each constraint in a newly delegated responsibility. Interpretation coefficients can be considered an agent's opinions or preferences regarding the importances of certain sociotechnical variables. Example pseudocode for this interpretation procedure, as a method of an actor, is given in \cref{code:interpretation_function}.
 
-\begin{pseudocodelisting}
-function interpret(resp):
-    for factor, coefficient in self.interpreting_coefficients:
-        for constraint_index in range(length(resp.constraints)):
-            constraint = resp.constraints[constraint_index]
+\begin{figure}[h]
+    \centering
+    \begin{pseudocodelisting}
+    function interpret(resp):
+        for factor, coefficient in self.interpreting_coefficients:
+            for constraint_index in range(length(resp.constraints)):
+                constraint = resp.constraints[constraint_index]
 
-            if factor in constraint.factors.keys:
-                importance = constraint.importance * coefficient
-                constraint.importance = max(min(1, importance), 0)  # Normalise!
+                if factor in constraint.factors.keys:
+                    importance = constraint.importance * coefficient
+                    constraint.importance = max(min(1, importance), 0)  # Normalise!
 
-            constraint.assign_importance(importance)
-            resp.constraints[constraint_index] = constraint
+                constraint.assign_importance(importance)
+                resp.constraints[constraint_index] = constraint
 
-    return resp
-\end{pseudocodelisting}
+        return resp
+    \end{pseudocodelisting}
+    \caption{An example interpretation function in pseudocode}
+    \label{code:interpretation_function}
+\end{figure}
 
 Some notable things present themselves in this block of code. For one, the method returns a new responsibility object. This means that a completely new responsibility, with altered importance information weighted by the interpreting agent's coefficients, is produced. This satisfies the subjectivity of an agent's interpretation. Old importance scores are retained by the constraint.assign\_importance() method, however, meaning that a responsibility's original state can be restored for re-interpretation by another agent.\par
 
@@ -361,66 +366,81 @@ Another important note is the normalisation step after multiplying an importance
 
 All responsibilities processed by an agent are interpreted upon delegation; therefore, subjectivity of the formalism is maintained.\par
 
-\subsubsection{Directing agent decisions}  % Explain the interpretation function, and how it is used to make the entire formalism subject as per Strawson's writings.
+\subsubsection{Directing Agent Decisions}  % Explain the interpretation function, and how it is used to make the entire formalism subject as per Strawson's writings.
 % Note here that, given that the agent can use the responsibility formalism's interpretation function to guide its behaviour in a responsible way (and in a potentially better way than simple task scheduling), the responsibility formalism guides their behaviour pretty effectively and according to the social trait.
 As a result of responsibilities being interpreted after delegation, an agent can select a responsibility to discharge using the new interpretation scores. Mathematically speaking, responsibility selection is performed as follows: \[new\_responsibility = argmax_{p \in resps} {\sum_{i=p.i[1]}^{p.i[length(p.i)]}(i)}\]
 
 \ldots{}if, for a responsibility denoted \(p\), \(p.i\) was the list of importances associated with the responsibility, with indexing beginning at 1.\par
 
-Using this, and accounting for all interpretation scores being interpreted already, \(new\_responsibility\) becomes the responsibility with the highest cumulative importance. This responsibility is selected for discharge; the appropriate act to discharge the responsibility is found by a simple comparison between the responsibility's expected effect and the expected effect of each of the registered acts for the agent concerned. Example pseudocode to perform this lookup might be:
+Using this, and accounting for all interpretation scores being interpreted already, \(new\_responsibility\) becomes the responsibility with the highest cumulative importance. This responsibility is selected for discharge; the appropriate act to discharge the responsibility is found by a simple comparison between the responsibility's expected effect and the expected effect of each of the registered acts for the agent concerned. Example pseudocode to perform this lookup is given in \cref{code:responsibility_selection}
 
-\begin{pseudocodelisting}
-function choose_responsibility():
-    if self.responsibilities == []:
-        return None
-    else:
-        resp = sorted(self.responsibilities,
-                      key=lambda x: sum(x.importances))[-1]
-        return resp
-\end{pseudocodelisting}
+\begin{figure}[h]
+    \centering
+    \begin{pseudocodelisting}
+    function choose_responsibility():
+        if self.responsibilities == []:
+            return None
+        else:
+            resp = sorted(self.responsibilities,
+                          key=lambda x: sum(x.importances))[-1]
+            return resp
+    \end{pseudocodelisting}
+    \caption{An example responsibility selection using the formalism, in pseudocode}
+    \label{code:responsibility_selection}
+\end{figure}
 
 Note that, for ease of notation, Python's sorted function and list slices are used here, to indicate sorting by a given key and cleanly retrieving the last element in a list. is used hereThe simplicity of responsibility selection belies the simplicity of the formalism as a result of its strong data model. It is worth noting that, as responsibilities can be selected for discharge according to a subjective interpretation and discharged via the agent's registered acts, the formalism should answer research question 1 in theory. The evaluation section of this paper, found below, confirms this.\par
 
-\subsubsection{Judging agent responsibility}  % Judging an agent's repsonsibleness based on their consequential responsibilities. Differences between basic, general, and specific responsibilities.
+\subsubsection{Judging Agent Responsibility}  % Judging an agent's repsonsibleness based on their consequential responsibilities. Differences between basic, general, and specific responsibilities.
 % Also, note here that judging agent responsibilities allows an agent to decide whether they need to change their behaviour, as they can sample the judgements over time and find whether they're more/less responsibly judged when they make certain decisions -- satisfying RQ2.
-An agent's degree of responsibleness can be calculated by a simple formula, which uses the outcomes of the consequential responsibilities of the agent to produce a basic, general, and specific responsibility score, in a fashion similar to Marsh's for trust\cite{Marsh1994FormalisingConcept}. The specific responsibility generation might be represented in the following way in pseudocode:
+An agent's degree of responsibleness can be calculated by a simple formula, which uses the outcomes of the consequential responsibilities of the agent to produce a basic, general, and specific responsibility score, in a fashion similar to Marsh's for trust\cite{Marsh1994FormalisingConcept}. An example general-purpose responsibleness degree function is given by the pseudocode in \cref{code:judge_degree_responsible}.\par
 
-\begin{pseudocodelisting}
-function __judge_degree_responsible(subject agent):
-    specific_scores = dictionary()
-    for each responsibility in subject agent's consequential responsibilities:
-        reinterpret(responsibility)
-        for each constraint in that responsibility:
-            for each factor, delta in constraint:
-                if factor not in specific_scores.keys():
-                    specific_scores[factor] = (0, 0)
-                specific_scores[factor][0] += 1
-                if constraint.outcome is True:
-                    specific_scores[factor][1] += constraint.importance
-                    
-    for each factor, score_tuple in specific_scores.items():
-        count_for_factor = score_tuple[0]
-        total_importances_discharged = score_tuple[1]
-        specific_scores[factor] = total_importances_discharged / count_for_factor
-        
-    return specific_scores
-\end{pseudocodelisting} 
+\begin{figure}[h]
+    \centering
+    \begin{pseudocodelisting}
+    function __judge_degree_responsible(subject agent):
+        specific_scores = dictionary()
+        for each responsibility in subject agent's consequential responsibilities:
+            reinterpret(responsibility)
+            for each constraint in that responsibility:
+                for each factor, delta in constraint:
+                    if factor not in specific_scores.keys():
+                        specific_scores[factor] = (0, 0)
+                    specific_scores[factor][0] += 1
+                    if constraint.outcome is True:
+                        specific_scores[factor][1] += constraint.importance
+                        
+        for each factor, score_tuple in specific_scores.items():
+            count_for_factor = score_tuple[0]
+            total_importances_discharged = score_tuple[1]
+            specific_scores[factor] = total_importances_discharged / count_for_factor
+            
+        return specific_scores
+    \end{pseudocodelisting} 
+    \caption{Foundation of judgement of responsibleness, in pseudocode}
+    \label{code:judge_degree_responsible}
+\end{figure}
 
 This calculates the cumulative importance of all successfully discharged constraints of each factor, where a factor is a sociotechnical variable. This is weighted against the number of all constraints of that factor --- the result of which being that improperly discharged responsibilities do not count toward the degree of responsibility calculated. At the end of the algorithm, the dictionary specific\_scores contains all \emph{specific responsibility scores} calculable for the subject agent.\par
 
-To calculate specific, general, and basic responsibility scores, the following Python code might suffice, where the above algorithm is implemented in the instance method\\``\_\_judge\_degree\_responsible'':
+To calculate basic, general, and specific responsibleness judgements, where the above algorithm is implemented in the instance method ``\_\_judge\_degree\_responsible'' via the specification in \cref{code:judge_degree_responsible}, is given in \cref{code:judgement_granularities}.
 
-\begin{pseudocodelisting}
-function basic_responsibility_judgement():
-    return self.basic_judgement_responsible
+\begin{figure}[h]
+    \centering
+    \begin{pseudocodelisting}
+    function basic_responsibility_judgement():
+        return self.basic_judgement_responsible
 
-function general_responsibility_judgement(other_agent):
-    judgement = self.__judge_degree_responsible(other_agent)
-    return mean(judgement.values())
+    function general_responsibility_judgement(other_agent):
+        judgement = self.__judge_degree_responsible(other_agent)
+        return mean(judgement.values())
 
-function specific_responsibility_judgement(other_agent, resource_type):
-    return self.__judge_degree_responsible(other_agent).get(resource_type, default=self.basic_judgement_responsible)
-\end{pseudocodelisting}
+    function specific_responsibility_judgement(other_agent, resource_type):
+        return self.__judge_degree_responsible(other_agent).get(resource_type, default=self.basic_judgement_responsible)
+    \end{pseudocodelisting}
+    \caption{Granularities of responsibleness judgement, in pseudocode}
+    \label{code:judgement_granularities}
+\end{figure}
 
 A basic judgement of responsibility is here defined as the degree to which an agent believes other agents tend to be responsible. It does not relate to any other agent specifically; therefore, the agent simply returns its basic judgement of responsibility.\par
 
@@ -428,7 +448,7 @@ A general judgement of responsibility is here defined as the degree to which ano
 
 Finally, a specific judgement of responsibility is here defined as the degree to which an agent is responsible for a particular thing, and is therefore parameterised by both the other agent involved and the factor the calculation relates to. Specific responsibilities are calculated by\\``\_\_judge\_degree\_responsible'' --- therefore, a simple lookup of the dictionary returned by ``\_\_judge\_degree\_responsible'' for the factor required is returned.
 
-\subsubsection{Updating the sociotechnical opinion over time}
+\subsubsection{Updating the Sociotechnical Opinion Over Time}
 As an agent can judge any other agent's responsibilities by performing this algorithm upon the other's consequential responsibilities, an agent may perform this calculation on \emph{itself}. Should an agent perform this calculation every time a responsibility is discharged, the agent may calculate the rate of change of its responsibility over time.\par
 
 Improving its performance can be done in two ways. Should its interpreting coefficients ever change, the agent can reflect on its past performance and identify ways to improve; the agent would then readjust its interpreting coefficients to account for this introspection. While this behaviour is interesting, as it permits more socially accurate modelling, the agent's interpreting coefficients should be changed primarily through an \emph{advice} mechanism.\par
@@ -488,13 +508,13 @@ The second research question can then be tested, assuming the first research que
 This should also be evident in measurements of general responsibility in advised agents, compared to unadvised HedonisticAgents or StudiousAgents, as an advised HedonisticAgent should cease to constantly Idle and would instead begin discharging ``essays\_written'' and ``working\_programs'' constraints.\par
 
 \subsection{RQ 1: Acting on Responsibilities}
-To answer the first research question, the experiment was conducted as described over the course of 150 simulated ticks in a Theatre\_AG model. The graph produced is given in \cref{fig:1}.
+To answer the first research question, the experiment was conducted as described over the course of 150 simulated ticks in a Theatre\_AG model. The graph produced is given in \cref{fig:behaviour_direction}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{test_responsibility_directs_behaviour}
     \caption{Agent behaviour over 150 ticks}
-    \label{fig:1}
+    \label{fig:behaviour_direction}
 \end{figure}
 
 Responsible agents' behaviours deviate from the ResponsibilityBlindAgents', successfully refuting the null hypothesis. Therefore, the responsibility formalism as outlined \emph{does} direct agent behaviour. The agent behaviour is also directed subjectively, as can be seen in the disparity between StudiousAgents and HedonisticAgents.\par
@@ -506,23 +526,23 @@ The predicted plateau of the HedonisticAgents' behaviour is also seen after roug
 Research question 1 is answered positively, as a result of the divergent behaviour of all three agent types. Research question 2 should now by explored, as agent behaviour is affirmatively directed by the formalism, but improvements in performance as interpreting coefficients change is yet to be seen.\par
 
 \subsection{RQ 2: Judgement of Responsibility}\label{subsec:RQ2}
-A requirement of exploring the second research question is that the advice mechanism outlined in the formalism's design should be utilised. An experiment was therefore devised where HedonisticAgents were advised by a lecturer to adjust interpreting coefficients to resemble those of a StudiousAgent. Advice was given after 100 ticks had elapsed. The resulting simulation can be seen as graphed in \cref{fig:2} with specific responsibility judgement for all agents regarding the resource ``essays\_written'', and in \cref{fig:3} with general responsibility judgement.
+A requirement of exploring the second research question is that the advice mechanism outlined in the formalism's design should be utilised. An experiment was therefore devised where HedonisticAgents were advised by a lecturer to adjust interpreting coefficients to resemble those of a StudiousAgent. Advice was given after 100 ticks had elapsed. The resulting simulation can be seen as graphed in \cref{fig:specific_advice} with specific responsibility judgement for all agents regarding the resource ``essays\_written'', and in \cref{fig:general_advice} with general responsibility judgement.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{test_advised_hedonistic_vs_regular_studious251_specific}
     \caption{Specific judgement of ``essays\_written'' responsibility comparing HedonisticAgents with and without advice}
-    \label{fig:2}
+    \label{fig:specific_advice}
 \end{figure}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{test_advised_hedonistic_vs_regular_studious251_general}
     \caption{General judgement of responsibility comparing HedonisticAgents with and without advice}
-    \label{fig:3}
+    \label{fig:general_advice}
 \end{figure}
 
-As can be seen, immediately after accepting advice, HedonisticAgents deviated from their ordinary behaviour and behaved as StudiousAgents had done roughly 100 ticks prior. This pattern is seen in both \cref{fig:2} and \cref{fig:3}, meaning that the advice successfully affected both general and specific responsibility measurements. The outcome of the experiment therefore answers the second research question affirmatively: via the advice functionality, a responsible agent's behaviour can be updated.\par
+As can be seen, immediately after accepting advice, HedonisticAgents deviated from their ordinary behaviour and behaved as StudiousAgents had done roughly 100 ticks prior. This pattern is seen in both \cref{fig:specific_advice} and \cref{fig:general_advice}, meaning that the advice successfully affected both general and specific responsibility measurements. The outcome of the experiment therefore answers the second research question affirmatively: via the advice functionality, a responsible agent's behaviour can be updated.\par
 
 It is important to note, however, that agents were not providing their own advice. Agents were being identified by a Lecturer agent as performing poorly (as they were HedonisticAgents), asserting that their performance was flawed in some way, and then providing a solution to this flaw in the form of advice. Two problems must yet be solved for agents to supply their own advice:
 
