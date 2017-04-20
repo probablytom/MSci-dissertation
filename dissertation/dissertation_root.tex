@@ -333,19 +333,19 @@ Subjectivity within the formalism is achieved via an agent's interpretation func
 \begin{figure}[h]
     \centering
     \begin{pseudocodelisting}
-    function interpret(resp):
-        for factor, coefficient in self.interpreting_coefficients:
-            for constraint_index in range(length(resp.constraints)):
-                constraint = resp.constraints[constraint_index]
+function interpret(resp):
+    for factor, coefficient in self.interpreting_coefficients:
+        for constraint_index in range(length(resp.constraints)):
+            constraint = resp.constraints[constraint_index]
 
-                if factor in constraint.factors.keys:
-                    importance = constraint.importance * coefficient
-                    constraint.importance = max(min(1, importance), 0)  # Normalise!
+            if factor in constraint.factors.keys:
+                importance = constraint.importance * coefficient
+                constraint.importance = max(min(1, importance), 0)  # Normalise!
 
-                constraint.assign_importance(importance)
-                resp.constraints[constraint_index] = constraint
+            constraint.assign_importance(importance)
+            resp.constraints[constraint_index] = constraint
 
-        return resp
+    return resp
     \end{pseudocodelisting}
     \caption{An example interpretation function in pseudocode}
     \label{code:interpretation_function}
@@ -368,13 +368,13 @@ Using this, and accounting for all interpretation scores being interpreted alrea
 \begin{figure}[h]
     \centering
     \begin{pseudocodelisting}
-    function choose_responsibility():
-        if self.responsibilities == []:
-            return None
-        else:
-            resp = sorted(self.responsibilities,
-                          key=lambda x: sum(x.importances))[-1]
-            return resp
+function choose_responsibility():
+    if self.responsibilities == []:
+        return None
+    else:
+        resp = sorted(self.responsibilities,
+                      key=lambda x: sum(x.importances))[-1]
+        return resp
     \end{pseudocodelisting}
     \caption{An example responsibility selection using the formalism, in pseudocode}
     \label{code:responsibility_selection}
@@ -389,24 +389,24 @@ An agent's degree of responsibleness can be calculated by a simple formula, whic
 \begin{figure}[h]
     \centering
     \begin{pseudocodelisting}
-    function __judge_degree_responsible(subject agent):
-        specific_scores = dictionary()
-        for each responsibility in subject agent's consequential responsibilities:
-            reinterpret(responsibility)
-            for each constraint in that responsibility:
-                for each factor, delta in constraint:
-                    if factor not in specific_scores.keys():
-                        specific_scores[factor] = (0, 0)
-                    specific_scores[factor][0] += 1
-                    if constraint.outcome is True:
-                        specific_scores[factor][1] += constraint.importance
-                        
-        for each factor, score_tuple in specific_scores.items():
-            count_for_factor = score_tuple[0]
-            total_importances_discharged = score_tuple[1]
-            specific_scores[factor] = total_importances_discharged / count_for_factor
-            
-        return specific_scores
+function __judge_degree_responsible(subject agent):
+    specific_scores = dictionary()
+    for each responsibility in subject agent's consequential responsibilities:
+        reinterpret(responsibility)
+        for each constraint in that responsibility:
+            for each factor, delta in constraint:
+                if factor not in specific_scores.keys():
+                    specific_scores[factor] = (0, 0)
+                specific_scores[factor][0] += 1
+                if constraint.outcome is True:
+                    specific_scores[factor][1] += constraint.importance
+                    
+    for each factor, score_tuple in specific_scores.items():
+        count_for_factor = score_tuple[0]
+        total_importances_discharged = score_tuple[1]
+        specific_scores[factor] = total_importances_discharged / count_for_factor
+        
+    return specific_scores
     \end{pseudocodelisting} 
     \caption{Foundation of judgement of responsibleness, in pseudocode}
     \label{code:judge_degree_responsible}
@@ -419,15 +419,15 @@ To calculate basic, general, and specific responsibleness judgements, where the 
 \begin{figure}[h]
     \centering
     \begin{pseudocodelisting}
-    function basic_responsibility_judgement():
-        return self.basic_judgement_responsible
+function basic_responsibility_judgement():
+    return self.basic_judgement_responsible
 
-    function general_responsibility_judgement(other_agent):
-        judgement = self.__judge_degree_responsible(other_agent)
-        return mean(judgement.values())
+function general_responsibility_judgement(other_agent):
+    judgement = self.__judge_degree_responsible(other_agent)
+    return mean(judgement.values())
 
-    function specific_responsibility_judgement(other_agent, resource_type):
-        return self.__judge_degree_responsible(other_agent).get(resource_type, default=self.basic_judgement_responsible)
+function specific_responsibility_judgement(other_agent, resource_type):
+    return self.__judge_degree_responsible(other_agent).get(resource_type, default=self.basic_judgement_responsible)
     \end{pseudocodelisting}
     \caption{Granularities of responsibleness judgement, in pseudocode}
     \label{code:judgement_granularities}
@@ -440,14 +440,13 @@ A general judgement of responsibility is here defined as the degree to which ano
 Finally, a specific judgement of responsibility is here defined as the degree to which an agent is responsible for a particular thing, and is therefore parameterised by both the other agent involved and the factor the calculation relates to. Specific responsibilities are calculated by \\\texttt{\_\_judge\_degree\_responsible} --- therefore, a simple lookup of the dictionary returned by \texttt{\_\_judge\_degree\_responsible} for the factor required is returned.
 
 \subsubsection{Updating the Agent Perspective Over Time}
-As an agent can judge any other agent's responsibilities by performing this algorithm upon the other's consequential responsibilities, an agent may perform this calculation on \emph{itself}. Should an agent perform this calculation every time a responsibility is discharged, the agent may calculate the rate of change of its responsibility over time.\par
+A notable feature of the definition of responsibility judgement is that an agent may perform it on itself. Should an agent perform this calculation every time it discharges a responsibility, the agent may calculate the rate of change of its responsibleness over time.\par
 
-Improving its performance can be done in two ways. Should its interpreting coefficients ever change, the agent can reflect on its past performance and identify ways to improve; the agent would then readjust its interpreting coefficients to account for this introspection. While this behaviour is interesting, as it permits more socially accurate modelling, the agent's interpreting coefficients should be changed primarily through an \emph{advice} mechanism.\par
+Improving agent performance can be done in two ways. Should an agent's interpreting coefficients ever change, the it can reflect on its past performance and identify ways to improve; the agent would then readjust its interpreting coefficients to account for this introspection. While this behaviour is interesting, as it permits more socially accurate modelling, the agent's interpreting coefficients should be changed primarily through an \emph{advice} mechanism.\par
 
-An agent may advise another agent by offering that it take advice --- this is represented as a dictionary of changes to the subject agent's interpreting coefficients. After judging the degree to which another agent is responsible, if an agent is seen to be lacking responsibility in a specific area, or in all areas generally (using the appropriate calculations), advice regarding the factors concerned is provided via this dictionary representation. The subject agent may choose to accept the advice depending on any implementation-appropriate factors: advising agent class, reputation formalism calculation, or other method.\par
+An agent may offer another agent advice --- this is represented as a dictionary of changes to the subject agent's interpreting coefficients. After judging the degree to which another agent is responsible, if an agent is seen to be lacking responsibility in a specific area, or in all areas generally (using the appropriate calculations), advice regarding the factors concerned is provided via this dictionary representation. The subject agent may choose to accept the advice depending on any implementation-appropriate factors: advising agent class, reputation formalism calculation, or other method.\par
 
-This, combined with the judgement of responsibility provided in the earlier section, enables an agent to measure consequences of its actions via changes to its judgement of responsibility, and an analysis of its consequential responsibilities. The agent may also direct its interpretation of responsibility directly by offering itself advice, or taking the advice of others, changing the agent's interpreting coefficients --- thereby theoretically fulfilling the second research question.\par
-
+This, combined with the judgement of responsibility provided in the earlier section, enables an agent to measure consequences of its actions via changes to its judgement of responsibility, and an analysis of its consequential responsibilities. An agent's ability to offer itself advice via introspection, or to simply receive advice from other agents, theoretically fulfils the second research question.\par
 
 \section{Evaluating the Formalism}\label{sec:evaluation}
 At this point, the definition of the formalism was complete. Empirical data was now required so as to verify that the formalism operated as intended, directing agent behaviour, and allowing for improved behaviour through introspection as to an agent's ``beliefs'' about the trait of responsibility. The formalism was designed according to research-informed design philosophies, which help to ensure that it answers the research questions positively.\par
