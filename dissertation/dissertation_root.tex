@@ -414,7 +414,7 @@ An agent's degree of responsibleness can be calculated by a simple formula, whic
 
 This calculates the cumulative importance of all successfully discharged constraints of each factor, where a factor is a domain variable, altered by ResourceDelta constraints. These importances are re-weighted with the judging agent's interpretation coefficients in the ``reinterpret'' step. This is weighted against the number of all constraints of that factor --- the result of which being that improperly discharged responsibilities do not count toward the degree of responsibility calculated. At the end of the algorithm, the dictionary specific\_scores contains all \emph{specific responsibility scores} calculable for the subject agent.\par
 
-To calculate basic, general, and specific responsibleness judgements, where the above algorithm is implemented in the instance method ``\_\_judge\_degree\_responsible'' via the specification in \cref{code:judge_degree_responsible}, is given in \cref{code:judgement_granularities}.
+To calculate basic, general, and specific responsibleness judgements, where the above algorithm is implemented in the instance method \texttt{\_\_judge\_degree\_responsible} via the specification in \cref{code:judge_degree_responsible}, is given in \cref{code:judgement_granularities}.
 
 \begin{figure}[h]
     \centering
@@ -437,7 +437,7 @@ A basic judgement of responsibility is here defined as the degree to which an ag
 
 A general judgement of responsibility is here defined as the degree to which another agent is responsible in all respects --- it is therefore parameterised with the agent being judged. To calculate this, a mean is taken of all specific responsibilities which the agent calculates regarding the other agent.\par
 
-Finally, a specific judgement of responsibility is here defined as the degree to which an agent is responsible for a particular thing, and is therefore parameterised by both the other agent involved and the factor the calculation relates to. Specific responsibilities are calculated by ``\_\_judge\_degree\_responsible'' --- therefore, a simple lookup of the dictionary returned by ``\_\_judge\_degree\_responsible'' for the factor required is returned.
+Finally, a specific judgement of responsibility is here defined as the degree to which an agent is responsible for a particular thing, and is therefore parameterised by both the other agent involved and the factor the calculation relates to. Specific responsibilities are calculated by \\\texttt{\_\_judge\_degree\_responsible} --- therefore, a simple lookup of the dictionary returned by \texttt{\_\_judge\_degree\_responsible} for the factor required is returned.
 
 \subsubsection{Updating the Agent Perspective Over Time}
 As an agent can judge any other agent's responsibilities by performing this algorithm upon the other's consequential responsibilities, an agent may perform this calculation on \emph{itself}. Should an agent perform this calculation every time a responsibility is discharged, the agent may calculate the rate of change of its responsibility over time.\par
@@ -462,8 +462,8 @@ In evaluating this formalism, a sociotechnical system was constructed to simulat
 Three types of agents are constructed to explore different aspects of responsibility. 
 
 \begin{description}
-    \item [StudiousAgents ] have interpreting coefficients which favour the resource ``essay\_writing'' and ``working\_programs''.
-    \item [HedonisticAgents ] have interpreting coefficients which favour the resource ``personal\_enjoyment''.
+    \item [StudiousAgents ] have interpreting coefficients which favour the resource \texttt{essay\_writing} and \texttt{working\_programs}.
+    \item [HedonisticAgents ] have interpreting coefficients which favour the resource \texttt{personal\_enjoyment}.
     \item [ResponsibilityBlindAgents ] have no responsibility formalism implemented: rather than choosing responsibilities which maximise importance, they choose a responsibility to discharge at random. This would be an example of a sociotechnical agent with no computational responsibility formalism to draw on.
 \end{description}
 
@@ -473,30 +473,35 @@ Importantly, all agents in this experiment are initialised with one Notion: the 
 
 \begin{itemize}
     \item It effectively allows an agent to ``waste'' a turn, and relax a little (represented by the personal enjoyment constraint)
-    \item As a result of the ``personal\_enjoyment'' responsibility, HedonisticAgents will favour idling more than StudiousAgents will.
+    \item As a result of the \texttt{personal\_enjoyment} responsibility, HedonisticAgents will favour idling more than StudiousAgents will.
 \end{itemize}
 
 Agents are then given thirty responsibilities, evenly distributed among three types:
 
 \begin{itemize}
-    \item Writing essays, constructed with a Deadline of 10 ticks and a ResourceDelta of ``essays\_written'': 1
-    \item Writing programs, constructed with a Deadline of 10 ticks and a ResourceDelta of ``working\_programs'': 1
-    \item Attending concerts, constructed with a Deadline of 10 ticks and a ResourceDelta of ``personal\_enjoyment'': 1
+    \item Writing essays, constructed with a Deadline of 10 ticks and a ResourceDelta of \texttt{essays\_written}: 1
+    \item Writing programs, constructed with a Deadline of 10 ticks and a ResourceDelta of \texttt{working\_programs}: 1
+    \item Attending concerts, constructed with a Deadline of 10 ticks and a ResourceDelta of \texttt{personal\_enjoyment}: 1
 \end{itemize}
 
 For each class of responsibility, each constraint was created with an importance of 0.075 * the number of constraints created. Therefore, every constraint created had an importance between 0.075 and 0.75, in steps of 0.075.\par
 
 Agents were registered with acts which were capable of discharging these responsibilities, so as to conform with the formalism. In this way, agents were able to select from their pool of available responsibilities a single responsibility to discharge, and also select an act capable of discharging that responsibility according to the formalism's structure.\par
 
-The entire simulation was implemented in Theatre\_AG\cite{theatre_code}, a sociotechnical modelling framework with a focus on workflow modelling and monitoring reference frames across actors with respect to time. Theatre\_AG is currently in active development; conversion of the tool to Python 3, and the introduction of new design philosophies (such as dropping the requirement for all agents' workflows to be predetermined before execution) was implemented so as to properly conduct this experiment.\par
+\subsubsection{Modelling Framework}\label{subsec:theatre_implementation}
+The entire simulation was implemented in Theatre\_AG\cite{theatre_code}, a sociotechnical modelling framework with a focus on workflow modelling and monitoring reference frames across actors with respect to time.\par
+
+Theatre was a suitable basis for the model for a number of reasons. Firstly, Theatre has a strong temporal model: its focus on consistent reference frames across actors made models with many agents feasible to implement easily. Theatre also presented a modelling platform with an emphasis on agent behaviour, as it was designed for modelling agent workflows. This initially presented a challenge, as Theatre did not originally support executing workflows which were constructed during the model's execution. Some of the time spent on research involved adding this feature, as well as Python 3 support, to the Theatre platform.\par
+
+Theatre's \texttt{SynchronisedClock} object presented an ideal clock to feed into a Deadline constraint.
 
 \subsubsection{Anticipated Outcomes}
 
 The experiment was designed this way so as to show that a HedonisticAgent's behaviour would differ from that of a StudiousAgent. Should the agents perform similarly, this would imply that the responsibility formalism would not properly direct agent behaviour; thereby testing the first research question. Should the agents' behaviours differ, the general degree responsible (judged by the lecturer) would lessen for HedonisticAgents as the agents began to Idle, leaving many responsibilities undischarged. Meanwhile, StudiousAgents would continue to write programs and essays, increasing their general responsibility measurement; the two measurements would therefore deviate as the simulation progressed.\par
 
-The second research question can then be tested, assuming the first research question is answered positively, by giving advice to the HedonisticAgents which altered their interpreting coefficients to more closely resemble those of the StudiousAgents. As HedonisticAgents would eventually stop writing essays, taking advice past this point would cause their behaviour to more closely resemble StudiousAgents; however, there would be a delay in the increase of the specific judgement of responsibility with respect to ``essays\_written'' constraints, as the measure would increase only after advice was taken.\par
+The second research question can then be tested, assuming the first research question is answered positively, by giving advice to the HedonisticAgents which altered their interpreting coefficients to more closely resemble those of the StudiousAgents. As HedonisticAgents would eventually stop writing essays, taking advice past this point would cause their behaviour to more closely resemble StudiousAgents; however, there would be a delay in the increase of the specific judgement of responsibility with respect to \texttt{essays\_written} constraints, as the measure would increase only after advice was taken.\par
 
-This should also be evident in measurements of general responsibility in advised agents, compared to unadvised HedonisticAgents or StudiousAgents, as an advised HedonisticAgent should cease to constantly Idle and would instead begin discharging ``essays\_written'' and ``working\_programs'' constraints.\par
+This should also be evident in measurements of general responsibility in advised agents, compared to unadvised HedonisticAgents or StudiousAgents, as an advised HedonisticAgent should cease to constantly Idle and would instead begin discharging \texttt{essays\_written} and \texttt{working\_programs} constraints.\par
 
 \subsection{RQ 1: Acting on Responsibilities}
 To answer the first research question, the experiment was conducted as described over the course of 150 simulated ticks in a Theatre\_AG model. The graph produced is given in \cref{fig:behaviour_direction}.
@@ -517,12 +522,12 @@ The predicted plateau of the HedonisticAgents' behaviour is also seen after roug
 Research question 1 is answered positively, as a result of the divergent behaviour of all three agent types. Research question 2 should now by explored, as agent behaviour is affirmatively directed by the formalism, but improvements in performance as interpreting coefficients change is yet to be seen.\par
 
 \subsection{RQ 2: Judgement of Responsibility}\label{subsec:RQ2}
-A requirement of exploring the second research question is that the advice mechanism outlined in the formalism's design should be utilised. An experiment was therefore devised where HedonisticAgents were advised by a lecturer to adjust interpreting coefficients to resemble those of a StudiousAgent. Advice was given after 100 ticks had elapsed. The resulting simulation can be seen as graphed in \cref{fig:specific_advice} with specific responsibility judgement for all agents regarding the resource ``essays\_written'', and in \cref{fig:general_advice} with general responsibility judgement.
+A requirement of exploring the second research question is that the advice mechanism outlined in the formalism's design should be utilised. An experiment was therefore devised where HedonisticAgents were advised by a lecturer to adjust interpreting coefficients to resemble those of a StudiousAgent. Advice was given after 100 ticks had elapsed. The resulting simulation can be seen as graphed in \cref{fig:specific_advice} with specific responsibility judgement for all agents regarding the resource \texttt{essays\_written}, and in \cref{fig:general_advice} with general responsibility judgement.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{test_advised_hedonistic_vs_regular_studious251_specific}
-    \caption{Specific judgement of ``essays\_written'' responsibility comparing HedonisticAgents with and without advice}
+    \caption{Specific judgement of \texttt{essays\_written} responsibility comparing HedonisticAgents with and without advice}
     \label{fig:specific_advice}
 \end{figure}
 
@@ -575,7 +580,7 @@ Due to these similarities, and the employment of similar design philosophies bet
 
 \subsection{Focused Anthropomorphic Algorithms Research}
 \subsubsection{Motivation for a New Field}
-The term ``Anthropomorphic algorithm'' is introduced in this paper as a way of separating computational formalisms of human behaviour from other research in sociotechnical systems and human-like computing. The term is introduced here because this separation of concerns matters: a research focus on these computational formalisms allows for study of the behaviour being formalised.\par
+The term ``anthropomorphic algorithm'' is introduced in this paper as a way of separating computational formalisms of human behaviour from other research in sociotechnical systems and human-like computing. The term is introduced here because this separation of concerns matters: a research focus on these computational formalisms allows for study of the behaviour being formalised.\par
 
 Current research methods often attempt to study these behaviours as emergent phenomena, but an anthropomorphic algorithms focus creates a level of abstraction between the behaviour modelled and the underlying social and technical factors which create them in the real world. This abstraction is useful: modelling the fundamental cognitive processes which lead to social behaviours in humans is a notoriously intractable problem in psychophysics. To formalise these fundamental traits, create an understanding of their complex neural origins, and construct simulations of this behaviour for other research purposes presents a mammoth interdisciplinary research effort, which would be impossible with current state-of-the-art research in both social sciences and computer science.\par
 
