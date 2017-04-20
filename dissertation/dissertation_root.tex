@@ -86,7 +86,7 @@ This paper is structured as follows. Section \ref{sec:related_work} explores the
 \section{Related Work}\label{sec:related_work}
 A broad range of literature must be reviewed to properly understand the research at hand, due to the problem's unusual nature. Particularly, this background literature survey will focus on three areas: popular algorithmic trust models, broader sociotechnical systems research, and relevant philosophical literature.\par
 
-\subsection{Trust Modelling}
+\subsection{Trust Modelling}\label{subsec:trust_modelling_lit}
 Ordinarily, when constructing a new anthropomorphic algorithm, one would draw on literature regarding other anthropomorphic algorithms which formalise the same trait with the same intended purpose. However, no such formalism exists for responsibility modelling; therefore, insights from early trust modelling may provide useful information on how to proceed, given that responsibility formalism now is in a similar stage to early trust formalism. Trust is particularly appropriate as a comparative trait to responsibility, as the two have many similarities. Trust and responsibility both concern tasks and their execution within certain formalisms, yet require different perspectives on this execution. These similarities will be explored further as they appear in the explored trust literature.\par
 
 \subsubsection{Marsh~\cite{Marsh1994FormalisingConcept}}
@@ -207,7 +207,7 @@ Scanlon goes on to define a second term, ``substantive'' responsibility, which c
 
 Given the convergence of this perspective on responsibility --- that is, the separation of past state change and anticipated future state change --- Scanlon's writing seems to affirm Sommerville's own construction of types of responsibility. Clarity on how this distinction is useful is found in literature regarding philosophy of mind, which relates well to modelling anthropic traits.\par
 
-\subsubsection{Strawson~\cite{strawson}}  % The nature of responsibility
+\subsubsection{Strawson~\cite{strawson}}\label{subsec:strawson}  % The nature of responsibility
 Strawson's work largely focuses on on philosophy of language and of mind; his work on philosophy of mind in particular is useful when formalising traits socially. One suitable essay, ``On Freedom and Resentment''\cite{strawson}, relates especially well to anthropomorphic algorithms research. In it, Strawson presents an argument that determinism shouldn't affect how we perceive human factors such as responsibility or trust.\par
 
 Strawson argues that these concepts are fundamentally relational, rather than having any inherent definition. The conclusion of this is that trust, responsibility, and other human traits have subjective properties and cannot be calculated outside of the perspective of an agent. This hints at a choice as to the desired formalism's design: unlike a formalism such as Eigentrust, where components of trust scores are calculated independently of any one agent's perspective, the required responsibility scoring system must utilise a subjective perspective for \emph{all} calculations. Strawson's argument applies to sociotechnical systems generally, as it does not apply to any specific trait or type of person; therefore, both social and technological actors in a sociotechnical system might be the targets of a trait designed with Strawson's work in mind.\par
@@ -300,7 +300,7 @@ Obligations are sets of constraints --- they therefore allow constraints to be c
 An obligation therefore defines the complete domain effect which is defined by Lock \& Storer as a responsibility --- however, it concerns itself with no metadata as to the specific responsibility it serves as a specification of. Obligations might rather be considered a responsibility which has not been delegated: details such as authority and delegee are not specified, but the sociotechnical definition of the responsibility is fulfilled.\par
 
 \subsubsection{Responsibilities}\label{subsec:responsibilities}  % An assigned obligation, with an authority and a delegee. Explain that importances are also introduced here, as the same obligation may be important to different delegees in different ways. Properly define the term "discharge"
-The act of delegating necessarily defines certain details pertinent to a complete responsibility. These details include the authority and delegee associated with the responsibility --- this relational information is defined by the act of delegation, as indicated by Strawson's relational take on anthropic traits explored in \cref{}\par
+The act of delegating necessarily defines certain details pertinent to a complete responsibility. These details include the authority and delegee associated with the responsibility --- this relational information is defined by the act of delegation, as indicated by Strawson's relational take on anthropic traits explored in \cref{subsec:strawson}\par
 
 Importance scores can also be introduced at this point, as the delegee is defined; therefore, importance scores can also be assigned, as the only factor preventing importance score allocation upon the initialisation of a constraint is that the discharging agent --- the delegee --- was not defined, meaning that the importance of this specific agent discharging a responsibility was indeterminable. The importance scores are provided as floating points in the range \([0,1]\), and are provided as a list in the same order as the constraints provided to the obligation.\par
 
@@ -495,14 +495,14 @@ Theatre's \texttt{SynchronisedClock} object presented an ideal clock to feed int
 
 \subsubsection{Anticipated Outcomes}
 
-The experiment was designed this way so as to show that a HedonisticAgent's behaviour would differ from that of a StudiousAgent. Should the agents perform similarly, this would imply that the responsibility formalism would not properly direct agent behaviour; thereby testing the first research question. Should the agents' behaviours differ, the general degree responsible (judged by the lecturer) would lessen for HedonisticAgents as the agents began to Idle, leaving many responsibilities undischarged. Meanwhile, StudiousAgents would continue to write programs and essays, increasing their general responsibility measurement; the two measurements would therefore deviate as the simulation progressed.\par
+The experiment was designed this way so as to show that a HedonisticAgent's behaviour would differ from that of a StudiousAgent. Should the agents perform similarly, this would imply that the responsibility formalism would not properly direct agent behaviour; thereby testing the first research question. Should the agents' behaviours differ, the general degree responsible (judged by the Lecturer) would lessen for HedonisticAgents as the agents began to Idle, leaving many responsibilities undischarged. Meanwhile, StudiousAgents would continue to write programs and essays, increasing their general responsibility measurement; the two measurements would therefore deviate as the simulation progressed.\par
 
 The second research question can then be tested, assuming the first research question is answered positively, by giving advice to the HedonisticAgents which altered their interpreting coefficients to more closely resemble those of the StudiousAgents. As HedonisticAgents would eventually stop writing essays, taking advice past this point would cause their behaviour to more closely resemble StudiousAgents; however, there would be a delay in the increase of the specific judgement of responsibility with respect to \texttt{essays\_written} constraints, as the measure would increase only after advice was taken.\par
 
 This should also be evident in measurements of general responsibility in advised agents, compared to unadvised HedonisticAgents or StudiousAgents, as an advised HedonisticAgent should cease to constantly Idle and would instead begin discharging \texttt{essays\_written} and \texttt{working\_programs} constraints.\par
 
 \subsection{RQ 1: Acting on Responsibilities}
-To answer the first research question, the experiment was conducted as described over the course of 150 simulated ticks in a Theatre\_AG model. The graph produced is given in \cref{fig:behaviour_direction}.
+To answer the first research question, the experiment was conducted as described over the course of 150 simulated ticks in a Theatre\_AG model. The graph produced is given in \cref{fig:behaviour_direction}, with judgement sampled for every tenth of the simulated time.
 
 \begin{figure}[h]
     \centering
@@ -520,7 +520,7 @@ The predicted plateau of the HedonisticAgents' behaviour is also seen after roug
 Research question 1 is answered positively, as a result of the divergent behaviour of all three agent types. Research question 2 should now by explored, as agent behaviour is affirmatively directed by the formalism, but improvements in performance as interpreting coefficients change is yet to be seen.\par
 
 \subsection{RQ 2: Judgement of Responsibility}\label{subsec:RQ2}
-A requirement of exploring the second research question is that the advice mechanism outlined in the formalism's design should be utilised. An experiment was therefore devised where HedonisticAgents were advised by a lecturer to adjust interpreting coefficients to resemble those of a StudiousAgent. Advice was given after 100 ticks had elapsed. The resulting simulation can be seen as graphed in \cref{fig:specific_advice} with specific responsibility judgement for all agents regarding the resource \texttt{essays\_written}, and in \cref{fig:general_advice} with general responsibility judgement.
+A requirement of exploring the second research question is that the advice mechanism outlined in the formalism's design should be utilised. An experiment was therefore devised where HedonisticAgents were advised by a lecturer to adjust interpreting coefficients to resemble those of a StudiousAgent. Advice was given after 100 ticks had elapsed. The resulting simulation can be seen as graphed in \cref{fig:specific_advice} with specific responsibility judgement for all agents regarding the resource \texttt{essays\_written}, and in \cref{fig:general_advice} with general responsibility judgement, sampled every tenth of the simulated time.
 
 \begin{figure}[h]
     \centering
@@ -572,7 +572,7 @@ The formalism has been shown to have potential in task scheduling applications. 
 The formalism at present may already be suitable for real-world application for task scheduling. Empirical evidence of this, and any modifications to improve the formalism's performance in more constrained scenarios, will require further research, posing new research questions.\par
 
 \subsection{Integration With Trust}\label{subsec:multi-trait}
-Similarities between trust and responsibility as social traits were laid out in earlier sections of this paper. A wealth of insights from trust formalism, including the basic parameters required to construct the formalism presented, were incorporated into the final product.\par
+Similarities between trust and responsibility as social traits were laid out in \cref{subsec:trust_modelling_lit}. A wealth of insights from trust formalism, including the basic parameters required to construct the formalism presented, were incorporated into the final product.\par
 
 Due to these similarities, and the employment of similar design philosophies between the formalism presented and existing trust formalisms, such as Castelfranchi \& Falcone and Marsh's respective formalisms, development of a model which incorporates the two traits appears feasible. Each trait's measurements might be used to inform the other in a multi-trait anthropomorphic algorithm, creating a feedback mechanism which allowed each trait to be calculated by a better-informed agent. Multi-trait formalisms usually exist in a format similar to Eigentrust's employment of reputation as a bootstrapping trait for trust; this proposed multi-trait model would instead present two separate traits, computed in parallel, but informing each other.\par
 
