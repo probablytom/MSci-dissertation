@@ -300,11 +300,11 @@ Obligations are sets of constraints --- they therefore allow constraints to be c
 An obligation therefore defines the complete domain effect which is defined by Lock \& Storer as a responsibility, including composition --- however, it concerns itself with no metadata as to the specific responsibility it serves as a specification of. Obligations might rather be considered a responsibility which has not been delegated: details such as authority and delegee are not specified, but the sociotechnical definition of the responsibility is fulfilled.\par
 
 \subsubsection{Responsibilities}\label{subsec:responsibilities}  % An assigned obligation, with an authority and a delegee. Explain that importances are also introduced here, as the same obligation may be important to different delegees in different ways. Properly define the term "discharge"
-The act of delegating necessarily defines certain details pertinent to a complete responsibility. These details include the authority and delegee associated with the responsibility --- this relational information is defined by the act of delegation, as indicated by Strawson's relational take on anthropic traits explored in \cref{subsec:strawson}.\par
+The formalism presented requires four parameters of a responsibility: an authority, a delegee, importance scores, and a domain state change. State changes are represented by constraints, and composed via obligations. To define other parameters of the responsibility, an obligation can be \emph{delegated} from an authority to a delegee. In delegating, we therefore define two of the three missing parameters to construct a responsibility. This relational information is defined upon delegation, as indicated by Strawson's relational take on anthropic traits explored in \cref{subsec:strawson}.\par
 
 Importance scores can also be introduced at this point, as the delegee is defined. The delegee's indeterminate state previously meant that importance scores were not assignable, as different delegees may be required to enact the same state change with different importances. The importance scores are provided as floating points in the range \([0,1]\), and are provided as a list in the same order as the constraints provided to the obligation.\par
 
-A responsibility is used by an agent in the sociotechnical system for selecting a next task --- to ease this calculation, the cumulative effect of a responsibility's discharge is defined as its ``responsibility effect''. The total effect of all constraints in its associated obligation, which maps factors affected to their cumulative effect. Defining this as a separate mapping allows for analysis of the original constraints which might be cancelled out upon composition in an obligation, and allows calculations to ignore or focus on any range of factors a responsibility concerns.\par
+A responsibility is used by an agent in the sociotechnical system for selecting a next task --- to ease this calculation, the cumulative effect of a responsibility's discharge is defined as its ``responsibility effect''. This is the total effect of all constraints in its associated obligation, which maps factors affected to their cumulative effect. Defining this as a separate mapping allows for analysis of the original constraints which might be cancelled out upon composition in an obligation, and allows calculations to ignore or focus on any range of factors a responsibility concerns.\par
 
 \subsubsection{Agents}  % Briefly describe Theatre model for agents and their workflows. Define authorities and delegees.
 An agent consists of two important pieces of functionality:
@@ -314,7 +314,7 @@ An agent consists of two important pieces of functionality:
     \item Task selection and responsibleness judgement using the responsibility formalism.
 \end{itemize}
 
-Agents also contain their own sociotechnical state. This should contain all of the variables that a obligation describes as being altered in some way. In addition, they are given a ``basic responsibility score'' --- this number, in the range \([0,1]\), represents a ``benefit of the doubt'' responsibility judgement for basic responsibility calculations. It is used in judgement of responsibility, which is described below.\par
+Agents also contain their own sociotechnical state. This should contain all of the variables that ann obligation describes as being altered in some way. In addition, they are given a ``basic responsibility score'' --- this number, in the range \([0,1]\), represents a ``benefit of the doubt'' responsibility judgement for basic responsibility calculations. It is used in judgement of responsibility, which is described below.\par
 
 To achieve subjectivity, agents contain interpretation coefficients; details regarding the interpretation coefficients are given in the interpretation function (\cref{subsec:interpretation_function}).\par
 
@@ -384,13 +384,13 @@ Note that, for ease of notation, Python's sorted function and list slices are us
 
 \subsubsection{Judging Agent Responsibility}  % Judging an agent's repsonsibleness based on their consequential responsibilities. Differences between basic, general, and specific responsibilities.
 % Also, note here that judging agent responsibilities allows an agent to decide whether they need to change their behaviour, as they can sample the judgements over time and find whether they're more/less responsibly judged when they make certain decisions -- satisfying RQ2.
-An agent's degree of responsibleness can be calculated by a simple formula, which uses the outcomes of the consequential responsibilities of the agent to produce a basic, general, and specific responsibility score, in a fashion similar to Marsh's for trust\cite{Marsh1994FormalisingConcept}. An example general-purpose responsibleness degree function is given by the pseudocode in \cref{code:judge_degree_responsible}.\par
+An agent's degree of responsibleness can be calculated by a simple formula, which uses the outcomes of the consequential responsibilities of the agent to produce a basic, general, and specific responsibility score, in a fashion similar to Marsh's judgements of trust\cite{Marsh1994FormalisingConcept}. An example general-purpose responsibleness degree function is given by the pseudocode in \cref{code:judge_degree_responsible}.\par
 
 \begin{figure}[h]
     \centering
     \begin{pseudocodelisting}
 function __judge_degree_responsible(subject agent):
-    specific_scores = dictionary()
+    specific_scores = map()
     for each responsibility in subject agent's consequential responsibilities:
         reinterpret(responsibility)
         for each constraint in that responsibility:
@@ -412,7 +412,7 @@ function __judge_degree_responsible(subject agent):
     \label{code:judge_degree_responsible}
 \end{figure}
 
-This calculates the cumulative importance of all successfully discharged constraints of each factor, where a factor is a domain variable, altered by ResourceDelta constraints. These importances are re-weighted with the judging agent's interpretation coefficients in the ``reinterpret'' step. This is weighted against the number of all constraints of that factor --- the result of which being that improperly discharged responsibilities do not count toward the degree of responsibility calculated. At the end of the algorithm, the dictionary specific\_scores contains all \emph{specific responsibility scores} calculable for the subject agent.\par
+This calculates the cumulative importance of all successfully discharged constraints of each factor, where a factor is a domain variable, altered by ResourceDelta constraints. These importances are re-weighted with the judging agent's interpretation coefficients in the ``reinterpret'' step. This is weighted against the number of all constraints of that factor --- the result of which being that improperly discharged responsibilities do not count toward the degree of responsibility calculated. At the end of the algorithm, the map specific\_scores contains all \emph{specific responsibility scores} calculable for the subject agent.\par
 
 To calculate basic, general, and specific responsibleness judgements, where the above algorithm is implemented in the instance method \texttt{\_\_judge\_degree\_responsible} via the specification in \cref{code:judge_degree_responsible}, is given in \cref{code:judgement_granularities}.
 
@@ -437,14 +437,14 @@ A basic judgement of responsibility is here defined as the degree to which an ag
 
 A general judgement of responsibility is here defined as the degree to which another agent is responsible in all respects --- it is therefore parameterised with the agent being judged. To calculate this, a mean is taken of all specific responsibilities which the agent calculates regarding the other agent.\par
 
-Finally, a specific judgement of responsibility is here defined as the degree to which an agent is responsible for a particular thing, and is therefore parameterised by both the other agent involved and the factor the calculation relates to. Specific responsibilities are calculated by \\\texttt{\_\_judge\_degree\_responsible} --- therefore, a simple lookup of the dictionary returned by \texttt{\_\_judge\_degree\_responsible} for the factor required is returned.
+Finally, a specific judgement of responsibility is here defined as the degree to which an agent is responsible for a particular thing, and is therefore parameterised by both the other agent involved and the factor the calculation relates to. Specific responsibilities are calculated by \\\texttt{\_\_judge\_degree\_responsible} --- therefore, a simple lookup of the map returned by \texttt{\_\_judge\_degree\_responsible} for the factor required is returned.
 
 \subsubsection{Updating the Agent Perspective Over Time}
 A notable feature of the definition of responsibility judgement is that an agent may perform it on itself. Should an agent perform this calculation every time it discharges a responsibility, the agent may calculate the rate of change of its responsibleness over time.\par
 
 Improving agent performance can be done in two ways. Should an agent's interpreting coefficients ever change, the it can reflect on its past performance and identify ways to improve; the agent would then readjust its interpreting coefficients to account for this introspection. While this behaviour is interesting, as it permits more socially accurate modelling, the agent's interpreting coefficients should be changed primarily through an \emph{advice} mechanism.\par
 
-An agent may offer another agent advice --- this is represented as a dictionary of changes to the subject agent's interpreting coefficients. After judging the degree to which another agent is responsible, if an agent is seen to be lacking responsibility in a specific area, or in all areas generally (using the appropriate calculations), advice regarding the factors concerned is provided via this dictionary representation. The subject agent may choose to accept the advice depending on any implementation-appropriate factors: advising agent class, reputation formalism calculation, or other method.\par
+An agent may offer another agent advice --- this is represented as a map of changes to the subject agent's interpreting coefficients. After judging the degree to which another agent is responsible, if an agent is seen to be lacking responsibility in a specific area, or in all areas generally (using the appropriate calculations), advice regarding the factors concerned is provided via this map representation. The subject agent may choose to accept the advice depending on any implementation-appropriate factors: advising agent class, reputation formalism calculation, or other method.\par
 
 This, combined with the judgement of responsibility provided in the earlier section, enables an agent to measure consequences of its actions via changes to its judgement of responsibility, and an analysis of its consequential responsibilities. An agent's ability to offer itself advice via introspection, or to simply receive advice from other agents, theoretically fulfils the second research question.\par
 
