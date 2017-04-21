@@ -73,7 +73,7 @@ To achieve these goals, two research questions were formulated:
 
 \subsection{Outline}
 
-This paper is structured as follows. Section \ref{sec:related_work} explores the problem domain, and contextualises the research questions which this paper will address. Section \ref{sec:formalism_details} discusses the design decisions inspired by this related work, and details a suitable model for computational responsibility. Following this, section \ref{sec:evaluation} presents an evaluation of the formalism using responsibility as a metaphor in task scheduling. \todo{task scheduling? a sociotechnical model of student behaviour?} Section \ref{sec:future_work} explores potential future work building on this proof-of-concept computational responsibility model. Section \ref{sec:discussion} summarises the contributions of the model to the anthropomorphic algorithms field, as well as providing a summary of the formalism's efficacy as a responsibility model.\par
+This paper is structured as follows. Section \ref{sec:related_work} explores the problem domain, and contextualises the research questions which this paper will address. Section \ref{sec:formalism_details} discusses the design decisions inspired by this related work, and details a suitable model for computational responsibility. Following this, section \ref{sec:evaluation} presents an evaluation of the formalism using responsibility to influence an agent's behaviour via task scheduling. Section \ref{sec:future_work} explores potential future work building on this proof-of-concept computational responsibility model. Section \ref{sec:discussion} summarises the contributions of the model to the anthropomorphic algorithms field, as well as providing a summary of the formalism's efficacy as a responsibility model.\par
 % 
 % The third section follows this with a review of important literature from areas in anthropomorphic algorithms and sociotechnical systems research which might inform this proof-of-concept formalism.\par
 % 
@@ -105,8 +105,6 @@ These separations are useful in a few key ways. One is that it identifies some p
 Another useful insight from these separations would be that, when considering responsibility, judging how responsible an agent is can be done from the same three vantage points. Basic responsibility would colloquially be ``benefit of the doubt'', general responsibility would be how responsible an agent is in all modelled capacities, and specific responsibility would be another agent's calculated responsibility with regards some task, resource, or other modelled subject of responsibility. Not only does this also affirm trust and responsibility's similarities, but it helps in providing further structure to the new formalism.\par
 
 A final important property of Marsh's formalism is its graded nature. This model does not produce a boolean indicator of whether to trust or not; rather, it opts to calculate a number between 0 and 1 of the \emph{degree} of trust one agent ought to have in another. This feature allows for as granular a model of trust as any given application requires, and allows for nuanced comparison between agents.\par
-
-\todo{Write more of this? Maybe less on the separations, and more on its social science background or lack of logical foundation?}
 
 \subsubsection{Castelfranchi \& Falcone~\cite{CastelfranchiSocialApproach}}
 Another useful formalism of trust to consider comes from Castelfranchi \& Falcone\cite{CastelfranchiSocialApproach}~. While this formalism has logical foundations, and so doesn't lend itself well as an anthropomorphic algorithm, its popularity makes it an interesting comparison to Marsh's formalism.\par
@@ -144,12 +142,10 @@ FIRE's inclusion of information from multiple sources paints other trust formali
 
 This design decision makes FIRE an unlikely candidate as a foundation of a responsibility formalism, as its specific application area --- sociotechnical models with multiple types of information to consider --- is more complex than is necessary for a proof-of-concept responsibility formalism, and would be more complicated than the research questions posed require. However, the design choice it raises regarding different types of information, and the nature of the information which is being reviewed when calculating the responsibility score, is an important one.\par
 
-% TODO: should this be 'sociotechnical systems', 'Ian Sommerville', or 'Responsibility Modelling'? What's a good title? Is there anything other than Sommerville to go in here?
 \subsection{Sociotechnical Systems}
 While these formalisms are useful to consider in isolation, their application within the realm of sociotechnical systems is important to their design. Moreover, the nature of responsibilities is touched within the broader sociotechnical systems area of responsibility modelling: research on the delegation and discharge of responsibilities, and how to reason about them.\par
 
 \subsubsection{Sommerville~\cite{sommerville_graphical_responsibility,sommerville_dependable_systems_chap_8,sommerville_dependable_systems_chapter_9}}
-\todo{What more can we say about Sommerville's contributions? At the moment we only cover consequential and causal responsibilities.}
 Ian Sommerville was a prolific writer in the field of sociotechnical systems, who was responsible for much of the current literature on responsibility modelling\cite{sommerville_graphical_responsibility,sommerville_dependable_systems_chap_8,sommerville_dependable_systems_chapter_9}. Sommerville's responsibility modelling systems often happened to be graphical\cite{sommerville_graphical_responsibility}, a paradigm for computational responsibility which may prove hard to convert to an anthropomorphic algorithm. This is because graphical representations of system states do not naturally present themselves as a numerically analysable format; rather, graphical presentations are useful for exposing sociotechnical system state. This feature of sociotechnical modelling, and particularly responsibility modelling, is useful for risk and impact analysis\cite{ObashiMethodology}.\par
 
 Sommerville's writing, however, presents a wealth of interesting insights which may be useful in understanding the context of an anthropomorphic algorithm, and understanding some possible choices as to the formalism's philosophy.\par
@@ -270,12 +266,10 @@ The feature of graded measurement is useful for a few reasons. The feature is pr
 
 Finally, a graded formalism allows for a deeper exploration of its efficacy. In order to evaluate the formalism properly, comparisons between agents with a responsibility formalism directing their behaviour and others with no such direction should be modelled.\par
 
-\subsection{Specific Formalism Details}
-\todo{Is there a better title for this subsection? Supposed to be details of the actual formalism which was designed with these design philosophies in mind.}
-
+\subsection{Formalism Specification}
 Related research has helped to inform many design choices surrounding the formalism required to fulfil this paper's research questions. As the necessary design decisions are now properly understood, a computational responsibility model which conforms to these design choices can be constructed.\par
 
-\subsection{Formalism Overview}
+\subsubsection{Formalism Overview}
 Constraints, grouped into an obligation, are delegated by an authority to a delegee. The act of delegation implies enough information to permit the allocation of importance scores, completing the requirements for the creation of a responsibility. These importance scores are then interpreted subjectively by the delegee, who uses their present responsibilities to select future acts. Upon act completion, the associated responsibility is copied into a list of consequential responsibilities, and --- should it not be listed as in the agent's notions --- discarded from future discharge. These consequential responsibilities are then used to calculate basic, general, and specific responsibility scores, mirroring Marsh's seminal work on computational trust. Task selection, and alteration to interpretation coefficient via an advice mechanism, together answer the two research questions laid out during the problem specification.\par
 
 The components of the formalism defined by this paper are constraints, obligations, responsibilities, importances, agents, actions that agents can take to discharge responsibilities, an interpretation function, a mechanism for judging the responsibleness of any given agent, and another for giving agents advice to improve their performance.\par
